@@ -77,4 +77,4 @@ Stuck reducing a matrix to RREF? The [emathhelp RREF calculator](https://www.ema
 
 ## Conventions
 
-Pastel aesthetic (lilac, sage, pink). Each question runs definitions to explanation to worked steps to boxed answer. Math in LaTeX rendered by KaTeX. No em-dashes in prose.
+Pastel aesthetic (lilac, sage, pink). Each question runs definitions to explanation to worked steps to boxed answer. Math in LaTeX rendered by KaTeX.

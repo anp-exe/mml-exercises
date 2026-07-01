@@ -1,4 +1,4 @@
-# 🍵 MML — Exercise Answers
+# MML Exercise Answers
 
 Worked solutions to the **end-of-chapter exercises** in *Mathematics for Machine Learning* (Deisenroth, Faisal & Ong).
 

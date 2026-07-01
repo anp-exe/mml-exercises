@@ -24,6 +24,18 @@ Each question is laid out the same way: a **Topics & Definitions** box, a plain-
 
 ---
 
+## Helpful resources
+
+!!! tip "Stuck reducing a matrix to RREF?"
+    This calculator shows every elimination step, which is great for checking your own work:
+    [emathhelp RREF calculator](https://www.emathhelp.net/calculators/linear-algebra/reduced-row-echelon-form-rref-calculator/)
+
+For building real intuition on vectors, transformations, and matrices, 3Blue1Brown's
+[**Essence of Linear Algebra**](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
+video series is fantastic and highly recommended.
+
+---
+
 ## How this site is built
 
 Static site generated with **MkDocs + Material**, math rendered with **KaTeX**.

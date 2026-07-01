@@ -10,7 +10,7 @@ Every question follows the same layout: a Topics & Definitions box, a plain-Engl
 
 | Chapter | Exercises answered |
 |:------:|:------------------:|
-| 2 · Linear Algebra | 2.1 to 2.12 complete |
+| 2 · Linear Algebra | 2.1 to 2.14 complete |
 | 3 · Analytic Geometry | placeholder |
 | 4 · Matrix Decompositions | placeholder |
 | 5 · Vector Calculus | placeholder |

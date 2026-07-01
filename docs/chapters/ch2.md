@@ -261,3 +261,96 @@ Stack the six vectors as columns of a $4\times 6$ matrix and row-reduce. Two $\m
 !!! answer "Answer"
     $U_1 \cap U_2$ is one-dimensional, with basis
     $$\left\{\,(4,\ -1,\ -2,\ -1)\,\right\}.$$
+
+---
+
+## 2.13 · Subspaces as solution spaces $U_1 = \ker A_1,\ U_2 = \ker A_2$
+
+!!! theory "Topics & Definitions"
+    - **Solution space (null space)** — every $\mathbf{x}$ with $A\mathbf{x} = \mathbf{0}$; a subspace of the domain $\mathbb{R}^3$.
+    - **Rank–nullity** — $\dim(\ker A) = n - \operatorname{rank}(A)$, where $n$ is the number of columns.
+    - **Basis from free variables** — each column without a pivot gives one basis vector.
+    - **Mind the definition** — here the $U$'s are *solution* spaces, so the dimension counts free variables, not pivots (contrast with 2.14).
+
+Both $A_1$ and $A_2$ are $4\times 3$, so $\mathbf{x}\in\mathbb{R}^3$. Row-reducing each one gives rank $2$, leaving a single free variable, so both solution spaces are one-dimensional. Strikingly, the two matrices reduce to the *same* echelon form, so $U_1$ and $U_2$ turn out to be the identical line.
+
+!!! steps "Reduce each $A_i$ and read the null space"
+    $$A_1 \longrightarrow \begin{bmatrix}1&0&1\\0&1&1\\0&0&0\\0&0&0\end{bmatrix},
+    \qquad
+    A_2 \longrightarrow \begin{bmatrix}1&0&1\\0&1&1\\0&0&0\\0&0&0\end{bmatrix}$$
+
+    Both give $x_1 = -x_3$ and $x_2 = -x_3$. Setting $x_3 = t$:
+    $$\mathbf{x} = t\,(-1,\,-1,\,1).$$
+    Same for both, so $U_1 = U_2$ and the intersection is that same line.
+
+!!! answer "Answer"
+    **a)** $\dim U_1 = \dim U_2 = 1$.
+
+    **b)** Basis of $U_1$ = basis of $U_2$ = $\left\{\,(-1,\,-1,\,1)\,\right\}$.
+
+    **c)** Since $U_1 = U_2$, the intersection is the same line: $\left\{\,(-1,\,-1,\,1)\,\right\}$.
+
+---
+
+## 2.14 · Subspaces as column spaces $U_1 = \operatorname{col} A_1,\ U_2 = \operatorname{col} A_2$
+
+!!! theory "Topics & Definitions"
+    - **Column space** — the span of a matrix's columns; here a subspace of $\mathbb{R}^4$.
+    - **Dimension $=$ rank** — the number of pivot columns.
+    - **Basis $=$ original pivot columns** — reduce to find *which* columns are pivots, then take those columns from the **original** matrix (row ops change the columns, so never read the basis off the RREF).
+    - **Intersection** — solve $c_1\mathbf{v}_1 + c_2\mathbf{v}_2 = d_1\mathbf{w}_1 + d_2\mathbf{w}_2$, a homogeneous system in $(c_1,c_2,d_1,d_2)$.
+
+Same two matrices as 2.13, but now the $U$'s are spanned by the columns. Each has rank $2$ with pivots in columns $1$ and $2$, so the first two columns of each original matrix form a basis. For the intersection, stack the two bases (negating $U_2$'s) and solve.
+
+!!! steps "Intersection system $[\mathbf{v}_1\ \mathbf{v}_2 \mid -\mathbf{w}_1\ -\mathbf{w}_2]$"
+    $$\left[\begin{array}{cc|cc}
+    1&0&-3&3\\
+    1&-2&-1&-2\\
+    2&1&-7&5\\
+    1&0&-3&1
+    \end{array}\right]
+    \longrightarrow
+    \left[\begin{array}{cc|cc}
+    1&0&-3&0\\
+    0&1&-1&0\\
+    0&0&0&1\\
+    0&0&0&0
+    \end{array}\right]$$
+
+    Pivots in $c_1, c_2, d_2$; the $d_1$ column is free. Back-substitution gives $d_2 = 0$, $c_2 = d_1$, $c_1 = 3d_1$. Taking $d_1 = 1$:
+    $$\mathbf{x} = 3\mathbf{v}_1 + \mathbf{v}_2 = 3\begin{pmatrix}1\\1\\2\\1\end{pmatrix} + \begin{pmatrix}0\\-2\\1\\0\end{pmatrix} = \begin{pmatrix}3\\1\\7\\3\end{pmatrix},$$
+    which is exactly $\mathbf{w}_1$, confirming it lies in both spaces. By Grassmann, $\dim(U_1\cap U_2) = 2 + 2 - 3 = 1$.
+
+!!! answer "Answer"
+    **a)** $\dim U_1 = \dim U_2 = 2$.
+
+    **b)** Basis of $U_1 = \left\{\,(1,1,2,1),\ (0,-2,1,0)\,\right\}$; &nbsp; basis of $U_2 = \left\{\,(3,1,7,3),\ (-3,2,-5,-1)\,\right\}$.
+
+    **c)** Basis of $U_1 \cap U_2 = \left\{\,(3,\,1,\,7,\,3)\,\right\}$.
+
+!!! note "Why 2.13 and 2.14 differ (the thing to actually remember)"
+    Same matrices $A_1, A_2$, but the two problems ask about **opposite** subspaces, so both the dimension formula and the way you read off a basis flip:
+
+    | | 2.13 · solution space | 2.14 · column space |
+    |---|---|---|
+    | **What $U$ is** | all $\mathbf{x}$ with $A\mathbf{x}=\mathbf{0}$ ($\ker A$) | the span of $A$'s columns ($\operatorname{col} A$) |
+    | **Dimension** | $\dim = n - \operatorname{rank}(A)$ (free variables) | $\dim = \operatorname{rank}(A)$ (pivots) |
+    | **Basis from** | solving the system, one vector per free variable | the **original** columns sitting in pivot positions |
+    | **Here** | $3 - 2 = 1$ | $2$ |
+
+    So the $\dim = n - \operatorname{rank}$ formula is a **null-space** fact. It is easy to reach for it in 2.14, but a column space is measured by the rank directly. Rank–nullity ties them together: $\operatorname{rank}(A) + \dim(\ker A) = n$, here $2 + 1 = 3$.
+
+!!! note "The rank–nullity theorem, in plain words"
+    Think of a matrix as a machine with one slot for each column. When you row-reduce it, every column ends up in one of two piles:
+
+    - **Pivot columns** are the ones pulling their own weight, each adds a genuinely new direction the matrix can reach. How many there are is the **rank**.
+    - **Non-pivot columns** are the leftovers, each one is just a mix of earlier columns and shows up as a free choice when you solve $A\mathbf{x}=\mathbf{0}$. How many there are is the size of the **solution space**.
+
+    The theorem is simply the observation that every column lands in exactly one pile, so the two counts always add back up to the total number of columns:
+
+    $$\underbrace{\operatorname{rank}(A)}_{\text{new directions}} + \underbrace{\dim(\ker A)}_{\text{free choices}} = \underbrace{n}_{\text{columns}}.$$
+
+    For these $4\times 3$ matrices: $2$ pulling their weight $+\ 1$ leftover $=\ 3$ columns. Handy check: once you know the rank, the other number is free.
+
+!!! note "What \"basis = the pivot columns\" really means"
+    Row operations **change** the columns, so you can never copy the basis straight out of the RREF. What row reduction *does* preserve is the dependency pattern, telling you **which** columns are independent. So: reduce to spot the pivot positions (here columns $1$ and $2$), then go back and take those columns from the **original** matrix. For $A_1$ that is $(1,1,2,1)$ and $(0,-2,1,0)$, the untouched first two columns.

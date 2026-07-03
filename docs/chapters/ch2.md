@@ -459,3 +459,108 @@ Reading the four output rows gives the coefficient matrix $A_\Phi$. Row-reducing
 
     $\dim(\operatorname{Im}(\Phi)) = 3$, with
     $$\operatorname{Im}(\Phi) = \operatorname{span}\left\{\begin{pmatrix}3\\1\\1\\2\end{pmatrix},\begin{pmatrix}2\\1\\-3\\3\end{pmatrix},\begin{pmatrix}1\\1\\0\\1\end{pmatrix}\right\}.$$
+
+---
+
+## 2.18 · Automorphisms: kernels and images of $f$ and $g$
+
+!!! theory "Topics & Definitions"
+    - **Homomorphism** — a structure-preserving map between vector spaces; equivalently, a linear map (it preserves addition and scalar multiplication).
+    - **Endomorphism** — a homomorphism from a space to itself, $\Phi: V \to V$.
+    - **Automorphism** — a bijective endomorphism: an invertible linear map $V \to V$ whose inverse is also linear.
+    - **Kernel** — $\ker(f) = \{v : f(v) = \mathbf{0}\}$. **Image** — $\operatorname{Im}(g) = \{g(v) : v \in V\}$.
+    - **Key fact used here** — $f$ and $g$ are automorphisms with $f \circ g = \mathrm{id}$, so both are bijections; a bijection sends only $\mathbf{0}$ to $\mathbf{0}$ and is onto.
+
+Because $f \circ g = \mathrm{id}_E$, both $f$ and $g$ are invertible (automorphisms). Bijectivity is what makes all three claims fall out: an injective map has trivial kernel, and a surjective map has full image.
+
+!!! steps "The three claims"
+    **1. $\ker(f) = \ker(g \circ f)$.**
+    If $f(v) = \mathbf{0}$ then $(g\circ f)(v) = g(\mathbf{0}) = \mathbf{0}$, so $\ker(f) \subseteq \ker(g\circ f)$. Conversely, if $(g\circ f)(v) = \mathbf{0}$, apply $g^{-1}$: $f(v) = g^{-1}(\mathbf{0}) = \mathbf{0}$, so $\ker(g\circ f) \subseteq \ker(f)$. Hence equal.
+
+    **2. $\operatorname{Im}(g) = \operatorname{Im}(g \circ f)$.**
+    Clearly $\operatorname{Im}(g\circ f) \subseteq \operatorname{Im}(g)$. For the reverse, take any $g(w) \in \operatorname{Im}(g)$. Since $f$ is surjective, $w = f(u)$ for some $u$, so $g(w) = (g\circ f)(u) \in \operatorname{Im}(g\circ f)$. Hence equal.
+
+    **3. $\ker(f) \cap \operatorname{Im}(g) = \{\mathbf{0}\}$.**
+    $f$ is an automorphism, so $\ker(f) = \{\mathbf{0}\}$. The intersection of $\{\mathbf{0}\}$ with any set is $\{\mathbf{0}\}$.
+
+!!! answer "Answer"
+    All three hold: $\ker(f) = \ker(g\circ f)$, $\operatorname{Im}(g) = \operatorname{Im}(g\circ f)$, and $\ker(f)\cap\operatorname{Im}(g) = \{\mathbf{0}\}$, each following from $f$ and $g$ being automorphisms (bijective linear maps).
+
+---
+
+## 2.19 · Endomorphism on $\mathbb{R}^3$: kernel, image, and a basis change
+
+!!! theory "Topics & Definitions"
+    - **Endomorphism** — a linear map from a space to itself, here $\Phi:\mathbb{R}^3\to\mathbb{R}^3$.
+    - **Kernel / Image** — inputs sent to $\mathbf{0}$ / all reachable outputs.
+    - **Invertibility test** — $\det A_\Phi \neq 0$ means full rank, trivial kernel, and image equal to all of $\mathbb{R}^3$.
+    - **Basis change of a map** — $\tilde{A}_\Phi = B^{-1} A_\Phi B$, where $B$ has the new basis vectors as its columns.
+
+The transformation matrix is $A_\Phi = \begin{bmatrix}1&1&0\\1&-1&0\\1&1&1\end{bmatrix}$. Its determinant is $-2$, which is nonzero, so $\Phi$ is invertible: the kernel is just the zero vector and the image is all of $\mathbb{R}^3$. Part b re-expresses the same map in the new basis $B$ using the similarity formula $B^{-1}A_\Phi B$.
+
+!!! steps "Part a, kernel and image"
+    $\det A_\Phi = -2 \neq 0$, so $\operatorname{rk}(A_\Phi) = 3$.
+    $$\ker(\Phi) = \{\mathbf{0}\}, \qquad \dim(\ker(\Phi)) = 0.$$
+    $$\operatorname{Im}(\Phi) = \mathbb{R}^3, \qquad \dim(\operatorname{Im}(\Phi)) = 3.$$
+
+!!! steps "Part b, basis change to $B$"
+    Put the new basis vectors as columns: $B = \begin{bmatrix}1&1&1\\1&2&0\\1&1&0\end{bmatrix}$.
+    Then
+    $$\tilde{A}_\Phi = B^{-1} A_\Phi B = \begin{bmatrix}6&9&1\\-3&-5&0\\-1&-1&0\end{bmatrix}.$$
+
+!!! answer "Answer"
+    **a)** $\ker(\Phi) = \{\mathbf{0}\}$ (dim 0), $\operatorname{Im}(\Phi) = \mathbb{R}^3$ (dim 3).
+
+    **b)** $\displaystyle \tilde{A}_\Phi = \begin{bmatrix}6&9&1\\-3&-5&0\\-1&-1&0\end{bmatrix}.$
+
+---
+
+## 2.20 · Basis changes and a homomorphism $\mathbb{R}^2 \to \mathbb{R}^3$
+
+!!! theory "Topics & Definitions"
+    - **Ordered basis** — a basis with a fixed order, so coordinates are well defined.
+    - **Change-of-basis matrix** — converts a coordinate vector from one basis to another; its columns are the old basis vectors written in the new basis.
+    - **Transformation matrix w.r.t. bases $B, C$** — its $j$-th column is $\Phi(b_j)$ written in coordinates of $C$.
+    - **Similarity for different in/out bases** — if input coords change by $P_1$ and output coords by $P_2$, then $A' = P_2\, A_\Phi\, P_1$.
+    - **Basis test** — a set of $n$ vectors in $\mathbb{R}^n$ is a basis iff the matrix with them as columns has nonzero determinant.
+
+The vectors $b_1,b_2$ and $b_1',b_2'$ each form a basis of $\mathbb{R}^2$ (nonzero determinants). $P_1$ rewrites $B'$-coordinates as $B$-coordinates. The three $c$ vectors form a basis of $\mathbb{R}^3$, and $P_2$ converts $C$-coordinates to the standard basis. The homomorphism $\Phi$ is pinned down by its action on $b_1+b_2$ and $b_1-b_2$; solving recovers $\Phi(b_1)$ and $\Phi(b_2)$, which build $A_\Phi$. Combining the change-of-basis matrices gives $A'$, and part f chases one vector through both routes as a check.
+
+!!! steps "Parts a & b, bases and $P_1$"
+    $\det[b_1\ b_2] = \det\begin{bmatrix}2&-1\\1&-1\end{bmatrix} = -1 \neq 0$, and $\det[b_1'\ b_2'] = \det\begin{bmatrix}2&1\\-2&1\end{bmatrix} = 4 \neq 0$. Both are bases.
+    $P_1$ changes coordinates from $B'$ to $B$: $[x]_B = P_1 [x]_{B'}$, so $P_1 = [b_1\ b_2]^{-1}[b_1'\ b_2']$:
+    $$P_1 = \begin{bmatrix}4&0\\6&-1\end{bmatrix}.$$
+
+!!! steps "Part c, the basis $C$ and $P_2$"
+    $C = [c_1\ c_2\ c_3] = \begin{bmatrix}1&0&1\\2&-1&0\\-1&2&-1\end{bmatrix}$.
+    (i) $\det C = 4 \neq 0$, so $C$ is a basis of $\mathbb{R}^3$.
+    (ii) $C'$ is the standard basis. Since $v = C[v]_C = [v]_{C'}$, the change from $C$ to $C'$ is just $P_2 = C$.
+
+!!! steps "Part d, transformation matrix $A_\Phi$ w.r.t. $B$ and $C$"
+    Given $\Phi(b_1+b_2) = c_2 + c_3$ and $\Phi(b_1-b_2) = 2c_1 - c_2 + 3c_3$. In $C$-coordinates these are $(0,1,1)$ and $(2,-1,3)$. Solving:
+    $$\Phi(b_1) = \tfrac12\big[(0,1,1)+(2,-1,3)\big] = (1,0,2)_C, \quad \Phi(b_2) = \tfrac12\big[(0,1,1)-(2,-1,3)\big] = (-1,1,-1)_C.$$
+    The columns of $A_\Phi$ are these coordinate vectors:
+    $$A_\Phi = \begin{bmatrix}1&-1\\0&1\\2&-1\end{bmatrix}.$$
+
+!!! steps "Part e, $A'$ w.r.t. $B'$ and $C'$"
+    Input coords change by $P_1$ ($B' \to B$) and output coords by $P_2$ ($C \to C'$), so
+    $$A' = P_2\, A_\Phi\, P_1 = \begin{bmatrix}0&2\\-10&3\\12&-4\end{bmatrix}.$$
+
+!!! steps "Part f, chasing $x$ with coords $[2,3]^\top$ in $B'$"
+    (i) $[x]_B = P_1[x]_{B'} = \begin{bmatrix}4&0\\6&-1\end{bmatrix}\begin{bmatrix}2\\3\end{bmatrix} = (8,9)$.
+    (ii) $[\Phi(x)]_C = A_\Phi[x]_B = (-1,9,7)$.
+    (iii) In the standard basis, $\Phi(x) = C[\Phi(x)]_C = (6,-11,12)$.
+    (iv) Directly, $A'[x]_{B'} = (6,-11,12)$, which matches (iii). Check confirmed.
+
+!!! answer "Answer"
+    **a)** Both $B$ and $B'$ are bases ($\det = -1$ and $4$).
+
+    **b)** $P_1 = \begin{bmatrix}4&0\\6&-1\end{bmatrix}$.
+
+    **c)** $C$ is a basis ($\det C = 4$); $P_2 = C = \begin{bmatrix}1&0&1\\2&-1&0\\-1&2&-1\end{bmatrix}$.
+
+    **d)** $A_\Phi = \begin{bmatrix}1&-1\\0&1\\2&-1\end{bmatrix}$.
+
+    **e)** $A' = \begin{bmatrix}0&2\\-10&3\\12&-4\end{bmatrix}$.
+
+    **f)** $[x]_B = (8,9)$; $[\Phi(x)]_C = (-1,9,7)$; $\Phi(x) = (6,-11,12)$ in the standard basis, confirmed both ways.

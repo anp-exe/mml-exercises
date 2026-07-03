@@ -431,6 +431,16 @@ A map is linear exactly when it respects addition and scaling. Integration and d
     - **d)** linear (matrix map)
     - **e)** linear (rotation matrix)
 
+!!! note "Linearity: two checkpoints worth memorizing"
+    Turn the formal definition into two everyday tests:
+
+    - **The Plus Test** — does splitting the input across a $+$ survive? $\Phi(f+g) = \Phi(f)+\Phi(g)$.
+    - **The Multiplier Test** — can a constant slide out to the front? $\Phi(cf) = c\,\Phi(f)$.
+
+    The real trick is *where the variable sits*. If it is trapped **inside** a curvy function like $\cos$, the map bends the input and both tests fail. If the variable only rides on the **outside** (a derivative, an integral, or multiplication by a fixed matrix) the tests pass. A rotation matrix still passes, because its sines and cosines are baked-in constants, not the input.
+
+    Two things that trip people up here: the notation $L^1, C^1, C^0$ is just naming the *space of functions* in play (integrable, once-differentiable, continuous), so "$\Phi:C^1\to C^0,\ \Phi(f)=f'$" is simply differentiation. And integration and differentiation are themselves **linear operators**: a constant multiple slides straight through, which is a separate idea from the mechanical power-rule arithmetic you use to actually evaluate an integral.
+
 ---
 
 ## 2.17 · Transformation matrix, rank, kernel and image of $\Phi:\mathbb{R}^3\to\mathbb{R}^4$
@@ -459,6 +469,11 @@ Reading the four output rows gives the coefficient matrix $A_\Phi$. Row-reducing
 
     $\dim(\operatorname{Im}(\Phi)) = 3$, with
     $$\operatorname{Im}(\Phi) = \operatorname{span}\left\{\begin{pmatrix}3\\1\\1\\2\end{pmatrix},\begin{pmatrix}2\\1\\-3\\3\end{pmatrix},\begin{pmatrix}1\\1\\0\\1\end{pmatrix}\right\}.$$
+
+!!! note "Transformation matrix, kernel, image: what they actually are"
+    - **Transformation matrix** — the map's **action machine**: feed in $\mathbf{x}$, get $\Phi(\mathbf{x})$. It is *not* an inverse or "undo" matrix. You build it by pulling each variable's coefficients into a column, one output row at a time.
+    - **Kernel** — the "drops to zero" club: the inputs the map sends to $\mathbf{0}$. Full rank means only $\mathbf{0}$ qualifies, so $\dim(\ker)=0$. Rank–nullity hands it to you for free: $(\text{columns}) - \operatorname{rank}$.
+    - **Image** — the full list of outputs the machine can actually produce. Its dimension always equals the **rank**, and it is spanned by the **original** pivot columns.
 
 ---
 
@@ -564,3 +579,12 @@ The vectors $b_1,b_2$ and $b_1',b_2'$ each form a basis of $\mathbb{R}^2$ (nonze
     **e)** $A' = \begin{bmatrix}0&2\\-10&3\\12&-4\end{bmatrix}$.
 
     **f)** $[x]_B = (8,9)$; $[\Phi(x)]_C = (-1,9,7)$; $\Phi(x) = (6,-11,12)$ in the standard basis, confirmed both ways.
+
+!!! note "The standard basis is secretly the identity"
+    When a question asks for coordinates or a matrix "relative to the standard basis $C'$" without ever defining $C'$, that is because the standard basis change-of-basis matrix is just the identity $I = \begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}$. So any $I^{-1}$ hiding in the chain collapses to $I$, and there is no matrix to invert at that step. Ordinary coordinates *are* the standard-basis coordinates.
+
+!!! note "Reading a change-of-basis chain (right to left)"
+    Compose from the inside out: $A' = P_2\, A_\Phi\, P_1$ reads as "convert the input basis with $P_1$, apply the map with $A_\Phi$, then convert the output basis with $P_2$." The inner dimensions dovetail, $(3\times 3)(3\times 2)(2\times 2)$, which is the fast sanity check that the pieces are in the right order.
+
+    - The rule $(\text{destination})^{-1}(\text{start})$ still holds; it just vanishes when the destination is the standard basis, since that inverse is $I$.
+    - **Always verify at the end.** Computing $A'\,[x]_{B'}$ directly should land on the *exact* same vector as the long route (change basis, apply the map, change basis back). If they disagree, re-check the arithmetic one entry at a time, because a single sign slip in a dot product, for example $(-4)(2)+(3)(3) = +1$, not $-2$, shifts the whole output vector even when the method is flawless.

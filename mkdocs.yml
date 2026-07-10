@@ -57,6 +57,7 @@ extra:
 
 nav:
   - Home: index.md
+  - List of symbols: symbols.md
   - "Ch 2 · Linear Algebra": chapters/ch2.md
   - "Ch 3 · Analytic Geometry": chapters/ch3.md
   - "Ch 4 · Matrix Decompositions": chapters/ch4.md

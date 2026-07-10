@@ -102,3 +102,88 @@ Build the ratio one piece at a time: the inner product in the numerator, the two
     **a)** $\theta \approx 161.57^\circ \approx 2.82$ rad. &nbsp;&nbsp; **b)** $\theta \approx 168.51^\circ \approx 2.94$ rad.
 
     Both angles are obtuse (negative cosine); the weighted inner product in b pushes the angle slightly wider.
+
+---
+
+## 3.5 · Orthogonal projection onto a subspace
+
+In $\mathbb{R}^5$ with the standard dot product, a subspace $U$ and a vector $x$ are given by
+$$U = \operatorname{span}\left[\begin{pmatrix}0\\-1\\2\\0\\2\end{pmatrix},\begin{pmatrix}1\\-3\\1\\-1\\2\end{pmatrix},\begin{pmatrix}-3\\4\\1\\2\\1\end{pmatrix},\begin{pmatrix}-1\\-3\\5\\0\\7\end{pmatrix}\right], \qquad x = \begin{pmatrix}-1\\-9\\-1\\4\\1\end{pmatrix}.$$
+
+Find **(a)** the orthogonal projection $\pi_U(x)$ and **(b)** the distance $d(x,U)$.
+
+!!! theory "Topics & Definitions"
+    - **Orthogonal projection onto a subspace** — if the columns of $B$ form a basis of $U$, then $\pi_U(x) = B(B^\top B)^{-1}B^\top x$. The coordinates $\lambda = (B^\top B)^{-1}B^\top x$ solve the normal equations $B^\top B\,\lambda = B^\top x$, and $\pi_U(x) = B\lambda$.
+    - **$B$ needs a basis, not just a spanning set** — the four given vectors are **not** independent, so stacking all four makes $B^\top B$ singular (non-invertible). Trim to a genuine basis first.
+    - **Distance to a subspace** — the projection is the closest point in $U$ to $x$, so $d(x,U) = \lVert x - \pi_U(x)\rVert$. The residual $x-\pi_U(x)$ is orthogonal to every basis vector, a handy way to check.
+
+The four spanning vectors are not linearly independent, so the first job is to trim them to a real basis. Then build $B$ from those basis vectors, solve the normal equations for the coordinates $\lambda$, and assemble the projection. The distance is just the length of what is left over.
+
+!!! steps "Step 1, trim the spanning set to a basis (RREF)"
+    Stack the four spanning vectors as columns of $A$ and row-reduce to find the pivot columns:
+    $$A = \begin{pmatrix}0&1&-3&-1\\-1&-3&4&-3\\2&1&1&5\\0&-1&2&0\\2&2&1&7\end{pmatrix} \xrightarrow{\text{RREF}} \begin{pmatrix}1&0&0&1\\0&1&0&2\\0&0&1&1\\0&0&0&0\\0&0&0&0\end{pmatrix}.$$
+    Pivots sit in columns 1, 2, 3, so those three vectors form a basis of $U$. Column 4 is dependent: reading off the last RREF column, $v_4 = v_1 + 2v_2 + v_3$.
+
+!!! note "Pitfall"
+    Take the basis vectors from the **original** matrix $A$, never from the RREF. Row reduction only *identifies* which columns are independent; it changes the columns themselves.
+
+!!! steps "Step 2, build $B$ and compute $B^\top B$"
+    $$B = \begin{pmatrix}0&1&-3\\-1&-3&4\\2&1&1\\0&-1&2\\2&2&1\end{pmatrix}, \qquad B^\top B = \begin{pmatrix}9&9&0\\9&16&-14\\0&-14&31\end{pmatrix}.$$
+    Each entry is a dot product of two columns of $B$; the matrix is symmetric, so only six of the nine entries need computing.
+
+!!! steps "Step 3, solve the normal equations for $\lambda$"
+    $$B^\top x = \begin{pmatrix}9\\23\\-25\end{pmatrix}, \qquad \lambda = (B^\top B)^{-1}B^\top x = \begin{pmatrix}-3\\4\\1\end{pmatrix}.$$
+    The coordinates come out as clean integers, a good sign the arithmetic is right.
+
+!!! steps "Step 4, projection and distance"
+    $$\pi_U(x) = B\lambda = \begin{pmatrix}1\\-5\\-1\\-2\\3\end{pmatrix}.$$
+
+    The residual is
+    $$x - \pi_U(x) = \begin{pmatrix}-2\\-4\\0\\6\\-2\end{pmatrix},$$
+
+    which is orthogonal to each basis vector (dotting with $v_1$: $0 + 4 + 0 + 0 - 4 = 0$). Its length is the distance:
+    $$d(x,U) = \sqrt{(-2)^2 + (-4)^2 + 0^2 + 6^2 + (-2)^2} = \sqrt{60} = 2\sqrt{15}.$$
+
+!!! answer "Answer"
+    $$\pi_U(x) = \begin{pmatrix}1\\-5\\-1\\-2\\3\end{pmatrix}, \qquad d(x,U) = 2\sqrt{15} \approx 7.75.$$
+
+---
+
+## 3.6 · Projection under a non-standard inner product
+
+In $\mathbb{R}^3$ with the inner product
+$$\langle x,y\rangle := x^\top \begin{pmatrix}2&1&0\\1&2&-1\\0&-1&2\end{pmatrix} y,$$
+let $e_1,e_2,e_3$ be the standard basis and $U = \operatorname{span}[e_1,e_3]$. Find **(a)** $\pi_U(e_2)$, **(b)** $d(e_2,U)$, and **(c)** a sketch of the scenario.
+
+!!! theory "Topics & Definitions"
+    - **Projection under a general inner product** — when $\langle x,y\rangle = x^\top A y$ for a symmetric positive-definite $A$, every inner-product slot gains an $A$: $\pi_U(x) = B(B^\top A B)^{-1}B^\top A\,x$. The standard dot product is just the case $A = I$.
+    - **Reading inner products off $A$** — since $A_{ij} = \langle e_i,e_j\rangle$, here $\langle e_1,e_2\rangle = 1$ and $\langle e_2,e_3\rangle = -1$, so under this metric $e_2$ is **not** orthogonal to the plane $U$, which is exactly why the projection is nonzero.
+    - **Distance with the same inner product** — $d(e_2,U) = \sqrt{\langle r,r\rangle} = \sqrt{r^\top A r}$ with $r = e_2 - \pi_U(e_2)$. A valid inner product always gives $\langle r,r\rangle \ge 0$; a negative value signals a slip.
+
+Anywhere two vectors would normally be dotted, sandwich the matrix $A$ between them. Everything else (build $B$, solve for $\lambda$, assemble the projection, measure the leftover) runs exactly like the standard case.
+
+!!! steps "Step 1, set up $B$, then $B^\top A B$ and $B^\top A e_2$"
+    The basis of $U$ is $e_1,e_3$, so $B = \begin{pmatrix}1&0\\0&0\\0&1\end{pmatrix}$. Then
+    $$B^\top A B = \begin{pmatrix}2&0\\0&2\end{pmatrix}, \qquad B^\top A e_2 = \begin{pmatrix}1\\-1\end{pmatrix}.$$
+    ($A e_2$ is simply the second column of $A$: $(1,2,-1)^\top$.)
+
+!!! steps "Step 2, solve for $\lambda$ and form the projection"
+    $$\lambda = (B^\top A B)^{-1}B^\top A e_2 = \begin{pmatrix}\tfrac12&0\\0&\tfrac12\end{pmatrix}\begin{pmatrix}1\\-1\end{pmatrix} = \begin{pmatrix}\tfrac12\\-\tfrac12\end{pmatrix},$$
+
+    $$\pi_U(e_2) = B\lambda = \tfrac12 e_1 - \tfrac12 e_3 = \begin{pmatrix}\tfrac12\\0\\-\tfrac12\end{pmatrix}.$$
+
+!!! steps "Step 3, distance under the weighted norm"
+    The residual is $r = e_2 - \pi_U(e_2) = \left(-\tfrac12,\ 1,\ \tfrac12\right)^\top$. Measure its length with the same inner product, not the plain norm:
+    $$A r = \begin{pmatrix}0\\1\\0\end{pmatrix}, \qquad r^\top A r = \left(-\tfrac12\right)(0) + (1)(1) + \left(\tfrac12\right)(0) = 1,$$
+    so $d(e_2,U) = \sqrt{1} = 1$.
+
+!!! note "Common mistake"
+    Using the plain norm $\sqrt{r^\top r} = \sqrt{3/2}$ here is wrong. Once the problem defines a weighted inner product, *every* length, angle, and orthogonality check uses that same inner product.
+
+!!! answer "Answer"
+    $$\pi_U(e_2) = \begin{pmatrix}\tfrac12\\0\\-\tfrac12\end{pmatrix}, \qquad d(e_2,U) = 1.$$
+
+!!! note "Part c, the geometry"
+    The plane $U = \operatorname{span}(e_1,e_3)$ is the floor; $e_1$ and $e_3$ lie in it and $e_2$ stands above the origin. Under the standard dot product $e_2$ is perpendicular to $U$, so its projection would be the origin. Under this weighted inner product $e_2$ leans toward $e_1$ ($\langle e_1,e_2\rangle = +1$) and away from $e_3$ ($\langle e_2,e_3\rangle = -1$), so the projection lands at $\left(\tfrac12,0,-\tfrac12\right)$: a diagonal in the plane, close to $e_1$ but pulled slightly toward $-e_3$. The dashed residual connects $e_2$ to $\pi_U(e_2)$ and its length is the distance $d = 1$.
+
+    ![Projection of e2 onto U under the weighted inner product](../assets/ch3-projection-e2.png)

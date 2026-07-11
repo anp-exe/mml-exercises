@@ -217,10 +217,12 @@ It is cleanest to orthogonalise first (get $u_1, u_2$), then normalise at the ve
 
 !!! steps "Step 3, normalise $u_2$"
     $$\lVert u_2\rVert = \sqrt{\tfrac{16}{9} + \tfrac{25}{9} + \tfrac{1}{9}} = \frac{\sqrt{42}}{3}.$$
+
     $$c_2 = \frac{u_2}{\lVert u_2\rVert} = \frac{1}{\sqrt{42}}\begin{pmatrix}-4\\5\\-1\end{pmatrix}.$$
 
 !!! steps "Step 4, verify"
     $$\langle c_1, c_2\rangle = \frac{1}{\sqrt{3}\sqrt{42}}\big(-4 + 5 - 1\big) = 0 \quad\checkmark\ \text{orthogonal}.$$
+
     $$\lVert c_1\rVert = 1, \qquad \lVert c_2\rVert = \frac{\sqrt{16 + 25 + 1}}{\sqrt{42}} = 1 \quad\checkmark\ \text{normalised}.$$
 
 !!! answer "Answer"

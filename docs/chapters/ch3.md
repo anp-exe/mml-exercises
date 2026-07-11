@@ -187,3 +187,47 @@ Anywhere two vectors would normally be dotted, sandwich the matrix $A$ between t
     The plane $U = \operatorname{span}(e_1,e_3)$ is the floor; $e_1$ and $e_3$ lie in it and $e_2$ stands above the origin. Under the standard dot product $e_2$ is perpendicular to $U$, so its projection would be the origin. Under this weighted inner product $e_2$ leans toward $e_1$ ($\langle e_1,e_2\rangle = +1$) and away from $e_3$ ($\langle e_2,e_3\rangle = -1$), so the projection lands at $\left(\tfrac12,0,-\tfrac12\right)$: a diagonal in the plane, close to $e_1$ but pulled slightly toward $-e_3$. The dashed residual connects $e_2$ to $\pi_U(e_2)$ and its length is the distance $d = 1$.
 
     ![Projection of e2 onto U under the weighted inner product](../assets/ch3-projection-e2.png)
+
+---
+
+## 3.8 · Gram-Schmidt orthonormalisation
+
+Using the Gram-Schmidt method, turn the basis $B = (b_1, b_2)$ of a two-dimensional subspace $U \subseteq \mathbb{R}^3$ into an orthonormal basis (ONB) $C = (c_1, c_2)$ of $U$, where
+$$b_1 := \begin{pmatrix}1\\1\\1\end{pmatrix}, \qquad b_2 := \begin{pmatrix}-1\\2\\0\end{pmatrix}.$$
+
+!!! theory "Topics & Definitions"
+    - **Gram-Schmidt** — turns any basis into an orthonormal one, one vector at a time. The engine is the projection machinery: for each new vector, subtract off its projection onto everything already built, then normalise what is left.
+    - **Orthogonal set** — build $u_1, u_2, \dots$ by $u_1 = v_1$ and $u_k = v_k - \sum_{j<k} \dfrac{\langle v_k, u_j\rangle}{\lVert u_j\rVert^2}\, u_j$. Each subtracted term removes the component of $v_k$ lying along a previous $u_j$, leaving a residual orthogonal to all of them.
+    - **Normalise last** — once orthogonal, scale to unit length: $c_k = \dfrac{u_k}{\lVert u_k\rVert}$.
+
+It is cleanest to orthogonalise first (get $u_1, u_2$), then normalise at the very end. Normalising as you go also works, but carrying square roots through the subtraction step is much messier by hand.
+
+!!! steps "Step 1, first vector"
+    Take $u_1 = b_1 = (1,1,1)^\top$, with $\lVert u_1\rVert = \sqrt{3}$. Normalising:
+    $$c_1 = \frac{1}{\sqrt{3}}\begin{pmatrix}1\\1\\1\end{pmatrix}.$$
+
+!!! steps "Step 2, subtract the projection from $b_2$"
+    The projection coefficient of $b_2$ onto $u_1$:
+    $$\frac{\langle b_2, u_1\rangle}{\lVert u_1\rVert^2} = \frac{-1 + 2 + 0}{3} = \frac{1}{3}.$$
+    Subtract that component off:
+    $$u_2 = b_2 - \tfrac13 u_1 = \begin{pmatrix}-1\\2\\0\end{pmatrix} - \tfrac13\begin{pmatrix}1\\1\\1\end{pmatrix} = \begin{pmatrix}-\tfrac43\\\tfrac53\\-\tfrac13\end{pmatrix}.$$
+
+!!! note "Simplification"
+    Scaling a vector does not change its direction, so $u_2$ can be rescaled to the clean integer vector $(-4, 5, -1)^\top$ before normalising. Same unit vector, far less fraction wrangling.
+
+!!! steps "Step 3, normalise $u_2$"
+    $$\lVert u_2\rVert = \sqrt{\tfrac{16}{9} + \tfrac{25}{9} + \tfrac{1}{9}} = \frac{\sqrt{42}}{3}.$$
+    $$c_2 = \frac{u_2}{\lVert u_2\rVert} = \frac{1}{\sqrt{42}}\begin{pmatrix}-4\\5\\-1\end{pmatrix}.$$
+
+!!! steps "Step 4, verify"
+    $$\langle c_1, c_2\rangle = \frac{1}{\sqrt{3}\sqrt{42}}\big(-4 + 5 - 1\big) = 0 \quad\checkmark\ \text{orthogonal}.$$
+    $$\lVert c_1\rVert = 1, \qquad \lVert c_2\rVert = \frac{\sqrt{16 + 25 + 1}}{\sqrt{42}} = 1 \quad\checkmark\ \text{normalised}.$$
+
+!!! answer "Answer"
+    $$c_1 = \frac{1}{\sqrt{3}}\begin{pmatrix}1\\1\\1\end{pmatrix}, \qquad c_2 = \frac{1}{\sqrt{42}}\begin{pmatrix}-4\\5\\-1\end{pmatrix}.$$
+
+    Equivalently, with denominators rationalised,
+    $$c_2 = \begin{pmatrix}-\tfrac{2\sqrt{42}}{21}\\[4pt] \tfrac{5\sqrt{42}}{42}\\[4pt] -\tfrac{\sqrt{42}}{42}\end{pmatrix}.$$
+    Both forms are correct; the factored form is usually cleaner to read.
+
+Reference: [Gram-Schmidt Process (Professor Dave Explains)](https://www.youtube.com/watch?v=zHbfZWZJTGc)

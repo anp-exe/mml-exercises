@@ -190,6 +190,66 @@ Anywhere two vectors would normally be dotted, sandwich the matrix $A$ between t
 
 ---
 
+## 3.7 · Projections and their complements
+
+Let $V$ be a vector space and $\pi$ an endomorphism of $V$.
+
+**(a)** Prove that $\pi$ is a projection if and only if $\operatorname{id}_V - \pi$ is a projection, where $\operatorname{id}_V$ is the identity endomorphism on $V$.
+
+**(b)** Assuming $\pi$ is a projection, compute $\operatorname{Im}(\operatorname{id}_V - \pi)$ and $\ker(\operatorname{id}_V - \pi)$ in terms of $\operatorname{Im}(\pi)$ and $\ker(\pi)$.
+
+!!! theory "Topics & Definitions"
+    - **Projection $=$ idempotent** — an endomorphism $\pi$ is a projection exactly when $\pi^2 = \pi$. Once you have landed in the target subspace, projecting again does not move you.
+    - **The identity behaves like $1$** — composing with $\operatorname{id}_V$ changes nothing: $\operatorname{id}\circ\pi = \pi$ and $\pi\circ\operatorname{id} = \pi$. This is what lets $(\operatorname{id} - \pi)^2$ expand like ordinary algebra.
+    - **Two facts that drive part b** — a projection is the identity on its image ($\pi(v) = v$ for $v \in \operatorname{Im}(\pi)$) and zero on its kernel ($\pi(v) = 0$ for $v \in \ker(\pi)$), giving the split $V = \operatorname{Im}(\pi) \oplus \ker(\pi)$.
+    - **Proving a set equality** — to show $A = B$, prove both inclusions $A \subseteq B$ and $B \subseteq A$.
+
+Part a is pure algebra: expand $(\operatorname{id} - \pi)^2$ and watch the condition $\pi^2 = \pi$ appear. Part b then chases elements through $\operatorname{id} - \pi$, using $\pi^2 = \pi$ at each turn, to show the image and kernel simply swap.
+
+!!! steps "Part a, expand $(\operatorname{id} - \pi)^2$"
+    Write $\operatorname{id}$ for $\operatorname{id}_V$. Expanding the composition:
+    $$(\operatorname{id} - \pi)^2 = \operatorname{id}\circ\operatorname{id} - \operatorname{id}\circ\pi - \pi\circ\operatorname{id} + \pi\circ\pi = \operatorname{id} - 2\pi + \pi^2.$$
+    The two middle terms each collapse to $\pi$, since composing with the identity does nothing.
+
+!!! steps "Part a, chain of equivalences"
+    Now $\operatorname{id} - \pi$ is a projection precisely when it is idempotent:
+    $$\begin{aligned}(\operatorname{id} - \pi)^2 = \operatorname{id} - \pi &\iff \operatorname{id} - 2\pi + \pi^2 = \operatorname{id} - \pi\\ &\iff -2\pi + \pi^2 = -\pi\\ &\iff \pi^2 = \pi.\end{aligned}$$
+    Every step is a reversible equivalence (subtract $\operatorname{id}$, then add $2\pi$, to both sides), so the biconditional holds in both directions at once:
+    $$\operatorname{id} - \pi \text{ is a projection} \iff \pi \text{ is a projection}. \qquad \blacksquare$$
+
+!!! note "Why both directions come free"
+    Because the chain uses $\iff$ rather than $\implies$, reading it top-to-bottom proves one direction and bottom-to-top proves the other. No separate argument is needed.
+
+!!! steps "Part b, $\operatorname{Im}(\operatorname{id} - \pi) = \ker(\pi)$"
+    **($\subseteq$)** Let $w \in \operatorname{Im}(\operatorname{id} - \pi)$, so $w = v - \pi(v)$ for some $v \in V$. Applying $\pi$ and using $\pi^2 = \pi$:
+    $$\pi(w) = \pi(v) - \pi^2(v) = \pi(v) - \pi(v) = 0,$$
+    so $w \in \ker(\pi)$.
+
+    **($\supseteq$)** Let $w \in \ker(\pi)$, so $\pi(w) = 0$. Then
+    $$(\operatorname{id} - \pi)(w) = w - \pi(w) = w - 0 = w,$$
+    so $w$ is its own image under $\operatorname{id} - \pi$, hence $w \in \operatorname{Im}(\operatorname{id} - \pi)$.
+
+    Both inclusions hold, so $\operatorname{Im}(\operatorname{id} - \pi) = \ker(\pi)$.
+
+!!! steps "Part b, $\ker(\operatorname{id} - \pi) = \operatorname{Im}(\pi)$"
+    **($\subseteq$)** Let $v \in \ker(\operatorname{id} - \pi)$, so $v - \pi(v) = 0$, giving $v = \pi(v)$. Then $v$ is $\pi$ of something, so $v \in \operatorname{Im}(\pi)$.
+
+    **($\supseteq$)** Let $v \in \operatorname{Im}(\pi)$, so $v = \pi(u)$ for some $u \in V$. Then, using $\pi^2 = \pi$:
+    $$(\operatorname{id} - \pi)(v) = \pi(u) - \pi^2(u) = \pi(u) - \pi(u) = 0,$$
+    so $v \in \ker(\operatorname{id} - \pi)$.
+
+    Both inclusions hold, so $\ker(\operatorname{id} - \pi) = \operatorname{Im}(\pi)$. $\blacksquare$
+
+!!! answer "Answer"
+    **a)** $\pi$ is a projection $\iff \pi^2 = \pi \iff (\operatorname{id}_V - \pi)^2 = \operatorname{id}_V - \pi \iff \operatorname{id}_V - \pi$ is a projection.
+
+    **b)** The image and kernel swap:
+    $$\operatorname{Im}(\operatorname{id}_V - \pi) = \ker(\pi), \qquad \ker(\operatorname{id}_V - \pi) = \operatorname{Im}(\pi).$$
+
+    **Intuition.** A projection splits the space as $V = \operatorname{Im}(\pi) \oplus \ker(\pi)$, keeping the first part and killing the second. The complementary projection $\operatorname{id}_V - \pi$ does the exact opposite: it keeps what $\pi$ kills and kills what $\pi$ keeps, so their images and kernels trade places.
+
+---
+
 ## 3.8 · Gram-Schmidt orthonormalisation
 
 Using the Gram-Schmidt method, turn the basis $B = (b_1, b_2)$ of a two-dimensional subspace $U \subseteq \mathbb{R}^3$ into an orthonormal basis (ONB) $C = (c_1, c_2)$ of $U$, where

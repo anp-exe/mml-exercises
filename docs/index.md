@@ -11,7 +11,7 @@ Each question is laid out the same way: a **Topics & Definitions** box, a plain-
 | Chapter | Exercises answered |
 |:------:|:------------------:|
 | 2 · Linear Algebra | ✅ 2.1–2.20 complete |
-| 3 · Analytic Geometry | ✅ 3.1–3.6, 3.8, 3.10 |
+| 3 · Analytic Geometry | ✅ 3.1–3.8, 3.10 |
 | 4 · Matrix Decompositions | ⬜ |
 | 5 · Vector Calculus | ⬜ |
 | 6 · Probability & Distributions | ⬜ |

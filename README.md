@@ -2,7 +2,7 @@
 
 Worked solutions to the end-of-chapter exercises in *Mathematics for Machine Learning* (Deisenroth, Faisal & Ong), published as a static site built with MkDocs and Material. My goal is to do enough reading everyday to complete one exercise, and along the way create something that is useful to other learners.
 
-**Live site:** https://anp-exe.github.io/mml-excerises/
+**Live site:** [https://anp-exe.github.io/mml-excerises/](https://anp-exe.github.io/mml-exercises/)
 
 Every question follows the same layout: a Topics & Definitions box, a plain-English explanation, the worked steps with real matrices, then the boxed answer. Math is written in LaTeX and rendered with KaTeX.
 

@@ -160,3 +160,50 @@ The recipe is the same for both matrices: build the characteristic polynomial, f
     **Part a is defective.** The eigenvalue $\lambda = 1$ has algebraic multiplicity $2$ but geometric multiplicity $1$: a $2\times2$ matrix yielding only one independent eigenvector direction. Geometrically $A$ is a shear, leaving the $y$-axis fixed but tilting everything else, so only one line survives unchanged. Such a matrix is not diagonalisable.
 
     **Part b's eigenvectors are orthogonal.** $(1,2)\cdot(-2,1) = -2 + 2 = 0$. This is not luck: $B$ is symmetric, and symmetric matrices always have orthogonal eigenvectors for distinct eigenvalues.
+
+---
+
+## 4.4 · Eigenspaces of a $4\times4$ (a defective matrix)
+
+Compute all eigenspaces of
+$$A = \begin{pmatrix}0&-1&1&1\\-1&1&-2&3\\2&-1&0&0\\1&-1&1&0\end{pmatrix}.$$
+
+!!! theory "Topics & Definitions"
+    - **Same method, just bigger** — form $A - \lambda I$ and compute $\det(A - \lambda I)$ (the characteristic polynomial), factorise and set to zero for the eigenvalues, then for **each** eigenvalue solve $(A - \lambda I)v = 0$ by row reduction for its eigenspace.
+    - **Two free sanity checks** — before factorising, verify the coefficient of $\lambda^{n-1}$ equals $-\operatorname{tr}(A)$ and the constant term equals $\det(A)$. Here $\operatorname{tr}(A) = 1$ and $\det(A) = 2$, so the $\lambda^3$ coefficient must be $-1$ and the constant must be $2$. A mismatch means a slip upstream, catch it before wasting effort factorising.
+    - **Reading an eigenspace off an RREF** — a column with a leading $1$ is a pivot, so that variable is pinned; a column with no leading $1$ is free and spans the eigenspace. A non-leading entry (a stray $-1$, say) does not make a column a pivot.
+    - **Algebraic vs geometric multiplicity** — algebraic is how many times $\lambda$ is a root; geometric is the dimension of the eigenspace, i.e. the number of free variables. When geometric $<$ algebraic the matrix is **defective** and cannot be diagonalised.
+
+The size jumps to $4\times4$ but nothing conceptual changes. The one thing to watch is the repeated root: an eigenvalue can appear twice in the polynomial yet still hand back only a single eigenvector direction.
+
+!!! steps "Step 1, characteristic polynomial"
+    Expanding $\det(A - \lambda I)$ by Laplace along column 4 (its zero entry kills one term, leaving three minors):
+    $$p_A(\lambda) = \lambda^4 - \lambda^3 - 3\lambda^2 + \lambda + 2.$$
+    Check: the $\lambda^3$ coefficient is $-1 = -\operatorname{tr}(A)$ $\checkmark$, and the constant is $2 = \det(A)$ $\checkmark$.
+
+!!! steps "Step 2, factorise"
+    By the rational root test the candidates are $\pm1, \pm2$. Testing $\lambda = 1$ gives zero, so $(\lambda - 1)$ is a factor; dividing out and repeating:
+    $$p_A(\lambda) = (\lambda + 1)^2 (\lambda - 1)(\lambda - 2).$$
+    Eigenvalues: $\lambda = -1$ (algebraic multiplicity $2$), $\lambda = 1$, $\lambda = 2$. Multiplicities sum to $4$ $\checkmark$.
+
+!!! steps "Step 3, eigenspace for $\lambda = 2$"
+    Row-reduce $A - 2I$; one free variable remains, giving
+    $$E_2 = \operatorname{span}\left\{\begin{pmatrix}1\\0\\1\\1\end{pmatrix}\right\}.$$
+    Check: $A(1,0,1,1)^\top = (2,0,2,2)^\top = 2(1,0,1,1)^\top$. $\checkmark$
+
+!!! steps "Step 4, eigenspace for $\lambda = 1$"
+    Row-reduce $A - I$; one free variable:
+    $$E_1 = \operatorname{span}\left\{\begin{pmatrix}1\\1\\1\\1\end{pmatrix}\right\}.$$
+    Check: $A(1,1,1,1)^\top = (1,1,1,1)^\top = 1\cdot(1,1,1,1)^\top$. $\checkmark$
+
+!!! steps "Step 5, eigenspace for $\lambda = -1$"
+    Row-reduce $A + I$. The RREF is
+    $$\begin{pmatrix}1&0&0&0\\0&1&-1&0\\0&0&0&1\\0&0&0&0\end{pmatrix}.$$
+    Pivots sit in columns 1, 2, 4, so only column 3 is free, a single free variable. Reading the rows: $v_1 = 0$, $v_2 = v_3$, $v_4 = 0$. Hence
+    $$E_{-1} = \operatorname{span}\left\{\begin{pmatrix}0\\1\\1\\0\end{pmatrix}\right\}.$$
+    Check: $A(0,1,1,0)^\top = (0,-1,-1,0)^\top = -1\cdot(0,1,1,0)^\top$. $\checkmark$ Despite $\lambda = -1$ having algebraic multiplicity $2$, its eigenspace is only $1$-dimensional.
+
+!!! answer "Answer"
+    $$E_{-1} = \operatorname{span}\left\{\begin{pmatrix}0\\1\\1\\0\end{pmatrix}\right\}, \quad E_{1} = \operatorname{span}\left\{\begin{pmatrix}1\\1\\1\\1\end{pmatrix}\right\}, \quad E_{2} = \operatorname{span}\left\{\begin{pmatrix}1\\0\\1\\1\end{pmatrix}\right\}.$$
+
+    **This matrix is defective.** The eigenvalue $\lambda = -1$ has algebraic multiplicity $2$ but geometric multiplicity $1$. The geometric multiplicities sum to $1 + 1 + 1 = 3$, short of the matrix size $4$, so there are not enough independent eigenvectors to form a basis: $A$ is **not diagonalisable**.

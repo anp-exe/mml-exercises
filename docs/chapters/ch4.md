@@ -249,3 +249,45 @@ $$\begin{pmatrix}1&0\\0&1\end{pmatrix}, \quad \begin{pmatrix}1&0\\0&0\end{pmatri
     | $\begin{pmatrix}0&1\\0&0\end{pmatrix}$ | No | No |
 
     All four combinations appear, confirming the two properties are **completely independent**: invertibility depends on whether any eigenvalue is zero, diagonalizability on whether there are enough independent eigenvectors.
+
+---
+
+## 4.6 · Eigenspaces and diagonalizability
+
+Compute the eigenspaces of the following transformation matrices and decide whether they are diagonalizable.
+
+**Part a.**
+$$A = \begin{pmatrix}2&3&0\\1&4&3\\0&0&1\end{pmatrix}.$$
+
+!!! theory "Topics & Definitions"
+    - **Diagonalizability test** — an $n \times n$ matrix is diagonalizable if and only if it has $n$ linearly independent eigenvectors, enough to form a basis.
+    - **The multiplicity condition** — equivalently, for **every** eigenvalue the geometric multiplicity (dimension of its eigenspace) must equal its algebraic multiplicity (how many times it is a root). A single mismatch makes the whole matrix **not diagonalizable** (defective).
+    - **Symmetry is a red herring** — symmetric matrices are always diagonalizable, but the converse is false: plenty of non-symmetric matrices diagonalize fine. So $A^\top \neq A$ tells you nothing; the deciding factor is always the eigenvector count.
+    - **Quick check** — add up the geometric multiplicities. If they sum to $n$, the matrix is diagonalizable; if they fall short, it is not.
+
+Find the eigenvalues, compute each eigenspace, then tally the geometric multiplicities. The repeated eigenvalue is where the surprise lives: it can be a double root yet contribute only a single eigenvector direction.
+
+!!! steps "Step 1, characteristic polynomial"
+    Expanding $\det(A - \lambda I)$:
+    $$p_A(\lambda) = -(\lambda - 5)(\lambda - 1)^2.$$
+    Eigenvalues: $\lambda = 5$ (algebraic multiplicity $1$) and $\lambda = 1$ (algebraic multiplicity $2$). Sanity check: sum of eigenvalues $5 + 1 + 1 = 7 = \operatorname{tr}(A)$ $\checkmark$, product $5\cdot1\cdot1 = 5 = \det(A)$ $\checkmark$.
+
+!!! steps "Step 2, eigenspace for $\lambda = 5$"
+    Row-reduce $A - 5I$; one free variable gives
+    $$E_5 = \operatorname{span}\left\{\begin{pmatrix}1\\1\\0\end{pmatrix}\right\}.$$
+    Geometric multiplicity $1$, matching its algebraic multiplicity.
+
+!!! steps "Step 3, eigenspace for $\lambda = 1$"
+    Row-reduce $A - I$. Despite $\lambda = 1$ being a repeated root, only one free variable remains:
+    $$E_1 = \operatorname{span}\left\{\begin{pmatrix}-3\\1\\0\end{pmatrix}\right\}.$$
+    Geometric multiplicity $1$, but algebraic multiplicity $2$: a mismatch.
+
+!!! steps "Step 4, diagonalizable?"
+    Count the independent eigenvectors:
+    $$\underbrace{1}_{\lambda = 5} + \underbrace{1}_{\lambda = 1} = 2.$$
+    A $3\times3$ matrix needs $3$ independent eigenvectors to be diagonalizable. Only $2$ exist, so $A$ is not diagonalizable. The shortfall is at $\lambda = 1$, whose eigenspace is one dimension smaller than its algebraic multiplicity.
+
+!!! answer "Answer"
+    $$E_5 = \operatorname{span}\left\{\begin{pmatrix}1\\1\\0\end{pmatrix}\right\}, \qquad E_1 = \operatorname{span}\left\{\begin{pmatrix}-3\\1\\0\end{pmatrix}\right\}.$$
+
+    **Not diagonalizable.** The eigenvalue $\lambda = 1$ has algebraic multiplicity $2$ but geometric multiplicity $1$, so $A$ has only $2$ independent eigenvectors, one short of the $3$ needed for a $3\times3$. The matrix is defective.

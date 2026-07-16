@@ -263,7 +263,7 @@ Compute the eigenspaces of the following transformation matrices and decide whet
     - **A zero eigenvalue is fine** — $\det(A - \lambda I) = 0$ is exactly the condition that makes $\lambda$ an eigenvalue. If that happens at $\lambda = 0$ (a vanishing constant term), zero is simply an eigenvalue: the matrix is singular but may still diagonalize.
     - **Quick check** — add up the geometric multiplicities. If they sum to $n$, the matrix is diagonalizable; if they fall short, it is not.
 
-### Part a
+**Part a**
 
 $$A = \begin{pmatrix}2&3&0\\1&4&3\\0&0&1\end{pmatrix}.$$
 
@@ -294,7 +294,7 @@ Find the eigenvalues, compute each eigenspace, then tally the geometric multipli
 
     **Not diagonalizable.** The eigenvalue $\lambda = 1$ has algebraic multiplicity $2$ but geometric multiplicity $1$, so $A$ has only $2$ independent eigenvectors, one short of the $3$ needed for a $3\times3$. The matrix is defective.
 
-### Part b
+**Part b**
 
 $$A = \begin{pmatrix}1&1&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0\end{pmatrix}.$$
 
@@ -336,7 +336,7 @@ Are the following matrices diagonalizable? If yes, determine their diagonal form
     - **Real vs complex** — the characteristic polynomial may have no real roots. Over the reals such a matrix is **not diagonalizable** (no real eigenbasis). A negative discriminant is the signal, since it forces complex eigenvalues.
     - **Discriminant check for a $2\times2$** — for $\lambda^2 + b\lambda + c$ the roots are real only if $b^2 - 4c \geq 0$. If it is negative, the eigenvalues are complex and the matrix is not diagonalizable over $\mathbb{R}$.
 
-### Part a
+**Part a**
 
 $$A = \begin{pmatrix}0&1\\-8&4\end{pmatrix}.$$
 
@@ -352,7 +352,7 @@ $$A = \begin{pmatrix}0&1\\-8&4\end{pmatrix}.$$
 !!! answer "Answer"
     **Not diagonalizable over $\mathbb{R}$.** The characteristic polynomial $\lambda^2 - 4\lambda + 8$ has no real roots, its eigenvalues $2 \pm 2i$ are complex, so there is no real eigenbasis and no real diagonal form. (Over $\mathbb{C}$ it *is* diagonalizable, since the two complex eigenvalues are distinct, but with respect to a real basis it is not.)
 
-### Part b
+**Part b**
 
 $$A = \begin{pmatrix}1&1&1\\1&1&1\\1&1&1\end{pmatrix}.$$
 

@@ -207,3 +207,45 @@ The size jumps to $4\times4$ but nothing conceptual changes. The one thing to wa
     $$E_{-1} = \operatorname{span}\left\{\begin{pmatrix}0\\1\\1\\0\end{pmatrix}\right\}, \quad E_{1} = \operatorname{span}\left\{\begin{pmatrix}1\\1\\1\\1\end{pmatrix}\right\}, \quad E_{2} = \operatorname{span}\left\{\begin{pmatrix}1\\0\\1\\1\end{pmatrix}\right\}.$$
 
     **This matrix is defective.** The eigenvalue $\lambda = -1$ has algebraic multiplicity $2$ but geometric multiplicity $1$. The geometric multiplicities sum to $1 + 1 + 1 = 3$, short of the matrix size $4$, so there are not enough independent eigenvectors to form a basis: $A$ is **not diagonalisable**.
+
+---
+
+## 4.5 · Diagonalizability vs invertibility
+
+Diagonalizability of a matrix is unrelated to its invertibility. Determine for the following four matrices whether they are diagonalizable and/or invertible:
+$$\begin{pmatrix}1&0\\0&1\end{pmatrix}, \quad \begin{pmatrix}1&0\\0&0\end{pmatrix}, \quad \begin{pmatrix}1&1\\0&1\end{pmatrix}, \quad \begin{pmatrix}0&1\\0&0\end{pmatrix}.$$
+
+!!! theory "Topics & Definitions"
+    - **The point** — diagonalizability and invertibility are independent. A matrix can have either, both, or neither, because they are checked by completely different criteria.
+    - **Invertible** — asks whether the map loses information: invertible $\iff \det(A) \neq 0 \iff$ no eigenvalue equals $0$. A zero eigenvalue crushes a direction to nothing, which cannot be undone.
+    - **Diagonalizable** — asks whether there are enough independent eigenvectors to span the space, i.e. for every eigenvalue the geometric multiplicity equals the algebraic multiplicity. When they fall short, the matrix is **defective** and not diagonalizable.
+    - **Why they are unrelated** — invertibility asks "is any eigenvalue zero?"; diagonalizability asks "are there enough eigenvectors?". Different questions, so all four yes/no combinations can occur, which is exactly what these matrices show.
+
+!!! note "Triangular shortcut"
+    For a triangular matrix the eigenvalues are just the diagonal entries. All four matrices here are triangular, so their eigenvalues can be read straight off.
+
+!!! steps "Matrix 1, the identity"
+    $$\begin{pmatrix}1&0\\0&1\end{pmatrix}.$$
+    Eigenvalues $1, 1$ (from the diagonal). Neither is zero, so $\det = 1 \neq 0$: **invertible**. Every vector satisfies $Iv = v$, so the whole plane is the eigenspace for $\lambda = 1$: geometric multiplicity $2$ matches algebraic multiplicity $2$, so **diagonalizable** (it is already diagonal).
+
+!!! steps "Matrix 2, a projection"
+    $$\begin{pmatrix}1&0\\0&0\end{pmatrix}.$$
+    Eigenvalues $1, 0$. One eigenvalue is zero, so $\det = 0$: **not invertible**. Two distinct eigenvalues in a $2\times2$ always give two independent eigenvectors (here $(1,0)$ and $(0,1)$), which span the space, so **diagonalizable** (already diagonal).
+
+!!! steps "Matrix 3, a shear"
+    $$\begin{pmatrix}1&1\\0&1\end{pmatrix}.$$
+    Eigenvalues $1, 1$. Neither is zero, so $\det = 1 \neq 0$: **invertible**. Solving $(A - I)v = 0$ gives only the single direction $(1,0)$: algebraic multiplicity $2$ but geometric multiplicity $1$. Not enough eigenvectors, so **not diagonalizable** (defective).
+
+!!! steps "Matrix 4, a nilpotent shear"
+    $$\begin{pmatrix}0&1\\0&0\end{pmatrix}.$$
+    Eigenvalues $0, 0$. Zero is an eigenvalue, so $\det = 0$: **not invertible**. Solving $(A - 0I)v = 0$ gives only $(1,0)$: algebraic multiplicity $2$ but geometric multiplicity $1$, so **not diagonalizable** (defective).
+
+!!! answer "Answer"
+    | Matrix | Invertible | Diagonalizable |
+    |:------:|:----------:|:--------------:|
+    | $\begin{pmatrix}1&0\\0&1\end{pmatrix}$ | Yes | Yes |
+    | $\begin{pmatrix}1&0\\0&0\end{pmatrix}$ | No | Yes |
+    | $\begin{pmatrix}1&1\\0&1\end{pmatrix}$ | Yes | No |
+    | $\begin{pmatrix}0&1\\0&0\end{pmatrix}$ | No | No |
+
+    All four combinations appear, confirming the two properties are **completely independent**: invertibility depends on whether any eigenvalue is zero, diagonalizability on whether there are enough independent eigenvectors.

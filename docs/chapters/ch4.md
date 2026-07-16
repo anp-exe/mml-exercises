@@ -256,14 +256,16 @@ $$\begin{pmatrix}1&0\\0&1\end{pmatrix}, \quad \begin{pmatrix}1&0\\0&0\end{pmatri
 
 Compute the eigenspaces of the following transformation matrices and decide whether they are diagonalizable.
 
-**Part a.**
-$$A = \begin{pmatrix}2&3&0\\1&4&3\\0&0&1\end{pmatrix}.$$
-
 !!! theory "Topics & Definitions"
     - **Diagonalizability test** — an $n \times n$ matrix is diagonalizable if and only if it has $n$ linearly independent eigenvectors, enough to form a basis.
     - **The multiplicity condition** — equivalently, for **every** eigenvalue the geometric multiplicity (dimension of its eigenspace) must equal its algebraic multiplicity (how many times it is a root). A single mismatch makes the whole matrix **not diagonalizable** (defective).
     - **Symmetry is a red herring** — symmetric matrices are always diagonalizable, but the converse is false: plenty of non-symmetric matrices diagonalize fine. So $A^\top \neq A$ tells you nothing; the deciding factor is always the eigenvector count.
+    - **A zero eigenvalue is fine** — $\det(A - \lambda I) = 0$ is exactly the condition that makes $\lambda$ an eigenvalue. If that happens at $\lambda = 0$ (a vanishing constant term), zero is simply an eigenvalue: the matrix is singular but may still diagonalize.
     - **Quick check** — add up the geometric multiplicities. If they sum to $n$, the matrix is diagonalizable; if they fall short, it is not.
+
+### Part a
+
+$$A = \begin{pmatrix}2&3&0\\1&4&3\\0&0&1\end{pmatrix}.$$
 
 Find the eigenvalues, compute each eigenspace, then tally the geometric multiplicities. The repeated eigenvalue is where the surprise lives: it can be a double root yet contribute only a single eigenvector direction.
 
@@ -291,3 +293,89 @@ Find the eigenvalues, compute each eigenspace, then tally the geometric multipli
     $$E_5 = \operatorname{span}\left\{\begin{pmatrix}1\\1\\0\end{pmatrix}\right\}, \qquad E_1 = \operatorname{span}\left\{\begin{pmatrix}-3\\1\\0\end{pmatrix}\right\}.$$
 
     **Not diagonalizable.** The eigenvalue $\lambda = 1$ has algebraic multiplicity $2$ but geometric multiplicity $1$, so $A$ has only $2$ independent eigenvectors, one short of the $3$ needed for a $3\times3$. The matrix is defective.
+
+### Part b
+
+$$A = \begin{pmatrix}1&1&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0\end{pmatrix}.$$
+
+Three all-zero rows make $A$ singular, so $\det(A) = 0$ and zero will be an eigenvalue. The interesting question is whether its eigenspace is big enough to make up the full multiplicity.
+
+!!! steps "Step 1, characteristic polynomial"
+    Only the top-left entry $1-\lambda$ survives the expansion, times a diagonal minor:
+    $$p_A(\lambda) = (1-\lambda)(-\lambda)^3 = \lambda^3(1-\lambda) = \lambda^4 - \lambda^3.$$
+
+!!! note "A vanishing constant term is a signal, not an error"
+    When $\det(A - \lambda I)$ has no constant term, it means $\lambda = 0$ is a root, i.e. zero is an eigenvalue. That is different from "there are no eigenvalues." A zero eigenvalue is perfectly valid; it means the matrix crushes some direction to nothing, consistent with $\det(A) = 0$ (not invertible).
+
+!!! steps "Step 2, solve"
+    Factorise $\lambda^3(1 - \lambda) = 0$: the factor $\lambda^3$ gives $\lambda = 0$ and $1 - \lambda = 0$ gives $\lambda = 1$. Eigenvalues: $\lambda = 0$ (algebraic multiplicity $3$, from $\lambda^3$) and $\lambda = 1$ (algebraic multiplicity $1$). Four roots total, matching the $4\times4$ size.
+
+!!! steps "Step 3, eigenspace for $\lambda = 0$"
+    Solve $Av = 0$ (the null space of $A$). Only the first row constrains anything ($v_1 + v_2 = 0$), leaving three free variables:
+    $$E_0 = \operatorname{span}\left\{\begin{pmatrix}-1\\1\\0\\0\end{pmatrix}, \begin{pmatrix}0\\0\\1\\0\end{pmatrix}, \begin{pmatrix}0\\0\\0\\1\end{pmatrix}\right\}.$$
+    Geometric multiplicity $3$, matching the algebraic multiplicity.
+
+!!! steps "Step 4, eigenspace for $\lambda = 1$"
+    Solve $(A - I)v = 0$; one free variable:
+    $$E_1 = \operatorname{span}\left\{\begin{pmatrix}1\\0\\0\\0\end{pmatrix}\right\}.$$
+
+!!! answer "Answer"
+    $$E_0 = \operatorname{span}\left\{\begin{pmatrix}-1\\1\\0\\0\end{pmatrix}, \begin{pmatrix}0\\0\\1\\0\end{pmatrix}, \begin{pmatrix}0\\0\\0\\1\end{pmatrix}\right\}, \qquad E_1 = \operatorname{span}\left\{\begin{pmatrix}1\\0\\0\\0\end{pmatrix}\right\}.$$
+
+    **Diagonalizable.** The eigenvectors number $3 + 1 = 4$, enough for a $4\times4$, and both eigenvalues have geometric multiplicity equal to algebraic multiplicity. So $A$ is diagonalizable even though it is singular: diagonalizability and invertibility are independent, and this matrix has a zero eigenvalue yet still diagonalizes.
+
+---
+
+## 4.7 · Diagonal form and eigenbasis
+
+Are the following matrices diagonalizable? If yes, determine their diagonal form and a basis with respect to which the transformation matrix is diagonal. If no, give reasons.
+
+!!! theory "Topics & Definitions"
+    - **Diagonalization** — $A$ is diagonalizable if there is a basis of eigenvectors. In that basis $A$ becomes a diagonal matrix $D$ of eigenvalues, and $A = PDP^{-1}$ where the **columns of $P$ are the eigenvectors**, ordered to match the eigenvalues in $D$. The eigenbasis is exactly those columns.
+    - **The test** — an $n \times n$ matrix is diagonalizable iff it has $n$ linearly independent eigenvectors, equivalently every eigenvalue's geometric multiplicity equals its algebraic multiplicity.
+    - **Real vs complex** — the characteristic polynomial may have no real roots. Over the reals such a matrix is **not diagonalizable** (no real eigenbasis). A negative discriminant is the signal, since it forces complex eigenvalues.
+    - **Discriminant check for a $2\times2$** — for $\lambda^2 + b\lambda + c$ the roots are real only if $b^2 - 4c \geq 0$. If it is negative, the eigenvalues are complex and the matrix is not diagonalizable over $\mathbb{R}$.
+
+### Part a
+
+$$A = \begin{pmatrix}0&1\\-8&4\end{pmatrix}.$$
+
+!!! steps "Part a, characteristic polynomial"
+    Using the $2\times2$ form $\lambda^2 - \operatorname{tr}(A)\lambda + \det(A)$, with $\operatorname{tr}(A) = 4$ and $\det(A) = (0)(4) - (1)(-8) = 8$:
+    $$p_A(\lambda) = \lambda^2 - 4\lambda + 8.$$
+
+!!! steps "Part a, solve"
+    The discriminant is $(-4)^2 - 4(8) = 16 - 32 = -16 < 0$. Applying the quadratic formula:
+    $$\lambda = \frac{4 \pm \sqrt{-16}}{2} = 2 \pm 2i.$$
+    The eigenvalues are complex ($2 + 2i$ and $2 - 2i$).
+
+!!! answer "Answer"
+    **Not diagonalizable over $\mathbb{R}$.** The characteristic polynomial $\lambda^2 - 4\lambda + 8$ has no real roots, its eigenvalues $2 \pm 2i$ are complex, so there is no real eigenbasis and no real diagonal form. (Over $\mathbb{C}$ it *is* diagonalizable, since the two complex eigenvalues are distinct, but with respect to a real basis it is not.)
+
+### Part b
+
+$$A = \begin{pmatrix}1&1&1\\1&1&1\\1&1&1\end{pmatrix}.$$
+
+!!! steps "Part b, characteristic polynomial"
+    Expanding $\det(A - \lambda I)$ for the all-ones matrix:
+    $$p_A(\lambda) = \lambda^2(\lambda - 3) = 0.$$
+    Check: $\operatorname{tr}(A) = 3$ matches the eigenvalue sum $0 + 0 + 3$ $\checkmark$, and $\det(A) = 0$ matches the product $\checkmark$. Eigenvalues: $\lambda = 0$ (algebraic multiplicity $2$) and $\lambda = 3$ (algebraic multiplicity $1$).
+
+!!! steps "Part b, eigenspace for $\lambda = 0$"
+    Solve $Av = 0$. Every row of $A$ is identical ($v_1 + v_2 + v_3 = 0$), leaving two free variables:
+    $$E_0 = \operatorname{span}\left\{\begin{pmatrix}-1\\1\\0\end{pmatrix}, \begin{pmatrix}-1\\0\\1\end{pmatrix}\right\}.$$
+    Geometric multiplicity $2$, matching the algebraic multiplicity.
+
+!!! steps "Part b, eigenspace for $\lambda = 3$"
+    Solve $(A - 3I)v = 0$; one free variable:
+    $$E_3 = \operatorname{span}\left\{\begin{pmatrix}1\\1\\1\end{pmatrix}\right\}.$$
+
+!!! answer "Answer"
+    **Diagonalizable.** The eigenvectors number $2 + 1 = 3$, enough for a $3\times3$, and every eigenvalue's geometric multiplicity equals its algebraic multiplicity.
+
+    Diagonal form:
+    $$D = \begin{pmatrix}0&0&0\\0&0&0\\0&0&3\end{pmatrix}.$$
+
+    Eigenbasis (columns of $P$, ordered to match $D$):
+    $$\left\{\begin{pmatrix}-1\\1\\0\end{pmatrix}, \begin{pmatrix}-1\\0\\1\end{pmatrix}, \begin{pmatrix}1\\1\\1\end{pmatrix}\right\}.$$
+    With respect to this basis the transformation is diagonal with entries $0, 0, 3$.

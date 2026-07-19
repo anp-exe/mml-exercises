@@ -445,3 +445,56 @@ $$A = \begin{pmatrix}5&-6&-6\\-1&4&2\\3&-6&-4\end{pmatrix}.$$
     Basis (columns ordered to match $D$):
     $$\left\{\begin{pmatrix}2\\1\\0\end{pmatrix}, \begin{pmatrix}2\\0\\1\end{pmatrix}, \begin{pmatrix}3\\-1\\3\end{pmatrix}\right\}.$$
     With respect to this basis the transformation is diagonal with entries $2, 2, 1$.
+
+---
+
+## 4.8 · Singular value decomposition
+
+Find the SVD of
+$$A = \begin{pmatrix}3&2&2\\2&3&-2\end{pmatrix}.$$
+
+!!! theory "Topics & Definitions"
+    - **SVD** — factorises any matrix (square or not) into $A = U\Sigma V^\top$: geometrically a rotation, then a stretch, then a rotation. Unlike diagonalization, it works for every matrix with no exceptions.
+    - **The three pieces** — $U$ (left singular vectors) is orthonormal $m\times m$; $\Sigma$ has the singular values on its diagonal, same shape as $A$, largest first; $V$ (right singular vectors) is orthonormal $n\times n$, and the equation uses $V^\top$.
+    - **The engine** — singular values are the square roots of the eigenvalues of $A^\top A$ (or $AA^\top$; they share the same nonzero eigenvalues). For a $2\times3$ matrix, $AA^\top$ is only $2\times2$, much smaller than the $3\times3$ $A^\top A$, so start there.
+    - **Two valid routes** — from $AA^\top$ the eigenvectors give $U$, then $v_i = \tfrac{1}{\sigma_i}A^\top u_i$ gives $V$; from $A^\top A$ the eigenvectors give $V$, then $u_i = \tfrac{1}{\sigma_i}A v_i$ gives $U$.
+
+!!! note "Two things people forget"
+    **Normalise every singular vector**: SVD needs *unit* vectors, so divide each by its length. **And transpose $V$** at the end: the equation is $U\Sigma V^\top$, not $U\Sigma V$. Also, when $A$ is wider than tall (like $2\times3$) the shortcut produces one fewer $V$ column than needed, because the extra eigenvalue is $0$ and you cannot divide by it. Fill the last column with the **null space** of $A$ (the direction $A$ crushes to zero), found by solving $Av = 0$.
+
+!!! steps "Step 1, singular values via $AA^\top$"
+    $$AA^\top = \begin{pmatrix}17&8\\8&17\end{pmatrix}.$$
+    Using the $2\times2$ shortcut $\lambda^2 - \operatorname{tr}\lambda + \det$, with trace $34$ and determinant $289 - 64 = 225$:
+    $$\lambda^2 - 34\lambda + 225 = (\lambda - 25)(\lambda - 9).$$
+    Eigenvalues $25$ and $9$, so the singular values are $\sigma_1 = \sqrt{25} = 5$ and $\sigma_2 = \sqrt{9} = 3$:
+    $$\Sigma = \begin{pmatrix}5&0&0\\0&3&0\end{pmatrix}.$$
+    ($\Sigma$ matches $A$'s shape; the extra zero column reflects that $A$ is wider than tall.)
+
+!!! steps "Step 2, $U$ from the $AA^\top$ eigenvectors"
+    $\lambda = 25$: $(AA^\top - 25I)u = 0$ gives $u_1 = u_2$, so $(1,1)$ normalised is $u_1 = \tfrac{1}{\sqrt2}(1,1)$.
+    $\lambda = 9$: gives $u_1 = -u_2$, so $(1,-1)$ normalised is $u_2 = \tfrac{1}{\sqrt2}(1,-1)$.
+    $$U = \frac{1}{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}.$$
+
+!!! steps "Step 3, $v_1$ and $v_2$ from the shortcut"
+    Use $v_i = \tfrac{1}{\sigma_i}A^\top u_i$:
+    $$v_1 = \tfrac{1}{5}A^\top u_1 = \tfrac{1}{\sqrt2}(1, 1, 0).$$
+
+    $$v_2 = \tfrac{1}{3}A^\top u_2 = \tfrac{1}{3\sqrt2}(1, -1, 4).$$
+
+    Both come out unit length automatically.
+
+!!! steps "Step 4, the third $V$ column (null space)"
+    $V$ must be $3\times3$, but the shortcut gave only two columns. The third is the direction $A$ sends to zero, so solve $Av = 0$:
+    $$3v_1 + 2v_2 + 2v_3 = 0, \qquad 2v_1 + 3v_2 - 2v_3 = 0.$$
+    Adding the equations gives $v_1 = -v_2$; substituting gives $v_2 = 2v_3$. Taking $v_3 = 1$ yields $(-2, 2, 1)$, of length $3$:
+    $$v_3 = \tfrac{1}{3}(-2, 2, 1).$$
+    This is orthogonal to $v_1$ and $v_2$, and $Av_3 = 0$ confirms it is the crushed direction.
+
+!!! answer "Answer"
+    $$A = U\Sigma V^\top,$$
+
+    $$U = \frac{1}{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}, \qquad \Sigma = \begin{pmatrix}5&0&0\\0&3&0\end{pmatrix},$$
+
+    $$V^\top = \begin{pmatrix}\tfrac{1}{\sqrt2} & \tfrac{1}{\sqrt2} & 0\\[4pt] \tfrac{1}{3\sqrt2} & -\tfrac{1}{3\sqrt2} & \tfrac{4}{3\sqrt2}\\[4pt] -\tfrac{2}{3} & \tfrac{2}{3} & \tfrac{1}{3}\end{pmatrix}.$$
+
+    The singular values $5$ and $3$ are the amounts $A$ stretches along its two principal directions; the third $V$ direction is collapsed to zero.

@@ -12,7 +12,7 @@ Each question is laid out the same way: a **Topics & Definitions** box, a plain-
 |:------:|:------------------:|
 | 2 · Linear Algebra | ✅ 2.1–2.20 complete |
 | 3 · Analytic Geometry | ✅ 3.1–3.10 complete |
-| 4 · Matrix Decompositions | ✅ 4.1–4.7 |
+| 4 · Matrix Decompositions | ✅ 4.1–4.8 |
 | 5 · Vector Calculus | ⬜ |
 | 6 · Probability & Distributions | ⬜ |
 | 7 · Continuous Optimization | ⬜ |

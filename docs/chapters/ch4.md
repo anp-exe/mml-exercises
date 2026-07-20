@@ -511,6 +511,15 @@ $$A = \begin{pmatrix}2&2\\-1&1\end{pmatrix}.$$
     - **The matched-pair rule** — which shortcut you use depends entirely on which matrix you started from. From $A^\top A$ you get $V$ first, then $U$ via $u_i = \tfrac{1}{\sigma_i}A v_i$ (**plain $A$**). From $AA^\top$ you get $U$ first, then $V$ via $v_i = \tfrac{1}{\sigma_i}A^\top u_i$ (**transpose $A^\top$**).
     - **The transpose follows the direction of travel** — plain $A$ moves you toward $U$; transpose $A^\top$ moves you toward $V$. Memory hook: multiply what you *have* to produce what you *want*. Have $V$, want $U$: use $A$. Have $U$, want $V$: use $A^\top$. Exercise 4.8 started from $AA^\top$ and used $A^\top$; this one starts from $A^\top A$, so it uses plain $A$.
 
+    **Two routes to the SVD, and how each finds $U$ differently:**
+
+    | Route 1, start from $A^\top A$ | Route 2, start from $AA^\top$ |
+    |:-------------------------------|:------------------------------|
+    | Eigenvectors of $A^\top A$ give you $V$ directly | Eigenvectors of $AA^\top$ give you $U$ directly |
+    | Then find $U$ with $u_i = \tfrac{1}{\sigma_i}A v_i$ &nbsp; (plain $A$) | Then find $V$ with $v_i = \tfrac{1}{\sigma_i}A^\top u_i$ &nbsp; (transpose $A^\top$) |
+
+    The transpose is tied to the direction you travel, not to $U$ or $V$: plain $A$ moves toward $U$, transpose $A^\top$ moves toward $V$. This exercise used Route 1 (started from $A^\top A$), so $U$ came from plain $A$; exercise 4.8 used the opposite route, which is why it used $A^\top$, same logic, different starting matrix.
+
 !!! note "Two easy slips"
     Normalise every vector (divide by its length), since SVD needs unit vectors. And when combining the singular-value fraction with the vector's own normalising fraction, simplify carefully: $\tfrac{1}{2\sqrt2}\cdot\tfrac{1}{\sqrt2} = \tfrac14$ because $\sqrt2\cdot\sqrt2 = 2$. Note $2\sqrt2 = \sqrt8$, so $\tfrac{1}{2\sqrt2}$ and $\tfrac{1}{\sqrt8}$ are the same number.
 

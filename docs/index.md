@@ -36,6 +36,8 @@ video series is fantastic and highly recommended.
 
 For linear mappings specifically, [**this video**](https://youtu.be/is1cg5yhdds) is a clear, helpful walkthrough.
 
+Another [**helpful video**](https://youtu.be/3d6DsjIBzJ4) worth a watch.
+
 ---
 
 ## How this site is built

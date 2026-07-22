@@ -38,6 +38,8 @@ For linear mappings specifically, [**this video**](https://youtu.be/is1cg5yhdds)
 
 Another [**helpful video**](https://youtu.be/3d6DsjIBzJ4) worth a watch.
 
+For the calculus side of things (Chapter 5 onward), [**Paul's Online Math Notes**](https://tutorial.math.lamar.edu/) are a thorough, well-explained reference for Calculus I, II, and III.
+
 ---
 
 ## How this site is built

@@ -127,3 +127,49 @@ where $\mu, \sigma$ are constants.
     $$f'(x) = -\frac{x-\mu}{\sigma^2}\exp\!\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right).$$
 
     **Sanity check on the shape.** The derivative is zero exactly when $x = \mu$, the peak of the bell curve where the slope is flat. For $x > \mu$ the factor $-(x-\mu)$ is negative, so the curve is descending; for $x < \mu$ it is positive, so the curve is ascending. This matches the familiar Gaussian shape.
+
+---
+
+## 5.4 · Taylor polynomials of $\sin(x) + \cos(x)$
+
+*Calculus II · Taylor series*
+
+Compute the Taylor polynomials $T_n$ for $n = 0, \dots, 5$ of
+$$f(x) = \sin(x) + \cos(x)$$
+at $x_0 = 0$.
+
+!!! theory "Topics & Definitions"
+    - **The Taylor polynomial** — of degree $n$ about $x_0$ is $T_n(x) = \sum_{k=0}^{n} \dfrac{f^{(k)}(x_0)}{k!}\,(x-x_0)^k$. At $x_0 = 0$ (a Maclaurin polynomial) this simplifies to $\sum \tfrac{f^{(k)}(0)}{k!}x^k$, since $(x-0)^k = x^k$.
+    - **Sine and cosine derivatives cycle with period four** — $\sin \to \cos \to -\sin \to -\cos \to \sin \to \dots$. Once you have four derivatives, the pattern repeats, which makes this much shorter than it looks.
+    - **Lower-order polynomials are truncations** — $T_3$ is just $T_5$ with the last two terms removed, so computing $T_5$ gives you all of them at once.
+
+!!! note "Read $f^{(k)}(x_0)$ carefully"
+    $f^{(k)}(x_0)$ means "the $k$-th derivative, **evaluated at** $x_0$", not the derivative multiplied by $x_0$. Even when $x_0 = 0$ these values are generally nonzero: here $f(0) = \sin 0 + \cos 0 = 1$. Order of operations matters: differentiate first, substitute afterwards.
+
+!!! steps "Step 1, the derivatives and their values at $0$"
+    | $k$ | $f^{(k)}(x)$ | $f^{(k)}(0)$ |
+    |:---:|:------------:|:------------:|
+    | 0 | $\sin x + \cos x$ | $1$ |
+    | 1 | $\cos x - \sin x$ | $1$ |
+    | 2 | $-\sin x - \cos x$ | $-1$ |
+    | 3 | $-\cos x + \sin x$ | $-1$ |
+    | 4 | $\sin x + \cos x$ | $1$ |
+    | 5 | $\cos x - \sin x$ | $1$ |
+
+    At $k = 4$ the function returns to itself, confirming the period-four cycle. The values at $0$ follow the repeating pattern $1, 1, -1, -1, 1, 1, \dots$.
+
+!!! steps "Step 2, assemble the coefficients"
+    Divide each value by $k!$:
+    $$\frac{1}{0!} = 1,\quad \frac{1}{1!} = 1,\quad \frac{-1}{2!} = -\frac12,\quad \frac{-1}{3!} = -\frac16,\quad \frac{1}{4!} = \frac{1}{24},\quad \frac{1}{5!} = \frac{1}{120}.$$
+
+!!! answer "Answer"
+    $$\begin{aligned}
+    T_0(x) &= 1\\
+    T_1(x) &= 1 + x\\
+    T_2(x) &= 1 + x - \tfrac{1}{2}x^2\\
+    T_3(x) &= 1 + x - \tfrac{1}{2}x^2 - \tfrac{1}{6}x^3\\
+    T_4(x) &= 1 + x - \tfrac{1}{2}x^2 - \tfrac{1}{6}x^3 + \tfrac{1}{24}x^4\\
+    T_5(x) &= 1 + x - \tfrac{1}{2}x^2 - \tfrac{1}{6}x^3 + \tfrac{1}{24}x^4 + \tfrac{1}{120}x^5
+    \end{aligned}$$
+
+    The sign pattern $+\,+\,-\,-\,+\,+$ mirrors the four-step derivative cycle and is a useful check that the derivatives were tracked correctly.

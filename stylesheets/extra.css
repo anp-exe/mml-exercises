@@ -1,0 +1,69 @@
+/* KaTeX styles */
+@import url("https://unpkg.com/katex@0/dist/katex.min.css");
+
+/* ---- pastel palette ---- */
+:root {
+  --md-primary-fg-color:        #8a7fb0;  /* lilac */
+  --md-accent-fg-color:         #d98aa8;  /* pink */
+  --pastel-sage:                #7fa88c;
+  --pastel-sage-bg:             #eef5ef;
+  --pastel-sage-edge:           #cfe1d2;
+  --pastel-pink-bg:             #fbeef3;
+  --pastel-pink-edge:           #eccdd9;
+  --pastel-lilac-bg:            #f3f0f8;
+  --pastel-lilac-edge:          #ddd4ea;
+}
+
+/* headings in lilac */
+.md-typeset h1, .md-typeset h2 { color: #6f6398; }
+.md-typeset h3 { color: #8a7fb0; }
+
+/* ---- custom admonitions: theory (sage) ---- */
+.md-typeset .admonition.theory,
+.md-typeset details.theory {
+  border-color: var(--pastel-sage-edge);
+  background: var(--pastel-sage-bg);
+}
+.md-typeset .theory > .admonition-title,
+.md-typeset .theory > summary {
+  background: var(--pastel-sage-bg);
+  color: var(--pastel-sage);
+}
+.md-typeset .theory > .admonition-title::before,
+.md-typeset .theory > summary::before {
+  background-color: var(--pastel-sage);
+  -webkit-mask-image: var(--md-admonition-icon--note);
+          mask-image: var(--md-admonition-icon--note);
+}
+
+/* ---- custom admonition: answer (pink) ---- */
+.md-typeset .admonition.answer {
+  border-color: var(--pastel-pink-edge);
+  background: var(--pastel-pink-bg);
+}
+.md-typeset .answer > .admonition-title {
+  background: var(--pastel-pink-bg);
+  color: var(--md-accent-fg-color);
+  font-weight: 700;
+}
+.md-typeset .answer > .admonition-title::before {
+  background-color: var(--md-accent-fg-color);
+  -webkit-mask-image: var(--md-admonition-icon--success);
+          mask-image: var(--md-admonition-icon--success);
+}
+
+/* ---- custom admonition: steps (lilac) ---- */
+.md-typeset .admonition.steps {
+  border-color: var(--pastel-lilac-edge);
+  background: var(--pastel-lilac-bg);
+}
+.md-typeset .steps > .admonition-title {
+  background: var(--pastel-lilac-bg);
+  color: #6f6398;
+}
+
+/* progress table centered */
+.md-typeset table td, .md-typeset table th { text-align: center; }
+
+/* softer body */
+.md-typeset { color: #4a4658; }

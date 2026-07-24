@@ -1,0 +1,1240 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Worked end-of-chapter exercise solutions for Mathematics for Machine Learning">
+      
+      
+        <meta name="author" content="Anna">
+      
+      
+        <link rel="canonical" href="https://anp-exe.github.io/mml-excerises/chapters/ch3/">
+      
+      
+        <link rel="prev" href="../ch2/">
+      
+      
+        <link rel="next" href="../ch4/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Ch 3 · Analytic Geometry - MML Exercise Answers</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Nunito";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-3-analytic-geometry" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MML Exercise Answers" class="md-header__button md-logo" aria-label="MML Exercise Answers" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MML Exercise Answers
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch 3 · Analytic Geometry
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MML Exercise Answers" class="md-nav__button md-logo" aria-label="MML Exercise Answers" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MML Exercise Answers
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 2 · Linear Algebra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 3 · Analytic Geometry
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 3 · Analytic Geometry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-show-that-langlecdotcdotrangle-is-an-inner-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 · Show that \(\langle\cdot,\cdot\rangle\) is an inner product
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-is-langlemathbfxmathbfyrangle-mathbfxtop-amathbfy-an-inner-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 · Is \(\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top A\,\mathbf{y}\) an inner product?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-distance-between-two-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 · Distance between two vectors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-angle-between-two-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 · Angle between two vectors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-orthogonal-projection-onto-a-subspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 · Orthogonal projection onto a subspace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-projection-under-a-non-standard-inner-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 · Projection under a non-standard inner product
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-projections-and-their-complements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 · Projections and their complements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#38-gram-schmidt-orthonormalisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 · Gram-Schmidt orthonormalisation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#39-cauchy-schwarz-with-cleverly-chosen-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.9 · Cauchy-Schwarz with cleverly chosen vectors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#310-rotating-vectors-in-the-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.10 · Rotating vectors in the plane
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 4 · Matrix Decompositions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 5 · Vector Calculus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 6 · Probability & Distributions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 7 · Continuous Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 8 · When Models Meet Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 9 · Linear Regression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 10 · Dimensionality Reduction (PCA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 11 · Density Estimation (GMM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 12 · Classification (SVM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../proofs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proofs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-3-analytic-geometry">Chapter 3 · Analytic Geometry<a class="headerlink" href="#chapter-3-analytic-geometry" title="Permanent link">&para;</a></h1>
+<p>End-of-chapter exercises. Each has a definitions box, explanation, worked steps, and the answer.</p>
+<hr />
+<h2 id="31-show-that-langlecdotcdotrangle-is-an-inner-product">3.1 · Show that <span class="arithmatex">\(\langle\cdot,\cdot\rangle\)</span> is an inner product<a class="headerlink" href="#31-show-that-langlecdotcdotrangle-is-an-inner-product" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Inner product</strong> — a map <span class="arithmatex">\(\langle\cdot,\cdot\rangle\)</span> taking two vectors to a number, passing three tests for all <span class="arithmatex">\(\mathbf{x},\mathbf{y},\mathbf{z}\)</span> and scalars.</li>
+<li><strong>Bilinear</strong> — linear in each slot separately (constants and sums pass straight through).</li>
+<li><strong>Symmetric</strong> — order does not matter: <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle = \langle\mathbf{y},\mathbf{x}\rangle\)</span>.</li>
+<li><strong>Positive definite</strong> — <span class="arithmatex">\(\langle\mathbf{x},\mathbf{x}\rangle &gt; 0\)</span> for every <span class="arithmatex">\(\mathbf{x}\neq\mathbf{0}\)</span> (and <span class="arithmatex">\(0\)</span> only for <span class="arithmatex">\(\mathbf{0}\)</span>).</li>
+<li><strong>Matrix shortcut</strong> — any <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top A\,\mathbf{y}\)</span> is automatically bilinear; it is symmetric exactly when <span class="arithmatex">\(A = A^\top\)</span>, and positive definite exactly when <span class="arithmatex">\(A\)</span> is (leading minors all positive).</li>
+</ul>
+</div>
+<p>The form <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle = x_1y_1 - (x_1y_2 + x_2y_1) + 2x_2y_2\)</span> is a matrix form in disguise. Pulling the coefficients into a grid gives <span class="arithmatex">\(A = \begin{bmatrix}1&amp;-1\\-1&amp;2\end{bmatrix}\)</span>, so <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top A\,\mathbf{y}\)</span>. Because it is built as <span class="arithmatex">\(\mathbf{x}^\top A\mathbf{y}\)</span> it is bilinear for free, and the two remaining checks are just facts about <span class="arithmatex">\(A\)</span>.</p>
+<div class="admonition steps">
+<p class="admonition-title">Check the three properties</p>
+<p><strong>Matrix form.</strong> <span class="arithmatex">\(\mathbf{x}^\top A\mathbf{y} = (x_1 - x_2)y_1 + (-x_1 + 2x_2)y_2 = x_1y_1 - x_1y_2 - x_2y_1 + 2x_2y_2\)</span>, matching the given form.</p>
+<p><strong>Symmetric.</strong> <span class="arithmatex">\(A = \begin{bmatrix}1&amp;-1\\-1&amp;2\end{bmatrix} = A^\top\)</span>, so <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle = \langle\mathbf{y},\mathbf{x}\rangle\)</span>.</p>
+<p><strong>Positive definite.</strong> Leading principal minors of <span class="arithmatex">\(A\)</span>: the top-left entry <span class="arithmatex">\(1 &gt; 0\)</span>, and <span class="arithmatex">\(\det A = (1)(2) - (-1)(-1) = 1 &gt; 0\)</span>. Both positive, so <span class="arithmatex">\(A\)</span> is positive definite. Equivalently, completing the square,
+$<span class="arithmatex">\(\langle\mathbf{x},\mathbf{x}\rangle = x_1^2 - 2x_1x_2 + 2x_2^2 = (x_1 - x_2)^2 + x_2^2 \ge 0,\)</span>$
+which is <span class="arithmatex">\(0\)</span> only when <span class="arithmatex">\(x_1 = x_2 = 0\)</span>.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p>All three properties hold, so <span class="arithmatex">\(\langle\cdot,\cdot\rangle\)</span> <strong>is an inner product</strong> on <span class="arithmatex">\(\mathbb{R}^2\)</span> (with matrix <span class="arithmatex">\(A = \begin{bmatrix}1&amp;-1\\-1&amp;2\end{bmatrix}\)</span>).</p>
+</div>
+<hr />
+<h2 id="32-is-langlemathbfxmathbfyrangle-mathbfxtop-amathbfy-an-inner-product">3.2 · Is <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top A\,\mathbf{y}\)</span> an inner product?<a class="headerlink" href="#32-is-langlemathbfxmathbfyrangle-mathbfxtop-amathbfy-an-inner-product" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Symmetry is required</strong> — every inner product must satisfy <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle = \langle\mathbf{y},\mathbf{x}\rangle\)</span>.</li>
+<li><strong>Matrix test</strong> — for <span class="arithmatex">\(\mathbf{x}^\top A\mathbf{y}\)</span>, symmetry holds for all vectors <strong>iff</strong> <span class="arithmatex">\(A = A^\top\)</span>.</li>
+<li><strong>One counterexample is enough</strong> — to disprove, find a single pair where <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle \neq \langle\mathbf{y},\mathbf{x}\rangle\)</span>.</li>
+</ul>
+</div>
+<p>Here <span class="arithmatex">\(A = \begin{bmatrix}2&amp;0\\1&amp;2\end{bmatrix}\)</span>, and <span class="arithmatex">\(A^\top = \begin{bmatrix}2&amp;1\\0&amp;2\end{bmatrix} \neq A\)</span>. Since <span class="arithmatex">\(A\)</span> is not symmetric, the form should fail the symmetry test, and a single well-chosen pair exposes it.</p>
+<div class="admonition steps">
+<p class="admonition-title">Counterexample with <span class="arithmatex">\(\mathbf{x} = (2,0)^\top\)</span>, <span class="arithmatex">\(\mathbf{y} = (0,2)^\top\)</span></p>
+<div class="arithmatex">\[\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top A\mathbf{y} = \begin{bmatrix}2&amp;0\end{bmatrix}\begin{bmatrix}2&amp;0\\1&amp;2\end{bmatrix}\begin{bmatrix}0\\2\end{bmatrix} = \begin{bmatrix}2&amp;0\end{bmatrix}\begin{bmatrix}0\\4\end{bmatrix} = 0.\]</div>
+<p>$<span class="arithmatex">\(\langle\mathbf{y},\mathbf{x}\rangle = \mathbf{y}^\top A\mathbf{x} = \begin{bmatrix}0&amp;2\end{bmatrix}\begin{bmatrix}2&amp;0\\1&amp;2\end{bmatrix}\begin{bmatrix}2\\0\end{bmatrix} = \begin{bmatrix}0&amp;2\end{bmatrix}\begin{bmatrix}4\\2\end{bmatrix} = 4.\)</span>$
+Since <span class="arithmatex">\(0 \neq 4\)</span>, the form is not symmetric.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>Not an inner product.</strong> With <span class="arithmatex">\(\mathbf{x} = (2,0)^\top,\ \mathbf{y} = (0,2)^\top\)</span> we get <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle = 0\)</span> but <span class="arithmatex">\(\langle\mathbf{y},\mathbf{x}\rangle = 4\)</span>, so symmetry fails (because <span class="arithmatex">\(A \neq A^\top\)</span>).</p>
+</div>
+<hr />
+<h2 id="33-distance-between-two-vectors">3.3 · Distance between two vectors<a class="headerlink" href="#33-distance-between-two-vectors" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Induced norm</strong> — an inner product gives a length: <span class="arithmatex">\(\lVert\mathbf{v}\rVert = \sqrt{\langle\mathbf{v},\mathbf{v}\rangle}\)</span>.</li>
+<li><strong>Distance</strong> — the length of the difference vector: <span class="arithmatex">\(d(\mathbf{x},\mathbf{y}) = \lVert\mathbf{x}-\mathbf{y}\rVert = \sqrt{\langle\mathbf{x}-\mathbf{y},\ \mathbf{x}-\mathbf{y}\rangle}\)</span>.</li>
+<li><strong>Method</strong> — subtract first to get the arrow <span class="arithmatex">\(\mathbf{x}-\mathbf{y}\)</span>, feed that single vector into the inner product, then square-root.</li>
+<li><strong>Which inner product matters</strong> — a different inner product (a different matrix <span class="arithmatex">\(A\)</span>) measures a different distance for the same two points.</li>
+</ul>
+</div>
+<p>Distance is just the length of the arrow joining the points. So compute <span class="arithmatex">\(\mathbf{x}-\mathbf{y}\)</span> once, then take the inner product of that difference with itself and square-root it. With <span class="arithmatex">\(\mathbf{x} = (1,2,3)^\top\)</span> and <span class="arithmatex">\(\mathbf{y} = (-1,-1,0)^\top\)</span>, the difference is <span class="arithmatex">\(\mathbf{x}-\mathbf{y} = (2,3,3)^\top\)</span> for both parts; only the inner product changes.</p>
+<div class="admonition steps">
+<p class="admonition-title">Part a, dot product <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top\mathbf{y}\)</span></p>
+<div class="arithmatex">\[\mathbf{x}-\mathbf{y} = (2,3,3)^\top, \qquad \langle\mathbf{x}-\mathbf{y},\mathbf{x}-\mathbf{y}\rangle = 2^2 + 3^2 + 3^2 = 22.\]</div>
+<div class="arithmatex">\[d = \sqrt{22} \approx 4.69.\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part b, weighted product <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top A\mathbf{y}\)</span></p>
+<p>With <span class="arithmatex">\(A = \begin{bmatrix}2&amp;1&amp;0\\1&amp;3&amp;-1\\0&amp;-1&amp;2\end{bmatrix}\)</span> and <span class="arithmatex">\(\mathbf{d} = \mathbf{x}-\mathbf{y} = (2,3,3)^\top\)</span>, first apply <span class="arithmatex">\(A\)</span>:
+$<span class="arithmatex">\(A\mathbf{d} = \begin{bmatrix}2&amp;1&amp;0\\1&amp;3&amp;-1\\0&amp;-1&amp;2\end{bmatrix}\begin{bmatrix}2\\3\\3\end{bmatrix} = \begin{bmatrix}7\\8\\3\end{bmatrix},\qquad \mathbf{d}^\top A\mathbf{d} = 2(7)+3(8)+3(3) = 47.\)</span>$</p>
+<div class="arithmatex">\[d = \sqrt{47} \approx 6.86.\]</div>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>a)</strong> <span class="arithmatex">\(d = \sqrt{22} \approx 4.69\)</span>. &nbsp;&nbsp; <strong>b)</strong> <span class="arithmatex">\(d = \sqrt{47} \approx 6.86\)</span>.</p>
+</div>
+<hr />
+<h2 id="34-angle-between-two-vectors">3.4 · Angle between two vectors<a class="headerlink" href="#34-angle-between-two-vectors" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Angle formula</strong> — <span class="arithmatex">\(\cos\theta = \dfrac{\langle\mathbf{x},\mathbf{y}\rangle}{\lVert\mathbf{x}\rVert\,\lVert\mathbf{y}\rVert}\)</span>, then <span class="arithmatex">\(\theta = \arccos(\cdots)\)</span>.</li>
+<li><strong>Work it in pieces</strong> — compute the inner product on top first, then each magnitude <span class="arithmatex">\(\lVert\mathbf{x}\rVert = \sqrt{\langle\mathbf{x},\mathbf{x}\rangle}\)</span>, then combine.</li>
+<li><strong>Sign of the cosine</strong> — a negative value means an obtuse angle (more than <span class="arithmatex">\(90^\circ\)</span>).</li>
+<li><strong>Different inner product, different angle</strong> — swapping the dot product for <span class="arithmatex">\(\mathbf{x}^\top B\mathbf{y}\)</span> reshapes what "angle" means.</li>
+</ul>
+</div>
+<p>Build the ratio one piece at a time: the inner product in the numerator, the two lengths in the denominator, then plug into <span class="arithmatex">\(\arccos\)</span>. Here <span class="arithmatex">\(\mathbf{x} = (1,2)^\top\)</span> and <span class="arithmatex">\(\mathbf{y} = (-1,-1)^\top\)</span>.</p>
+<div class="admonition steps">
+<p class="admonition-title">Part a, dot product <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top\mathbf{y}\)</span></p>
+<p>Inner product: <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle = (1)(-1) + (2)(-1) = -3\)</span>.
+Magnitudes: <span class="arithmatex">\(\lVert\mathbf{x}\rVert = \sqrt{1^2+2^2} = \sqrt{5}\)</span>, <span class="arithmatex">\(\lVert\mathbf{y}\rVert = \sqrt{(-1)^2+(-1)^2} = \sqrt{2}\)</span>.
+Combine:
+$<span class="arithmatex">\(\cos\theta = \frac{-3}{\sqrt{5}\,\sqrt{2}} = \frac{-3}{\sqrt{10}} \approx -0.9487 \;\Rightarrow\; \theta \approx 161.57^\circ \approx 2.82\ \text{rad}.\)</span>$</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part b, weighted product <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top B\mathbf{y}\)</span></p>
+<p>With <span class="arithmatex">\(B = \begin{bmatrix}2&amp;1\\1&amp;3\end{bmatrix}\)</span>, take it a piece at a time.
+Inner product: <span class="arithmatex">\(B\mathbf{y} = \begin{bmatrix}2&amp;1\\1&amp;3\end{bmatrix}\begin{bmatrix}-1\\-1\end{bmatrix} = \begin{bmatrix}-3\\-4\end{bmatrix}\)</span>, so <span class="arithmatex">\(\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top B\mathbf{y} = (1)(-3)+(2)(-4) = -11\)</span>.
+Magnitudes: <span class="arithmatex">\(\lVert\mathbf{x}\rVert_B = \sqrt{\mathbf{x}^\top B\mathbf{x}} = \sqrt{18}\)</span>, <span class="arithmatex">\(\lVert\mathbf{y}\rVert_B = \sqrt{\mathbf{y}^\top B\mathbf{y}} = \sqrt{7}\)</span>.
+Combine:
+$<span class="arithmatex">\(\cos\theta = \frac{-11}{\sqrt{18}\,\sqrt{7}} = \frac{-11}{\sqrt{126}} \approx -0.9800 \;\Rightarrow\; \theta \approx 168.51^\circ \approx 2.94\ \text{rad}.\)</span>$</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>a)</strong> <span class="arithmatex">\(\theta \approx 161.57^\circ \approx 2.82\)</span> rad. &nbsp;&nbsp; <strong>b)</strong> <span class="arithmatex">\(\theta \approx 168.51^\circ \approx 2.94\)</span> rad.</p>
+<p>Both angles are obtuse (negative cosine); the weighted inner product in b pushes the angle slightly wider.</p>
+</div>
+<hr />
+<h2 id="35-orthogonal-projection-onto-a-subspace">3.5 · Orthogonal projection onto a subspace<a class="headerlink" href="#35-orthogonal-projection-onto-a-subspace" title="Permanent link">&para;</a></h2>
+<p>In <span class="arithmatex">\(\mathbb{R}^5\)</span> with the standard dot product, a subspace <span class="arithmatex">\(U\)</span> and a vector <span class="arithmatex">\(x\)</span> are given by
+$<span class="arithmatex">\(U = \operatorname{span}\left[\begin{pmatrix}0\\-1\\2\\0\\2\end{pmatrix},\begin{pmatrix}1\\-3\\1\\-1\\2\end{pmatrix},\begin{pmatrix}-3\\4\\1\\2\\1\end{pmatrix},\begin{pmatrix}-1\\-3\\5\\0\\7\end{pmatrix}\right], \qquad x = \begin{pmatrix}-1\\-9\\-1\\4\\1\end{pmatrix}.\)</span>$</p>
+<p>Find <strong>(a)</strong> the orthogonal projection <span class="arithmatex">\(\pi_U(x)\)</span> and <strong>(b)</strong> the distance <span class="arithmatex">\(d(x,U)\)</span>.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Orthogonal projection onto a subspace</strong> — if the columns of <span class="arithmatex">\(B\)</span> form a basis of <span class="arithmatex">\(U\)</span>, then <span class="arithmatex">\(\pi_U(x) = B(B^\top B)^{-1}B^\top x\)</span>. The coordinates <span class="arithmatex">\(\lambda = (B^\top B)^{-1}B^\top x\)</span> solve the normal equations <span class="arithmatex">\(B^\top B\,\lambda = B^\top x\)</span>, and <span class="arithmatex">\(\pi_U(x) = B\lambda\)</span>.</li>
+<li><strong><span class="arithmatex">\(B\)</span> needs a basis, not just a spanning set</strong> — the four given vectors are <strong>not</strong> independent, so stacking all four makes <span class="arithmatex">\(B^\top B\)</span> singular (non-invertible). Trim to a genuine basis first.</li>
+<li><strong>Distance to a subspace</strong> — the projection is the closest point in <span class="arithmatex">\(U\)</span> to <span class="arithmatex">\(x\)</span>, so <span class="arithmatex">\(d(x,U) = \lVert x - \pi_U(x)\rVert\)</span>. The residual <span class="arithmatex">\(x-\pi_U(x)\)</span> is orthogonal to every basis vector, a handy way to check.</li>
+</ul>
+</div>
+<p>The four spanning vectors are not linearly independent, so the first job is to trim them to a real basis. Then build <span class="arithmatex">\(B\)</span> from those basis vectors, solve the normal equations for the coordinates <span class="arithmatex">\(\lambda\)</span>, and assemble the projection. The distance is just the length of what is left over.</p>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, trim the spanning set to a basis (RREF)</p>
+<p>Stack the four spanning vectors as columns of <span class="arithmatex">\(A\)</span> and row-reduce to find the pivot columns:
+$<span class="arithmatex">\(A = \begin{pmatrix}0&amp;1&amp;-3&amp;-1\\-1&amp;-3&amp;4&amp;-3\\2&amp;1&amp;1&amp;5\\0&amp;-1&amp;2&amp;0\\2&amp;2&amp;1&amp;7\end{pmatrix} \xrightarrow{\text{RREF}} \begin{pmatrix}1&amp;0&amp;0&amp;1\\0&amp;1&amp;0&amp;2\\0&amp;0&amp;1&amp;1\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0\end{pmatrix}.\)</span>$
+Pivots sit in columns 1, 2, 3, so those three vectors form a basis of <span class="arithmatex">\(U\)</span>. Column 4 is dependent: reading off the last RREF column, <span class="arithmatex">\(v_4 = v_1 + 2v_2 + v_3\)</span>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Pitfall</p>
+<p>Take the basis vectors from the <strong>original</strong> matrix <span class="arithmatex">\(A\)</span>, never from the RREF. Row reduction only <em>identifies</em> which columns are independent; it changes the columns themselves.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, build <span class="arithmatex">\(B\)</span> and compute <span class="arithmatex">\(B^\top B\)</span></p>
+<p>$<span class="arithmatex">\(B = \begin{pmatrix}0&amp;1&amp;-3\\-1&amp;-3&amp;4\\2&amp;1&amp;1\\0&amp;-1&amp;2\\2&amp;2&amp;1\end{pmatrix}, \qquad B^\top B = \begin{pmatrix}9&amp;9&amp;0\\9&amp;16&amp;-14\\0&amp;-14&amp;31\end{pmatrix}.\)</span>$
+Each entry is a dot product of two columns of <span class="arithmatex">\(B\)</span>; the matrix is symmetric, so only six of the nine entries need computing.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, solve the normal equations for <span class="arithmatex">\(\lambda\)</span></p>
+<p>$<span class="arithmatex">\(B^\top x = \begin{pmatrix}9\\23\\-25\end{pmatrix}, \qquad \lambda = (B^\top B)^{-1}B^\top x = \begin{pmatrix}-3\\4\\1\end{pmatrix}.\)</span>$
+The coordinates come out as clean integers, a good sign the arithmetic is right.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 4, projection and distance</p>
+<div class="arithmatex">\[\pi_U(x) = B\lambda = \begin{pmatrix}1\\-5\\-1\\-2\\3\end{pmatrix}.\]</div>
+<p>The residual is
+$<span class="arithmatex">\(x - \pi_U(x) = \begin{pmatrix}-2\\-4\\0\\6\\-2\end{pmatrix},\)</span>$</p>
+<p>which is orthogonal to each basis vector (dotting with <span class="arithmatex">\(v_1\)</span>: <span class="arithmatex">\(0 + 4 + 0 + 0 - 4 = 0\)</span>). Its length is the distance:
+$<span class="arithmatex">\(d(x,U) = \sqrt{(-2)^2 + (-4)^2 + 0^2 + 6^2 + (-2)^2} = \sqrt{60} = 2\sqrt{15}.\)</span>$</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[\pi_U(x) = \begin{pmatrix}1\\-5\\-1\\-2\\3\end{pmatrix}, \qquad d(x,U) = 2\sqrt{15} \approx 7.75.\]</div>
+</div>
+<hr />
+<h2 id="36-projection-under-a-non-standard-inner-product">3.6 · Projection under a non-standard inner product<a class="headerlink" href="#36-projection-under-a-non-standard-inner-product" title="Permanent link">&para;</a></h2>
+<p>In <span class="arithmatex">\(\mathbb{R}^3\)</span> with the inner product
+$<span class="arithmatex">\(\langle x,y\rangle := x^\top \begin{pmatrix}2&amp;1&amp;0\\1&amp;2&amp;-1\\0&amp;-1&amp;2\end{pmatrix} y,\)</span>$
+let <span class="arithmatex">\(e_1,e_2,e_3\)</span> be the standard basis and <span class="arithmatex">\(U = \operatorname{span}[e_1,e_3]\)</span>. Find <strong>(a)</strong> <span class="arithmatex">\(\pi_U(e_2)\)</span>, <strong>(b)</strong> <span class="arithmatex">\(d(e_2,U)\)</span>, and <strong>(c)</strong> a sketch of the scenario.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Projection under a general inner product</strong> — when <span class="arithmatex">\(\langle x,y\rangle = x^\top A y\)</span> for a symmetric positive-definite <span class="arithmatex">\(A\)</span>, every inner-product slot gains an <span class="arithmatex">\(A\)</span>: <span class="arithmatex">\(\pi_U(x) = B(B^\top A B)^{-1}B^\top A\,x\)</span>. The standard dot product is just the case <span class="arithmatex">\(A = I\)</span>.</li>
+<li><strong>Reading inner products off <span class="arithmatex">\(A\)</span></strong> — since <span class="arithmatex">\(A_{ij} = \langle e_i,e_j\rangle\)</span>, here <span class="arithmatex">\(\langle e_1,e_2\rangle = 1\)</span> and <span class="arithmatex">\(\langle e_2,e_3\rangle = -1\)</span>, so under this metric <span class="arithmatex">\(e_2\)</span> is <strong>not</strong> orthogonal to the plane <span class="arithmatex">\(U\)</span>, which is exactly why the projection is nonzero.</li>
+<li><strong>Distance with the same inner product</strong> — <span class="arithmatex">\(d(e_2,U) = \sqrt{\langle r,r\rangle} = \sqrt{r^\top A r}\)</span> with <span class="arithmatex">\(r = e_2 - \pi_U(e_2)\)</span>. A valid inner product always gives <span class="arithmatex">\(\langle r,r\rangle \ge 0\)</span>; a negative value signals a slip.</li>
+</ul>
+</div>
+<p>Anywhere two vectors would normally be dotted, sandwich the matrix <span class="arithmatex">\(A\)</span> between them. Everything else (build <span class="arithmatex">\(B\)</span>, solve for <span class="arithmatex">\(\lambda\)</span>, assemble the projection, measure the leftover) runs exactly like the standard case.</p>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, set up <span class="arithmatex">\(B\)</span>, then <span class="arithmatex">\(B^\top A B\)</span> and <span class="arithmatex">\(B^\top A e_2\)</span></p>
+<p>The basis of <span class="arithmatex">\(U\)</span> is <span class="arithmatex">\(e_1,e_3\)</span>, so <span class="arithmatex">\(B = \begin{pmatrix}1&amp;0\\0&amp;0\\0&amp;1\end{pmatrix}\)</span>. Then
+$<span class="arithmatex">\(B^\top A B = \begin{pmatrix}2&amp;0\\0&amp;2\end{pmatrix}, \qquad B^\top A e_2 = \begin{pmatrix}1\\-1\end{pmatrix}.\)</span>$
+(<span class="arithmatex">\(A e_2\)</span> is simply the second column of <span class="arithmatex">\(A\)</span>: <span class="arithmatex">\((1,2,-1)^\top\)</span>.)</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, solve for <span class="arithmatex">\(\lambda\)</span> and form the projection</p>
+<div class="arithmatex">\[\lambda = (B^\top A B)^{-1}B^\top A e_2 = \begin{pmatrix}\tfrac12&amp;0\\0&amp;\tfrac12\end{pmatrix}\begin{pmatrix}1\\-1\end{pmatrix} = \begin{pmatrix}\tfrac12\\-\tfrac12\end{pmatrix},\]</div>
+<div class="arithmatex">\[\pi_U(e_2) = B\lambda = \tfrac12 e_1 - \tfrac12 e_3 = \begin{pmatrix}\tfrac12\\0\\-\tfrac12\end{pmatrix}.\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, distance under the weighted norm</p>
+<p>The residual is <span class="arithmatex">\(r = e_2 - \pi_U(e_2) = \left(-\tfrac12,\ 1,\ \tfrac12\right)^\top\)</span>. Measure its length with the same inner product, not the plain norm:
+$<span class="arithmatex">\(A r = \begin{pmatrix}0\\1\\0\end{pmatrix}, \qquad r^\top A r = \left(-\tfrac12\right)(0) + (1)(1) + \left(\tfrac12\right)(0) = 1,\)</span>$
+so <span class="arithmatex">\(d(e_2,U) = \sqrt{1} = 1\)</span>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Common mistake</p>
+<p>Using the plain norm <span class="arithmatex">\(\sqrt{r^\top r} = \sqrt{3/2}\)</span> here is wrong. Once the problem defines a weighted inner product, <em>every</em> length, angle, and orthogonality check uses that same inner product.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[\pi_U(e_2) = \begin{pmatrix}\tfrac12\\0\\-\tfrac12\end{pmatrix}, \qquad d(e_2,U) = 1.\]</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Part c, the geometry</p>
+<p>The plane <span class="arithmatex">\(U = \operatorname{span}(e_1,e_3)\)</span> is the floor; <span class="arithmatex">\(e_1\)</span> and <span class="arithmatex">\(e_3\)</span> lie in it and <span class="arithmatex">\(e_2\)</span> stands above the origin. Under the standard dot product <span class="arithmatex">\(e_2\)</span> is perpendicular to <span class="arithmatex">\(U\)</span>, so its projection would be the origin. Under this weighted inner product <span class="arithmatex">\(e_2\)</span> leans toward <span class="arithmatex">\(e_1\)</span> (<span class="arithmatex">\(\langle e_1,e_2\rangle = +1\)</span>) and away from <span class="arithmatex">\(e_3\)</span> (<span class="arithmatex">\(\langle e_2,e_3\rangle = -1\)</span>), so the projection lands at <span class="arithmatex">\(\left(\tfrac12,0,-\tfrac12\right)\)</span>: a diagonal in the plane, close to <span class="arithmatex">\(e_1\)</span> but pulled slightly toward <span class="arithmatex">\(-e_3\)</span>. The dashed residual connects <span class="arithmatex">\(e_2\)</span> to <span class="arithmatex">\(\pi_U(e_2)\)</span> and its length is the distance <span class="arithmatex">\(d = 1\)</span>.</p>
+<p><img alt="Projection of e2 onto U under the weighted inner product" src="../../assets/ch3-projection-e2.png" /></p>
+</div>
+<hr />
+<h2 id="37-projections-and-their-complements">3.7 · Projections and their complements<a class="headerlink" href="#37-projections-and-their-complements" title="Permanent link">&para;</a></h2>
+<p>Let <span class="arithmatex">\(V\)</span> be a vector space and <span class="arithmatex">\(\pi\)</span> an endomorphism of <span class="arithmatex">\(V\)</span>.</p>
+<p><strong>(a)</strong> Prove that <span class="arithmatex">\(\pi\)</span> is a projection if and only if <span class="arithmatex">\(\operatorname{id}_V - \pi\)</span> is a projection, where <span class="arithmatex">\(\operatorname{id}_V\)</span> is the identity endomorphism on <span class="arithmatex">\(V\)</span>.</p>
+<p><strong>(b)</strong> Assuming <span class="arithmatex">\(\pi\)</span> is a projection, compute <span class="arithmatex">\(\operatorname{Im}(\operatorname{id}_V - \pi)\)</span> and <span class="arithmatex">\(\ker(\operatorname{id}_V - \pi)\)</span> in terms of <span class="arithmatex">\(\operatorname{Im}(\pi)\)</span> and <span class="arithmatex">\(\ker(\pi)\)</span>.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Projection <span class="arithmatex">\(=\)</span> idempotent</strong> — an endomorphism <span class="arithmatex">\(\pi\)</span> is a projection exactly when <span class="arithmatex">\(\pi^2 = \pi\)</span>. Once you have landed in the target subspace, projecting again does not move you. This single equation drives the whole exercise.</li>
+<li><strong>The identity behaves like <span class="arithmatex">\(1\)</span></strong> — composing with <span class="arithmatex">\(\operatorname{id}_V\)</span> changes nothing: <span class="arithmatex">\(\operatorname{id}\circ\pi = \pi\)</span> and <span class="arithmatex">\(\pi\circ\operatorname{id} = \pi\)</span>. This is what lets <span class="arithmatex">\((\operatorname{id} - \pi)^2\)</span> expand exactly like ordinary algebra.</li>
+<li><strong>What <span class="arithmatex">\(\operatorname{id} - \pi\)</span> does</strong> — feed it <span class="arithmatex">\(v\)</span> and you get <span class="arithmatex">\(v - \pi(v)\)</span>: the vector minus its projection, the same <strong>residual</strong> used to compute distances in the earlier exercises.</li>
+<li><strong>Proving a set equality</strong> — to show <span class="arithmatex">\(A = B\)</span>, prove both inclusions <span class="arithmatex">\(A \subseteq B\)</span> and <span class="arithmatex">\(B \subseteq A\)</span>.</li>
+</ul>
+</div>
+<p>Part a is pure algebra: expand <span class="arithmatex">\((\operatorname{id} - \pi)^2\)</span> and watch the condition <span class="arithmatex">\(\pi^2 = \pi\)</span> appear. Part b then chases elements through <span class="arithmatex">\(\operatorname{id} - \pi\)</span>, using <span class="arithmatex">\(\pi^2 = \pi\)</span> where needed, to show the image and kernel simply swap.</p>
+<div class="admonition steps">
+<p class="admonition-title">Part a, expand <span class="arithmatex">\((\operatorname{id} - \pi)^2\)</span></p>
+<p>Write <span class="arithmatex">\(\operatorname{id}\)</span> for <span class="arithmatex">\(\operatorname{id}_V\)</span>. Expanding the composition:
+$<span class="arithmatex">\((\operatorname{id} - \pi)^2 = \operatorname{id}\circ\operatorname{id} - \operatorname{id}\circ\pi - \pi\circ\operatorname{id} + \pi\circ\pi = \operatorname{id} - 2\pi + \pi^2.\)</span>$
+The two middle terms each collapse to <span class="arithmatex">\(\pi\)</span>, since composing with the identity does nothing.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part a, chain of equivalences</p>
+<p><span class="arithmatex">\(\operatorname{id} - \pi\)</span> is a projection precisely when it is idempotent:
+$<span class="arithmatex">\(\begin{aligned}(\operatorname{id} - \pi)^2 = \operatorname{id} - \pi &amp;\iff \operatorname{id} - 2\pi + \pi^2 = \operatorname{id} - \pi\\ &amp;\iff -2\pi + \pi^2 = -\pi\\ &amp;\iff \pi^2 = \pi.\end{aligned}\)</span>$
+Every step is reversible (subtract <span class="arithmatex">\(\operatorname{id}\)</span>, then add <span class="arithmatex">\(2\pi\)</span>, to both sides), so the biconditional holds in both directions at once. <span class="arithmatex">\(\blacksquare\)</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Why both directions come free</p>
+<p>Because the chain uses <span class="arithmatex">\(\iff\)</span> rather than <span class="arithmatex">\(\implies\)</span>, reading it top-to-bottom proves one direction and bottom-to-top proves the other. No separate argument is needed.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part b, <span class="arithmatex">\(\ker(\operatorname{id} - \pi) = \operatorname{Im}(\pi)\)</span></p>
+<p>Work directly from the definition of the kernel:
+$<span class="arithmatex">\(v \in \ker(\operatorname{id}-\pi) \iff (\operatorname{id}-\pi)(v) = 0 \iff v - \pi(v) = 0 \iff v = \pi(v).\)</span>$
+The statement <span class="arithmatex">\(v = \pi(v)\)</span> says that <span class="arithmatex">\(v\)</span> is an output of <span class="arithmatex">\(\pi\)</span>, which is exactly what it means for <span class="arithmatex">\(v\)</span> to lie in <span class="arithmatex">\(\operatorname{Im}(\pi)\)</span>. Every step is an equivalence, so
+$<span class="arithmatex">\(\ker(\operatorname{id}-\pi) = \operatorname{Im}(\pi).\)</span>$
+Note this direction does not even require idempotency.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part b, <span class="arithmatex">\(\operatorname{Im}(\operatorname{id} - \pi) = \ker(\pi)\)</span></p>
+<p><strong>(<span class="arithmatex">\(\subseteq\)</span>)</strong> Let <span class="arithmatex">\(w \in \operatorname{Im}(\operatorname{id} - \pi)\)</span>, so <span class="arithmatex">\(w = v - \pi(v)\)</span> for some <span class="arithmatex">\(v\)</span>. Apply <span class="arithmatex">\(\pi\)</span>:
+$<span class="arithmatex">\(\pi(w) = \pi(v) - \pi^2(v) = \pi(v) - \pi(v) = 0,\)</span>$
+using <span class="arithmatex">\(\pi^2 = \pi\)</span>. So <span class="arithmatex">\(w \in \ker(\pi)\)</span>.</p>
+<p><strong>(<span class="arithmatex">\(\supseteq\)</span>)</strong> Let <span class="arithmatex">\(w \in \ker(\pi)\)</span>, so <span class="arithmatex">\(\pi(w) = 0\)</span>. Then
+$<span class="arithmatex">\((\operatorname{id}-\pi)(w) = w - \pi(w) = w - 0 = w,\)</span>$
+so <span class="arithmatex">\(w\)</span> is its own image under <span class="arithmatex">\(\operatorname{id} - \pi\)</span>, hence <span class="arithmatex">\(w \in \operatorname{Im}(\operatorname{id}-\pi)\)</span>.</p>
+<p>Both inclusions hold, so <span class="arithmatex">\(\operatorname{Im}(\operatorname{id}-\pi) = \ker(\pi)\)</span>. <span class="arithmatex">\(\blacksquare\)</span></p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>a)</strong> <span class="arithmatex">\(\pi\)</span> is a projection <span class="arithmatex">\(\iff \pi^2 = \pi \iff (\operatorname{id}_V - \pi)^2 = \operatorname{id}_V - \pi \iff \operatorname{id}_V - \pi\)</span> is a projection.</p>
+<p><strong>b)</strong> The image and kernel swap:
+$<span class="arithmatex">\(\operatorname{Im}(\operatorname{id}_V - \pi) = \ker(\pi), \qquad \ker(\operatorname{id}_V - \pi) = \operatorname{Im}(\pi).\)</span>$</p>
+<p><strong>Intuition.</strong> A projection splits the space as <span class="arithmatex">\(V = \operatorname{Im}(\pi) \oplus \ker(\pi)\)</span>, acting as the identity on the first part and as zero on the second. The complementary map <span class="arithmatex">\(\operatorname{id}_V - \pi\)</span> keeps the residual instead, so it kills exactly what <span class="arithmatex">\(\pi\)</span> keeps and keeps exactly what <span class="arithmatex">\(\pi\)</span> kills. Their images and kernels therefore trade places.</p>
+</div>
+<hr />
+<h2 id="38-gram-schmidt-orthonormalisation">3.8 · Gram-Schmidt orthonormalisation<a class="headerlink" href="#38-gram-schmidt-orthonormalisation" title="Permanent link">&para;</a></h2>
+<p>Using the Gram-Schmidt method, turn the basis <span class="arithmatex">\(B = (b_1, b_2)\)</span> of a two-dimensional subspace <span class="arithmatex">\(U \subseteq \mathbb{R}^3\)</span> into an orthonormal basis (ONB) <span class="arithmatex">\(C = (c_1, c_2)\)</span> of <span class="arithmatex">\(U\)</span>, where
+$<span class="arithmatex">\(b_1 := \begin{pmatrix}1\\1\\1\end{pmatrix}, \qquad b_2 := \begin{pmatrix}-1\\2\\0\end{pmatrix}.\)</span>$</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Gram-Schmidt</strong> — turns any basis into an orthonormal one, one vector at a time. The engine is the projection machinery: for each new vector, subtract off its projection onto everything already built, then normalise what is left.</li>
+<li><strong>Orthogonal set</strong> — build <span class="arithmatex">\(u_1, u_2, \dots\)</span> by <span class="arithmatex">\(u_1 = v_1\)</span> and <span class="arithmatex">\(u_k = v_k - \sum_{j&lt;k} \dfrac{\langle v_k, u_j\rangle}{\lVert u_j\rVert^2}\, u_j\)</span>. Each subtracted term removes the component of <span class="arithmatex">\(v_k\)</span> lying along a previous <span class="arithmatex">\(u_j\)</span>, leaving a residual orthogonal to all of them.</li>
+<li><strong>Normalise last</strong> — once orthogonal, scale to unit length: <span class="arithmatex">\(c_k = \dfrac{u_k}{\lVert u_k\rVert}\)</span>.</li>
+</ul>
+</div>
+<p>It is cleanest to orthogonalise first (get <span class="arithmatex">\(u_1, u_2\)</span>), then normalise at the very end. Normalising as you go also works, but carrying square roots through the subtraction step is much messier by hand.</p>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, first vector</p>
+<p>Take <span class="arithmatex">\(u_1 = b_1 = (1,1,1)^\top\)</span>, with <span class="arithmatex">\(\lVert u_1\rVert = \sqrt{3}\)</span>. Normalising:
+$<span class="arithmatex">\(c_1 = \frac{1}{\sqrt{3}}\begin{pmatrix}1\\1\\1\end{pmatrix}.\)</span>$</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, subtract the projection from <span class="arithmatex">\(b_2\)</span></p>
+<p>The projection coefficient of <span class="arithmatex">\(b_2\)</span> onto <span class="arithmatex">\(u_1\)</span>:
+$<span class="arithmatex">\(\frac{\langle b_2, u_1\rangle}{\lVert u_1\rVert^2} = \frac{-1 + 2 + 0}{3} = \frac{1}{3}.\)</span>$
+Subtract that component off:
+$<span class="arithmatex">\(u_2 = b_2 - \tfrac13 u_1 = \begin{pmatrix}-1\\2\\0\end{pmatrix} - \tfrac13\begin{pmatrix}1\\1\\1\end{pmatrix} = \begin{pmatrix}-\tfrac43\\\tfrac53\\-\tfrac13\end{pmatrix}.\)</span>$</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Simplification</p>
+<p>Scaling a vector does not change its direction, so <span class="arithmatex">\(u_2\)</span> can be rescaled to the clean integer vector <span class="arithmatex">\((-4, 5, -1)^\top\)</span> before normalising. Same unit vector, far less fraction wrangling.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, normalise <span class="arithmatex">\(u_2\)</span></p>
+<div class="arithmatex">\[\lVert u_2\rVert = \sqrt{\tfrac{16}{9} + \tfrac{25}{9} + \tfrac{1}{9}} = \frac{\sqrt{42}}{3}.\]</div>
+<div class="arithmatex">\[c_2 = \frac{u_2}{\lVert u_2\rVert} = \frac{1}{\sqrt{42}}\begin{pmatrix}-4\\5\\-1\end{pmatrix}.\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 4, verify</p>
+<div class="arithmatex">\[\langle c_1, c_2\rangle = \frac{1}{\sqrt{3}\sqrt{42}}\big(-4 + 5 - 1\big) = 0 \quad\checkmark\ \text{orthogonal}.\]</div>
+<div class="arithmatex">\[\lVert c_1\rVert = 1, \qquad \lVert c_2\rVert = \frac{\sqrt{16 + 25 + 1}}{\sqrt{42}} = 1 \quad\checkmark\ \text{normalised}.\]</div>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[c_1 = \frac{1}{\sqrt{3}}\begin{pmatrix}1\\1\\1\end{pmatrix}, \qquad c_2 = \frac{1}{\sqrt{42}}\begin{pmatrix}-4\\5\\-1\end{pmatrix}.\]</div>
+<p>Equivalently, with denominators rationalised,
+$<span class="arithmatex">\(c_2 = \begin{pmatrix}-\tfrac{2\sqrt{42}}{21}\\[4pt] \tfrac{5\sqrt{42}}{42}\\[4pt] -\tfrac{\sqrt{42}}{42}\end{pmatrix}.\)</span>$
+Both forms are correct; the factored form is usually cleaner to read.</p>
+</div>
+<p>Reference: <a href="https://www.youtube.com/watch?v=zHbfZWZJTGc">Gram-Schmidt Process (Professor Dave Explains)</a></p>
+<hr />
+<h2 id="39-cauchy-schwarz-with-cleverly-chosen-vectors">3.9 · Cauchy-Schwarz with cleverly chosen vectors<a class="headerlink" href="#39-cauchy-schwarz-with-cleverly-chosen-vectors" title="Permanent link">&para;</a></h2>
+<p>Let <span class="arithmatex">\(n \in \mathbb{N}\)</span> and let <span class="arithmatex">\(x_1, \dots, x_n &gt; 0\)</span> be positive reals with <span class="arithmatex">\(x_1 + \dots + x_n = 1\)</span>. Use the Cauchy-Schwarz inequality to show that</p>
+<p><strong>(a)</strong> <span class="arithmatex">\(\displaystyle\sum_{i=1}^n x_i^2 \geq \frac{1}{n}\)</span>, &nbsp;&nbsp; <strong>(b)</strong> <span class="arithmatex">\(\displaystyle\sum_{i=1}^n \frac{1}{x_i} \geq n^2\)</span>.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Cauchy-Schwarz</strong> — for any vectors <span class="arithmatex">\(u, v\)</span> in an inner product space, <span class="arithmatex">\(\langle u, v\rangle^2 \leq \lVert u\rVert^2 \cdot \lVert v\rVert^2\)</span>, with equality exactly when <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span> are linearly dependent.</li>
+<li><strong>The trick here</strong> — the question is about <em>sums of numbers</em>, not vectors, so none are given. The whole skill is <strong>inventing</strong> vectors <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span> whose Cauchy-Schwarz inequality happens to say the thing you want.</li>
+<li><strong>How to find them</strong> — Cauchy-Schwarz has three slots (<span class="arithmatex">\(\langle u,v\rangle^2\)</span>, <span class="arithmatex">\(\lVert u\rVert^2\)</span>, <span class="arithmatex">\(\lVert v\rVert^2\)</span>). You have two ingredients to place: the <strong>target</strong> (what you are bounding) and the <strong>constraint</strong> (<span class="arithmatex">\(\sum x_i = 1\)</span>). Decide which slot each goes in, then solve for the vector components.</li>
+<li><strong>Where the square roots come from</strong> — a squared norm squares every component before adding, so to get <span class="arithmatex">\(\lVert v\rVert^2 = \sum \tfrac{1}{x_i}\)</span> you solve <span class="arithmatex">\((v_i)^2 = \tfrac1{x_i}\)</span>, giving <span class="arithmatex">\(v_i = \tfrac{1}{\sqrt{x_i}}\)</span>. The root is just what survives the squaring, and <span class="arithmatex">\(x_i &gt; 0\)</span> is what makes it well-defined.</li>
+</ul>
+</div>
+<p>Both parts follow the same recipe: put the target in a norm slot, choosing the components so squaring reproduces it, place the constraint wherever it lands, then let the last slot fall out. Part a needs no roots because its target is already a sum of squares; part b needs them.</p>
+<div class="admonition steps">
+<p class="admonition-title">Part a, choose the vectors</p>
+<p>The target <span class="arithmatex">\(\sum x_i^2\)</span> is already a sum of squares, so it drops straight into a norm slot with no roots:
+$<span class="arithmatex">\(u = \begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix} \;\Longrightarrow\; \lVert u\rVert^2 = \sum_{i=1}^n x_i^2 \quad\text{(the target)}.\)</span>$
+The constraint <span class="arithmatex">\(\sum x_i = 1\)</span> is a plain sum, so it belongs in the dot product. Solving <span class="arithmatex">\(u \cdot v = \sum x_i\)</span> term by term forces <span class="arithmatex">\(v_i = 1\)</span>:
+$<span class="arithmatex">\(v = \begin{pmatrix}1\\\vdots\\1\end{pmatrix} \;\Longrightarrow\; u \cdot v = \sum_{i=1}^n x_i = 1, \qquad \lVert v\rVert^2 = n.\)</span>$</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part a, apply the inequality</p>
+<div class="arithmatex">\[\underbrace{1}_{(u\cdot v)^2} \;\leq\; \underbrace{\left(\sum_{i=1}^n x_i^2\right)}_{\lVert u\rVert^2} \cdot \underbrace{n}_{\lVert v\rVert^2}.$$
+Dividing by $n$ (positive, so the direction is preserved):
+$$\sum_{i=1}^n x_i^2 \geq \frac{1}{n}. \qquad \blacksquare\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part b, choose the vectors</p>
+<p>Nothing in Cauchy-Schwarz manufactures reciprocals, so they must be built into a vector from the start. For the <strong>target</strong>, solve <span class="arithmatex">\((v_i)^2 = \tfrac{1}{x_i}\)</span>:
+$<span class="arithmatex">\(v = \begin{pmatrix}\tfrac{1}{\sqrt{x_1}}\\\vdots\\\tfrac{1}{\sqrt{x_n}}\end{pmatrix} \;\Longrightarrow\; \lVert v\rVert^2 = \sum_{i=1}^n \frac{1}{x_i} \quad\text{(the target)}.\)</span>$
+For the <strong>constraint</strong>, solve <span class="arithmatex">\((u_i)^2 = x_i\)</span>:
+$<span class="arithmatex">\(u = \begin{pmatrix}\sqrt{x_1}\\\vdots\\\sqrt{x_n}\end{pmatrix} \;\Longrightarrow\; \lVert u\rVert^2 = \sum_{i=1}^n x_i = 1 \quad\text{(the constraint)}.\)</span>$</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part b, apply the inequality</p>
+<p>Both vectors are now fixed, and the reciprocal pairing cancels inside the dot product:
+$<span class="arithmatex">\(u \cdot v = \sum_{i=1}^n \sqrt{x_i}\cdot\frac{1}{\sqrt{x_i}} = \sum_{i=1}^n 1 = n.\)</span>$
+Substituting into Cauchy-Schwarz:
+$<span class="arithmatex">\(\underbrace{n^2}_{(u\cdot v)^2} \;\leq\; \underbrace{1}_{\lVert u\rVert^2} \cdot \underbrace{\left(\sum_{i=1}^n \frac{1}{x_i}\right)}_{\lVert v\rVert^2},\)</span>$</p>
+<div class="arithmatex">\[\sum_{i=1}^n \frac{1}{x_i} \geq n^2. \qquad \blacksquare\]</div>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[\sum_{i=1}^n x_i^2 \geq \frac{1}{n}, \qquad \sum_{i=1}^n \frac{1}{x_i} \geq n^2.\]</div>
+<p><strong>The pattern.</strong> In both parts: put the <em>target</em> in a norm slot (solving for components so squaring produces it), put the <em>constraint</em> wherever it fits, and let the remaining slot fall out. Part a needs no square roots because its target is already a sum of squares; part b needs them because neither the target nor the constraint is.</p>
+<p><strong>Both bounds are tight.</strong> Equality in Cauchy-Schwarz needs <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span> parallel, which here means all the <span class="arithmatex">\(x_i\)</span> are equal, i.e. <span class="arithmatex">\(x_i = \tfrac1n\)</span>. Substituting confirms both bounds are hit exactly there.</p>
+</div>
+<hr />
+<h2 id="310-rotating-vectors-in-the-plane">3.10 · Rotating vectors in the plane<a class="headerlink" href="#310-rotating-vectors-in-the-plane" title="Permanent link">&para;</a></h2>
+<p>Rotate the vectors
+$<span class="arithmatex">\(x_1 := \begin{pmatrix}2\\3\end{pmatrix}, \qquad x_2 := \begin{pmatrix}0\\-1\end{pmatrix}\)</span>$
+by <span class="arithmatex">\(30^\circ\)</span>.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Rotation matrix</strong> — in <span class="arithmatex">\(\mathbb{R}^2\)</span>, an anticlockwise rotation by angle <span class="arithmatex">\(\theta\)</span> about the origin is the linear map <span class="arithmatex">\(R(\theta) = \begin{pmatrix}\cos\theta &amp; -\sin\theta\\\sin\theta &amp; \cos\theta\end{pmatrix}\)</span>, and rotating is just <span class="arithmatex">\(x \mapsto R(\theta)\,x\)</span>.</li>
+<li><strong>Where it comes from</strong> — the columns are the images of the standard basis vectors. Rotating <span class="arithmatex">\(e_1 = (1,0)^\top\)</span> lands it at <span class="arithmatex">\((\cos\theta, \sin\theta)^\top\)</span> (column 1); rotating <span class="arithmatex">\(e_2 = (0,1)^\top\)</span> lands it at <span class="arithmatex">\((-\sin\theta, \cos\theta)^\top\)</span> (column 2).</li>
+<li><strong>Sign convention</strong> — positive <span class="arithmatex">\(\theta\)</span> is anticlockwise. For clockwise, use <span class="arithmatex">\(R(-\theta)\)</span>, which flips the signs of the two sine terms.</li>
+<li><strong>Rotations are orthogonal maps</strong> — <span class="arithmatex">\(R(\theta)^\top R(\theta) = I\)</span>, so they preserve lengths and angles: <span class="arithmatex">\(\lVert R(\theta)x\rVert = \lVert x\rVert\)</span>. That gives a free check on any answer.</li>
+</ul>
+</div>
+<p>A rotation just spins each vector about the origin without stretching it. Write down <span class="arithmatex">\(R(30^\circ)\)</span> once, multiply each vector through, and then confirm the lengths are unchanged as a sanity check.</p>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, write down <span class="arithmatex">\(R(30^\circ)\)</span></p>
+<p>With <span class="arithmatex">\(\cos 30^\circ = \tfrac{\sqrt3}{2}\)</span> and <span class="arithmatex">\(\sin 30^\circ = \tfrac12\)</span>:
+$<span class="arithmatex">\(R(30^\circ) = \begin{pmatrix}\cos 30^\circ &amp; -\sin 30^\circ\\\sin 30^\circ &amp; \cos 30^\circ\end{pmatrix} = \begin{pmatrix}\tfrac{\sqrt3}{2} &amp; -\tfrac12\\[4pt] \tfrac12 &amp; \tfrac{\sqrt3}{2}\end{pmatrix}.\)</span>$</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Keep the surds</p>
+<p>Work with exact values <span class="arithmatex">\(\tfrac{\sqrt3}{2}\)</span> and <span class="arithmatex">\(\tfrac12\)</span> rather than decimals. Rounding early accumulates error and hides the structure of the answer.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, rotate <span class="arithmatex">\(x_1\)</span></p>
+<div class="arithmatex">\[R(30^\circ)\,x_1 = \begin{pmatrix}\tfrac{\sqrt3}{2} &amp; -\tfrac12\\[4pt] \tfrac12 &amp; \tfrac{\sqrt3}{2}\end{pmatrix}\begin{pmatrix}2\\3\end{pmatrix} = \begin{pmatrix}\tfrac{\sqrt3}{2}(2) - \tfrac12(3)\\[4pt] \tfrac12(2) + \tfrac{\sqrt3}{2}(3)\end{pmatrix} = \begin{pmatrix}\sqrt3 - \tfrac32\\[4pt] 1 + \tfrac{3\sqrt3}{2}\end{pmatrix} \approx \begin{pmatrix}0.232\\3.598\end{pmatrix}.\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, rotate <span class="arithmatex">\(x_2\)</span></p>
+<div class="arithmatex">\[R(30^\circ)\,x_2 = \begin{pmatrix}\tfrac{\sqrt3}{2} &amp; -\tfrac12\\[4pt] \tfrac12 &amp; \tfrac{\sqrt3}{2}\end{pmatrix}\begin{pmatrix}0\\-1\end{pmatrix} = \begin{pmatrix}\tfrac{\sqrt3}{2}(0) - \tfrac12(-1)\\[4pt] \tfrac12(0) + \tfrac{\sqrt3}{2}(-1)\end{pmatrix} = \begin{pmatrix}\tfrac12\\[4pt] -\tfrac{\sqrt3}{2}\end{pmatrix} \approx \begin{pmatrix}0.5\\-0.866\end{pmatrix}.\]</div>
+<p>A nice cross-check: <span class="arithmatex">\(x_2\)</span> starts pointing straight down, at <span class="arithmatex">\(270^\circ\)</span>. Rotating anticlockwise by <span class="arithmatex">\(30^\circ\)</span> lands it at <span class="arithmatex">\(300^\circ\)</span>, and indeed <span class="arithmatex">\((\cos 300^\circ, \sin 300^\circ) = (\tfrac12, -\tfrac{\sqrt3}{2})\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 4, verify lengths are preserved</p>
+<p>Rotations are isometries, so the norms must be unchanged:
+$<span class="arithmatex">\(\lVert x_1\rVert = \sqrt{4 + 9} = \sqrt{13}, \qquad \lVert R x_1\rVert = \sqrt{13} \quad\checkmark\)</span>$</p>
+<div class="arithmatex">\[\lVert x_2\rVert = 1, \qquad \lVert R x_2\rVert = \sqrt{\tfrac14 + \tfrac34} = 1 \quad\checkmark\]</div>
+<p>If a rotated vector has a different length from the original, there is an arithmetic error somewhere.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[R(30^\circ)\,x_1 = \begin{pmatrix}\sqrt3 - \tfrac32\\[4pt] 1 + \tfrac{3\sqrt3}{2}\end{pmatrix} \approx \begin{pmatrix}0.232\\3.598\end{pmatrix},\]</div>
+<div class="arithmatex">\[R(30^\circ)\,x_2 = \begin{pmatrix}\tfrac12\\[4pt] -\tfrac{\sqrt3}{2}\end{pmatrix} \approx \begin{pmatrix}0.5\\-0.866\end{pmatrix}.\]</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/anp-exe" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.sections", "toc.integrate", "content.code.copy", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

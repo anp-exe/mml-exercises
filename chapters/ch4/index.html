@@ -1,0 +1,1606 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Worked end-of-chapter exercise solutions for Mathematics for Machine Learning">
+      
+      
+        <meta name="author" content="Anna">
+      
+      
+        <link rel="canonical" href="https://anp-exe.github.io/mml-excerises/chapters/ch4/">
+      
+      
+        <link rel="prev" href="../ch3/">
+      
+      
+        <link rel="next" href="../ch5/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Ch 4 · Matrix Decompositions - MML Exercise Answers</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Nunito";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-4-matrix-decompositions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MML Exercise Answers" class="md-header__button md-logo" aria-label="MML Exercise Answers" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MML Exercise Answers
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch 4 · Matrix Decompositions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MML Exercise Answers" class="md-nav__button md-logo" aria-label="MML Exercise Answers" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MML Exercise Answers
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 2 · Linear Algebra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 3 · Analytic Geometry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 4 · Matrix Decompositions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 4 · Matrix Decompositions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-determinant-via-laplace-and-sarrus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 · Determinant via Laplace and Sarrus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-computing-a-5times5-determinant-efficiently" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 · Computing a \(5\times5\) determinant efficiently
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-computing-eigenspaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 · Computing eigenspaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-eigenspaces-of-a-4times4-a-defective-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 · Eigenspaces of a \(4\times4\) (a defective matrix)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-diagonalizability-vs-invertibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 · Diagonalizability vs invertibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-eigenspaces-and-diagonalizability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 · Eigenspaces and diagonalizability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47-diagonal-form-and-eigenbasis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 · Diagonal form and eigenbasis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#48-singular-value-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 · Singular value decomposition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#49-svd-of-a-square-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.9 · SVD of a square matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#410-rank-1-approximation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.10 · Rank-1 approximation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#411-atop-a-and-aatop-share-nonzero-eigenvalues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11 · \(A^\top A\) and \(AA^\top\) share nonzero eigenvalues
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#412-the-largest-singular-value-is-the-maximum-stretch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.12 · The largest singular value is the maximum stretch
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 5 · Vector Calculus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 6 · Probability & Distributions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 7 · Continuous Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 8 · When Models Meet Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 9 · Linear Regression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 10 · Dimensionality Reduction (PCA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 11 · Density Estimation (GMM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 12 · Classification (SVM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../proofs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proofs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-4-matrix-decompositions">Chapter 4 · Matrix Decompositions<a class="headerlink" href="#chapter-4-matrix-decompositions" title="Permanent link">&para;</a></h1>
+<p>End-of-chapter exercises. Each has a definitions box, explanation, worked steps, and the answer.</p>
+<hr />
+<h2 id="41-determinant-via-laplace-and-sarrus">4.1 · Determinant via Laplace and Sarrus<a class="headerlink" href="#41-determinant-via-laplace-and-sarrus" title="Permanent link">&para;</a></h2>
+<p>Compute the determinant of
+$<span class="arithmatex">\(A = \begin{pmatrix}1&amp;3&amp;5\\2&amp;4&amp;6\\0&amp;2&amp;4\end{pmatrix}\)</span>$
+using the Laplace expansion (along the first row) and Sarrus' rule.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Laplace expansion</strong> — pick any row or column; for each entry delete its row and column to form the minor, take that minor's determinant, multiply by the entry, attach a checkerboard sign, and sum: <span class="arithmatex">\(\det(A) = \sum_{k=1}^{n} (-1)^{j+k}\, a_{jk}\, \det(A_{j,k})\)</span>.</li>
+<li><strong>Checkerboard signs</strong> — for a <span class="arithmatex">\(3\times3\)</span> they are <span class="arithmatex">\(\begin{pmatrix}+&amp;-&amp;+\\-&amp;+&amp;-\\+&amp;-&amp;+\end{pmatrix}\)</span>. A zero entry contributes a zero term, so its minor never needs computing. Expand along the row or column with the most zeros; every line gives the same answer, so pick the laziest one.</li>
+<li><strong>Sarrus' rule</strong> — a <span class="arithmatex">\(3\times3\)</span>-only shortcut: copy the first two columns to the right, add the three down-right (<span class="arithmatex">\(\searrow\)</span>) diagonal products, and subtract the three up-right (<span class="arithmatex">\(\nearrow\)</span>) ones. Does not generalise beyond <span class="arithmatex">\(3\times3\)</span>.</li>
+<li><strong>Zero determinant</strong> — the columns are linearly dependent, the parallelepiped they span is squashed flat (zero volume), and <span class="arithmatex">\(A\)</span> is not invertible (singular).</li>
+</ul>
+</div>
+<p>Both methods must land on the same number, so computing it two ways is a built-in cross-check. Laplace along row 1 uses the signs <span class="arithmatex">\(+, -, +\)</span>; Sarrus reads six diagonal products.</p>
+<div class="admonition steps">
+<p class="admonition-title">Method 1, Laplace along the first row</p>
+<p>Row 1 is <span class="arithmatex">\((1, 3, 5)\)</span> with signs <span class="arithmatex">\(+, -, +\)</span> from the checkerboard.</p>
+<p><strong>Entry <span class="arithmatex">\(a_{11} = 1\)</span>, sign <span class="arithmatex">\(+\)</span>.</strong> Delete row 1 and column 1:
+$<span class="arithmatex">\(\det\begin{pmatrix}4&amp;6\\2&amp;4\end{pmatrix} = 16 - 12 = 4.\)</span>$</p>
+<p><strong>Entry <span class="arithmatex">\(a_{12} = 3\)</span>, sign <span class="arithmatex">\(-\)</span>.</strong> Delete row 1 and column 2:
+$<span class="arithmatex">\(\det\begin{pmatrix}2&amp;6\\0&amp;4\end{pmatrix} = 8 - 0 = 8.\)</span>$</p>
+<p><strong>Entry <span class="arithmatex">\(a_{13} = 5\)</span>, sign <span class="arithmatex">\(+\)</span>.</strong> Delete row 1 and column 3:
+$<span class="arithmatex">\(\det\begin{pmatrix}2&amp;4\\0&amp;2\end{pmatrix} = 4 - 0 = 4.\)</span>$</p>
+<p>Assemble:
+$<span class="arithmatex">\(\det(A) = +(1)(4) - (3)(8) + (5)(4) = 4 - 24 + 20 = 0.\)</span>$</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Common slip</p>
+<p>The alternating <span class="arithmatex">\(+, -, +\)</span> on the first row is where most sign errors happen. Dropping the minus on the middle term would give <span class="arithmatex">\(4 + 24 + 20 = 48\)</span> instead of <span class="arithmatex">\(0\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Method 2, Sarrus' rule</p>
+<p>Copy the first two columns to the right:
+$<span class="arithmatex">\(\begin{array}{ccc|cc}1&amp;3&amp;5&amp;1&amp;3\\2&amp;4&amp;6&amp;2&amp;4\\0&amp;2&amp;4&amp;0&amp;2\end{array}\)</span>$</p>
+<p>Down-right diagonals (<span class="arithmatex">\(\searrow\)</span>), added:
+$<span class="arithmatex">\(1\cdot4\cdot4 = 16, \qquad 3\cdot6\cdot0 = 0, \qquad 5\cdot2\cdot2 = 20 \;\Longrightarrow\; 36.\)</span>$</p>
+<p>Up-right diagonals (<span class="arithmatex">\(\nearrow\)</span>), subtracted:
+$<span class="arithmatex">\(0\cdot4\cdot5 = 0, \qquad 2\cdot6\cdot1 = 12, \qquad 4\cdot2\cdot3 = 24 \;\Longrightarrow\; 36.\)</span>$</p>
+<div class="arithmatex">\[\det(A) = 36 - 36 = 0.\]</div>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[\det(A) = 0.\]</div>
+<p>Both methods agree, a useful cross-check whenever two independent routes are available. A zero determinant means <span class="arithmatex">\(A\)</span> is <strong>singular</strong>: its columns are linearly dependent, the parallelepiped they span has collapsed to zero volume, and <span class="arithmatex">\(A^{-1}\)</span> does not exist. This exercise is quietly a "spot the singular matrix" question, not just an arithmetic drill.</p>
+</div>
+<hr />
+<h2 id="42-computing-a-5times5-determinant-efficiently">4.2 · Computing a <span class="arithmatex">\(5\times5\)</span> determinant efficiently<a class="headerlink" href="#42-computing-a-5times5-determinant-efficiently" title="Permanent link">&para;</a></h2>
+<p>Compute the determinant of
+$<span class="arithmatex">\(A = \begin{pmatrix}2&amp;0&amp;1&amp;2&amp;0\\2&amp;-1&amp;0&amp;1&amp;1\\0&amp;1&amp;2&amp;1&amp;2\\-2&amp;0&amp;2&amp;-1&amp;2\\2&amp;0&amp;0&amp;1&amp;1\end{pmatrix}\)</span>$
+efficiently.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>"Efficiently" is the whole exercise</strong> — a naive Laplace expansion of a <span class="arithmatex">\(5\times5\)</span> spawns five <span class="arithmatex">\(4\times4\)</span> minors, each spawning four <span class="arithmatex">\(3\times3\)</span>s, that is <span class="arithmatex">\(20\)</span> sub-determinants. Done well, this needs the real computation of just one <span class="arithmatex">\(4\times4\)</span>.</li>
+<li><strong>Expand along the most zeros</strong> — every zero entry gives a zero term, so its minor never needs building. Any row or column gives the same answer, so pick the laziest one.</li>
+<li><strong>Identical rows or columns force <span class="arithmatex">\(\det = 0\)</span></strong> — they are linearly dependent, so the spanned parallelepiped collapses to zero volume. Skip the expansion entirely. A row or column of all zeros does the same.</li>
+<li><strong>Track signs as three factors</strong> — when the entry multiplying a minor is itself negative, the double negative is an easy place to lose a sign. Keep <span class="arithmatex">\((\text{sign}) \times (\text{entry}) \times (\text{minor})\)</span> as three separate pieces.</li>
+</ul>
+</div>
+<p>Before expanding anything, look at the matrix. Find the line with the most zeros to expand along, and watch for duplicate rows or columns that zero a minor for free. Here both tricks apply, so almost no arithmetic is needed.</p>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, count the zeros</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Column</th>
+<th style="text-align: center;">Entries</th>
+<th style="text-align: center;">Zeros</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="arithmatex">\(2, 2, 0, -2, 2\)</span></td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="arithmatex">\(0, -1, 1, 0, 0\)</span></td>
+<td style="text-align: center;">3 ⭐</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="arithmatex">\(1, 0, 2, 2, 0\)</span></td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><span class="arithmatex">\(2, 1, 1, -1, 1\)</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"><span class="arithmatex">\(0, 1, 2, 2, 1\)</span></td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Column 2 wins.</strong> Only two of its five entries are nonzero: <span class="arithmatex">\(-1\)</span> at row 2 and <span class="arithmatex">\(1\)</span> at row 3. Three terms die immediately, leaving just <strong>two</strong> <span class="arithmatex">\(4\times4\)</span> minors instead of five.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, the two surviving minors</p>
+<p><strong>Entry <span class="arithmatex">\(a_{22} = -1\)</span></strong>, sign <span class="arithmatex">\((-1)^{2+2} = +1\)</span>. Delete row 2 and column 2:
+$<span class="arithmatex">\(M_1 = \begin{pmatrix}2&amp;1&amp;2&amp;0\\0&amp;2&amp;1&amp;2\\-2&amp;2&amp;-1&amp;2\\2&amp;0&amp;1&amp;1\end{pmatrix}, \qquad \det(M_1) = -6.\)</span>$</p>
+<p><strong>Entry <span class="arithmatex">\(a_{32} = 1\)</span></strong>, sign <span class="arithmatex">\((-1)^{3+2} = -1\)</span>. Delete row 3 and column 2:
+$<span class="arithmatex">\(M_2 = \begin{pmatrix}2&amp;1&amp;2&amp;0\\2&amp;0&amp;1&amp;1\\-2&amp;2&amp;-1&amp;2\\2&amp;0&amp;1&amp;1\end{pmatrix}.\)</span>$</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Free win, do not expand this one</p>
+<p><strong>Rows 2 and 4 of <span class="arithmatex">\(M_2\)</span> are identical</strong> (<span class="arithmatex">\(2, 0, 1, 1\)</span> both times). Identical rows force <span class="arithmatex">\(\det(M_2) = 0\)</span> with no computation at all. Spotting this saves an entire <span class="arithmatex">\(4\times4\)</span> expansion.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, assemble</p>
+<p>$<span class="arithmatex">\(\det(A) = \underbrace{(+1)(-1)(-6)}_{\text{entry } a_{22}} \;+\; \underbrace{(-1)(1)(0)}_{\text{entry } a_{32}} = 6 + 0 = 6.\)</span>$
+Note the first term: the entry is <span class="arithmatex">\(-1\)</span> and the minor is <span class="arithmatex">\(-6\)</span>, so the two negatives cancel to give <span class="arithmatex">\(+6\)</span>.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[\det(A) = 6.\]</div>
+<p><strong>What made it efficient.</strong> The naive route is <span class="arithmatex">\(20\)</span> sub-determinants. Here column 2's three zeros cut five minors down to two, <span class="arithmatex">\(M_2\)</span>'s duplicate rows made it zero for free, and only one <span class="arithmatex">\(4\times4\)</span> ever needed real work. The exercise tests strategy, not arithmetic: scan for zeros and duplicate lines before computing anything, the single highest-leverage move in the whole determinants topic.</p>
+</div>
+<hr />
+<h2 id="43-computing-eigenspaces">4.3 · Computing eigenspaces<a class="headerlink" href="#43-computing-eigenspaces" title="Permanent link">&para;</a></h2>
+<p>Compute the eigenspaces of
+$<span class="arithmatex">\(\text{(a)}\quad A := \begin{pmatrix}1&amp;0\\1&amp;1\end{pmatrix}, \qquad \text{(b)}\quad B := \begin{pmatrix}-2&amp;2\\2&amp;1\end{pmatrix}.\)</span>$</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Eigenvalue equation</strong> — <span class="arithmatex">\(\lambda\)</span> is an eigenvalue of <span class="arithmatex">\(A\)</span> if <span class="arithmatex">\(Av = \lambda v\)</span> for some nonzero <span class="arithmatex">\(v\)</span>. Rearranged, <span class="arithmatex">\((A - \lambda I)v = 0\)</span>, which needs <span class="arithmatex">\(A - \lambda I\)</span> singular, so <span class="arithmatex">\(\det(A - \lambda I) = 0\)</span>. That is the characteristic polynomial, and its roots are exactly the eigenvalues.</li>
+<li><strong>Workflow</strong> — form <span class="arithmatex">\(A - \lambda I\)</span> (subtract <span class="arithmatex">\(\lambda\)</span> down the diagonal), compute its determinant, set it to zero and solve for the eigenvalues, then for each <span class="arithmatex">\(\lambda\)</span> separately solve <span class="arithmatex">\((A - \lambda I)v = 0\)</span> for its eigenspace. Each eigenvalue gets its own system and its own answer; they are never combined.</li>
+<li><strong>Free variables are the point</strong> — when solving <span class="arithmatex">\((A - \lambda I)v = 0\)</span> the rows always go redundant (that is exactly why <span class="arithmatex">\(\lambda\)</span> was chosen), so a row reducing to <span class="arithmatex">\(0 = 0\)</span> constrains nothing and gets crossed out. The unconstrained variable spans the eigenspace. Careful: <span class="arithmatex">\(0v_1 + 0v_2 = 0\)</span> says nothing about <span class="arithmatex">\(v_2\)</span>; multiplying by zero destroys the information, so it cannot "see" the variable at all.</li>
+<li><strong>Scaling is free</strong> — <span class="arithmatex">\((1,3)\)</span>, <span class="arithmatex">\((2,6)\)</span>, and <span class="arithmatex">\((-1,-3)\)</span> all span the same line, so pick the cleanest integer representative.</li>
+<li><strong>Two multiplicities</strong> — the algebraic multiplicity is how many times <span class="arithmatex">\(\lambda\)</span> is a root; the geometric multiplicity is the dimension of its eigenspace. They need not match, and you have to solve the system to find out.</li>
+</ul>
+</div>
+<p>The recipe is the same for both matrices: build the characteristic polynomial, find its roots, then solve a separate singular system for each root. Part a lands on one repeated eigenvalue; part b on two distinct ones.</p>
+<div class="admonition steps">
+<p class="admonition-title">Part a, characteristic polynomial</p>
+<div class="arithmatex">\[A - \lambda I = \begin{pmatrix}1-\lambda &amp; 0\\1 &amp; 1-\lambda\end{pmatrix}.\]</div>
+<div class="arithmatex">\[\det(A - \lambda I) = (1-\lambda)(1-\lambda) - (0)(1) = (1-\lambda)^2 = \lambda^2 - 2\lambda + 1.\]</div>
+<p>Setting to zero, <span class="arithmatex">\((\lambda - 1)^2 = 0 \Rightarrow \lambda = 1\)</span>: a single eigenvalue, but a repeated root, so algebraic multiplicity <span class="arithmatex">\(2\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part a, eigenspace for <span class="arithmatex">\(\lambda = 1\)</span></p>
+<p>Substitute <span class="arithmatex">\(\lambda = 1\)</span>:
+$<span class="arithmatex">\(A - I = \begin{pmatrix}0 &amp; 0\\1 &amp; 0\end{pmatrix}.\)</span>$
+Reading <span class="arithmatex">\((A - I)v = 0\)</span> row by row: row 1 is <span class="arithmatex">\(0v_1 + 0v_2 = 0\)</span>, no information, discard; row 2 is <span class="arithmatex">\(v_1 = 0\)</span>. So <span class="arithmatex">\(v_1 = 0\)</span> and <span class="arithmatex">\(v_2\)</span> is free:
+$<span class="arithmatex">\(v = \begin{pmatrix}0\\v_2\end{pmatrix} = v_2\begin{pmatrix}0\\1\end{pmatrix}.\)</span>$
+Check: <span class="arithmatex">\(A\begin{pmatrix}0\\1\end{pmatrix} = \begin{pmatrix}0\\1\end{pmatrix} = 1\cdot\begin{pmatrix}0\\1\end{pmatrix}\)</span>. <span class="arithmatex">\(\checkmark\)</span></p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part b, characteristic polynomial</p>
+<div class="arithmatex">\[B - \lambda I = \begin{pmatrix}-2-\lambda &amp; 2\\2 &amp; 1-\lambda\end{pmatrix}.\]</div>
+<div class="arithmatex">\[\det(B - \lambda I) = (-2-\lambda)(1-\lambda) - (2)(2) = \lambda^2 + \lambda - 6.\]</div>
+<p>Factorising (two numbers multiplying to <span class="arithmatex">\(-6\)</span> and summing to <span class="arithmatex">\(+1\)</span>, namely <span class="arithmatex">\(-2\)</span> and <span class="arithmatex">\(3\)</span>):
+$<span class="arithmatex">\(\lambda^2 + \lambda - 6 = (\lambda - 2)(\lambda + 3) = 0 \Rightarrow \lambda = 2 \ \text{and}\ \lambda = -3.\)</span>$
+Two distinct eigenvalues, so two separate eigenspaces.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part b, eigenspace for <span class="arithmatex">\(\lambda = 2\)</span></p>
+<p>$<span class="arithmatex">\(B - 2I = \begin{pmatrix}-4 &amp; 2\\2 &amp; -1\end{pmatrix}.\)</span>$
+Row 1: <span class="arithmatex">\(-4v_1 + 2v_2 = 0 \Rightarrow v_2 = 2v_1\)</span>. Row 2: <span class="arithmatex">\(2v_1 - v_2 = 0 \Rightarrow v_2 = 2v_1\)</span> (the same information, as expected). Taking <span class="arithmatex">\(v_1 = 1\)</span>:
+$<span class="arithmatex">\(E_2 = \operatorname{span}\left\{\begin{pmatrix}1\\2\end{pmatrix}\right\}.\)</span>$
+Check: <span class="arithmatex">\(B\begin{pmatrix}1\\2\end{pmatrix} = \begin{pmatrix}2\\4\end{pmatrix} = 2\begin{pmatrix}1\\2\end{pmatrix}\)</span>. <span class="arithmatex">\(\checkmark\)</span></p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part b, eigenspace for <span class="arithmatex">\(\lambda = -3\)</span></p>
+<p>$<span class="arithmatex">\(B + 3I = \begin{pmatrix}1 &amp; 2\\2 &amp; 4\end{pmatrix}.\)</span>$
+Row 1: <span class="arithmatex">\(v_1 + 2v_2 = 0 \Rightarrow v_1 = -2v_2\)</span>. Row 2: <span class="arithmatex">\(2v_1 + 4v_2 = 0 \Rightarrow v_1 = -2v_2\)</span> (redundant, as expected). Taking <span class="arithmatex">\(v_2 = 1\)</span>:
+$<span class="arithmatex">\(E_{-3} = \operatorname{span}\left\{\begin{pmatrix}-2\\1\end{pmatrix}\right\}.\)</span>$
+Check: <span class="arithmatex">\(B\begin{pmatrix}-2\\1\end{pmatrix} = \begin{pmatrix}6\\-3\end{pmatrix} = -3\begin{pmatrix}-2\\1\end{pmatrix}\)</span>. <span class="arithmatex">\(\checkmark\)</span></p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>a)</strong> One eigenvalue <span class="arithmatex">\(\lambda = 1\)</span>, with a one-dimensional eigenspace:
+$<span class="arithmatex">\(E_1 = \operatorname{span}\left\{\begin{pmatrix}0\\1\end{pmatrix}\right\}.\)</span>$</p>
+<p><strong>b)</strong> Two eigenvalues, each with a one-dimensional eigenspace:
+$<span class="arithmatex">\(E_2 = \operatorname{span}\left\{\begin{pmatrix}1\\2\end{pmatrix}\right\}, \qquad E_{-3} = \operatorname{span}\left\{\begin{pmatrix}-2\\1\end{pmatrix}\right\}.\)</span>$</p>
+<p><strong>Part a is defective.</strong> The eigenvalue <span class="arithmatex">\(\lambda = 1\)</span> has algebraic multiplicity <span class="arithmatex">\(2\)</span> but geometric multiplicity <span class="arithmatex">\(1\)</span>: a <span class="arithmatex">\(2\times2\)</span> matrix yielding only one independent eigenvector direction. Geometrically <span class="arithmatex">\(A\)</span> is a shear, leaving the <span class="arithmatex">\(y\)</span>-axis fixed but tilting everything else, so only one line survives unchanged. Such a matrix is not diagonalisable.</p>
+<p><strong>Part b's eigenvectors are orthogonal.</strong> <span class="arithmatex">\((1,2)\cdot(-2,1) = -2 + 2 = 0\)</span>. This is not luck: <span class="arithmatex">\(B\)</span> is symmetric, and symmetric matrices always have orthogonal eigenvectors for distinct eigenvalues.</p>
+</div>
+<hr />
+<h2 id="44-eigenspaces-of-a-4times4-a-defective-matrix">4.4 · Eigenspaces of a <span class="arithmatex">\(4\times4\)</span> (a defective matrix)<a class="headerlink" href="#44-eigenspaces-of-a-4times4-a-defective-matrix" title="Permanent link">&para;</a></h2>
+<p>Compute all eigenspaces of
+$<span class="arithmatex">\(A = \begin{pmatrix}0&amp;-1&amp;1&amp;1\\-1&amp;1&amp;-2&amp;3\\2&amp;-1&amp;0&amp;0\\1&amp;-1&amp;1&amp;0\end{pmatrix}.\)</span>$</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Same method, just bigger</strong> — form <span class="arithmatex">\(A - \lambda I\)</span> and compute <span class="arithmatex">\(\det(A - \lambda I)\)</span> (the characteristic polynomial), factorise and set to zero for the eigenvalues, then for <strong>each</strong> eigenvalue solve <span class="arithmatex">\((A - \lambda I)v = 0\)</span> by row reduction for its eigenspace.</li>
+<li><strong>Two free sanity checks</strong> — before factorising, verify the coefficient of <span class="arithmatex">\(\lambda^{n-1}\)</span> equals <span class="arithmatex">\(-\operatorname{tr}(A)\)</span> and the constant term equals <span class="arithmatex">\(\det(A)\)</span>. Here <span class="arithmatex">\(\operatorname{tr}(A) = 1\)</span> and <span class="arithmatex">\(\det(A) = 2\)</span>, so the <span class="arithmatex">\(\lambda^3\)</span> coefficient must be <span class="arithmatex">\(-1\)</span> and the constant must be <span class="arithmatex">\(2\)</span>. A mismatch means a slip upstream, catch it before wasting effort factorising.</li>
+<li><strong>Reading an eigenspace off an RREF</strong> — a column with a leading <span class="arithmatex">\(1\)</span> is a pivot, so that variable is pinned; a column with no leading <span class="arithmatex">\(1\)</span> is free and spans the eigenspace. A non-leading entry (a stray <span class="arithmatex">\(-1\)</span>, say) does not make a column a pivot.</li>
+<li><strong>Algebraic vs geometric multiplicity</strong> — algebraic is how many times <span class="arithmatex">\(\lambda\)</span> is a root; geometric is the dimension of the eigenspace, i.e. the number of free variables. When geometric <span class="arithmatex">\(&lt;\)</span> algebraic the matrix is <strong>defective</strong> and cannot be diagonalised.</li>
+</ul>
+</div>
+<p>The size jumps to <span class="arithmatex">\(4\times4\)</span> but nothing conceptual changes. The one thing to watch is the repeated root: an eigenvalue can appear twice in the polynomial yet still hand back only a single eigenvector direction.</p>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, characteristic polynomial</p>
+<p>Expanding <span class="arithmatex">\(\det(A - \lambda I)\)</span> by Laplace along column 4 (its zero entry kills one term, leaving three minors):
+$<span class="arithmatex">\(p_A(\lambda) = \lambda^4 - \lambda^3 - 3\lambda^2 + \lambda + 2.\)</span>$
+Check: the <span class="arithmatex">\(\lambda^3\)</span> coefficient is <span class="arithmatex">\(-1 = -\operatorname{tr}(A)\)</span> <span class="arithmatex">\(\checkmark\)</span>, and the constant is <span class="arithmatex">\(2 = \det(A)\)</span> <span class="arithmatex">\(\checkmark\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, factorise</p>
+<p>By the rational root test the candidates are <span class="arithmatex">\(\pm1, \pm2\)</span>. Testing <span class="arithmatex">\(\lambda = 1\)</span> gives zero, so <span class="arithmatex">\((\lambda - 1)\)</span> is a factor; dividing out and repeating:
+$<span class="arithmatex">\(p_A(\lambda) = (\lambda + 1)^2 (\lambda - 1)(\lambda - 2).\)</span>$
+Eigenvalues: <span class="arithmatex">\(\lambda = -1\)</span> (algebraic multiplicity <span class="arithmatex">\(2\)</span>), <span class="arithmatex">\(\lambda = 1\)</span>, <span class="arithmatex">\(\lambda = 2\)</span>. Multiplicities sum to <span class="arithmatex">\(4\)</span> <span class="arithmatex">\(\checkmark\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, eigenspace for <span class="arithmatex">\(\lambda = 2\)</span></p>
+<p>Row-reduce <span class="arithmatex">\(A - 2I\)</span>; one free variable remains, giving
+$<span class="arithmatex">\(E_2 = \operatorname{span}\left\{\begin{pmatrix}1\\0\\1\\1\end{pmatrix}\right\}.\)</span>$
+Check: <span class="arithmatex">\(A(1,0,1,1)^\top = (2,0,2,2)^\top = 2(1,0,1,1)^\top\)</span>. <span class="arithmatex">\(\checkmark\)</span></p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 4, eigenspace for <span class="arithmatex">\(\lambda = 1\)</span></p>
+<p>Row-reduce <span class="arithmatex">\(A - I\)</span>; one free variable:
+$<span class="arithmatex">\(E_1 = \operatorname{span}\left\{\begin{pmatrix}1\\1\\1\\1\end{pmatrix}\right\}.\)</span>$
+Check: <span class="arithmatex">\(A(1,1,1,1)^\top = (1,1,1,1)^\top = 1\cdot(1,1,1,1)^\top\)</span>. <span class="arithmatex">\(\checkmark\)</span></p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 5, eigenspace for <span class="arithmatex">\(\lambda = -1\)</span></p>
+<p>Row-reduce <span class="arithmatex">\(A + I\)</span>. The RREF is
+$<span class="arithmatex">\(\begin{pmatrix}1&amp;0&amp;0&amp;0\\0&amp;1&amp;-1&amp;0\\0&amp;0&amp;0&amp;1\\0&amp;0&amp;0&amp;0\end{pmatrix}.\)</span>$
+Pivots sit in columns 1, 2, 4, so only column 3 is free, a single free variable. Reading the rows: <span class="arithmatex">\(v_1 = 0\)</span>, <span class="arithmatex">\(v_2 = v_3\)</span>, <span class="arithmatex">\(v_4 = 0\)</span>. Hence
+$<span class="arithmatex">\(E_{-1} = \operatorname{span}\left\{\begin{pmatrix}0\\1\\1\\0\end{pmatrix}\right\}.\)</span>$
+Check: <span class="arithmatex">\(A(0,1,1,0)^\top = (0,-1,-1,0)^\top = -1\cdot(0,1,1,0)^\top\)</span>. <span class="arithmatex">\(\checkmark\)</span> Despite <span class="arithmatex">\(\lambda = -1\)</span> having algebraic multiplicity <span class="arithmatex">\(2\)</span>, its eigenspace is only <span class="arithmatex">\(1\)</span>-dimensional.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[E_{-1} = \operatorname{span}\left\{\begin{pmatrix}0\\1\\1\\0\end{pmatrix}\right\}, \quad E_{1} = \operatorname{span}\left\{\begin{pmatrix}1\\1\\1\\1\end{pmatrix}\right\}, \quad E_{2} = \operatorname{span}\left\{\begin{pmatrix}1\\0\\1\\1\end{pmatrix}\right\}.\]</div>
+<p><strong>This matrix is defective.</strong> The eigenvalue <span class="arithmatex">\(\lambda = -1\)</span> has algebraic multiplicity <span class="arithmatex">\(2\)</span> but geometric multiplicity <span class="arithmatex">\(1\)</span>. The geometric multiplicities sum to <span class="arithmatex">\(1 + 1 + 1 = 3\)</span>, short of the matrix size <span class="arithmatex">\(4\)</span>, so there are not enough independent eigenvectors to form a basis: <span class="arithmatex">\(A\)</span> is <strong>not diagonalisable</strong>.</p>
+</div>
+<hr />
+<h2 id="45-diagonalizability-vs-invertibility">4.5 · Diagonalizability vs invertibility<a class="headerlink" href="#45-diagonalizability-vs-invertibility" title="Permanent link">&para;</a></h2>
+<p>Diagonalizability of a matrix is unrelated to its invertibility. Determine for the following four matrices whether they are diagonalizable and/or invertible:
+$<span class="arithmatex">\(\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}, \quad \begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}, \quad \begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}, \quad \begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}.\)</span>$</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>The point</strong> — diagonalizability and invertibility are independent. A matrix can have either, both, or neither, because they are checked by completely different criteria.</li>
+<li><strong>Invertible</strong> — asks whether the map loses information: invertible <span class="arithmatex">\(\iff \det(A) \neq 0 \iff\)</span> no eigenvalue equals <span class="arithmatex">\(0\)</span>. A zero eigenvalue crushes a direction to nothing, which cannot be undone.</li>
+<li><strong>Diagonalizable</strong> — asks whether there are enough independent eigenvectors to span the space, i.e. for every eigenvalue the geometric multiplicity equals the algebraic multiplicity. When they fall short, the matrix is <strong>defective</strong> and not diagonalizable.</li>
+<li><strong>Why they are unrelated</strong> — invertibility asks "is any eigenvalue zero?"; diagonalizability asks "are there enough eigenvectors?". Different questions, so all four yes/no combinations can occur, which is exactly what these matrices show.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Triangular shortcut</p>
+<p>For a triangular matrix the eigenvalues are just the diagonal entries. All four matrices here are triangular, so their eigenvalues can be read straight off.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Matrix 1, the identity</p>
+<p>$<span class="arithmatex">\(\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}.\)</span>$
+Eigenvalues <span class="arithmatex">\(1, 1\)</span> (from the diagonal). Neither is zero, so <span class="arithmatex">\(\det = 1 \neq 0\)</span>: <strong>invertible</strong>. Every vector satisfies <span class="arithmatex">\(Iv = v\)</span>, so the whole plane is the eigenspace for <span class="arithmatex">\(\lambda = 1\)</span>: geometric multiplicity <span class="arithmatex">\(2\)</span> matches algebraic multiplicity <span class="arithmatex">\(2\)</span>, so <strong>diagonalizable</strong> (it is already diagonal).</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Matrix 2, a projection</p>
+<p>$<span class="arithmatex">\(\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}.\)</span>$
+Eigenvalues <span class="arithmatex">\(1, 0\)</span>. One eigenvalue is zero, so <span class="arithmatex">\(\det = 0\)</span>: <strong>not invertible</strong>. Two distinct eigenvalues in a <span class="arithmatex">\(2\times2\)</span> always give two independent eigenvectors (here <span class="arithmatex">\((1,0)\)</span> and <span class="arithmatex">\((0,1)\)</span>), which span the space, so <strong>diagonalizable</strong> (already diagonal).</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Matrix 3, a shear</p>
+<p>$<span class="arithmatex">\(\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}.\)</span>$
+Eigenvalues <span class="arithmatex">\(1, 1\)</span>. Neither is zero, so <span class="arithmatex">\(\det = 1 \neq 0\)</span>: <strong>invertible</strong>. Solving <span class="arithmatex">\((A - I)v = 0\)</span> gives only the single direction <span class="arithmatex">\((1,0)\)</span>: algebraic multiplicity <span class="arithmatex">\(2\)</span> but geometric multiplicity <span class="arithmatex">\(1\)</span>. Not enough eigenvectors, so <strong>not diagonalizable</strong> (defective).</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Matrix 4, a nilpotent shear</p>
+<p>$<span class="arithmatex">\(\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}.\)</span>$
+Eigenvalues <span class="arithmatex">\(0, 0\)</span>. Zero is an eigenvalue, so <span class="arithmatex">\(\det = 0\)</span>: <strong>not invertible</strong>. Solving <span class="arithmatex">\((A - 0I)v = 0\)</span> gives only <span class="arithmatex">\((1,0)\)</span>: algebraic multiplicity <span class="arithmatex">\(2\)</span> but geometric multiplicity <span class="arithmatex">\(1\)</span>, so <strong>not diagonalizable</strong> (defective).</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Matrix</th>
+<th style="text-align: center;">Invertible</th>
+<th style="text-align: center;">Diagonalizable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}\)</span></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)</span></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\)</span></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+</tr>
+</tbody>
+</table>
+<p>All four combinations appear, confirming the two properties are <strong>completely independent</strong>: invertibility depends on whether any eigenvalue is zero, diagonalizability on whether there are enough independent eigenvectors.</p>
+</div>
+<hr />
+<h2 id="46-eigenspaces-and-diagonalizability">4.6 · Eigenspaces and diagonalizability<a class="headerlink" href="#46-eigenspaces-and-diagonalizability" title="Permanent link">&para;</a></h2>
+<p>Compute the eigenspaces of the following transformation matrices and decide whether they are diagonalizable.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Diagonalizability test</strong> — an <span class="arithmatex">\(n \times n\)</span> matrix is diagonalizable if and only if it has <span class="arithmatex">\(n\)</span> linearly independent eigenvectors, enough to form a basis.</li>
+<li><strong>The multiplicity condition</strong> — equivalently, for <strong>every</strong> eigenvalue the geometric multiplicity (dimension of its eigenspace) must equal its algebraic multiplicity (how many times it is a root). A single mismatch makes the whole matrix <strong>not diagonalizable</strong> (defective).</li>
+<li><strong>Symmetry is a red herring</strong> — symmetric matrices are always diagonalizable, but the converse is false: plenty of non-symmetric matrices diagonalize fine. So <span class="arithmatex">\(A^\top \neq A\)</span> tells you nothing; the deciding factor is always the eigenvector count.</li>
+<li><strong>A zero eigenvalue is fine</strong> — <span class="arithmatex">\(\det(A - \lambda I) = 0\)</span> is exactly the condition that makes <span class="arithmatex">\(\lambda\)</span> an eigenvalue. If that happens at <span class="arithmatex">\(\lambda = 0\)</span> (a vanishing constant term), zero is simply an eigenvalue: the matrix is singular but may still diagonalize.</li>
+<li><strong>Quick check</strong> — add up the geometric multiplicities. If they sum to <span class="arithmatex">\(n\)</span>, the matrix is diagonalizable; if they fall short, it is not.</li>
+</ul>
+</div>
+<p><strong>Part a</strong></p>
+<div class="arithmatex">\[A = \begin{pmatrix}2&amp;3&amp;0\\1&amp;4&amp;3\\0&amp;0&amp;1\end{pmatrix}.\]</div>
+<p>Find the eigenvalues, compute each eigenspace, then tally the geometric multiplicities. The repeated eigenvalue is where the surprise lives: it can be a double root yet contribute only a single eigenvector direction.</p>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, characteristic polynomial</p>
+<p>Expanding <span class="arithmatex">\(\det(A - \lambda I)\)</span>:
+$<span class="arithmatex">\(p_A(\lambda) = -(\lambda - 5)(\lambda - 1)^2.\)</span>$
+Eigenvalues: <span class="arithmatex">\(\lambda = 5\)</span> (algebraic multiplicity <span class="arithmatex">\(1\)</span>) and <span class="arithmatex">\(\lambda = 1\)</span> (algebraic multiplicity <span class="arithmatex">\(2\)</span>). Sanity check: sum of eigenvalues <span class="arithmatex">\(5 + 1 + 1 = 7 = \operatorname{tr}(A)\)</span> <span class="arithmatex">\(\checkmark\)</span>, product <span class="arithmatex">\(5\cdot1\cdot1 = 5 = \det(A)\)</span> <span class="arithmatex">\(\checkmark\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, eigenspace for <span class="arithmatex">\(\lambda = 5\)</span></p>
+<p>Row-reduce <span class="arithmatex">\(A - 5I\)</span>; one free variable gives
+$<span class="arithmatex">\(E_5 = \operatorname{span}\left\{\begin{pmatrix}1\\1\\0\end{pmatrix}\right\}.\)</span>$
+Geometric multiplicity <span class="arithmatex">\(1\)</span>, matching its algebraic multiplicity.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, eigenspace for <span class="arithmatex">\(\lambda = 1\)</span></p>
+<p>Row-reduce <span class="arithmatex">\(A - I\)</span>. Despite <span class="arithmatex">\(\lambda = 1\)</span> being a repeated root, only one free variable remains:
+$<span class="arithmatex">\(E_1 = \operatorname{span}\left\{\begin{pmatrix}-3\\1\\0\end{pmatrix}\right\}.\)</span>$
+Geometric multiplicity <span class="arithmatex">\(1\)</span>, but algebraic multiplicity <span class="arithmatex">\(2\)</span>: a mismatch.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 4, diagonalizable?</p>
+<p>Count the independent eigenvectors:
+$<span class="arithmatex">\(\underbrace{1}_{\lambda = 5} + \underbrace{1}_{\lambda = 1} = 2.\)</span>$
+A <span class="arithmatex">\(3\times3\)</span> matrix needs <span class="arithmatex">\(3\)</span> independent eigenvectors to be diagonalizable. Only <span class="arithmatex">\(2\)</span> exist, so <span class="arithmatex">\(A\)</span> is not diagonalizable. The shortfall is at <span class="arithmatex">\(\lambda = 1\)</span>, whose eigenspace is one dimension smaller than its algebraic multiplicity.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[E_5 = \operatorname{span}\left\{\begin{pmatrix}1\\1\\0\end{pmatrix}\right\}, \qquad E_1 = \operatorname{span}\left\{\begin{pmatrix}-3\\1\\0\end{pmatrix}\right\}.\]</div>
+<p><strong>Not diagonalizable.</strong> The eigenvalue <span class="arithmatex">\(\lambda = 1\)</span> has algebraic multiplicity <span class="arithmatex">\(2\)</span> but geometric multiplicity <span class="arithmatex">\(1\)</span>, so <span class="arithmatex">\(A\)</span> has only <span class="arithmatex">\(2\)</span> independent eigenvectors, one short of the <span class="arithmatex">\(3\)</span> needed for a <span class="arithmatex">\(3\times3\)</span>. The matrix is defective.</p>
+</div>
+<p><strong>Part b</strong></p>
+<div class="arithmatex">\[A = \begin{pmatrix}1&amp;1&amp;0&amp;0\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0\end{pmatrix}.\]</div>
+<p>Three all-zero rows make <span class="arithmatex">\(A\)</span> singular, so <span class="arithmatex">\(\det(A) = 0\)</span> and zero will be an eigenvalue. The interesting question is whether its eigenspace is big enough to make up the full multiplicity.</p>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, characteristic polynomial</p>
+<p>Only the top-left entry <span class="arithmatex">\(1-\lambda\)</span> survives the expansion, times a diagonal minor:
+$<span class="arithmatex">\(p_A(\lambda) = (1-\lambda)(-\lambda)^3 = \lambda^3(1-\lambda) = \lambda^4 - \lambda^3.\)</span>$</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">A vanishing constant term is a signal, not an error</p>
+<p>When <span class="arithmatex">\(\det(A - \lambda I)\)</span> has no constant term, it means <span class="arithmatex">\(\lambda = 0\)</span> is a root, i.e. zero is an eigenvalue. That is different from "there are no eigenvalues." A zero eigenvalue is perfectly valid; it means the matrix crushes some direction to nothing, consistent with <span class="arithmatex">\(\det(A) = 0\)</span> (not invertible).</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, solve</p>
+<p>Factorise <span class="arithmatex">\(\lambda^3(1 - \lambda) = 0\)</span>: the factor <span class="arithmatex">\(\lambda^3\)</span> gives <span class="arithmatex">\(\lambda = 0\)</span> and <span class="arithmatex">\(1 - \lambda = 0\)</span> gives <span class="arithmatex">\(\lambda = 1\)</span>. Eigenvalues: <span class="arithmatex">\(\lambda = 0\)</span> (algebraic multiplicity <span class="arithmatex">\(3\)</span>, from <span class="arithmatex">\(\lambda^3\)</span>) and <span class="arithmatex">\(\lambda = 1\)</span> (algebraic multiplicity <span class="arithmatex">\(1\)</span>). Four roots total, matching the <span class="arithmatex">\(4\times4\)</span> size.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, eigenspace for <span class="arithmatex">\(\lambda = 0\)</span></p>
+<p>Solve <span class="arithmatex">\(Av = 0\)</span> (the null space of <span class="arithmatex">\(A\)</span>). Only the first row constrains anything (<span class="arithmatex">\(v_1 + v_2 = 0\)</span>), leaving three free variables:
+$<span class="arithmatex">\(E_0 = \operatorname{span}\left\{\begin{pmatrix}-1\\1\\0\\0\end{pmatrix}, \begin{pmatrix}0\\0\\1\\0\end{pmatrix}, \begin{pmatrix}0\\0\\0\\1\end{pmatrix}\right\}.\)</span>$
+Geometric multiplicity <span class="arithmatex">\(3\)</span>, matching the algebraic multiplicity.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 4, eigenspace for <span class="arithmatex">\(\lambda = 1\)</span></p>
+<p>Solve <span class="arithmatex">\((A - I)v = 0\)</span>; one free variable:
+$<span class="arithmatex">\(E_1 = \operatorname{span}\left\{\begin{pmatrix}1\\0\\0\\0\end{pmatrix}\right\}.\)</span>$</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[E_0 = \operatorname{span}\left\{\begin{pmatrix}-1\\1\\0\\0\end{pmatrix}, \begin{pmatrix}0\\0\\1\\0\end{pmatrix}, \begin{pmatrix}0\\0\\0\\1\end{pmatrix}\right\}, \qquad E_1 = \operatorname{span}\left\{\begin{pmatrix}1\\0\\0\\0\end{pmatrix}\right\}.\]</div>
+<p><strong>Diagonalizable.</strong> The eigenvectors number <span class="arithmatex">\(3 + 1 = 4\)</span>, enough for a <span class="arithmatex">\(4\times4\)</span>, and both eigenvalues have geometric multiplicity equal to algebraic multiplicity. So <span class="arithmatex">\(A\)</span> is diagonalizable even though it is singular: diagonalizability and invertibility are independent, and this matrix has a zero eigenvalue yet still diagonalizes.</p>
+</div>
+<hr />
+<h2 id="47-diagonal-form-and-eigenbasis">4.7 · Diagonal form and eigenbasis<a class="headerlink" href="#47-diagonal-form-and-eigenbasis" title="Permanent link">&para;</a></h2>
+<p>Are the following matrices diagonalizable? If yes, determine their diagonal form and a basis with respect to which the transformation matrix is diagonal. If no, give reasons.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Diagonalization</strong> — <span class="arithmatex">\(A\)</span> is diagonalizable if there is a basis of eigenvectors. In that basis <span class="arithmatex">\(A\)</span> becomes a diagonal matrix <span class="arithmatex">\(D\)</span> of eigenvalues, and <span class="arithmatex">\(A = PDP^{-1}\)</span> where the <strong>columns of <span class="arithmatex">\(P\)</span> are the eigenvectors</strong>, ordered to match the eigenvalues in <span class="arithmatex">\(D\)</span>. The eigenbasis is exactly those columns.</li>
+<li><strong>The test</strong> — an <span class="arithmatex">\(n \times n\)</span> matrix is diagonalizable iff it has <span class="arithmatex">\(n\)</span> linearly independent eigenvectors, equivalently every eigenvalue's geometric multiplicity equals its algebraic multiplicity.</li>
+<li><strong>Real vs complex</strong> — the characteristic polynomial may have no real roots. Over the reals such a matrix is <strong>not diagonalizable</strong> (no real eigenbasis). A negative discriminant is the signal, since it forces complex eigenvalues.</li>
+<li><strong>Discriminant check for a <span class="arithmatex">\(2\times2\)</span></strong> — for <span class="arithmatex">\(\lambda^2 + b\lambda + c\)</span> the roots are real only if <span class="arithmatex">\(b^2 - 4c \geq 0\)</span>. If it is negative, the eigenvalues are complex and the matrix is not diagonalizable over <span class="arithmatex">\(\mathbb{R}\)</span>.</li>
+</ul>
+</div>
+<p><strong>Part a</strong></p>
+<div class="arithmatex">\[A = \begin{pmatrix}0&amp;1\\-8&amp;4\end{pmatrix}.\]</div>
+<div class="admonition steps">
+<p class="admonition-title">Part a, characteristic polynomial</p>
+<p>Using the <span class="arithmatex">\(2\times2\)</span> form <span class="arithmatex">\(\lambda^2 - \operatorname{tr}(A)\lambda + \det(A)\)</span>, with <span class="arithmatex">\(\operatorname{tr}(A) = 4\)</span> and <span class="arithmatex">\(\det(A) = (0)(4) - (1)(-8) = 8\)</span>:
+$<span class="arithmatex">\(p_A(\lambda) = \lambda^2 - 4\lambda + 8.\)</span>$</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part a, solve</p>
+<p>The discriminant is <span class="arithmatex">\((-4)^2 - 4(8) = 16 - 32 = -16 &lt; 0\)</span>. Applying the quadratic formula:
+$<span class="arithmatex">\(\lambda = \frac{4 \pm \sqrt{-16}}{2} = 2 \pm 2i.\)</span>$
+The eigenvalues are complex (<span class="arithmatex">\(2 + 2i\)</span> and <span class="arithmatex">\(2 - 2i\)</span>).</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>Not diagonalizable over <span class="arithmatex">\(\mathbb{R}\)</span>.</strong> The characteristic polynomial <span class="arithmatex">\(\lambda^2 - 4\lambda + 8\)</span> has no real roots, its eigenvalues <span class="arithmatex">\(2 \pm 2i\)</span> are complex, so there is no real eigenbasis and no real diagonal form. (Over <span class="arithmatex">\(\mathbb{C}\)</span> it <em>is</em> diagonalizable, since the two complex eigenvalues are distinct, but with respect to a real basis it is not.)</p>
+</div>
+<p><strong>Part b</strong></p>
+<div class="arithmatex">\[A = \begin{pmatrix}1&amp;1&amp;1\\1&amp;1&amp;1\\1&amp;1&amp;1\end{pmatrix}.\]</div>
+<div class="admonition steps">
+<p class="admonition-title">Part b, characteristic polynomial</p>
+<p>Expanding <span class="arithmatex">\(\det(A - \lambda I)\)</span> for the all-ones matrix:
+$<span class="arithmatex">\(p_A(\lambda) = \lambda^2(\lambda - 3) = 0.\)</span>$
+Check: <span class="arithmatex">\(\operatorname{tr}(A) = 3\)</span> matches the eigenvalue sum <span class="arithmatex">\(0 + 0 + 3\)</span> <span class="arithmatex">\(\checkmark\)</span>, and <span class="arithmatex">\(\det(A) = 0\)</span> matches the product <span class="arithmatex">\(\checkmark\)</span>. Eigenvalues: <span class="arithmatex">\(\lambda = 0\)</span> (algebraic multiplicity <span class="arithmatex">\(2\)</span>) and <span class="arithmatex">\(\lambda = 3\)</span> (algebraic multiplicity <span class="arithmatex">\(1\)</span>).</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part b, eigenspace for <span class="arithmatex">\(\lambda = 0\)</span></p>
+<p>Solve <span class="arithmatex">\(Av = 0\)</span>. Every row of <span class="arithmatex">\(A\)</span> is identical (<span class="arithmatex">\(v_1 + v_2 + v_3 = 0\)</span>), leaving two free variables:
+$<span class="arithmatex">\(E_0 = \operatorname{span}\left\{\begin{pmatrix}-1\\1\\0\end{pmatrix}, \begin{pmatrix}-1\\0\\1\end{pmatrix}\right\}.\)</span>$
+Geometric multiplicity <span class="arithmatex">\(2\)</span>, matching the algebraic multiplicity.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part b, eigenspace for <span class="arithmatex">\(\lambda = 3\)</span></p>
+<p>Solve <span class="arithmatex">\((A - 3I)v = 0\)</span>; one free variable:
+$<span class="arithmatex">\(E_3 = \operatorname{span}\left\{\begin{pmatrix}1\\1\\1\end{pmatrix}\right\}.\)</span>$</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>Diagonalizable.</strong> The eigenvectors number <span class="arithmatex">\(2 + 1 = 3\)</span>, enough for a <span class="arithmatex">\(3\times3\)</span>, and every eigenvalue's geometric multiplicity equals its algebraic multiplicity.</p>
+<p>Diagonal form:
+$<span class="arithmatex">\(D = \begin{pmatrix}0&amp;0&amp;0\\0&amp;0&amp;0\\0&amp;0&amp;3\end{pmatrix}.\)</span>$</p>
+<p>Eigenbasis (columns of <span class="arithmatex">\(P\)</span>, ordered to match <span class="arithmatex">\(D\)</span>):
+$<span class="arithmatex">\(\left\{\begin{pmatrix}-1\\1\\0\end{pmatrix}, \begin{pmatrix}-1\\0\\1\end{pmatrix}, \begin{pmatrix}1\\1\\1\end{pmatrix}\right\}.\)</span>$
+With respect to this basis the transformation is diagonal with entries <span class="arithmatex">\(0, 0, 3\)</span>.</p>
+</div>
+<p><strong>Part c</strong></p>
+<div class="arithmatex">\[A = \begin{pmatrix}5&amp;4&amp;2&amp;1\\0&amp;1&amp;-1&amp;-1\\-1&amp;-1&amp;3&amp;0\\1&amp;1&amp;-1&amp;2\end{pmatrix}.\]</div>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Only repeated eigenvalues can break diagonalizability</strong> — an eigenvalue with algebraic multiplicity <span class="arithmatex">\(1\)</span> always has geometric multiplicity <span class="arithmatex">\(1\)</span>, so it can never mismatch. When the question is just "diagonalizable, and if not why," find the eigenvalues, then check the eigenspace of any repeated one first. If its geometric multiplicity falls short, you can stop and answer immediately.</li>
+<li><strong>The two multiplicities</strong> — algebraic is how many times <span class="arithmatex">\(\lambda\)</span> is a root (the exponent on its bracket); geometric is the eigenspace dimension (the number of free variables after row-reducing <span class="arithmatex">\(A - \lambda I\)</span>).</li>
+<li><strong>The squeeze</strong> — it is always true that <span class="arithmatex">\(1 \le \text{geometric} \le \text{algebraic}\)</span>. The matrix is diagonalizable exactly when the two are equal for <strong>every</strong> eigenvalue; a single case of geometric <span class="arithmatex">\(&lt;\)</span> algebraic makes it defective.</li>
+</ul>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, characteristic polynomial</p>
+<p>Expanding <span class="arithmatex">\(\det(A - \lambda I)\)</span>:
+$<span class="arithmatex">\(p_A(\lambda) = \lambda^4 - 11\lambda^3 + 42\lambda^2 - 64\lambda + 32 = (\lambda - 4)^2(\lambda - 2)(\lambda - 1).\)</span>$
+Sanity checks: sum of eigenvalues <span class="arithmatex">\(4 + 4 + 2 + 1 = 11 = \operatorname{tr}(A)\)</span> <span class="arithmatex">\(\checkmark\)</span>, product <span class="arithmatex">\(4\cdot4\cdot2\cdot1 = 32 = \det(A)\)</span> <span class="arithmatex">\(\checkmark\)</span>. Eigenvalues: <span class="arithmatex">\(\lambda = 4\)</span> (algebraic multiplicity <span class="arithmatex">\(2\)</span>), <span class="arithmatex">\(\lambda = 2\)</span>, <span class="arithmatex">\(\lambda = 1\)</span>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Factorising the quartic</p>
+<p>Test the rational-root candidates (factors of <span class="arithmatex">\(32\)</span>). <span class="arithmatex">\(\lambda = 1\)</span> and <span class="arithmatex">\(\lambda = 2\)</span> are roots; dividing them out leaves <span class="arithmatex">\(\lambda^2 - 8\lambda + 16 = (\lambda - 4)^2\)</span>, the repeated eigenvalue.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, check the repeated eigenvalue <span class="arithmatex">\(\lambda = 4\)</span></p>
+<p>Since <span class="arithmatex">\(\lambda = 4\)</span> is the only repeated eigenvalue, it is the only one that can break diagonalizability. Row-reduce <span class="arithmatex">\(A - 4I\)</span>:
+$<span class="arithmatex">\(A - 4I \;\xrightarrow{\text{RREF}}\; \begin{pmatrix}1&amp;0&amp;0&amp;-1\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;1&amp;1\\0&amp;0&amp;0&amp;0\end{pmatrix}.\)</span>$
+Pivots sit in columns 1, 2, 3, so only column 4 is free, a single free variable. Reading the rows: <span class="arithmatex">\(v_1 = v_4\)</span>, <span class="arithmatex">\(v_2 = 0\)</span>, <span class="arithmatex">\(v_3 = -v_4\)</span>. Taking <span class="arithmatex">\(v_4 = 1\)</span>:
+$<span class="arithmatex">\(E_4 = \operatorname{span}\left\{\begin{pmatrix}1\\0\\-1\\1\end{pmatrix}\right\}.\)</span>$
+Geometric multiplicity <span class="arithmatex">\(1\)</span>.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>Not diagonalizable.</strong> The eigenvalue <span class="arithmatex">\(\lambda = 4\)</span> has algebraic multiplicity <span class="arithmatex">\(2\)</span> but geometric multiplicity <span class="arithmatex">\(1\)</span>. Since algebraic exceeds geometric, the matrix has only <span class="arithmatex">\(3\)</span> independent eigenvectors, one short of the <span class="arithmatex">\(4\)</span> needed to form a basis for <span class="arithmatex">\(\mathbb{R}^4\)</span>, so it is defective.</p>
+<p>Because the answer is "no," the eigenspaces of <span class="arithmatex">\(\lambda = 2\)</span> and <span class="arithmatex">\(\lambda = 1\)</span> are never needed: checking the repeated eigenvalue alone settles it.</p>
+</div>
+<p><strong>Part d</strong></p>
+<div class="arithmatex">\[A = \begin{pmatrix}5&amp;-6&amp;-6\\-1&amp;4&amp;2\\3&amp;-6&amp;-4\end{pmatrix}.\]</div>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>The "yes" case wants two extra things</strong> — when a matrix is diagonalizable, give the diagonal form <span class="arithmatex">\(D\)</span> and the basis it is diagonal with respect to.</li>
+<li><strong>The diagonal form <span class="arithmatex">\(D\)</span></strong> — you do not compute this, you write it down: the eigenvalues along the diagonal (each repeated to its multiplicity), zeros elsewhere.</li>
+<li><strong>The basis</strong> — the eigenvectors, used as the columns of the change-of-basis matrix <span class="arithmatex">\(P\)</span> in <span class="arithmatex">\(A = PDP^{-1}\)</span>. <span class="arithmatex">\(D\)</span>'s diagonal and the basis are a matched pair: the eigenvalue in position <span class="arithmatex">\(k\)</span> must line up with the eigenvector in position <span class="arithmatex">\(k\)</span>. Any order works as long as the two stay in sync.</li>
+<li><strong>Contrast with part c</strong> — both c and d have a repeated eigenvalue, but c's was defective (geometric <span class="arithmatex">\(&lt;\)</span> algebraic) so c is not diagonalizable, whereas here the repeated eigenvalue delivers a full eigenspace so d is. You cannot tell which case you are in without computing that eigenspace.</li>
+</ul>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, characteristic polynomial</p>
+<p>Expanding <span class="arithmatex">\(\det(A - \lambda I)\)</span>:
+$<span class="arithmatex">\(p_A(\lambda) = -\lambda^3 + 5\lambda^2 - 8\lambda + 4 = -(\lambda - 2)^2(\lambda - 1).\)</span>$
+Sanity checks: sum of eigenvalues <span class="arithmatex">\(2 + 2 + 1 = 5 = \operatorname{tr}(A)\)</span> <span class="arithmatex">\(\checkmark\)</span>, product <span class="arithmatex">\(2\cdot2\cdot1 = 4 = \det(A)\)</span> <span class="arithmatex">\(\checkmark\)</span>. Eigenvalues: <span class="arithmatex">\(\lambda = 2\)</span> (algebraic multiplicity <span class="arithmatex">\(2\)</span>) and <span class="arithmatex">\(\lambda = 1\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, eigenspace for <span class="arithmatex">\(\lambda = 2\)</span></p>
+<p>Row-reduce <span class="arithmatex">\(A - 2I\)</span>:
+$<span class="arithmatex">\(A - 2I \;\xrightarrow{\text{RREF}}\; \begin{pmatrix}1&amp;-2&amp;-2\\0&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}.\)</span>$
+Only column 1 has a pivot, so columns 2 and 3 are free, two free variables. From <span class="arithmatex">\(v_1 = 2v_2 + 2v_3\)</span>, setting each free variable to <span class="arithmatex">\(1\)</span> in turn:
+$<span class="arithmatex">\(E_2 = \operatorname{span}\left\{\begin{pmatrix}2\\1\\0\end{pmatrix}, \begin{pmatrix}2\\0\\1\end{pmatrix}\right\}.\)</span>$
+Geometric multiplicity <span class="arithmatex">\(2\)</span>, matching the algebraic multiplicity, so this eigenvalue does not break diagonalizability.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, eigenspace for <span class="arithmatex">\(\lambda = 1\)</span></p>
+<p>Row-reduce <span class="arithmatex">\(A - I\)</span>; one free variable, scaled to clear the fraction:
+$<span class="arithmatex">\(E_1 = \operatorname{span}\left\{\begin{pmatrix}3\\-1\\3\end{pmatrix}\right\}.\)</span>$
+Check: <span class="arithmatex">\(A(3,-1,3)^\top = (3,-1,3)^\top = 1\cdot(3,-1,3)^\top\)</span>. <span class="arithmatex">\(\checkmark\)</span></p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>Diagonalizable.</strong> Both eigenvalues have geometric multiplicity equal to algebraic multiplicity (<span class="arithmatex">\(\lambda = 2\)</span>: <span class="arithmatex">\(2\)</span> and <span class="arithmatex">\(2\)</span>; <span class="arithmatex">\(\lambda = 1\)</span>: <span class="arithmatex">\(1\)</span> and <span class="arithmatex">\(1\)</span>), giving <span class="arithmatex">\(3\)</span> independent eigenvectors for a <span class="arithmatex">\(3\times3\)</span>.</p>
+<p>Diagonal form:
+$<span class="arithmatex">\(D = \begin{pmatrix}2&amp;0&amp;0\\0&amp;2&amp;0\\0&amp;0&amp;1\end{pmatrix}.\)</span>$</p>
+<p>Basis (columns ordered to match <span class="arithmatex">\(D\)</span>):
+$<span class="arithmatex">\(\left\{\begin{pmatrix}2\\1\\0\end{pmatrix}, \begin{pmatrix}2\\0\\1\end{pmatrix}, \begin{pmatrix}3\\-1\\3\end{pmatrix}\right\}.\)</span>$
+With respect to this basis the transformation is diagonal with entries <span class="arithmatex">\(2, 2, 1\)</span>.</p>
+</div>
+<hr />
+<h2 id="48-singular-value-decomposition">4.8 · Singular value decomposition<a class="headerlink" href="#48-singular-value-decomposition" title="Permanent link">&para;</a></h2>
+<p>Find the SVD of
+$<span class="arithmatex">\(A = \begin{pmatrix}3&amp;2&amp;2\\2&amp;3&amp;-2\end{pmatrix}.\)</span>$</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>SVD</strong> — factorises any matrix (square or not) into <span class="arithmatex">\(A = U\Sigma V^\top\)</span>: geometrically a rotation, then a stretch, then a rotation. Unlike diagonalization, it works for every matrix with no exceptions.</li>
+<li><strong>The three pieces</strong> — <span class="arithmatex">\(U\)</span> (left singular vectors) is orthonormal <span class="arithmatex">\(m\times m\)</span>; <span class="arithmatex">\(\Sigma\)</span> has the singular values on its diagonal, same shape as <span class="arithmatex">\(A\)</span>, largest first; <span class="arithmatex">\(V\)</span> (right singular vectors) is orthonormal <span class="arithmatex">\(n\times n\)</span>, and the equation uses <span class="arithmatex">\(V^\top\)</span>.</li>
+<li><strong>The engine</strong> — singular values are the square roots of the eigenvalues of <span class="arithmatex">\(A^\top A\)</span> (or <span class="arithmatex">\(AA^\top\)</span>; they share the same nonzero eigenvalues). For a <span class="arithmatex">\(2\times3\)</span> matrix, <span class="arithmatex">\(AA^\top\)</span> is only <span class="arithmatex">\(2\times2\)</span>, much smaller than the <span class="arithmatex">\(3\times3\)</span> <span class="arithmatex">\(A^\top A\)</span>, so start there.</li>
+<li><strong>Two valid routes</strong> — from <span class="arithmatex">\(AA^\top\)</span> the eigenvectors give <span class="arithmatex">\(U\)</span>, then <span class="arithmatex">\(v_i = \tfrac{1}{\sigma_i}A^\top u_i\)</span> gives <span class="arithmatex">\(V\)</span>; from <span class="arithmatex">\(A^\top A\)</span> the eigenvectors give <span class="arithmatex">\(V\)</span>, then <span class="arithmatex">\(u_i = \tfrac{1}{\sigma_i}A v_i\)</span> gives <span class="arithmatex">\(U\)</span>.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Two things people forget</p>
+<p><strong>Normalise every singular vector</strong>: SVD needs <em>unit</em> vectors, so divide each by its length. <strong>And transpose <span class="arithmatex">\(V\)</span></strong> at the end: the equation is <span class="arithmatex">\(U\Sigma V^\top\)</span>, not <span class="arithmatex">\(U\Sigma V\)</span>. Also, when <span class="arithmatex">\(A\)</span> is wider than tall (like <span class="arithmatex">\(2\times3\)</span>) the shortcut produces one fewer <span class="arithmatex">\(V\)</span> column than needed, because the extra eigenvalue is <span class="arithmatex">\(0\)</span> and you cannot divide by it. Fill the last column with the <strong>null space</strong> of <span class="arithmatex">\(A\)</span> (the direction <span class="arithmatex">\(A\)</span> crushes to zero), found by solving <span class="arithmatex">\(Av = 0\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, singular values via <span class="arithmatex">\(AA^\top\)</span></p>
+<p>$<span class="arithmatex">\(AA^\top = \begin{pmatrix}17&amp;8\\8&amp;17\end{pmatrix}.\)</span>$
+Using the <span class="arithmatex">\(2\times2\)</span> shortcut <span class="arithmatex">\(\lambda^2 - \operatorname{tr}\lambda + \det\)</span>, with trace <span class="arithmatex">\(34\)</span> and determinant <span class="arithmatex">\(289 - 64 = 225\)</span>:
+$<span class="arithmatex">\(\lambda^2 - 34\lambda + 225 = (\lambda - 25)(\lambda - 9).\)</span>$
+Eigenvalues <span class="arithmatex">\(25\)</span> and <span class="arithmatex">\(9\)</span>, so the singular values are <span class="arithmatex">\(\sigma_1 = \sqrt{25} = 5\)</span> and <span class="arithmatex">\(\sigma_2 = \sqrt{9} = 3\)</span>:
+$<span class="arithmatex">\(\Sigma = \begin{pmatrix}5&amp;0&amp;0\\0&amp;3&amp;0\end{pmatrix}.\)</span>$
+(<span class="arithmatex">\(\Sigma\)</span> matches <span class="arithmatex">\(A\)</span>'s shape; the extra zero column reflects that <span class="arithmatex">\(A\)</span> is wider than tall.)</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, <span class="arithmatex">\(U\)</span> from the <span class="arithmatex">\(AA^\top\)</span> eigenvectors</p>
+<p><span class="arithmatex">\(\lambda = 25\)</span>: <span class="arithmatex">\((AA^\top - 25I)u = 0\)</span> gives <span class="arithmatex">\(u_1 = u_2\)</span>, so <span class="arithmatex">\((1,1)\)</span> normalised is <span class="arithmatex">\(u_1 = \tfrac{1}{\sqrt2}(1,1)\)</span>.
+<span class="arithmatex">\(\lambda = 9\)</span>: gives <span class="arithmatex">\(u_1 = -u_2\)</span>, so <span class="arithmatex">\((1,-1)\)</span> normalised is <span class="arithmatex">\(u_2 = \tfrac{1}{\sqrt2}(1,-1)\)</span>.
+$<span class="arithmatex">\(U = \frac{1}{\sqrt2}\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix}.\)</span>$</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, <span class="arithmatex">\(v_1\)</span> and <span class="arithmatex">\(v_2\)</span> from the shortcut</p>
+<p>Use <span class="arithmatex">\(v_i = \tfrac{1}{\sigma_i}A^\top u_i\)</span>:
+$<span class="arithmatex">\(v_1 = \tfrac{1}{5}A^\top u_1 = \tfrac{1}{\sqrt2}(1, 1, 0).\)</span>$</p>
+<div class="arithmatex">\[v_2 = \tfrac{1}{3}A^\top u_2 = \tfrac{1}{3\sqrt2}(1, -1, 4).\]</div>
+<p>Both come out unit length automatically.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 4, the third <span class="arithmatex">\(V\)</span> column (null space)</p>
+<p><span class="arithmatex">\(V\)</span> must be <span class="arithmatex">\(3\times3\)</span>, but the shortcut gave only two columns. The third is the direction <span class="arithmatex">\(A\)</span> sends to zero, so solve <span class="arithmatex">\(Av = 0\)</span>:
+$<span class="arithmatex">\(3v_1 + 2v_2 + 2v_3 = 0, \qquad 2v_1 + 3v_2 - 2v_3 = 0.\)</span>$
+Adding the equations gives <span class="arithmatex">\(v_1 = -v_2\)</span>; substituting gives <span class="arithmatex">\(v_2 = 2v_3\)</span>. Taking <span class="arithmatex">\(v_3 = 1\)</span> yields <span class="arithmatex">\((-2, 2, 1)\)</span>, of length <span class="arithmatex">\(3\)</span>:
+$<span class="arithmatex">\(v_3 = \tfrac{1}{3}(-2, 2, 1).\)</span>$
+This is orthogonal to <span class="arithmatex">\(v_1\)</span> and <span class="arithmatex">\(v_2\)</span>, and <span class="arithmatex">\(Av_3 = 0\)</span> confirms it is the crushed direction.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[A = U\Sigma V^\top,\]</div>
+<div class="arithmatex">\[U = \frac{1}{\sqrt2}\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix}, \qquad \Sigma = \begin{pmatrix}5&amp;0&amp;0\\0&amp;3&amp;0\end{pmatrix},\]</div>
+<div class="arithmatex">\[V^\top = \begin{pmatrix}\tfrac{1}{\sqrt2} &amp; \tfrac{1}{\sqrt2} &amp; 0\\[4pt] \tfrac{1}{3\sqrt2} &amp; -\tfrac{1}{3\sqrt2} &amp; \tfrac{4}{3\sqrt2}\\[4pt] -\tfrac{2}{3} &amp; \tfrac{2}{3} &amp; \tfrac{1}{3}\end{pmatrix}.\]</div>
+<p>The singular values <span class="arithmatex">\(5\)</span> and <span class="arithmatex">\(3\)</span> are the amounts <span class="arithmatex">\(A\)</span> stretches along its two principal directions; the third <span class="arithmatex">\(V\)</span> direction is collapsed to zero.</p>
+</div>
+<hr />
+<h2 id="49-svd-of-a-square-matrix">4.9 · SVD of a square matrix<a class="headerlink" href="#49-svd-of-a-square-matrix" title="Permanent link">&para;</a></h2>
+<p>Find the singular value decomposition of
+$<span class="arithmatex">\(A = \begin{pmatrix}2&amp;2\\-1&amp;1\end{pmatrix}.\)</span>$</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Square still needs the transpose</strong> — even though <span class="arithmatex">\(A\)</span> is square, SVD uses <span class="arithmatex">\(A^\top A\)</span> (or <span class="arithmatex">\(AA^\top\)</span>): the singular values are <span class="arithmatex">\(\sqrt{\text{eigenvalues of } A^\top A}\)</span>, never the eigenvalues of <span class="arithmatex">\(A\)</span> itself.</li>
+<li><strong>The matched-pair rule</strong> — which shortcut you use depends entirely on which matrix you started from. From <span class="arithmatex">\(A^\top A\)</span> you get <span class="arithmatex">\(V\)</span> first, then <span class="arithmatex">\(U\)</span> via <span class="arithmatex">\(u_i = \tfrac{1}{\sigma_i}A v_i\)</span> (<strong>plain <span class="arithmatex">\(A\)</span></strong>). From <span class="arithmatex">\(AA^\top\)</span> you get <span class="arithmatex">\(U\)</span> first, then <span class="arithmatex">\(V\)</span> via <span class="arithmatex">\(v_i = \tfrac{1}{\sigma_i}A^\top u_i\)</span> (<strong>transpose <span class="arithmatex">\(A^\top\)</span></strong>).</li>
+<li><strong>The transpose follows the direction of travel</strong> — plain <span class="arithmatex">\(A\)</span> moves you toward <span class="arithmatex">\(U\)</span>; transpose <span class="arithmatex">\(A^\top\)</span> moves you toward <span class="arithmatex">\(V\)</span>. Memory hook: multiply what you <em>have</em> to produce what you <em>want</em>. Have <span class="arithmatex">\(V\)</span>, want <span class="arithmatex">\(U\)</span>: use <span class="arithmatex">\(A\)</span>. Have <span class="arithmatex">\(U\)</span>, want <span class="arithmatex">\(V\)</span>: use <span class="arithmatex">\(A^\top\)</span>. Exercise 4.8 started from <span class="arithmatex">\(AA^\top\)</span> and used <span class="arithmatex">\(A^\top\)</span>; this one starts from <span class="arithmatex">\(A^\top A\)</span>, so it uses plain <span class="arithmatex">\(A\)</span>.</li>
+</ul>
+<p><strong>Two routes to the SVD, and how each finds <span class="arithmatex">\(U\)</span> differently:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Route 1, start from <span class="arithmatex">\(A^\top A\)</span></th>
+<th style="text-align: left;">Route 2, start from <span class="arithmatex">\(AA^\top\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Eigenvectors of <span class="arithmatex">\(A^\top A\)</span> give you <span class="arithmatex">\(V\)</span> directly</td>
+<td style="text-align: left;">Eigenvectors of <span class="arithmatex">\(AA^\top\)</span> give you <span class="arithmatex">\(U\)</span> directly</td>
+</tr>
+<tr>
+<td style="text-align: left;">Then find <span class="arithmatex">\(U\)</span> with <span class="arithmatex">\(u_i = \tfrac{1}{\sigma_i}A v_i\)</span> &nbsp; (plain <span class="arithmatex">\(A\)</span>)</td>
+<td style="text-align: left;">Then find <span class="arithmatex">\(V\)</span> with <span class="arithmatex">\(v_i = \tfrac{1}{\sigma_i}A^\top u_i\)</span> &nbsp; (transpose <span class="arithmatex">\(A^\top\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<p>The transpose is tied to the direction you travel, not to <span class="arithmatex">\(U\)</span> or <span class="arithmatex">\(V\)</span>: plain <span class="arithmatex">\(A\)</span> moves toward <span class="arithmatex">\(U\)</span>, transpose <span class="arithmatex">\(A^\top\)</span> moves toward <span class="arithmatex">\(V\)</span>. This exercise used Route 1 (started from <span class="arithmatex">\(A^\top A\)</span>), so <span class="arithmatex">\(U\)</span> came from plain <span class="arithmatex">\(A\)</span>; exercise 4.8 used the opposite route, which is why it used <span class="arithmatex">\(A^\top\)</span>, same logic, different starting matrix.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Two easy slips</p>
+<p>Normalise every vector (divide by its length), since SVD needs unit vectors. And when combining the singular-value fraction with the vector's own normalising fraction, simplify carefully: <span class="arithmatex">\(\tfrac{1}{2\sqrt2}\cdot\tfrac{1}{\sqrt2} = \tfrac14\)</span> because <span class="arithmatex">\(\sqrt2\cdot\sqrt2 = 2\)</span>. Note <span class="arithmatex">\(2\sqrt2 = \sqrt8\)</span>, so <span class="arithmatex">\(\tfrac{1}{2\sqrt2}\)</span> and <span class="arithmatex">\(\tfrac{1}{\sqrt8}\)</span> are the same number.</p>
+</div>
+<p>Start from <span class="arithmatex">\(A^\top A\)</span> (its eigenvectors are the <span class="arithmatex">\(V\)</span> columns), read off the singular values, then travel to <span class="arithmatex">\(U\)</span> with plain <span class="arithmatex">\(A\)</span>.</p>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, singular values</p>
+<p>$<span class="arithmatex">\(A^\top A = \begin{pmatrix}5&amp;3\\3&amp;5\end{pmatrix}.\)</span>$
+Using <span class="arithmatex">\(\lambda^2 - \operatorname{tr}\lambda + \det\)</span>, with trace <span class="arithmatex">\(10\)</span> and determinant <span class="arithmatex">\(25 - 9 = 16\)</span>:
+$<span class="arithmatex">\(\lambda^2 - 10\lambda + 16 = (\lambda - 8)(\lambda - 2).\)</span>$
+Eigenvalues <span class="arithmatex">\(8\)</span> and <span class="arithmatex">\(2\)</span>, so <span class="arithmatex">\(\sigma_1 = \sqrt8 = 2\sqrt2\)</span> and <span class="arithmatex">\(\sigma_2 = \sqrt2\)</span>:
+$<span class="arithmatex">\(\Sigma = \begin{pmatrix}2\sqrt2 &amp; 0\\0 &amp; \sqrt2\end{pmatrix}.\)</span>$
+(Square <span class="arithmatex">\(A\)</span> gives a square <span class="arithmatex">\(\Sigma\)</span>, no leftover zero column.)</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, <span class="arithmatex">\(V\)</span> from the <span class="arithmatex">\(A^\top A\)</span> eigenvectors</p>
+<p>Since we started from <span class="arithmatex">\(A^\top A\)</span>, its eigenvectors are the <span class="arithmatex">\(V\)</span> columns.
+<span class="arithmatex">\(\lambda = 8\)</span>: <span class="arithmatex">\((A^\top A - 8I)v = 0\)</span> gives <span class="arithmatex">\(v_1 = v_2\)</span>, so <span class="arithmatex">\((1,1)\)</span> normalised is <span class="arithmatex">\(v_1 = \tfrac{1}{\sqrt2}(1, 1)\)</span>.
+<span class="arithmatex">\(\lambda = 2\)</span>: gives <span class="arithmatex">\(v_1 = -v_2\)</span>, so <span class="arithmatex">\((-1,1)\)</span> normalised is <span class="arithmatex">\(v_2 = \tfrac{1}{\sqrt2}(-1, 1)\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, <span class="arithmatex">\(U\)</span> from the shortcut (plain <span class="arithmatex">\(A\)</span>)</p>
+<p>We have <span class="arithmatex">\(V\)</span> and want <span class="arithmatex">\(U\)</span>, so use <span class="arithmatex">\(u_i = \tfrac{1}{\sigma_i}A v_i\)</span> with plain <span class="arithmatex">\(A\)</span> (no transpose):
+$<span class="arithmatex">\(u_1 = \tfrac{1}{2\sqrt2}\,A v_1 = \tfrac{1}{2\sqrt2}\cdot\tfrac{1}{\sqrt2}(4, 0) = \tfrac14(4,0) = (1, 0).\)</span>$</p>
+<div class="arithmatex">\[u_2 = \tfrac{1}{\sqrt2}\,A v_2 = \tfrac{1}{\sqrt2}\cdot\tfrac{1}{\sqrt2}(0, 2) = \tfrac12(0,2) = (0, 1).\]</div>
+<p>So <span class="arithmatex">\(U\)</span> is the identity:
+$<span class="arithmatex">\(U = \begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}.\)</span>$</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[A = U\Sigma V^\top,\]</div>
+<div class="arithmatex">\[U = \begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}, \qquad \Sigma = \begin{pmatrix}2\sqrt2 &amp; 0\\0 &amp; \sqrt2\end{pmatrix}, \qquad V^\top = \begin{pmatrix}\tfrac{1}{\sqrt2} &amp; \tfrac{1}{\sqrt2}\\[4pt] -\tfrac{1}{\sqrt2} &amp; \tfrac{1}{\sqrt2}\end{pmatrix}.\]</div>
+<p>The singular values <span class="arithmatex">\(2\sqrt2\)</span> and <span class="arithmatex">\(\sqrt2\)</span> are the stretch amounts. Here <span class="arithmatex">\(U\)</span> came out as the identity, so all the rotation lives in <span class="arithmatex">\(V^\top\)</span>. The lesson worth keeping: the choice between <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(A^\top\)</span> in the shortcut is dictated by which matrix you decomposed first, <span class="arithmatex">\(A^\top A\)</span> gives <span class="arithmatex">\(V\)</span> (then plain <span class="arithmatex">\(A\)</span> for <span class="arithmatex">\(U\)</span>), <span class="arithmatex">\(AA^\top\)</span> gives <span class="arithmatex">\(U\)</span> (then <span class="arithmatex">\(A^\top\)</span> for <span class="arithmatex">\(V\)</span>).</p>
+</div>
+<hr />
+<h2 id="410-rank-1-approximation">4.10 · Rank-1 approximation<a class="headerlink" href="#410-rank-1-approximation" title="Permanent link">&para;</a></h2>
+<p>Find the rank-1 approximation of
+$<span class="arithmatex">\(A = \begin{pmatrix}3&amp;2&amp;2\\2&amp;3&amp;-2\end{pmatrix}.\)</span>$</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Rank-1 approximation</strong> — keep only the single strongest layer of the SVD: <span class="arithmatex">\(\hat A(1) = \sigma_1 u_1 v_1^\top\)</span>, using the largest singular value <span class="arithmatex">\(\sigma_1\)</span>, the first left-singular vector <span class="arithmatex">\(u_1\)</span>, and the first right-singular vector <span class="arithmatex">\(v_1\)</span>.</li>
+<li><strong>Best possible (Eckart–Young)</strong> — this is the <em>best</em> rank-1 approximation of <span class="arithmatex">\(A\)</span>, and the approximation error is exactly <span class="arithmatex">\(\sigma_2\)</span>.</li>
+<li><strong>Reuse the SVD</strong> — this reuses the SVD of <span class="arithmatex">\(A\)</span> from Exercise 4.8, so no new decomposition is needed, just extract the "first" pieces.</li>
+<li><strong>The outer product</strong> — <span class="arithmatex">\(u_1 v_1^\top\)</span> is a column (<span class="arithmatex">\(m\times1\)</span>) times a row (<span class="arithmatex">\(1\times n\)</span>), producing a full <span class="arithmatex">\(m\times n\)</span> matrix whose <span class="arithmatex">\((j,k)\)</span> entry is <span class="arithmatex">\((u_1)_j (v_1)_k\)</span>.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Row vs column when reading <span class="arithmatex">\(V^\top\)</span></p>
+<p><span class="arithmatex">\(v_1\)</span> is the first <strong>column of <span class="arithmatex">\(V\)</span></strong>, which is the first <strong>row of <span class="arithmatex">\(V^\top\)</span></strong>. Transposing swaps rows and columns, so when reading from <span class="arithmatex">\(V^\top\)</span> take its <strong>rows</strong> to get the <span class="arithmatex">\(v_i\)</span> vectors, not its columns. Reading down a column of <span class="arithmatex">\(V^\top\)</span> by mistake mixes pieces of <span class="arithmatex">\(v_1, v_2, v_3\)</span> together and gives wrong numbers.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, pull out the first pieces</p>
+<p>From the SVD of <span class="arithmatex">\(A\)</span> (Exercise 4.8):
+$<span class="arithmatex">\(\sigma_1 = 5, \qquad u_1 = \tfrac{1}{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix}, \qquad v_1 = \tfrac{1}{\sqrt2}\begin{pmatrix}1\\1\\0\end{pmatrix}.\)</span>$
+<span class="arithmatex">\(\sigma_1\)</span> is the largest singular value, <span class="arithmatex">\(u_1\)</span> is the first column of <span class="arithmatex">\(U\)</span>, and <span class="arithmatex">\(v_1\)</span> is the first row of <span class="arithmatex">\(V^\top\)</span>. Note the third entry of <span class="arithmatex">\(v_1\)</span> is <span class="arithmatex">\(0\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, outer product <span class="arithmatex">\(u_1 v_1^\top\)</span></p>
+<p>Multiply the column by the row (each entry scaled by <span class="arithmatex">\(\tfrac{1}{\sqrt2}\cdot\tfrac{1}{\sqrt2} = \tfrac12\)</span>):
+$<span class="arithmatex">\(u_1 v_1^\top = \tfrac12\begin{pmatrix}1\\1\end{pmatrix}\begin{pmatrix}1&amp;1&amp;0\end{pmatrix} = \tfrac12\begin{pmatrix}1&amp;1&amp;0\\1&amp;1&amp;0\end{pmatrix} = \begin{pmatrix}0.5&amp;0.5&amp;0\\0.5&amp;0.5&amp;0\end{pmatrix}.\)</span>$</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, scale by <span class="arithmatex">\(\sigma_1\)</span></p>
+<div class="arithmatex">\[\hat A(1) = \sigma_1\, u_1 v_1^\top = 5\begin{pmatrix}0.5&amp;0.5&amp;0\\0.5&amp;0.5&amp;0\end{pmatrix}.\]</div>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[\hat A(1) = \begin{pmatrix}2.5&amp;2.5&amp;0\\2.5&amp;2.5&amp;0\end{pmatrix}.\]</div>
+<p>The two rows are identical because <span class="arithmatex">\(u_1 = \tfrac{1}{\sqrt2}(1,1)\)</span> weights both output directions equally, and the third column is zero because <span class="arithmatex">\(v_1\)</span> has a zero third entry. Compared with the original <span class="arithmatex">\(A = \begin{pmatrix}3&amp;2&amp;2\\2&amp;3&amp;-2\end{pmatrix}\)</span>, this rank-1 layer captures the dominant shared structure; the finer detail (the differences between entries and the <span class="arithmatex">\(-2\)</span>) lives in the discarded <span class="arithmatex">\(\sigma_2\)</span> layer, and the error it costs is exactly <span class="arithmatex">\(\sigma_2 = 3\)</span>.</p>
+</div>
+<hr />
+<h2 id="411-atop-a-and-aatop-share-nonzero-eigenvalues">4.11 · <span class="arithmatex">\(A^\top A\)</span> and <span class="arithmatex">\(AA^\top\)</span> share nonzero eigenvalues<a class="headerlink" href="#411-atop-a-and-aatop-share-nonzero-eigenvalues" title="Permanent link">&para;</a></h2>
+<p>Show that for any <span class="arithmatex">\(A \in \mathbb{R}^{m\times n}\)</span>, the matrices <span class="arithmatex">\(A^\top A\)</span> and <span class="arithmatex">\(AA^\top\)</span> have the same nonzero eigenvalues.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Why it matters</strong> — this justifies the SVD shortcut: since <span class="arithmatex">\(A^\top A\)</span> and <span class="arithmatex">\(AA^\top\)</span> share nonzero eigenvalues, the singular values <span class="arithmatex">\(\sqrt{\lambda}\)</span> are the same whichever product you use, so you can diagonalize the smaller one.</li>
+<li><strong>The key idea</strong> — if <span class="arithmatex">\(x\)</span> is an eigenvector of <span class="arithmatex">\(A^\top A\)</span>, then <span class="arithmatex">\(Ax\)</span> is an eigenvector of <span class="arithmatex">\(AA^\top\)</span> with the same eigenvalue. Multiplying by <span class="arithmatex">\(A\)</span> transfers the eigenvalue between the products; <span class="arithmatex">\(A\)</span> itself is only the bridge.</li>
+<li><strong>Why "nonzero" matters</strong> — the argument needs <span class="arithmatex">\(Ax \neq 0\)</span> to give a genuine eigenvector, which is only guaranteed when <span class="arithmatex">\(\lambda \neq 0\)</span>.</li>
+</ul>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Proof</p>
+<p>Let <span class="arithmatex">\(\lambda \neq 0\)</span> be an eigenvalue of <span class="arithmatex">\(A^\top A\)</span> with eigenvector <span class="arithmatex">\(x \neq 0\)</span>:
+$<span class="arithmatex">\(A^\top A\, x = \lambda x.\)</span>$
+Multiply on the left by <span class="arithmatex">\(A\)</span>:
+$<span class="arithmatex">\(A A^\top A\, x = \lambda A x.\)</span>$
+Regroup using associativity:
+$<span class="arithmatex">\((AA^\top)(Ax) = \lambda (Ax).\)</span>$
+This has the form of an eigenvalue equation for <span class="arithmatex">\(AA^\top\)</span>, with eigenvector <span class="arithmatex">\(Ax\)</span> and eigenvalue <span class="arithmatex">\(\lambda\)</span>.</p>
+<p><strong>Check <span class="arithmatex">\(Ax \neq 0\)</span>:</strong> if <span class="arithmatex">\(Ax = 0\)</span>, then <span class="arithmatex">\(A^\top A\, x = A^\top(Ax) = 0 = \lambda x\)</span>, forcing <span class="arithmatex">\(\lambda = 0\)</span> (since <span class="arithmatex">\(x \neq 0\)</span>), contradicting <span class="arithmatex">\(\lambda \neq 0\)</span>. So <span class="arithmatex">\(Ax\)</span> is a genuine eigenvector. The reverse direction is identical, swapping <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(A^\top\)</span> (start from <span class="arithmatex">\(AA^\top y = \lambda y\)</span> and multiply by <span class="arithmatex">\(A^\top\)</span>).</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Conclusion</p>
+<p>Every nonzero eigenvalue of <span class="arithmatex">\(A^\top A\)</span> is a nonzero eigenvalue of <span class="arithmatex">\(AA^\top\)</span>, and vice versa, so the two matrices share exactly the same nonzero eigenvalues. <span class="arithmatex">\(\blacksquare\)</span></p>
+<p>(They may differ in their <em>zero</em> eigenvalues: the larger matrix simply has extra zeros to fill its extra dimensions, which is why singular values come only from the nonzero eigenvalues.)</p>
+</div>
+<hr />
+<h2 id="412-the-largest-singular-value-is-the-maximum-stretch">4.12 · The largest singular value is the maximum stretch<a class="headerlink" href="#412-the-largest-singular-value-is-the-maximum-stretch" title="Permanent link">&para;</a></h2>
+<p>Show that for <span class="arithmatex">\(x \neq 0\)</span>,
+$<span class="arithmatex">\(\max_{x} \frac{\lVert Ax\rVert_2}{\lVert x\rVert_2} = \sigma_1,\)</span>$
+where <span class="arithmatex">\(\sigma_1\)</span> is the largest singular value of <span class="arithmatex">\(A \in \mathbb{R}^{m\times n}\)</span>.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>The stretch factor</strong> — <span class="arithmatex">\(\lVert Ax\rVert / \lVert x\rVert\)</span> measures how much <span class="arithmatex">\(A\)</span> lengthens <span class="arithmatex">\(x\)</span>. This theorem says the most <span class="arithmatex">\(A\)</span> can stretch any vector is exactly <span class="arithmatex">\(\sigma_1\)</span>, giving the largest singular value a concrete meaning: the matrix's maximum amplification.</li>
+<li><strong>Orthogonal matrices preserve length</strong> — <span class="arithmatex">\(\lVert Uz\rVert = \lVert z\rVert\)</span> and <span class="arithmatex">\(\lVert Vz\rVert = \lVert z\rVert\)</span>, which lets you strip <span class="arithmatex">\(U\)</span> and <span class="arithmatex">\(V\)</span> from <span class="arithmatex">\(A = U\Sigma V^\top\)</span> and reduce the problem to the diagonal <span class="arithmatex">\(\Sigma\)</span>.</li>
+<li><strong><span class="arithmatex">\(\sigma_1\)</span> is the largest</strong> — so every <span class="arithmatex">\(\sigma_i^2 \le \sigma_1^2\)</span>, which bounds the sum.</li>
+<li><strong>Proving a maximum</strong> — needs two parts: an upper bound (nothing exceeds <span class="arithmatex">\(\sigma_1\)</span>) and attainment (some vector reaches it).</li>
+</ul>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, reduce to the diagonal matrix</p>
+<p>Write <span class="arithmatex">\(A = U\Sigma V^\top\)</span>. For <span class="arithmatex">\(x \neq 0\)</span>, set <span class="arithmatex">\(y = V^\top x\)</span>; since <span class="arithmatex">\(V\)</span> is orthogonal, <span class="arithmatex">\(\lVert y\rVert = \lVert x\rVert\)</span>. Using that <span class="arithmatex">\(U\)</span> preserves length:
+$<span class="arithmatex">\(\lVert Ax\rVert = \lVert U\Sigma V^\top x\rVert = \lVert \Sigma V^\top x\rVert = \lVert \Sigma y\rVert.\)</span>$
+So <span class="arithmatex">\(\dfrac{\lVert Ax\rVert}{\lVert x\rVert} = \dfrac{\lVert \Sigma y\rVert}{\lVert y\rVert}\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, upper bound</p>
+<p>Since <span class="arithmatex">\(\Sigma\)</span> is diagonal, <span class="arithmatex">\(\Sigma y = (\sigma_1 y_1, \sigma_2 y_2, \dots)\)</span>, so
+$<span class="arithmatex">\(\lVert \Sigma y\rVert^2 = \sum_i \sigma_i^2 y_i^2 \le \sigma_1^2 \sum_i y_i^2 = \sigma_1^2 \lVert y\rVert^2\)</span>$
+(each <span class="arithmatex">\(\sigma_i^2\)</span> replaced by the larger <span class="arithmatex">\(\sigma_1^2\)</span>). Taking square roots:
+$<span class="arithmatex">\(\frac{\lVert Ax\rVert}{\lVert x\rVert} \le \sigma_1 \quad\text{for all } x.\)</span>$</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, the bound is attained</p>
+<p>Choose <span class="arithmatex">\(x = v_1\)</span>, the first right-singular vector. Then <span class="arithmatex">\(y = V^\top v_1 = e_1 = (1,0,\dots,0)\)</span>, so
+$<span class="arithmatex">\(\lVert \Sigma y\rVert = \sigma_1, \qquad \lVert y\rVert = 1, \qquad \frac{\lVert Av_1\rVert}{\lVert v_1\rVert} = \sigma_1.\)</span>$
+Some vector reaches <span class="arithmatex">\(\sigma_1\)</span>, so the bound is tight.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Conclusion</p>
+<p>The ratio is bounded above by <span class="arithmatex">\(\sigma_1\)</span> for every <span class="arithmatex">\(x\)</span> and equals <span class="arithmatex">\(\sigma_1\)</span> when <span class="arithmatex">\(x = v_1\)</span>, so
+$<span class="arithmatex">\(\max_{x \neq 0} \frac{\lVert Ax\rVert_2}{\lVert x\rVert_2} = \sigma_1. \qquad \blacksquare\)</span>$
+The maximum stretch of <span class="arithmatex">\(A\)</span> is its largest singular value, achieved along the first right-singular vector <span class="arithmatex">\(v_1\)</span>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/anp-exe" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.sections", "toc.integrate", "content.code.copy", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

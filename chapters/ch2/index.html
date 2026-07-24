@@ -1,0 +1,1600 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Worked end-of-chapter exercise solutions for Mathematics for Machine Learning">
+      
+      
+        <meta name="author" content="Anna">
+      
+      
+        <link rel="canonical" href="https://anp-exe.github.io/mml-excerises/chapters/ch2/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../ch3/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Ch 2 · Linear Algebra - MML Exercise Answers</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Nunito";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-2-linear-algebra" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MML Exercise Answers" class="md-header__button md-logo" aria-label="MML Exercise Answers" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MML Exercise Answers
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch 2 · Linear Algebra
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MML Exercise Answers" class="md-nav__button md-logo" aria-label="MML Exercise Answers" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MML Exercise Answers
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 2 · Linear Algebra
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 2 · Linear Algebra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-custom-operation-a-star-b-ab-a-b-on-mathbbrsetminus-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 · Custom operation \(a \star b = ab + a + b\) on \(\mathbb{R}\setminus\{-1\}\)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-integers-mod-n-under-oplus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 · Integers mod \(n\) under \(\oplus\)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-upper-unitriangular-3times-3-matrices-under-multiplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 · Upper-unitriangular \(3\times 3\) matrices under multiplication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-matrix-products-check-dimensions-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 · Matrix products (check dimensions first!)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-find-all-solutions-of-amathbfx-mathbfb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 · Find all solutions of \(A\mathbf{x} = \mathbf{b}\)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-solving-amathbfx-mathbfb-with-gaussian-elimination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 · Solving \(A\mathbf{x} = \mathbf{b}\) with Gaussian elimination
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-solving-amathbfx-12mathbfx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 · Solving \(A\mathbf{x} = 12\mathbf{x}\)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28-inverses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 · Inverses
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-which-sets-are-subspaces-of-mathbbr3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9 · Which sets are subspaces of \(\mathbb{R}^3\)?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#210-linear-independence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.10 · Linear independence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#211-write-mathbfy-as-a-linear-combination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.11 · Write \(\mathbf{y}\) as a linear combination
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#212-basis-of-u_1-cap-u_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.12 · Basis of \(U_1 \cap U_2\)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#213-subspaces-as-solution-spaces-u_1-ker-a_1-u_2-ker-a_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.13 · Subspaces as solution spaces \(U_1 = \ker A_1,\ U_2 = \ker A_2\)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#214-subspaces-as-column-spaces-u_1-operatornamecol-a_1-u_2-operatornamecol-a_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.14 · Subspaces as column spaces \(U_1 = \operatorname{col} A_1,\ U_2 = \operatorname{col} A_2\)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#215-subspaces-f-g-subseteq-mathbbr3-and-their-intersection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.15 · Subspaces \(F, G \subseteq \mathbb{R}^3\) and their intersection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#216-are-the-following-mappings-linear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.16 · Are the following mappings linear?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#217-transformation-matrix-rank-kernel-and-image-of-phimathbbr3tomathbbr4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.17 · Transformation matrix, rank, kernel and image of \(\Phi:\mathbb{R}^3\to\mathbb{R}^4\)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#218-automorphisms-kernels-and-images-of-f-and-g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.18 · Automorphisms: kernels and images of \(f\) and \(g\)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#219-endomorphism-on-mathbbr3-kernel-image-and-a-basis-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.19 · Endomorphism on \(\mathbb{R}^3\): kernel, image, and a basis change
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#220-basis-changes-and-a-homomorphism-mathbbr2-to-mathbbr3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.20 · Basis changes and a homomorphism \(\mathbb{R}^2 \to \mathbb{R}^3\)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 3 · Analytic Geometry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 4 · Matrix Decompositions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 5 · Vector Calculus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 6 · Probability & Distributions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 7 · Continuous Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 8 · When Models Meet Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 9 · Linear Regression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 10 · Dimensionality Reduction (PCA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 11 · Density Estimation (GMM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 12 · Classification (SVM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../proofs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proofs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-2-linear-algebra">Chapter 2 · Linear Algebra<a class="headerlink" href="#chapter-2-linear-algebra" title="Permanent link">&para;</a></h1>
+<p>End-of-chapter exercises. Each has a definitions box, explanation, worked steps, and the answer.</p>
+<hr />
+<h2 id="21-custom-operation-a-star-b-ab-a-b-on-mathbbrsetminus-1">2.1 · Custom operation <span class="arithmatex">\(a \star b = ab + a + b\)</span> on <span class="arithmatex">\(\mathbb{R}\setminus\{-1\}\)</span><a class="headerlink" href="#21-custom-operation-a-star-b-ab-a-b-on-mathbbrsetminus-1" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Group</strong> — a set with an operation obeying 4 axioms: closure, associativity, identity, inverses.</li>
+<li><strong>Abelian group</strong> — a group whose operation is also commutative (<span class="arithmatex">\(a\star b = b\star a\)</span>).</li>
+<li><strong>Identity <span class="arithmatex">\(e\)</span></strong> — the element with <span class="arithmatex">\(a\star e = a\)</span>.</li>
+<li><strong>Inverse</strong> — the element that undoes <span class="arithmatex">\(a\)</span>, returning <span class="arithmatex">\(e\)</span>.</li>
+</ul>
+</div>
+<p>The key move is factoring: <span class="arithmatex">\(a \star b = (a+1)(b+1) - 1\)</span>. So the operation behaves like ordinary multiplication shifted by <span class="arithmatex">\(1\)</span>, which makes every axiom easy. It is closed (never gives <span class="arithmatex">\(-1\)</span>), associative, has identity <span class="arithmatex">\(0\)</span>, every element has an inverse, and it is commutative.</p>
+<p>For part b, solve <span class="arithmatex">\(3 \star x \star x = 4(x+1)^2 - 1 = 15\)</span>.</p>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><span class="arithmatex">\((\mathbb{R}\setminus\{-1\},\ \star)\)</span> is an <strong>Abelian group</strong>. Identity <span class="arithmatex">\(e = 0\)</span>, inverse <span class="arithmatex">\(a^{-1} = \dfrac{-a}{a+1}\)</span>.</p>
+<p><strong>2.1b:</strong> <span class="arithmatex">\(x = 1\)</span> or <span class="arithmatex">\(x = -3\)</span>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">The four group axioms, and what makes a group Abelian</p>
+<p>A <strong>group</strong> is a set <span class="arithmatex">\(G\)</span> with one operation <span class="arithmatex">\(\star\)</span> that obeys four rules. Checking a group means checking these one by one; here every check rides on the factoring <span class="arithmatex">\(a\star b = (a+1)(b+1) - 1\)</span>, which turns <span class="arithmatex">\(\star\)</span> into ordinary multiplication shifted by <span class="arithmatex">\(1\)</span>.</p>
+<ol>
+<li><strong>Closure</strong> — combining any two members lands you back inside the set. For <span class="arithmatex">\(\star\)</span>: <span class="arithmatex">\((a+1)(b+1)-1\)</span> equals <span class="arithmatex">\(-1\)</span> only if <span class="arithmatex">\((a+1)(b+1)=0\)</span>, which cannot happen when <span class="arithmatex">\(a,b\neq -1\)</span>. So the result is never the forbidden <span class="arithmatex">\(-1\)</span>, and you stay in <span class="arithmatex">\(\mathbb{R}\setminus\{-1\}\)</span>.</li>
+<li><strong>Associativity</strong> — regrouping does not change the result: <span class="arithmatex">\((a\star b)\star c = a\star(b\star c)\)</span>. This is inherited from ordinary multiplication of the shifted factors, which is associative.</li>
+<li><strong>Identity</strong> — one special element <span class="arithmatex">\(e\)</span> leaves everything unchanged: <span class="arithmatex">\(a\star e = a\)</span> for all <span class="arithmatex">\(a\)</span>. Here <span class="arithmatex">\(e = 0\)</span>, since <span class="arithmatex">\((a+1)(0+1)-1 = a\)</span>.</li>
+<li><strong>Inverses</strong> — every <span class="arithmatex">\(a\)</span> has a partner <span class="arithmatex">\(a^{-1}\)</span> that undoes it, returning the identity: <span class="arithmatex">\(a\star a^{-1} = e\)</span>. Here <span class="arithmatex">\(a^{-1} = \dfrac{-a}{a+1}\)</span>, and it is never <span class="arithmatex">\(-1\)</span>, so it lives in the set too.</li>
+</ol>
+<p>Those four make <span class="arithmatex">\(G\)</span> a group. It is also <strong>Abelian</strong> (commutative) if one bonus rule holds: <span class="arithmatex">\(a\star b = b\star a\)</span> for <em>all</em> <span class="arithmatex">\(a,b\)</span>. Since <span class="arithmatex">\(\star\)</span> is built from ordinary multiplication, and multiplication does not care about order, <span class="arithmatex">\(\star\)</span> commutes, so this is an <strong>Abelian group</strong>. (A group can pass the four axioms yet fail this test, like the matrix group in 2.3, that is a non-Abelian group.)</p>
+</div>
+<hr />
+<h2 id="22-integers-mod-n-under-oplus">2.2 · Integers mod <span class="arithmatex">\(n\)</span> under <span class="arithmatex">\(\oplus\)</span><a class="headerlink" href="#22-integers-mod-n-under-oplus" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Congruence class <span class="arithmatex">\([a]\)</span></strong> — all integers with the same remainder as <span class="arithmatex">\(a\)</span> mod <span class="arithmatex">\(n\)</span>.</li>
+<li><strong>Modular addition</strong> — <span class="arithmatex">\([a] \oplus [b] = [a+b]\)</span>, then reduce mod <span class="arithmatex">\(n\)</span>.</li>
+<li><strong>Prime condition</strong> — <span class="arithmatex">\((\mathbb{Z}_n\setminus\{0\}, \otimes)\)</span> is a group only when <span class="arithmatex">\(n\)</span> is prime.</li>
+</ul>
+</div>
+<p><span class="arithmatex">\(\mathbb{Z}_n = \{[0],[1],\dots,[n-1]\}\)</span> with <span class="arithmatex">\([a]\oplus[b] = [a+b]\)</span> reduced mod <span class="arithmatex">\(n\)</span>. It is a group because ordinary integer addition already is, and the classes inherit that.</p>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><span class="arithmatex">\((\mathbb{Z}_n, \oplus)\)</span> is an <strong>Abelian group</strong>. Identity <span class="arithmatex">\([0]\)</span>, inverse of <span class="arithmatex">\([a]\)</span> is <span class="arithmatex">\([n-a]\)</span>.</p>
+<p><span class="arithmatex">\((\mathbb{Z}_n\setminus\{0\}, \otimes)\)</span> is a group <strong>iff <span class="arithmatex">\(n\)</span> is prime</strong>.</p>
+</div>
+<hr />
+<h2 id="23-upper-unitriangular-3times-3-matrices-under-multiplication">2.3 · Upper-unitriangular <span class="arithmatex">\(3\times 3\)</span> matrices under multiplication<a class="headerlink" href="#23-upper-unitriangular-3times-3-matrices-under-multiplication" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Matrix group</strong> — a set of matrices closed under multiplication satisfying the 4 axioms.</li>
+<li><strong>Upper unitriangular</strong> — <span class="arithmatex">\(1\)</span>s on the diagonal, <span class="arithmatex">\(0\)</span>s below, free entries above.</li>
+<li><strong>Non-commutative</strong> — <span class="arithmatex">\(AB \neq BA\)</span> in general, so a group can be non-Abelian.</li>
+</ul>
+</div>
+<p><span class="arithmatex">\(G\)</span> is all matrices <span class="arithmatex">\(\begin{bmatrix}1&amp;x&amp;z\\0&amp;1&amp;y\\0&amp;0&amp;1\end{bmatrix}\)</span>. Multiplying two keeps the shape (closed), multiplication is associative, the identity is in <span class="arithmatex">\(G\)</span>, and inverses stay in <span class="arithmatex">\(G\)</span>. But the <span class="arithmatex">\((1,3)\)</span> entry of a product depends on order, so it is not Abelian.</p>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><span class="arithmatex">\((G, \cdot)\)</span> is a <strong>group</strong>, but <strong>not Abelian</strong>.</p>
+</div>
+<hr />
+<h2 id="24-matrix-products-check-dimensions-first">2.4 · Matrix products (check dimensions first!)<a class="headerlink" href="#24-matrix-products-check-dimensions-first" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Dimension rule</strong> — <span class="arithmatex">\(AB\)</span> is defined only if <span class="arithmatex">\(A\)</span>'s columns <span class="arithmatex">\(=\)</span> <span class="arithmatex">\(B\)</span>'s rows: <span class="arithmatex">\((m\times n)(n\times p)\to(m\times p)\)</span>.</li>
+<li><strong>Entry rule</strong> — entry <span class="arithmatex">\((i,j)\)</span> = row <span class="arithmatex">\(i\)</span> of <span class="arithmatex">\(A\)</span> dotted with column <span class="arithmatex">\(j\)</span> of <span class="arithmatex">\(B\)</span>.</li>
+<li><strong>Non-commutative</strong> — compare b and c: same matrices swapped, different results.</li>
+</ul>
+</div>
+<p>Part <strong>a</strong> is a <span class="arithmatex">\(3\times 2\)</span> times a <span class="arithmatex">\(3\times 3\)</span>: inner dimensions <span class="arithmatex">\(2\)</span> and <span class="arithmatex">\(3\)</span> do not match, so it is <strong>undefined</strong>.</p>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>a)</strong> undefined (dimension mismatch)</p>
+<p><strong>b)</strong> <span class="arithmatex">\(\begin{bmatrix}4&amp;3&amp;5\\10&amp;9&amp;11\\16&amp;15&amp;17\end{bmatrix}\)</span>
+&nbsp;&nbsp; <strong>c)</strong> <span class="arithmatex">\(\begin{bmatrix}5&amp;7&amp;9\\11&amp;13&amp;15\\8&amp;10&amp;12\end{bmatrix}\)</span></p>
+<p><strong>d)</strong> <span class="arithmatex">\(\begin{bmatrix}14&amp;6\\-21&amp;2\end{bmatrix}\)</span>
+&nbsp;&nbsp; <strong>e)</strong> <span class="arithmatex">\(\begin{bmatrix}12&amp;3&amp;-3&amp;-12\\-3&amp;1&amp;2&amp;6\\6&amp;5&amp;1&amp;0\\13&amp;12&amp;3&amp;2\end{bmatrix}\)</span></p>
+</div>
+<hr />
+<h2 id="25-find-all-solutions-of-amathbfx-mathbfb">2.5 · Find all solutions of <span class="arithmatex">\(A\mathbf{x} = \mathbf{b}\)</span><a class="headerlink" href="#25-find-all-solutions-of-amathbfx-mathbfb" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Gaussian elimination</strong> — row operations to reach echelon form.</li>
+<li><strong>Contradiction row</strong> — <span class="arithmatex">\(0 = \text{nonzero}\)</span> means inconsistent, no solution.</li>
+<li><strong>Free variable</strong> — a column with no pivot, giving infinitely many solutions.</li>
+</ul>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>2.5a:</strong> no solution, <span class="arithmatex">\(S = \varnothing\)</span> (a contradiction row appears).</p>
+<p><strong>2.5b:</strong> infinitely many solutions, two free parameters.</p>
+</div>
+<hr />
+<h2 id="26-solving-amathbfx-mathbfb-with-gaussian-elimination">2.6 · Solving <span class="arithmatex">\(A\mathbf{x} = \mathbf{b}\)</span> with Gaussian elimination<a class="headerlink" href="#26-solving-amathbfx-mathbfb-with-gaussian-elimination" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>RREF</strong> — pivots are <span class="arithmatex">\(1\)</span>, alone in their column, stepping down-right.</li>
+<li><strong>Pivot vs free column</strong> — pivot columns give basic variables; no-pivot columns give free variables.</li>
+<li><strong>General solution</strong> — one particular solution plus the free-variable directions.</li>
+</ul>
+</div>
+<p>Reducing <span class="arithmatex">\([A\mid \mathbf{b}]\)</span> to RREF puts pivots in columns <span class="arithmatex">\(2, 4, 5\)</span>; columns <span class="arithmatex">\(1, 3, 6\)</span> are free.</p>
+<div class="admonition steps">
+<p class="admonition-title">RREF of <span class="arithmatex">\([A \mid \mathbf{b}]\)</span></p>
+<div class="arithmatex">\[\left[\begin{array}{cccccc|c}
+0&amp;1&amp;0&amp;0&amp;0&amp;1&amp;1\\
+0&amp;0&amp;0&amp;1&amp;0&amp;1&amp;-2\\
+0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;1
+\end{array}\right]\]</div>
+<p>Pivots in columns <span class="arithmatex">\(2, 4, 5 \Rightarrow x_2, x_4, x_5\)</span> basic; <span class="arithmatex">\(x_1, x_3, x_6\)</span> free.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[\mathbf{x} = \begin{pmatrix}0\\1\\0\\-2\\1\\0\end{pmatrix}
++ x_1\begin{pmatrix}1\\0\\0\\0\\0\\0\end{pmatrix}
++ x_3\begin{pmatrix}0\\0\\1\\0\\0\\0\end{pmatrix}
++ x_6\begin{pmatrix}0\\-1\\0\\-1\\1\\1\end{pmatrix},\quad x_1,x_3,x_6\in\mathbb{R}\]</div>
+</div>
+<hr />
+<h2 id="27-solving-amathbfx-12mathbfx">2.7 · Solving <span class="arithmatex">\(A\mathbf{x} = 12\mathbf{x}\)</span><a class="headerlink" href="#27-solving-amathbfx-12mathbfx" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Eigenvalue / eigenvector</strong> — <span class="arithmatex">\(A\mathbf{x} = \lambda\mathbf{x}\)</span>: a vector <span class="arithmatex">\(A\)</span> only scales, never rotates; <span class="arithmatex">\(\lambda\)</span> is the scale factor.</li>
+<li><strong>Rearrangement</strong> — <span class="arithmatex">\(A\mathbf{x} = \lambda\mathbf{x} \Rightarrow (A - \lambda I)\mathbf{x} = 0\)</span>, a homogeneous system.</li>
+<li><strong>Eigenspace</strong> — all eigenvectors for a given <span class="arithmatex">\(\lambda\)</span> (a line/plane through the origin).</li>
+<li><strong>Constraint</strong> — an extra equation like <span class="arithmatex">\(\sum x_i = 1\)</span> picks one point on that line.</li>
+</ul>
+</div>
+<div class="admonition steps">
+<p class="admonition-title"><span class="arithmatex">\((A - 12I)\mathbf{x} = 0\)</span> elimination</p>
+<div class="arithmatex">\[\begin{bmatrix}-6&amp;4&amp;3\\6&amp;-12&amp;9\\0&amp;8&amp;-12\end{bmatrix}
+\longrightarrow
+\begin{bmatrix}-6&amp;4&amp;3\\0&amp;-8&amp;12\\0&amp;0&amp;0\end{bmatrix}\]</div>
+<p>Zero row <span class="arithmatex">\(\Rightarrow x_3\)</span> free. Then <span class="arithmatex">\(x_2 = \tfrac32 x_3,\ x_1 = \tfrac32 x_3 \Rightarrow \mathbf{x} = t(3,3,2)\)</span>.
+The constraint <span class="arithmatex">\(3t + 3t + 2t = 1\)</span> gives <span class="arithmatex">\(t = \tfrac18\)</span>.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[\mathbf{x} = \left(\tfrac38,\ \tfrac38,\ \tfrac14\right)\]</div>
+</div>
+<hr />
+<h2 id="28-inverses">2.8 · Inverses<a class="headerlink" href="#28-inverses" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Inverse <span class="arithmatex">\(A^{-1}\)</span></strong> — the matrix with <span class="arithmatex">\(A\,A^{-1} = I\)</span>.</li>
+<li><strong>Determinant</strong> — a number measuring how much <span class="arithmatex">\(A\)</span> scales space.</li>
+<li><strong>Invertible iff <span class="arithmatex">\(\det \neq 0\)</span></strong> — <span class="arithmatex">\(\det = 0\)</span> means <span class="arithmatex">\(A\)</span> squashes a dimension, so no inverse.</li>
+<li><strong>Gauss–Jordan</strong> — reduce <span class="arithmatex">\([A\mid I]\)</span> until the left is <span class="arithmatex">\(I\)</span>; the right becomes <span class="arithmatex">\(A^{-1}\)</span>.</li>
+</ul>
+</div>
+<p><strong>Part a.</strong> <span class="arithmatex">\(\det = 0\)</span> (row 1 + row 3 = <span class="arithmatex">\(2\times\)</span> row 2), so no inverse.</p>
+<div class="admonition steps">
+<p class="admonition-title"><span class="arithmatex">\([A \mid I] \to [I \mid A^{-1}]\)</span></p>
+<div class="arithmatex">\[\left[\begin{array}{cccc|cccc}
+1&amp;0&amp;1&amp;0&amp;1&amp;0&amp;0&amp;0\\
+0&amp;1&amp;1&amp;0&amp;0&amp;1&amp;0&amp;0\\
+1&amp;1&amp;0&amp;1&amp;0&amp;0&amp;1&amp;0\\
+1&amp;1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;1
+\end{array}\right]
+\longrightarrow
+\left[\begin{array}{cccc|cccc}
+1&amp;0&amp;0&amp;0&amp;0&amp;-1&amp;0&amp;1\\
+0&amp;1&amp;0&amp;0&amp;-1&amp;0&amp;0&amp;1\\
+0&amp;0&amp;1&amp;0&amp;1&amp;1&amp;0&amp;-1\\
+0&amp;0&amp;0&amp;1&amp;1&amp;1&amp;1&amp;-2
+\end{array}\right]\]</div>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>a)</strong> not invertible (<span class="arithmatex">\(\det = 0\)</span>).</p>
+<p><strong>b)</strong> <span class="arithmatex">\(A^{-1} = \begin{bmatrix}0&amp;-1&amp;0&amp;1\\-1&amp;0&amp;0&amp;1\\1&amp;1&amp;0&amp;-1\\1&amp;1&amp;1&amp;-2\end{bmatrix}\)</span></p>
+</div>
+<hr />
+<h2 id="29-which-sets-are-subspaces-of-mathbbr3">2.9 · Which sets are subspaces of <span class="arithmatex">\(\mathbb{R}^3\)</span>?<a class="headerlink" href="#29-which-sets-are-subspaces-of-mathbbr3" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Subspace</strong> — a subset containing <span class="arithmatex">\(\mathbf{0}\)</span>, closed under addition and scaling.</li>
+<li><strong>The 3 tests</strong> — contains <span class="arithmatex">\(\mathbf{0}\)</span>; closed under <span class="arithmatex">\(+\)</span>; closed under scalar <span class="arithmatex">\(\times\)</span>.</li>
+<li><strong>Span</strong> — all linear combinations of given vectors; always a subspace.</li>
+<li><strong>The 3 killers</strong> — a square term, an integer-only condition, or <span class="arithmatex">\(=\)</span> a nonzero constant.</li>
+</ul>
+</div>
+<ul>
+<li><strong>a.</strong> A span of two vectors <span class="arithmatex">\(\Rightarrow\)</span> subspace.</li>
+<li><strong>b.</strong> Has <span class="arithmatex">\(\lambda^2\)</span> (never negative); scaling <span class="arithmatex">\((1,-1,0)\)</span> by <span class="arithmatex">\(-1\)</span> escapes <span class="arithmatex">\(\Rightarrow\)</span> not.</li>
+<li><strong>c.</strong> A plane; through the origin only when <span class="arithmatex">\(\gamma = 0\)</span>.</li>
+<li><strong>d.</strong> Integer middle coordinate; scaling <span class="arithmatex">\((0,1,0)\)</span> by <span class="arithmatex">\(0.5\)</span> escapes <span class="arithmatex">\(\Rightarrow\)</span> not.</li>
+</ul>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>a)</strong> subspace &nbsp;·&nbsp; <strong>b)</strong> not &nbsp;·&nbsp; <strong>c)</strong> subspace iff <span class="arithmatex">\(\gamma = 0\)</span> &nbsp;·&nbsp; <strong>d)</strong> not</p>
+</div>
+<hr />
+<h2 id="210-linear-independence">2.10 · Linear independence<a class="headerlink" href="#210-linear-independence" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Linearly independent</strong> — the only combination giving <span class="arithmatex">\(\mathbf{0}\)</span> is all-zero coefficients.</li>
+<li><strong>Linearly dependent</strong> — some vector is a combination of the others.</li>
+<li><strong>Method</strong> — vectors as columns, row-reduce, count pivots.</li>
+<li><strong>Rule</strong> — pivot in every column <span class="arithmatex">\(\Rightarrow\)</span> independent; a missing column pivot <span class="arithmatex">\(\Rightarrow\)</span> dependent.</li>
+</ul>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Vectors as columns, then reduce</p>
+<div class="arithmatex">\[\text{a)}\ \begin{bmatrix}2&amp;1&amp;3\\-1&amp;1&amp;-3\\3&amp;-2&amp;8\end{bmatrix}
+\longrightarrow
+\begin{bmatrix}2&amp;1&amp;3\\0&amp;3&amp;-3\\0&amp;0&amp;0\end{bmatrix}\]</div>
+<p>a) only 2 pivots, a zero row <span class="arithmatex">\(\Rightarrow\)</span> <strong>dependent</strong>. &nbsp; b) 3 pivots (rank 3) <span class="arithmatex">\(\Rightarrow\)</span> <strong>independent</strong>.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>a)</strong> linearly dependent, with <span class="arithmatex">\(\mathbf{x}_3 = 2\mathbf{x}_1 - \mathbf{x}_2\)</span>.</p>
+<p><strong>b)</strong> linearly independent (rank <span class="arithmatex">\(3\)</span>).</p>
+</div>
+<hr />
+<h2 id="211-write-mathbfy-as-a-linear-combination">2.11 · Write <span class="arithmatex">\(\mathbf{y}\)</span> as a linear combination<a class="headerlink" href="#211-write-mathbfy-as-a-linear-combination" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Linear combination</strong> — <span class="arithmatex">\(\lambda_1\mathbf{v}_1 + \lambda_2\mathbf{v}_2 + \lambda_3\mathbf{v}_3\)</span>: scale each vector, then add.</li>
+<li><strong>Set-up</strong> — build <span class="arithmatex">\([\mathbf{x}_1\ \mathbf{x}_2\ \mathbf{x}_3 \mid \mathbf{y}]\)</span>, same as solving a system.</li>
+<li><strong>Method</strong> — reduce to RREF; the coefficients appear in the final column.</li>
+</ul>
+</div>
+<div class="admonition steps">
+<p class="admonition-title"><span class="arithmatex">\([\mathbf{x}_1\ \mathbf{x}_2\ \mathbf{x}_3 \mid \mathbf{y}] \to\)</span> RREF</p>
+<div class="arithmatex">\[\left[\begin{array}{ccc|c}
+1&amp;1&amp;2&amp;1\\1&amp;2&amp;-1&amp;-2\\1&amp;3&amp;1&amp;5
+\end{array}\right]
+\longrightarrow
+\left[\begin{array}{ccc|c}
+1&amp;0&amp;0&amp;-6\\0&amp;1&amp;0&amp;3\\0&amp;0&amp;1&amp;2
+\end{array}\right]\]</div>
+<p>Check: <span class="arithmatex">\(-6(1) + 3(1) + 2(2) = 1\)</span>, matching <span class="arithmatex">\(\mathbf{y}\)</span>.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[\mathbf{y} = -6\,\mathbf{x}_1 + 3\,\mathbf{x}_2 + 2\,\mathbf{x}_3\]</div>
+</div>
+<hr />
+<h2 id="212-basis-of-u_1-cap-u_2">2.12 · Basis of <span class="arithmatex">\(U_1 \cap U_2\)</span><a class="headerlink" href="#212-basis-of-u_1-cap-u_2" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Intersection <span class="arithmatex">\(U_1 \cap U_2\)</span></strong> — all vectors that lie in both subspaces at once.</li>
+<li><strong>Key idea</strong> — a vector is in the intersection when it is a combination of the <span class="arithmatex">\(\mathbf{u}\)</span>'s <em>and</em> of the <span class="arithmatex">\(\mathbf{w}\)</span>'s: <span class="arithmatex">\(a_1\mathbf{u}_1 + a_2\mathbf{u}_2 + a_3\mathbf{u}_3 = b_1\mathbf{w}_1 + b_2\mathbf{w}_2 + b_3\mathbf{w}_3\)</span>.</li>
+<li><strong>Set-up</strong> — move everything to one side: <span class="arithmatex">\(a_1\mathbf{u}_1+a_2\mathbf{u}_2+a_3\mathbf{u}_3 - b_1\mathbf{w}_1 - b_2\mathbf{w}_2 - b_3\mathbf{w}_3 = \mathbf{0}\)</span>, a homogeneous system with columns <span class="arithmatex">\([\mathbf{u}_1\ \mathbf{u}_2\ \mathbf{u}_3 \mid -\mathbf{w}_1\ -\mathbf{w}_2\ -\mathbf{w}_3]\)</span>.</li>
+<li><strong>Free variable</strong> — a column with no pivot; here <span class="arithmatex">\(b_3\)</span>, which parameterises the (one-dimensional) intersection.</li>
+</ul>
+</div>
+<p>Stack the six vectors as columns of a <span class="arithmatex">\(4\times 6\)</span> matrix and row-reduce. Two <span class="arithmatex">\(\mathbf{u}\)</span> columns and two <span class="arithmatex">\(\mathbf{w}\)</span> columns take pivots, leaving <span class="arithmatex">\(b_3\)</span> free. Back-substituting recovers the <span class="arithmatex">\(b\)</span> coefficients, and feeding them into <span class="arithmatex">\(b_1\mathbf{w}_1+b_2\mathbf{w}_2+b_3\mathbf{w}_3\)</span> rebuilds the shared vector.</p>
+<div class="admonition steps">
+<p class="admonition-title">Reduce, then rebuild the intersection vector</p>
+<p>Row echelon form of <span class="arithmatex">\([\mathbf{u}_1\ \mathbf{u}_2\ \mathbf{u}_3 \mid -\mathbf{w}_1\ -\mathbf{w}_2\ -\mathbf{w}_3]\)</span>:</p>
+<div class="arithmatex">\[\left[\begin{array}{ccc|ccc}
+1&amp;2&amp;-1&amp;-1&amp;2&amp;-3\\
+0&amp;1&amp;-\tfrac23&amp;\tfrac13&amp;\tfrac43&amp;-3\\
+0&amp;0&amp;0&amp;1&amp;1&amp;-\tfrac72\\
+0&amp;0&amp;0&amp;0&amp;1&amp;-\tfrac72
+\end{array}\right]\]</div>
+<p>Column <span class="arithmatex">\(b_3\)</span> has no pivot, so set <span class="arithmatex">\(b_3 = t\)</span>. Back-substitution gives
+$<span class="arithmatex">\(b_2 = \tfrac72 t, \qquad b_1 = -b_2 + \tfrac72 t = 0.\)</span>$
+Choosing <span class="arithmatex">\(t = 2\)</span> to clear fractions: <span class="arithmatex">\(b_1 = 0,\ b_2 = 7,\ b_3 = 2\)</span>.</p>
+<p>Rebuild the intersection vector from the <span class="arithmatex">\(\mathbf{w}\)</span> side:
+$<span class="arithmatex">\(7\mathbf{w}_2 + 2\mathbf{w}_3 = 7\begin{pmatrix}2\\-2\\0\\0\end{pmatrix} + 2\begin{pmatrix}-3\\6\\-2\\-1\end{pmatrix} = \begin{pmatrix}14\\-14\\0\\0\end{pmatrix} + \begin{pmatrix}-6\\12\\-4\\-2\end{pmatrix} = \begin{pmatrix}8\\-2\\-4\\-2\end{pmatrix}.\)</span>$</p>
+<p>Dividing by <span class="arithmatex">\(2\)</span> gives the simplest representative <span class="arithmatex">\((4,-1,-2,-1)\)</span>.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><span class="arithmatex">\(U_1 \cap U_2\)</span> is one-dimensional, with basis
+$<span class="arithmatex">\(\left\{\,(4,\ -1,\ -2,\ -1)\,\right\}.\)</span>$</p>
+</div>
+<hr />
+<h2 id="213-subspaces-as-solution-spaces-u_1-ker-a_1-u_2-ker-a_2">2.13 · Subspaces as solution spaces <span class="arithmatex">\(U_1 = \ker A_1,\ U_2 = \ker A_2\)</span><a class="headerlink" href="#213-subspaces-as-solution-spaces-u_1-ker-a_1-u_2-ker-a_2" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Solution space (null space)</strong> — every <span class="arithmatex">\(\mathbf{x}\)</span> with <span class="arithmatex">\(A\mathbf{x} = \mathbf{0}\)</span>; a subspace of the domain <span class="arithmatex">\(\mathbb{R}^3\)</span>.</li>
+<li><strong>Rank–nullity</strong> — <span class="arithmatex">\(\dim(\ker A) = n - \operatorname{rank}(A)\)</span>, where <span class="arithmatex">\(n\)</span> is the number of columns.</li>
+<li><strong>Basis from free variables</strong> — each column without a pivot gives one basis vector.</li>
+<li><strong>Mind the definition</strong> — here the <span class="arithmatex">\(U\)</span>'s are <em>solution</em> spaces, so the dimension counts free variables, not pivots (contrast with 2.14).</li>
+</ul>
+</div>
+<p>Both <span class="arithmatex">\(A_1\)</span> and <span class="arithmatex">\(A_2\)</span> are <span class="arithmatex">\(4\times 3\)</span>, so <span class="arithmatex">\(\mathbf{x}\in\mathbb{R}^3\)</span>. Row-reducing each one gives rank <span class="arithmatex">\(2\)</span>, leaving a single free variable, so both solution spaces are one-dimensional. Strikingly, the two matrices reduce to the <em>same</em> echelon form, so <span class="arithmatex">\(U_1\)</span> and <span class="arithmatex">\(U_2\)</span> turn out to be the identical line.</p>
+<div class="admonition steps">
+<p class="admonition-title">Reduce each <span class="arithmatex">\(A_i\)</span> and read the null space</p>
+<div class="arithmatex">\[A_1 \longrightarrow \begin{bmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\\0&amp;0&amp;0\\0&amp;0&amp;0\end{bmatrix},
+\qquad
+A_2 \longrightarrow \begin{bmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\\0&amp;0&amp;0\\0&amp;0&amp;0\end{bmatrix}\]</div>
+<p>Both give <span class="arithmatex">\(x_1 = -x_3\)</span> and <span class="arithmatex">\(x_2 = -x_3\)</span>. Setting <span class="arithmatex">\(x_3 = t\)</span>:
+$<span class="arithmatex">\(\mathbf{x} = t\,(-1,\,-1,\,1).\)</span>$
+Same for both, so <span class="arithmatex">\(U_1 = U_2\)</span> and the intersection is that same line.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>a)</strong> <span class="arithmatex">\(\dim U_1 = \dim U_2 = 1\)</span>.</p>
+<p><strong>b)</strong> Basis of <span class="arithmatex">\(U_1\)</span> = basis of <span class="arithmatex">\(U_2\)</span> = <span class="arithmatex">\(\left\{\,(-1,\,-1,\,1)\,\right\}\)</span>.</p>
+<p><strong>c)</strong> Since <span class="arithmatex">\(U_1 = U_2\)</span>, the intersection is the same line: <span class="arithmatex">\(\left\{\,(-1,\,-1,\,1)\,\right\}\)</span>.</p>
+</div>
+<hr />
+<h2 id="214-subspaces-as-column-spaces-u_1-operatornamecol-a_1-u_2-operatornamecol-a_2">2.14 · Subspaces as column spaces <span class="arithmatex">\(U_1 = \operatorname{col} A_1,\ U_2 = \operatorname{col} A_2\)</span><a class="headerlink" href="#214-subspaces-as-column-spaces-u_1-operatornamecol-a_1-u_2-operatornamecol-a_2" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Column space</strong> — the span of a matrix's columns; here a subspace of <span class="arithmatex">\(\mathbb{R}^4\)</span>.</li>
+<li><strong>Dimension <span class="arithmatex">\(=\)</span> rank</strong> — the number of pivot columns.</li>
+<li><strong>Basis <span class="arithmatex">\(=\)</span> original pivot columns</strong> — reduce to find <em>which</em> columns are pivots, then take those columns from the <strong>original</strong> matrix (row ops change the columns, so never read the basis off the RREF).</li>
+<li><strong>Intersection</strong> — solve <span class="arithmatex">\(c_1\mathbf{v}_1 + c_2\mathbf{v}_2 = d_1\mathbf{w}_1 + d_2\mathbf{w}_2\)</span>, a homogeneous system in <span class="arithmatex">\((c_1,c_2,d_1,d_2)\)</span>.</li>
+</ul>
+</div>
+<p>Same two matrices as 2.13, but now the <span class="arithmatex">\(U\)</span>'s are spanned by the columns. Each has rank <span class="arithmatex">\(2\)</span> with pivots in columns <span class="arithmatex">\(1\)</span> and <span class="arithmatex">\(2\)</span>, so the first two columns of each original matrix form a basis. For the intersection, stack the two bases (negating <span class="arithmatex">\(U_2\)</span>'s) and solve.</p>
+<div class="admonition steps">
+<p class="admonition-title">Intersection system <span class="arithmatex">\([\mathbf{v}_1\ \mathbf{v}_2 \mid -\mathbf{w}_1\ -\mathbf{w}_2]\)</span></p>
+<div class="arithmatex">\[\left[\begin{array}{cc|cc}
+1&amp;0&amp;-3&amp;3\\
+1&amp;-2&amp;-1&amp;-2\\
+2&amp;1&amp;-7&amp;5\\
+1&amp;0&amp;-3&amp;1
+\end{array}\right]
+\longrightarrow
+\left[\begin{array}{cc|cc}
+1&amp;0&amp;-3&amp;0\\
+0&amp;1&amp;-1&amp;0\\
+0&amp;0&amp;0&amp;1\\
+0&amp;0&amp;0&amp;0
+\end{array}\right]\]</div>
+<p>Pivots in <span class="arithmatex">\(c_1, c_2, d_2\)</span>; the <span class="arithmatex">\(d_1\)</span> column is free. Back-substitution gives <span class="arithmatex">\(d_2 = 0\)</span>, <span class="arithmatex">\(c_2 = d_1\)</span>, <span class="arithmatex">\(c_1 = 3d_1\)</span>. Taking <span class="arithmatex">\(d_1 = 1\)</span>:
+$<span class="arithmatex">\(\mathbf{x} = 3\mathbf{v}_1 + \mathbf{v}_2 = 3\begin{pmatrix}1\\1\\2\\1\end{pmatrix} + \begin{pmatrix}0\\-2\\1\\0\end{pmatrix} = \begin{pmatrix}3\\1\\7\\3\end{pmatrix},\)</span>$
+which is exactly <span class="arithmatex">\(\mathbf{w}_1\)</span>, confirming it lies in both spaces. By Grassmann, <span class="arithmatex">\(\dim(U_1\cap U_2) = 2 + 2 - 3 = 1\)</span>.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>a)</strong> <span class="arithmatex">\(\dim U_1 = \dim U_2 = 2\)</span>.</p>
+<p><strong>b)</strong> Basis of <span class="arithmatex">\(U_1 = \left\{\,(1,1,2,1),\ (0,-2,1,0)\,\right\}\)</span>; &nbsp; basis of <span class="arithmatex">\(U_2 = \left\{\,(3,1,7,3),\ (-3,2,-5,-1)\,\right\}\)</span>.</p>
+<p><strong>c)</strong> Basis of <span class="arithmatex">\(U_1 \cap U_2 = \left\{\,(3,\,1,\,7,\,3)\,\right\}\)</span>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Why 2.13 and 2.14 differ (the thing to actually remember)</p>
+<p>Same matrices <span class="arithmatex">\(A_1, A_2\)</span>, but the two problems ask about <strong>opposite</strong> subspaces, so both the dimension formula and the way you read off a basis flip:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>2.13 · solution space</th>
+<th>2.14 · column space</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>What <span class="arithmatex">\(U\)</span> is</strong></td>
+<td>all <span class="arithmatex">\(\mathbf{x}\)</span> with <span class="arithmatex">\(A\mathbf{x}=\mathbf{0}\)</span> (<span class="arithmatex">\(\ker A\)</span>)</td>
+<td>the span of <span class="arithmatex">\(A\)</span>'s columns (<span class="arithmatex">\(\operatorname{col} A\)</span>)</td>
+</tr>
+<tr>
+<td><strong>Dimension</strong></td>
+<td><span class="arithmatex">\(\dim = n - \operatorname{rank}(A)\)</span> (free variables)</td>
+<td><span class="arithmatex">\(\dim = \operatorname{rank}(A)\)</span> (pivots)</td>
+</tr>
+<tr>
+<td><strong>Basis from</strong></td>
+<td>solving the system, one vector per free variable</td>
+<td>the <strong>original</strong> columns sitting in pivot positions</td>
+</tr>
+<tr>
+<td><strong>Here</strong></td>
+<td><span class="arithmatex">\(3 - 2 = 1\)</span></td>
+<td><span class="arithmatex">\(2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>So the <span class="arithmatex">\(\dim = n - \operatorname{rank}\)</span> formula is a <strong>null-space</strong> fact. It is easy to reach for it in 2.14, but a column space is measured by the rank directly. Rank–nullity ties them together: <span class="arithmatex">\(\operatorname{rank}(A) + \dim(\ker A) = n\)</span>, here <span class="arithmatex">\(2 + 1 = 3\)</span>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">The rank–nullity theorem, in plain words</p>
+<p>Think of a matrix as a machine with one slot for each column. When you row-reduce it, every column ends up in one of two piles:</p>
+<ul>
+<li><strong>Pivot columns</strong> are the ones pulling their own weight, each adds a genuinely new direction the matrix can reach. How many there are is the <strong>rank</strong>.</li>
+<li><strong>Non-pivot columns</strong> are the leftovers, each one is just a mix of earlier columns and shows up as a free choice when you solve <span class="arithmatex">\(A\mathbf{x}=\mathbf{0}\)</span>. How many there are is the size of the <strong>solution space</strong>.</li>
+</ul>
+<p>The theorem is simply the observation that every column lands in exactly one pile, so the two counts always add back up to the total number of columns:</p>
+<div class="arithmatex">\[\underbrace{\operatorname{rank}(A)}_{\text{new directions}} + \underbrace{\dim(\ker A)}_{\text{free choices}} = \underbrace{n}_{\text{columns}}.\]</div>
+<p>For these <span class="arithmatex">\(4\times 3\)</span> matrices: <span class="arithmatex">\(2\)</span> pulling their weight <span class="arithmatex">\(+\ 1\)</span> leftover <span class="arithmatex">\(=\ 3\)</span> columns. Handy check: once you know the rank, the other number is free.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">What \"basis = the pivot columns\" really means</p>
+<p>Row operations <strong>change</strong> the columns, so you can never copy the basis straight out of the RREF. What row reduction <em>does</em> preserve is the dependency pattern, telling you <strong>which</strong> columns are independent. So: reduce to spot the pivot positions (here columns <span class="arithmatex">\(1\)</span> and <span class="arithmatex">\(2\)</span>), then go back and take those columns from the <strong>original</strong> matrix. For <span class="arithmatex">\(A_1\)</span> that is <span class="arithmatex">\((1,1,2,1)\)</span> and <span class="arithmatex">\((0,-2,1,0)\)</span>, the untouched first two columns.</p>
+</div>
+<hr />
+<h2 id="215-subspaces-f-g-subseteq-mathbbr3-and-their-intersection">2.15 · Subspaces <span class="arithmatex">\(F, G \subseteq \mathbb{R}^3\)</span> and their intersection<a class="headerlink" href="#215-subspaces-f-g-subseteq-mathbbr3-and-their-intersection" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Subspace</strong> — a subset that contains <span class="arithmatex">\(\mathbf{0}\)</span> and is closed under addition and scalar multiplication.</li>
+<li><strong>Intersection <span class="arithmatex">\(F \cap G\)</span></strong> — all vectors lying in both subspaces at once.</li>
+<li><strong>Basis of a plane</strong> — solve the defining equation for one variable, then split the free variables into separate vectors.</li>
+<li><strong>Two routes to <span class="arithmatex">\(F \cap G\)</span></strong> — substitute <span class="arithmatex">\(G\)</span>'s general form into <span class="arithmatex">\(F\)</span>'s equation (part b), or set a combination of <span class="arithmatex">\(F\)</span>'s basis equal to a combination of <span class="arithmatex">\(G\)</span>'s basis and solve (part c). Both give the same line.</li>
+</ul>
+</div>
+<p><span class="arithmatex">\(F = \{(x,y,z)\in\mathbb{R}^3 \mid x+y-z = 0\}\)</span> is a plane through the origin. <span class="arithmatex">\(G = \{(a-b,\ a+b,\ a-3b)\mid a,b\in\mathbb{R}\}\)</span> is the span of two vectors. Both pass the three subspace tests: they contain the zero vector, and they are closed under addition and scaling (each condition is inherited from the linear form of the definition).</p>
+<p><strong>Part a (subspaces).</strong> For <span class="arithmatex">\(F\)</span>: <span class="arithmatex">\(0+0-0 = 0\)</span> so <span class="arithmatex">\(\mathbf{0}\in F\)</span>; adding two solutions of <span class="arithmatex">\(x+y-z=0\)</span> gives another solution; scaling by <span class="arithmatex">\(c\)</span> gives <span class="arithmatex">\(c(x+y-z) = 0\)</span>. For <span class="arithmatex">\(G\)</span>: choosing <span class="arithmatex">\(a=b=0\)</span> gives <span class="arithmatex">\(\mathbf{0}\in G\)</span>; sums and scalar multiples keep the same <span class="arithmatex">\((a-b,\ a+b,\ a-3b)\)</span> shape. So both are subspaces of <span class="arithmatex">\(\mathbb{R}^3\)</span>.</p>
+<div class="admonition steps">
+<p class="admonition-title">Part b, intersection without a basis</p>
+<p>A general vector in <span class="arithmatex">\(G\)</span> is <span class="arithmatex">\((a-b,\ a+b,\ a-3b)\)</span>. For it to lie in <span class="arithmatex">\(F\)</span> it must satisfy <span class="arithmatex">\(x+y-z=0\)</span>:
+$<span class="arithmatex">\((a-b)+(a+b)-(a-3b) = a + 3b = 0 \;\Rightarrow\; a = -3b.\)</span>$
+Substituting <span class="arithmatex">\(a=-3b\)</span> back into <span class="arithmatex">\(G\)</span>'s coordinates:
+$<span class="arithmatex">\(x = -3b-b = -4b,\quad y = -3b+b = -2b,\quad z = -3b-3(-3b) = -6b.\)</span>$
+So <span class="arithmatex">\(F\cap G = \{(-4b,-2b,-6b)\mid b\in\mathbb{R}\} = \{k(2,1,3)\mid k\in\mathbb{R}\}\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part c, intersection using bases</p>
+<p>Basis for <span class="arithmatex">\(F\)</span>: rewrite <span class="arithmatex">\(x+y-z=0\)</span> as <span class="arithmatex">\(z=x+y\)</span>, so <span class="arithmatex">\((x,y,x+y) = x(1,0,1)+y(0,1,1)\)</span>, giving <span class="arithmatex">\(B_F = \{(1,0,1),(0,1,1)\}\)</span>.
+Basis for <span class="arithmatex">\(G\)</span>: separate the parameters, <span class="arithmatex">\(a(1,1,1)+b(-1,1,-3)\)</span>, giving <span class="arithmatex">\(B_G = \{(1,1,1),(-1,1,-3)\}\)</span>.
+Set a combination of <span class="arithmatex">\(B_F\)</span> equal to a combination of <span class="arithmatex">\(B_G\)</span>:
+$<span class="arithmatex">\(c_1(1,0,1)+c_2(0,1,1) = d_1(1,1,1)+d_2(-1,1,-3).\)</span>$
+Matching coordinates gives <span class="arithmatex">\(c_1 = d_1-d_2\)</span>, <span class="arithmatex">\(c_2 = d_1+d_2\)</span>, <span class="arithmatex">\(c_1+c_2 = d_1-3d_2\)</span>. Substituting the first two into the third: <span class="arithmatex">\(2d_1 = d_1 - 3d_2 \Rightarrow d_1 = -3d_2\)</span>. Let <span class="arithmatex">\(d_2 = t\)</span>, so <span class="arithmatex">\(d_1 = -3t\)</span>:
+$<span class="arithmatex">\(-3t(1,1,1)+t(-1,1,-3) = (-4t,-2t,-6t) = k(2,1,3).\)</span>$
+This matches part b exactly.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p>Both <span class="arithmatex">\(F\)</span> and <span class="arithmatex">\(G\)</span> are subspaces of <span class="arithmatex">\(\mathbb{R}^3\)</span>.</p>
+<div class="arithmatex">\[F \cap G = \{\,k(2,1,3)\mid k\in\mathbb{R}\,\}\]</div>
+<p>(a one-dimensional line, obtained identically with or without bases).</p>
+</div>
+<hr />
+<h2 id="216-are-the-following-mappings-linear">2.16 · Are the following mappings linear?<a class="headerlink" href="#216-are-the-following-mappings-linear" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Linear mapping</strong> — a map <span class="arithmatex">\(\Phi\)</span> that passes two tests for all inputs <span class="arithmatex">\(f,g\)</span> and scalars <span class="arithmatex">\(c\)</span>.</li>
+<li><strong>Additivity (plus test)</strong> — <span class="arithmatex">\(\Phi(f+g) = \Phi(f) + \Phi(g)\)</span>.</li>
+<li><strong>Homogeneity (scalar test)</strong> — <span class="arithmatex">\(\Phi(c\cdot f) = c\cdot\Phi(f)\)</span>.</li>
+<li><strong>To disprove linearity</strong> — a single counterexample that breaks either test is enough.</li>
+</ul>
+</div>
+<p>A map is linear exactly when it respects addition and scaling. Integration and differentiation both do (they split across plus signs and let constants slide out), so parts a and b are linear. Cosine does not (it bends its input), so part c fails. Any fixed-matrix map is automatically linear, so parts d and e pass, including the rotation matrix in e where the sines and cosines are just constants.</p>
+<div class="admonition steps">
+<p class="admonition-title">Parts a &amp; b, integration and differentiation</p>
+<p><strong>a) Integration</strong> <span class="arithmatex">\(\Phi(f) = \int_a^b f(x)\,dx\)</span>.
+Additivity: <span class="arithmatex">\(\int_a^b (f+g)\,dx = \int_a^b f\,dx + \int_a^b g\,dx = \Phi(f)+\Phi(g)\)</span>.
+Homogeneity: <span class="arithmatex">\(\int_a^b c\,f\,dx = c\int_a^b f\,dx = c\,\Phi(f)\)</span>. Linear.</p>
+<p><strong>b) Differentiation</strong> <span class="arithmatex">\(\Phi(f) = f'\)</span>.
+Additivity: <span class="arithmatex">\((f+g)' = f' + g' = \Phi(f)+\Phi(g)\)</span>.
+Homogeneity: <span class="arithmatex">\((c\,f)' = c\,f' = c\,\Phi(f)\)</span>. Linear.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part c, cosine (counterexample)</p>
+<p><span class="arithmatex">\(\Phi(x) = \cos(x)\)</span>. Test additivity: <span class="arithmatex">\(\Phi(x+y) = \cos(x+y)\)</span>, but <span class="arithmatex">\(\Phi(x)+\Phi(y) = \cos(x)+\cos(y)\)</span>, and <span class="arithmatex">\(\cos(x+y)\neq\cos(x)+\cos(y)\)</span> in general.
+Concrete counterexample with <span class="arithmatex">\(x=y=0\)</span>: <span class="arithmatex">\(\Phi(0+0) = \cos 0 = 1\)</span>, while <span class="arithmatex">\(\Phi(0)+\Phi(0) = 1+1 = 2\)</span>. Since <span class="arithmatex">\(1\neq 2\)</span>, it is <strong>not linear</strong>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Parts d &amp; e, matrix maps</p>
+<p><strong>d)</strong> <span class="arithmatex">\(\Phi(\mathbf{x}) = A\mathbf{x}\)</span> with <span class="arithmatex">\(A = \begin{bmatrix}1&amp;2&amp;3\\1&amp;4&amp;3\end{bmatrix}\)</span>.
+Additivity: <span class="arithmatex">\(A(\mathbf{x}+\mathbf{y}) = A\mathbf{x}+A\mathbf{y}\)</span>. Homogeneity: <span class="arithmatex">\(A(c\mathbf{x}) = c(A\mathbf{x})\)</span>. Linear.</p>
+<p><strong>e)</strong> <span class="arithmatex">\(\Phi(\mathbf{x}) = A\mathbf{x}\)</span> with <span class="arithmatex">\(A = \begin{bmatrix}\cos\theta&amp;\sin\theta\\-\sin\theta&amp;\cos\theta\end{bmatrix}\)</span> for fixed <span class="arithmatex">\(\theta\)</span>.
+The entries are constants, so this is still just matrix multiplication, and the same two properties hold. Linear (this is a rotation matrix).</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<ul>
+<li><strong>a)</strong> linear (integration)</li>
+<li><strong>b)</strong> linear (differentiation)</li>
+<li><strong>c)</strong> <strong>not linear</strong> (<span class="arithmatex">\(\cos(x+y)\neq\cos x+\cos y\)</span>; e.g. <span class="arithmatex">\(x=y=0\)</span> gives <span class="arithmatex">\(1\neq 2\)</span>)</li>
+<li><strong>d)</strong> linear (matrix map)</li>
+<li><strong>e)</strong> linear (rotation matrix)</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Linearity: two checkpoints worth memorizing</p>
+<p>Turn the formal definition into two everyday tests:</p>
+<ul>
+<li><strong>The Plus Test</strong> — does splitting the input across a <span class="arithmatex">\(+\)</span> survive? <span class="arithmatex">\(\Phi(f+g) = \Phi(f)+\Phi(g)\)</span>.</li>
+<li><strong>The Multiplier Test</strong> — can a constant slide out to the front? <span class="arithmatex">\(\Phi(cf) = c\,\Phi(f)\)</span>.</li>
+</ul>
+<p>The real trick is <em>where the variable sits</em>. If it is trapped <strong>inside</strong> a curvy function like <span class="arithmatex">\(\cos\)</span>, the map bends the input and both tests fail. If the variable only rides on the <strong>outside</strong> (a derivative, an integral, or multiplication by a fixed matrix) the tests pass. A rotation matrix still passes, because its sines and cosines are baked-in constants, not the input.</p>
+<p>Two things that trip people up here: the notation <span class="arithmatex">\(L^1, C^1, C^0\)</span> is just naming the <em>space of functions</em> in play (integrable, once-differentiable, continuous), so "<span class="arithmatex">\(\Phi:C^1\to C^0,\ \Phi(f)=f'\)</span>" is simply differentiation. And integration and differentiation are themselves <strong>linear operators</strong>: a constant multiple slides straight through, which is a separate idea from the mechanical power-rule arithmetic you use to actually evaluate an integral.</p>
+</div>
+<hr />
+<h2 id="217-transformation-matrix-rank-kernel-and-image-of-phimathbbr3tomathbbr4">2.17 · Transformation matrix, rank, kernel and image of <span class="arithmatex">\(\Phi:\mathbb{R}^3\to\mathbb{R}^4\)</span><a class="headerlink" href="#217-transformation-matrix-rank-kernel-and-image-of-phimathbbr3tomathbbr4" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Transformation matrix <span class="arithmatex">\(A_\Phi\)</span></strong> — read the coefficients of <span class="arithmatex">\(x_1,x_2,x_3\)</span> row by row; column <span class="arithmatex">\(j\)</span> holds the coefficients of <span class="arithmatex">\(x_j\)</span>.</li>
+<li><strong>Rank</strong> — number of pivots after row reduction.</li>
+<li><strong>Kernel <span class="arithmatex">\(\ker(\Phi)\)</span></strong> — all inputs sent to <span class="arithmatex">\(\mathbf{0}\)</span>; <span class="arithmatex">\(\dim(\ker) = (\text{columns}) - \operatorname{rank}\)</span>.</li>
+<li><strong>Image <span class="arithmatex">\(\operatorname{Im}(\Phi)\)</span></strong> — all reachable outputs; <span class="arithmatex">\(\dim(\operatorname{Im}) = \operatorname{rank}\)</span>, spanned by the original pivot columns.</li>
+</ul>
+</div>
+<p>Reading the four output rows gives the coefficient matrix <span class="arithmatex">\(A_\Phi\)</span>. Row-reducing it produces a pivot in all three columns, so the rank is <span class="arithmatex">\(3\)</span>. By rank–nullity the kernel is trivial (<span class="arithmatex">\(3-3 = 0\)</span>), meaning only the zero vector maps to zero, and the image is three-dimensional, spanned by the three original columns.</p>
+<div class="admonition steps">
+<p class="admonition-title">Build <span class="arithmatex">\(A_\Phi\)</span> and row-reduce</p>
+<p>Pull the coefficients out of <span class="arithmatex">\(\Phi(x_1,x_2,x_3) = (3x_1+2x_2+x_3,\ x_1+x_2+x_3,\ x_1-3x_2,\ 2x_1+3x_2+x_3)\)</span>:
+$<span class="arithmatex">\(A_\Phi = \begin{bmatrix}3&amp;2&amp;1\\1&amp;1&amp;1\\1&amp;-3&amp;0\\2&amp;3&amp;1\end{bmatrix}.\)</span>$
+Swap to get a leading <span class="arithmatex">\(1\)</span>, then clear below:
+$<span class="arithmatex">\(\begin{bmatrix}1&amp;1&amp;1\\3&amp;2&amp;1\\1&amp;-3&amp;0\\2&amp;3&amp;1\end{bmatrix}
+\longrightarrow
+\begin{bmatrix}1&amp;1&amp;1\\0&amp;1&amp;2\\0&amp;0&amp;1\\0&amp;0&amp;0\end{bmatrix}.\)</span>$
+Three pivots, so <span class="arithmatex">\(\operatorname{rk}(A_\Phi) = 3\)</span>.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[A_\Phi = \begin{bmatrix}3&amp;2&amp;1\\1&amp;1&amp;1\\1&amp;-3&amp;0\\2&amp;3&amp;1\end{bmatrix},\qquad \operatorname{rk}(A_\Phi) = 3.\]</div>
+<p><span class="arithmatex">\(\ker(\Phi) = \{\mathbf{0}\}\)</span>, so <span class="arithmatex">\(\dim(\ker(\Phi)) = 0\)</span>.</p>
+<p><span class="arithmatex">\(\dim(\operatorname{Im}(\Phi)) = 3\)</span>, with
+$<span class="arithmatex">\(\operatorname{Im}(\Phi) = \operatorname{span}\left\{\begin{pmatrix}3\\1\\1\\2\end{pmatrix},\begin{pmatrix}2\\1\\-3\\3\end{pmatrix},\begin{pmatrix}1\\1\\0\\1\end{pmatrix}\right\}.\)</span>$</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Transformation matrix, kernel, image: what they actually are</p>
+<ul>
+<li><strong>Transformation matrix</strong> — the map's <strong>action machine</strong>: feed in <span class="arithmatex">\(\mathbf{x}\)</span>, get <span class="arithmatex">\(\Phi(\mathbf{x})\)</span>. It is <em>not</em> an inverse or "undo" matrix. You build it by pulling each variable's coefficients into a column, one output row at a time.</li>
+<li><strong>Kernel</strong> — the "drops to zero" club: the inputs the map sends to <span class="arithmatex">\(\mathbf{0}\)</span>. Full rank means only <span class="arithmatex">\(\mathbf{0}\)</span> qualifies, so <span class="arithmatex">\(\dim(\ker)=0\)</span>. Rank–nullity hands it to you for free: <span class="arithmatex">\((\text{columns}) - \operatorname{rank}\)</span>.</li>
+<li><strong>Image</strong> — the full list of outputs the machine can actually produce. Its dimension always equals the <strong>rank</strong>, and it is spanned by the <strong>original</strong> pivot columns.</li>
+</ul>
+</div>
+<hr />
+<h2 id="218-automorphisms-kernels-and-images-of-f-and-g">2.18 · Automorphisms: kernels and images of <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span><a class="headerlink" href="#218-automorphisms-kernels-and-images-of-f-and-g" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Homomorphism</strong> — a structure-preserving map between vector spaces; equivalently, a linear map (it preserves addition and scalar multiplication).</li>
+<li><strong>Endomorphism</strong> — a homomorphism from a space to itself, <span class="arithmatex">\(\Phi: V \to V\)</span>.</li>
+<li><strong>Automorphism</strong> — a bijective endomorphism: an invertible linear map <span class="arithmatex">\(V \to V\)</span> whose inverse is also linear.</li>
+<li><strong>Kernel</strong> — <span class="arithmatex">\(\ker(f) = \{v : f(v) = \mathbf{0}\}\)</span>. <strong>Image</strong> — <span class="arithmatex">\(\operatorname{Im}(g) = \{g(v) : v \in V\}\)</span>.</li>
+<li><strong>Key fact used here</strong> — <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> are automorphisms with <span class="arithmatex">\(f \circ g = \mathrm{id}\)</span>, so both are bijections; a bijection sends only <span class="arithmatex">\(\mathbf{0}\)</span> to <span class="arithmatex">\(\mathbf{0}\)</span> and is onto.</li>
+</ul>
+</div>
+<p>Because <span class="arithmatex">\(f \circ g = \mathrm{id}_E\)</span>, both <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> are invertible (automorphisms). Bijectivity is what makes all three claims fall out: an injective map has trivial kernel, and a surjective map has full image.</p>
+<div class="admonition steps">
+<p class="admonition-title">The three claims</p>
+<p><strong>1. <span class="arithmatex">\(\ker(f) = \ker(g \circ f)\)</span>.</strong>
+If <span class="arithmatex">\(f(v) = \mathbf{0}\)</span> then <span class="arithmatex">\((g\circ f)(v) = g(\mathbf{0}) = \mathbf{0}\)</span>, so <span class="arithmatex">\(\ker(f) \subseteq \ker(g\circ f)\)</span>. Conversely, if <span class="arithmatex">\((g\circ f)(v) = \mathbf{0}\)</span>, apply <span class="arithmatex">\(g^{-1}\)</span>: <span class="arithmatex">\(f(v) = g^{-1}(\mathbf{0}) = \mathbf{0}\)</span>, so <span class="arithmatex">\(\ker(g\circ f) \subseteq \ker(f)\)</span>. Hence equal.</p>
+<p><strong>2. <span class="arithmatex">\(\operatorname{Im}(g) = \operatorname{Im}(g \circ f)\)</span>.</strong>
+Clearly <span class="arithmatex">\(\operatorname{Im}(g\circ f) \subseteq \operatorname{Im}(g)\)</span>. For the reverse, take any <span class="arithmatex">\(g(w) \in \operatorname{Im}(g)\)</span>. Since <span class="arithmatex">\(f\)</span> is surjective, <span class="arithmatex">\(w = f(u)\)</span> for some <span class="arithmatex">\(u\)</span>, so <span class="arithmatex">\(g(w) = (g\circ f)(u) \in \operatorname{Im}(g\circ f)\)</span>. Hence equal.</p>
+<p><strong>3. <span class="arithmatex">\(\ker(f) \cap \operatorname{Im}(g) = \{\mathbf{0}\}\)</span>.</strong>
+<span class="arithmatex">\(f\)</span> is an automorphism, so <span class="arithmatex">\(\ker(f) = \{\mathbf{0}\}\)</span>. The intersection of <span class="arithmatex">\(\{\mathbf{0}\}\)</span> with any set is <span class="arithmatex">\(\{\mathbf{0}\}\)</span>.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p>All three hold: <span class="arithmatex">\(\ker(f) = \ker(g\circ f)\)</span>, <span class="arithmatex">\(\operatorname{Im}(g) = \operatorname{Im}(g\circ f)\)</span>, and <span class="arithmatex">\(\ker(f)\cap\operatorname{Im}(g) = \{\mathbf{0}\}\)</span>, each following from <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> being automorphisms (bijective linear maps).</p>
+</div>
+<hr />
+<h2 id="219-endomorphism-on-mathbbr3-kernel-image-and-a-basis-change">2.19 · Endomorphism on <span class="arithmatex">\(\mathbb{R}^3\)</span>: kernel, image, and a basis change<a class="headerlink" href="#219-endomorphism-on-mathbbr3-kernel-image-and-a-basis-change" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Endomorphism</strong> — a linear map from a space to itself, here <span class="arithmatex">\(\Phi:\mathbb{R}^3\to\mathbb{R}^3\)</span>.</li>
+<li><strong>Kernel / Image</strong> — inputs sent to <span class="arithmatex">\(\mathbf{0}\)</span> / all reachable outputs.</li>
+<li><strong>Invertibility test</strong> — <span class="arithmatex">\(\det A_\Phi \neq 0\)</span> means full rank, trivial kernel, and image equal to all of <span class="arithmatex">\(\mathbb{R}^3\)</span>.</li>
+<li><strong>Basis change of a map</strong> — <span class="arithmatex">\(\tilde{A}_\Phi = B^{-1} A_\Phi B\)</span>, where <span class="arithmatex">\(B\)</span> has the new basis vectors as its columns.</li>
+</ul>
+</div>
+<p>The transformation matrix is <span class="arithmatex">\(A_\Phi = \begin{bmatrix}1&amp;1&amp;0\\1&amp;-1&amp;0\\1&amp;1&amp;1\end{bmatrix}\)</span>. Its determinant is <span class="arithmatex">\(-2\)</span>, which is nonzero, so <span class="arithmatex">\(\Phi\)</span> is invertible: the kernel is just the zero vector and the image is all of <span class="arithmatex">\(\mathbb{R}^3\)</span>. Part b re-expresses the same map in the new basis <span class="arithmatex">\(B\)</span> using the similarity formula <span class="arithmatex">\(B^{-1}A_\Phi B\)</span>.</p>
+<div class="admonition steps">
+<p class="admonition-title">Part a, kernel and image</p>
+<p><span class="arithmatex">\(\det A_\Phi = -2 \neq 0\)</span>, so <span class="arithmatex">\(\operatorname{rk}(A_\Phi) = 3\)</span>.
+$<span class="arithmatex">\(\ker(\Phi) = \{\mathbf{0}\}, \qquad \dim(\ker(\Phi)) = 0.\)</span>$</p>
+<div class="arithmatex">\[\operatorname{Im}(\Phi) = \mathbb{R}^3, \qquad \dim(\operatorname{Im}(\Phi)) = 3.\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part b, basis change to <span class="arithmatex">\(B\)</span></p>
+<p>Put the new basis vectors as columns: <span class="arithmatex">\(B = \begin{bmatrix}1&amp;1&amp;1\\1&amp;2&amp;0\\1&amp;1&amp;0\end{bmatrix}\)</span>.
+Then
+$<span class="arithmatex">\(\tilde{A}_\Phi = B^{-1} A_\Phi B = \begin{bmatrix}6&amp;9&amp;1\\-3&amp;-5&amp;0\\-1&amp;-1&amp;0\end{bmatrix}.\)</span>$</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>a)</strong> <span class="arithmatex">\(\ker(\Phi) = \{\mathbf{0}\}\)</span> (dim 0), <span class="arithmatex">\(\operatorname{Im}(\Phi) = \mathbb{R}^3\)</span> (dim 3).</p>
+<p><strong>b)</strong> <span class="arithmatex">\(\displaystyle \tilde{A}_\Phi = \begin{bmatrix}6&amp;9&amp;1\\-3&amp;-5&amp;0\\-1&amp;-1&amp;0\end{bmatrix}.\)</span></p>
+</div>
+<hr />
+<h2 id="220-basis-changes-and-a-homomorphism-mathbbr2-to-mathbbr3">2.20 · Basis changes and a homomorphism <span class="arithmatex">\(\mathbb{R}^2 \to \mathbb{R}^3\)</span><a class="headerlink" href="#220-basis-changes-and-a-homomorphism-mathbbr2-to-mathbbr3" title="Permanent link">&para;</a></h2>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Ordered basis</strong> — a basis with a fixed order, so coordinates are well defined.</li>
+<li><strong>Change-of-basis matrix</strong> — converts a coordinate vector from one basis to another; its columns are the old basis vectors written in the new basis.</li>
+<li><strong>Transformation matrix w.r.t. bases <span class="arithmatex">\(B, C\)</span></strong> — its <span class="arithmatex">\(j\)</span>-th column is <span class="arithmatex">\(\Phi(b_j)\)</span> written in coordinates of <span class="arithmatex">\(C\)</span>.</li>
+<li><strong>Similarity for different in/out bases</strong> — if input coords change by <span class="arithmatex">\(P_1\)</span> and output coords by <span class="arithmatex">\(P_2\)</span>, then <span class="arithmatex">\(A' = P_2\, A_\Phi\, P_1\)</span>.</li>
+<li><strong>Basis test</strong> — a set of <span class="arithmatex">\(n\)</span> vectors in <span class="arithmatex">\(\mathbb{R}^n\)</span> is a basis iff the matrix with them as columns has nonzero determinant.</li>
+</ul>
+</div>
+<p>The vectors <span class="arithmatex">\(b_1,b_2\)</span> and <span class="arithmatex">\(b_1',b_2'\)</span> each form a basis of <span class="arithmatex">\(\mathbb{R}^2\)</span> (nonzero determinants). <span class="arithmatex">\(P_1\)</span> rewrites <span class="arithmatex">\(B'\)</span>-coordinates as <span class="arithmatex">\(B\)</span>-coordinates. The three <span class="arithmatex">\(c\)</span> vectors form a basis of <span class="arithmatex">\(\mathbb{R}^3\)</span>, and <span class="arithmatex">\(P_2\)</span> converts <span class="arithmatex">\(C\)</span>-coordinates to the standard basis. The homomorphism <span class="arithmatex">\(\Phi\)</span> is pinned down by its action on <span class="arithmatex">\(b_1+b_2\)</span> and <span class="arithmatex">\(b_1-b_2\)</span>; solving recovers <span class="arithmatex">\(\Phi(b_1)\)</span> and <span class="arithmatex">\(\Phi(b_2)\)</span>, which build <span class="arithmatex">\(A_\Phi\)</span>. Combining the change-of-basis matrices gives <span class="arithmatex">\(A'\)</span>, and part f chases one vector through both routes as a check.</p>
+<div class="admonition steps">
+<p class="admonition-title">Parts a &amp; b, bases and <span class="arithmatex">\(P_1\)</span></p>
+<p><span class="arithmatex">\(\det[b_1\ b_2] = \det\begin{bmatrix}2&amp;-1\\1&amp;-1\end{bmatrix} = -1 \neq 0\)</span>, and <span class="arithmatex">\(\det[b_1'\ b_2'] = \det\begin{bmatrix}2&amp;1\\-2&amp;1\end{bmatrix} = 4 \neq 0\)</span>. Both are bases.
+<span class="arithmatex">\(P_1\)</span> changes coordinates from <span class="arithmatex">\(B'\)</span> to <span class="arithmatex">\(B\)</span>: <span class="arithmatex">\([x]_B = P_1 [x]_{B'}\)</span>, so <span class="arithmatex">\(P_1 = [b_1\ b_2]^{-1}[b_1'\ b_2']\)</span>:
+$<span class="arithmatex">\(P_1 = \begin{bmatrix}4&amp;0\\6&amp;-1\end{bmatrix}.\)</span>$</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part c, the basis <span class="arithmatex">\(C\)</span> and <span class="arithmatex">\(P_2\)</span></p>
+<p><span class="arithmatex">\(C = [c_1\ c_2\ c_3] = \begin{bmatrix}1&amp;0&amp;1\\2&amp;-1&amp;0\\-1&amp;2&amp;-1\end{bmatrix}\)</span>.
+(i) <span class="arithmatex">\(\det C = 4 \neq 0\)</span>, so <span class="arithmatex">\(C\)</span> is a basis of <span class="arithmatex">\(\mathbb{R}^3\)</span>.
+(ii) <span class="arithmatex">\(C'\)</span> is the standard basis. Since <span class="arithmatex">\(v = C[v]_C = [v]_{C'}\)</span>, the change from <span class="arithmatex">\(C\)</span> to <span class="arithmatex">\(C'\)</span> is just <span class="arithmatex">\(P_2 = C\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part d, transformation matrix <span class="arithmatex">\(A_\Phi\)</span> w.r.t. <span class="arithmatex">\(B\)</span> and <span class="arithmatex">\(C\)</span></p>
+<p>Given <span class="arithmatex">\(\Phi(b_1+b_2) = c_2 + c_3\)</span> and <span class="arithmatex">\(\Phi(b_1-b_2) = 2c_1 - c_2 + 3c_3\)</span>. In <span class="arithmatex">\(C\)</span>-coordinates these are <span class="arithmatex">\((0,1,1)\)</span> and <span class="arithmatex">\((2,-1,3)\)</span>. Solving:
+$<span class="arithmatex">\(\Phi(b_1) = \tfrac12\big[(0,1,1)+(2,-1,3)\big] = (1,0,2)_C, \quad \Phi(b_2) = \tfrac12\big[(0,1,1)-(2,-1,3)\big] = (-1,1,-1)_C.\)</span>$
+The columns of <span class="arithmatex">\(A_\Phi\)</span> are these coordinate vectors:
+$<span class="arithmatex">\(A_\Phi = \begin{bmatrix}1&amp;-1\\0&amp;1\\2&amp;-1\end{bmatrix}.\)</span>$</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part e, <span class="arithmatex">\(A'\)</span> w.r.t. <span class="arithmatex">\(B'\)</span> and <span class="arithmatex">\(C'\)</span></p>
+<p>Input coords change by <span class="arithmatex">\(P_1\)</span> (<span class="arithmatex">\(B' \to B\)</span>) and output coords by <span class="arithmatex">\(P_2\)</span> (<span class="arithmatex">\(C \to C'\)</span>), so
+$<span class="arithmatex">\(A' = P_2\, A_\Phi\, P_1 = \begin{bmatrix}0&amp;2\\-10&amp;3\\12&amp;-4\end{bmatrix}.\)</span>$</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Part f, chasing <span class="arithmatex">\(x\)</span> with coords <span class="arithmatex">\([2,3]^\top\)</span> in <span class="arithmatex">\(B'\)</span></p>
+<p>(i) <span class="arithmatex">\([x]_B = P_1[x]_{B'} = \begin{bmatrix}4&amp;0\\6&amp;-1\end{bmatrix}\begin{bmatrix}2\\3\end{bmatrix} = (8,9)\)</span>.
+(ii) <span class="arithmatex">\([\Phi(x)]_C = A_\Phi[x]_B = (-1,9,7)\)</span>.
+(iii) In the standard basis, <span class="arithmatex">\(\Phi(x) = C[\Phi(x)]_C = (6,-11,12)\)</span>.
+(iv) Directly, <span class="arithmatex">\(A'[x]_{B'} = (6,-11,12)\)</span>, which matches (iii). Check confirmed.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<p><strong>a)</strong> Both <span class="arithmatex">\(B\)</span> and <span class="arithmatex">\(B'\)</span> are bases (<span class="arithmatex">\(\det = -1\)</span> and <span class="arithmatex">\(4\)</span>).</p>
+<p><strong>b)</strong> <span class="arithmatex">\(P_1 = \begin{bmatrix}4&amp;0\\6&amp;-1\end{bmatrix}\)</span>.</p>
+<p><strong>c)</strong> <span class="arithmatex">\(C\)</span> is a basis (<span class="arithmatex">\(\det C = 4\)</span>); <span class="arithmatex">\(P_2 = C = \begin{bmatrix}1&amp;0&amp;1\\2&amp;-1&amp;0\\-1&amp;2&amp;-1\end{bmatrix}\)</span>.</p>
+<p><strong>d)</strong> <span class="arithmatex">\(A_\Phi = \begin{bmatrix}1&amp;-1\\0&amp;1\\2&amp;-1\end{bmatrix}\)</span>.</p>
+<p><strong>e)</strong> <span class="arithmatex">\(A' = \begin{bmatrix}0&amp;2\\-10&amp;3\\12&amp;-4\end{bmatrix}\)</span>.</p>
+<p><strong>f)</strong> <span class="arithmatex">\([x]_B = (8,9)\)</span>; <span class="arithmatex">\([\Phi(x)]_C = (-1,9,7)\)</span>; <span class="arithmatex">\(\Phi(x) = (6,-11,12)\)</span> in the standard basis, confirmed both ways.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">The standard basis is secretly the identity</p>
+<p>When a question asks for coordinates or a matrix "relative to the standard basis <span class="arithmatex">\(C'\)</span>" without ever defining <span class="arithmatex">\(C'\)</span>, that is because the standard basis change-of-basis matrix is just the identity <span class="arithmatex">\(I = \begin{bmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\end{bmatrix}\)</span>. So any <span class="arithmatex">\(I^{-1}\)</span> hiding in the chain collapses to <span class="arithmatex">\(I\)</span>, and there is no matrix to invert at that step. Ordinary coordinates <em>are</em> the standard-basis coordinates.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Reading a change-of-basis chain (right to left)</p>
+<p>Compose from the inside out: <span class="arithmatex">\(A' = P_2\, A_\Phi\, P_1\)</span> reads as "convert the input basis with <span class="arithmatex">\(P_1\)</span>, apply the map with <span class="arithmatex">\(A_\Phi\)</span>, then convert the output basis with <span class="arithmatex">\(P_2\)</span>." The inner dimensions dovetail, <span class="arithmatex">\((3\times 3)(3\times 2)(2\times 2)\)</span>, which is the fast sanity check that the pieces are in the right order.</p>
+<ul>
+<li>The rule <span class="arithmatex">\((\text{destination})^{-1}(\text{start})\)</span> still holds; it just vanishes when the destination is the standard basis, since that inverse is <span class="arithmatex">\(I\)</span>.</li>
+<li><strong>Always verify at the end.</strong> Computing <span class="arithmatex">\(A'\,[x]_{B'}\)</span> directly should land on the <em>exact</em> same vector as the long route (change basis, apply the map, change basis back). If they disagree, re-check the arithmetic one entry at a time, because a single sign slip in a dot product, for example <span class="arithmatex">\((-4)(2)+(3)(3) = +1\)</span>, not <span class="arithmatex">\(-2\)</span>, shifts the whole output vector even when the method is flawless.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/anp-exe" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.sections", "toc.integrate", "content.code.copy", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

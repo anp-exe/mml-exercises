@@ -173,3 +173,39 @@ at $x_0 = 0$.
     \end{aligned}$$
 
     The sign pattern $+\,+\,-\,-\,+\,+$ mirrors the four-step derivative cycle and is a useful check that the derivatives were tracked correctly.
+
+---
+
+## 5.5 · Jacobian dimensions
+
+*Calculus III · multivariable derivatives*
+
+Consider the functions
+$$\begin{aligned}
+f_1(\boldsymbol{x}) &= \sin(x_1)\cos(x_2), && \boldsymbol{x} \in \mathbb{R}^2\\
+f_2(\boldsymbol{x}, \boldsymbol{y}) &= \boldsymbol{x}^\top \boldsymbol{y}, && \boldsymbol{x}, \boldsymbol{y} \in \mathbb{R}^n\\
+f_3(x) &= x x^\top, && x \in \mathbb{R}
+\end{aligned}$$
+
+**Part a**
+
+What are the dimensions of $\partial f_i / \partial \boldsymbol{x}$?
+
+!!! theory "Topics & Definitions"
+    - **The dimension rule** — for $f : \mathbb{R}^n \to \mathbb{R}^m$, the Jacobian $\partial f/\partial \boldsymbol{x}$ has dimension $m \times n$, that is (output dimension) $\times$ (input dimension). Each **row** is one output component, each **column** one input variable. This part can be answered purely by reading the domain and codomain, no differentiation required.
+    - **Scalar-valued means a row** — a scalar-valued function ($m = 1$) always has a Jacobian that is a single **row** vector, with one entry per input variable. All three functions here are scalar-valued, so all three Jacobians are rows.
+
+!!! note "Read the space each variable lives in"
+    In $f_3$, $x \in \mathbb{R}$ is a **scalar**, not a vector, so $xx^\top$ is simply $x^2$ (a scalar) and the Jacobian is $1\times1$. If $x$ were a column vector in $\mathbb{R}^n$, then $xx^\top$ would be an $n\times n$ matrix and the derivative a very different object. The dimension annotation is doing real work here.
+
+!!! steps "Reading off each function"
+    | Function | Input space | Output space | Jacobian dimension |
+    |:---------|:-----------:|:------------:|:------------------:|
+    | $f_1$ | $\mathbb{R}^2$ | $\mathbb{R}$ | $1 \times 2$ |
+    | $f_2$ (w.r.t. $\boldsymbol{x}$) | $\mathbb{R}^n$ | $\mathbb{R}$ | $1 \times n$ |
+    | $f_3$ | $\mathbb{R}$ | $\mathbb{R}$ | $1 \times 1$ |
+
+!!! answer "Answer"
+    $$\frac{\partial f_1}{\partial \boldsymbol{x}} \in \mathbb{R}^{1\times 2}, \qquad \frac{\partial f_2}{\partial \boldsymbol{x}} \in \mathbb{R}^{1\times n}, \qquad \frac{\partial f_3}{\partial x} \in \mathbb{R}^{1\times 1}.$$
+
+    All three are row vectors, since every function here maps into $\mathbb{R}$, a useful structural check before computing anything.

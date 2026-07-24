@@ -85,4 +85,45 @@ $$f(x) = \frac{1}{1 + \exp(-x)}.$$
 
     **A useful rearrangement.** This is equivalent to
     $$f'(x) = f(x)\big(1 - f(x)\big),$$
-    expressing the derivative purely in terms of the sigmoid's own output. This form is used constantly in machine learning: during backpropagation the forward pass has already computed $f(x)$, so the gradient comes for free with no new exponentials to evaluate.
+    expressing the derivative purely in terms of the sigmoid's own output.
+
+!!! note "Where this shows up: backpropagation"
+    When a sigmoid is used as a neuron's activation, training the network needs its derivative at every step. Backpropagation works backwards through the layers multiplying by local derivatives (the chain rule again), and the sigmoid's local derivative is exactly $f(x)\big(1 - f(x)\big)$. Because the forward pass already stored the output $f(x)$, the gradient costs just one subtraction and one multiplication, with no new $\exp$ to evaluate. That reuse is a big part of why the sigmoid was such a popular activation.
+
+---
+
+## 5.3 · Derivative of the Gaussian
+
+*Calculus I · differentiation rules*
+
+Compute the derivative $f'(x)$ of
+$$f(x) = \exp\!\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right),$$
+where $\mu, \sigma$ are constants.
+
+!!! theory "Topics & Definitions"
+    - **What is constant here** — we differentiate with respect to $x$, so everything that is not $x$ is held fixed. Both $\mu$ (the mean) and $\sigma$ (the standard deviation) are fixed, so $\tfrac{1}{2\sigma^2}$ is just a constant multiplier and $\tfrac{d}{dx}(-\mu) = 0$.
+    - **The chain rule applies twice** — the outermost function is $\exp(\cdot)$; inside it is $-\tfrac{1}{2\sigma^2}(x-\mu)^2$; inside *that* is $(x-\mu)$. Each layer contributes a factor.
+    - **Key pattern** — $\tfrac{d}{dx}\exp(g(x)) = g'(x)\exp(g(x))$: the exponential is reproduced unchanged, multiplied by the derivative of its exponent. The exponent itself never changes.
+
+!!! note "A fraction does not automatically mean the quotient rule"
+    The quotient rule applies to $\tfrac{u}{v}$ where **both** parts are functions of $x$. Here $2\sigma^2$ contains no $x$ at all, so $-\tfrac{1}{2\sigma^2}(x-\mu)^2$ is simply *(constant) $\times$ (function)*: differentiate the function and carry the constant along. Likewise, when multiplying a fraction by a term, only the numerator is affected:
+    $$-\frac{1}{2\sigma^2}\times 2(x-\mu) = \frac{-2(x-\mu)}{2\sigma^2},$$
+    the denominator is untouched, because the second factor has denominator $1$.
+
+!!! steps "Step 1, differentiate the exponent"
+    Let $g(x) = -\dfrac{1}{2\sigma^2}(x-\mu)^2$. The constant $-\tfrac{1}{2\sigma^2}$ comes along for the ride; apply the power rule to $(x-\mu)^2$:
+    $$\frac{d}{dx}(x-\mu)^2 = 2(x-\mu)\cdot\frac{d}{dx}(x-\mu) = 2(x-\mu)\cdot 1 = 2(x-\mu).$$
+    The innermost chain-rule factor is $1$ (since $\mu$ is constant), so it is invisible here, but it is still a chain-rule step, and it is $1$, not $0$.
+
+!!! steps "Step 2, combine the constant"
+    $$g'(x) = -\frac{1}{2\sigma^2}\times 2(x-\mu) = \frac{-2(x-\mu)}{2\sigma^2} = -\frac{x-\mu}{\sigma^2}.$$
+    Only the $2$s cancel; the $\sigma^2$ stays in the denominator and the minus sign survives.
+
+!!! steps "Step 3, apply the outer chain rule"
+    $$f'(x) = g'(x)\,\exp(g(x)),$$
+    substituting $g'(x)$ from Step 2 and leaving the exponent unchanged.
+
+!!! answer "Answer"
+    $$f'(x) = -\frac{x-\mu}{\sigma^2}\exp\!\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right).$$
+
+    **Sanity check on the shape.** The derivative is zero exactly when $x = \mu$, the peak of the bell curve where the slope is flat. For $x > \mu$ the factor $-(x-\mu)$ is negative, so the curve is descending; for $x < \mu$ it is positive, so the curve is ascending. This matches the familiar Gaussian shape.

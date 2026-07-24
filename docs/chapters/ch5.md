@@ -52,3 +52,37 @@ $$f(x) = \log(x^4)\sin(x^3).$$
     $$f'(x) = \frac{4\sin(x^3)}{x} + 3x^2\log(x^4)\cos(x^3).$$
 
     Two terms, added, one from differentiating each factor while holding the other fixed. Both terms needed the chain rule internally, which is why the exercise combines the two rules.
+
+---
+
+## 5.2 · Derivative of the logistic sigmoid
+
+*Calculus I · differentiation rules*
+
+Compute the derivative $f'(x)$ of the logistic sigmoid
+$$f(x) = \frac{1}{1 + \exp(-x)}.$$
+
+!!! theory "Topics & Definitions"
+    - **Structure first** — this is one thing divided by another, so the quotient rule applies: $\left(\tfrac{u}{v}\right)' = \tfrac{u'v - uv'}{v^2}$.
+    - **Constant numerator** — here $u = 1$ and $v = 1 + \exp(-x)$. Since $u' = 0$, the first term of the quotient rule vanishes entirely and only $-uv'/v^2$ survives. Spotting that early saves work.
+    - **The denominator needs the chain rule** — $\tfrac{d}{dx}\exp(\text{inside}) = \exp(\text{inside})\cdot(\text{inside})'$. With inside $-x$ (derivative $-1$), $\tfrac{d}{dx}\exp(-x) = -\exp(-x)$.
+    - **Alternative route** — rewriting $f(x) = (1 + \exp(-x))^{-1}$ turns this into a pure chain-rule exercise (outer $(\cdot)^{-1}$, inner $1 + \exp(-x)$) and gives the same answer.
+
+!!! note "Common slip"
+    In $v^2$, square the **whole denominator** $v = 1 + \exp(-x)$, not its derivative. Writing $(-\exp(-x))^2$ squares $v'$ by mistake.
+
+!!! steps "Step 1, identify $u$ and $v$"
+    $$u = 1, \qquad v = 1 + \exp(-x),$$
+    so $u' = 0$ and, by the chain rule, $v' = -\exp(-x)$.
+
+!!! steps "Step 2, apply the quotient rule"
+    $$f'(x) = \frac{u'v - uv'}{v^2} = \frac{0\cdot(1+\exp(-x)) - 1\cdot(-\exp(-x))}{(1+\exp(-x))^2}.$$
+    The first term is zero, and the double negative in the second becomes positive:
+    $$f'(x) = \frac{\exp(-x)}{(1+\exp(-x))^2}.$$
+
+!!! answer "Answer"
+    $$f'(x) = \frac{\exp(-x)}{\left(1+\exp(-x)\right)^2}.$$
+
+    **A useful rearrangement.** This is equivalent to
+    $$f'(x) = f(x)\big(1 - f(x)\big),$$
+    expressing the derivative purely in terms of the sigmoid's own output. This form is used constantly in machine learning: during backpropagation the forward pass has already computed $f(x)$, so the gradient comes for free with no new exponentials to evaluate.

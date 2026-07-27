@@ -247,3 +247,93 @@ Compute the Jacobians.
     $$\frac{\partial f_2}{\partial \boldsymbol{x}} = \boldsymbol{y}^\top, \qquad \frac{\partial f_3}{\partial x} = 2x.$$
 
     Each result has the dimension predicted in part a, a useful structural check. All three are row vectors because all three functions map into $\mathbb{R}$.
+
+---
+
+## 5.6 · Chain rule with nested functions, and a gradient with respect to a matrix
+
+*Calculus III · multivariable derivatives*
+
+Differentiate $f$ with respect to $t$ and $g$ with respect to $X$, where
+$$f(t) = \sin\!\big(\log(t^\top t)\big), \qquad t \in \mathbb{R}^D,$$
+
+$$g(X) = \operatorname{tr}(AXB), \qquad A \in \mathbb{R}^{D\times E},\ X \in \mathbb{R}^{E\times F},\ B \in \mathbb{R}^{F\times D}.$$
+
+**Part a**
+
+!!! theory "Topics & Definitions"
+    - **The chain rule** — for nested functions, $\tfrac{d}{dx}g\big(h(x)\big) = g'\big(h(x)\big)\cdot h'(x)$: differentiate the outer function, leave its inside unchanged, then multiply by the derivative of the inside.
+    - **Why three times here** — $f(t) = \sin(\log(t^\top t))$ nests three functions, so the chain rule applies three times. The most common slip is letting a lower layer's derivative creep into a higher layer's brackets: the inside of a function never changes when you differentiate it, only new factors appear on the outside.
+    - **Differentiating $t^\top t$** — write it in components, $t^\top t = t_1^2 + \dots + t_D^2$. Each partial is a power rule, $\tfrac{\partial}{\partial t_i}(t_1^2 + \dots + t_D^2) = 2t_i$, so collecting all $D$ as a row gives $\tfrac{\partial}{\partial t}(t^\top t) = \begin{pmatrix}2t_1 & \cdots & 2t_D\end{pmatrix} = 2t^\top$.
+
+!!! note "Think of it as peeling layers"
+    Picture the expression as an onion with three layers:
+
+    | Layer | What it is |
+    |:-----:|:-----------|
+    | Outer | $\sin(\,\cdot\,)$ |
+    | Middle | $\log(\,\cdot\,)$ |
+    | Inner | $t^\top t$ |
+
+    Peel from the outside in: at each layer, differentiate only that layer and leave everything inside it untouched, producing one factor per layer. Then multiply the factors together, and that multiplication *is* the chain rule at work.
+
+!!! steps "Layer 1, peel the sine"
+    Differentiate $\sin(\,\cdot\,)$ into $\cos(\,\cdot\,)$, keeping the inside exactly as it was:
+    $$\cos\!\big(\log(t^\top t)\big).$$
+    The $\log(t^\top t)$ is carried across untouched; nothing from the inner layers has appeared yet.
+
+!!! steps "Layer 2, peel the logarithm"
+    The derivative of $\log(u)$ is $\tfrac{1}{u}$, so this layer contributes
+    $$\frac{1}{t^\top t}.$$
+    Again the inside $t^\top t$ stays as it is.
+
+!!! steps "Layer 3, peel the dot product"
+    From the working above, the innermost layer contributes
+    $$2t^\top.$$
+
+!!! steps "Multiply the layers together"
+    The chain rule joins the three factors by multiplication:
+    $$f'(t) = \underbrace{\cos\!\big(\log(t^\top t)\big)}_{\text{layer 1}} \cdot \underbrace{\frac{1}{t^\top t}}_{\text{layer 2}} \cdot \underbrace{2t^\top}_{\text{layer 3}}.$$
+
+!!! answer "Part a answer"
+    $$\frac{df}{dt} = \frac{2t^\top \cos\!\big(\log(t^\top t)\big)}{t^\top t} \;\in\; \mathbb{R}^{1\times D}.$$
+    Three nested functions, three chain-rule factors, all multiplied. The result is a row vector because $f$ is scalar-valued and $t$ is a vector.
+
+**Part b**
+
+!!! theory "Topics & Definitions"
+    - **The trace** — $\operatorname{tr}(M) = M_{11} + M_{22} + \dots + M_{nn}$, the sum of the diagonal entries. To differentiate $\operatorname{tr}(AXB)$ we need its diagonal entries in terms of the entries of $X$.
+    - **Dimensions force a square product** — the trace needs a square matrix, and $(D\times E)(E\times F)(F\times D) = D\times D$ $\checkmark$: inner dimensions cancel and both outer ones are $D$. The annotations are what make the trace well defined.
+    - **Concrete small matrices** — with general $D,E,F$ the expansion is a triple sum; setting $D=E=F=2$ makes everything $2\times2$ and the trace expands into just eight visible terms, with the same structure as the general case.
+    - **Shape of the gradient** — differentiating a *scalar* with respect to a *matrix* gives a gradient in the same shape as $X$ (not a Jacobian row): each partial sits in the position of the entry it came from.
+
+!!! steps "Step 1, set up $2\times2$ matrices"
+    Take $D=E=F=2$:
+    $$A = \begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}, \quad X = \begin{pmatrix}x_{11}&x_{12}\\x_{21}&x_{22}\end{pmatrix}, \quad B = \begin{pmatrix}b_{11}&b_{12}\\b_{21}&b_{22}\end{pmatrix}.$$
+    The product $AXB$ is $2\times2$, so its trace is $(AXB)_{11} + (AXB)_{22}$.
+
+!!! steps "Step 2, expand the trace"
+    Multiplying out and summing the two diagonal entries gives eight terms:
+    $$\begin{aligned}
+    \operatorname{tr}(AXB) =\ & b_{11}a_{11}x_{11} + b_{11}a_{12}x_{21} + b_{12}a_{21}x_{11} + b_{12}a_{22}x_{21}\\
+    +\ & b_{21}a_{11}x_{12} + b_{21}a_{12}x_{22} + b_{22}a_{21}x_{12} + b_{22}a_{22}x_{22}.
+    \end{aligned}$$
+    Every term is linear in exactly one entry of $X$, with a coefficient built from one $a$ and one $b$. That linearity is what makes the differentiation straightforward.
+
+!!! steps "Step 3, take the partial derivatives"
+    For each entry of $X$, keep only the terms containing it; the rest are constant and vanish, leaving the coefficient beside it:
+    $$\frac{\partial g}{\partial x_{11}} = b_{11}a_{11} + b_{12}a_{21}, \qquad \frac{\partial g}{\partial x_{12}} = b_{21}a_{11} + b_{22}a_{21},$$
+
+    $$\frac{\partial g}{\partial x_{21}} = b_{11}a_{12} + b_{12}a_{22}, \qquad \frac{\partial g}{\partial x_{22}} = b_{21}a_{12} + b_{22}a_{22}.$$
+    Across all four partials, each of the eight terms is picked up exactly once.
+
+!!! steps "Step 4, arrange in the shape of $X$"
+    $$\frac{\partial g}{\partial X} = \begin{pmatrix}
+    b_{11}a_{11} + b_{12}a_{21} & b_{21}a_{11} + b_{22}a_{21}\\
+    b_{11}a_{12} + b_{12}a_{22} & b_{21}a_{12} + b_{22}a_{22}
+    \end{pmatrix}.$$
+
+!!! answer "Part b answer"
+    The four partials arranged in the shape of $X$ are a complete and correct answer. Written compactly,
+    $$\frac{\partial g}{\partial X} = (BA)^\top \;\in\; \mathbb{R}^{E\times F}.$$
+    Each entry is a row of $B$ dotted with a column of $A$, exactly an entry of $BA$, with the index positions coming out transposed. Recognising this compact form is a convenience rather than a requirement: the expanded four-entry matrix is the same object.

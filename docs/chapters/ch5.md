@@ -337,3 +337,73 @@ $$g(X) = \operatorname{tr}(AXB), \qquad A \in \mathbb{R}^{D\times E},\ X \in \ma
     The four partials arranged in the shape of $X$ are a complete and correct answer. Written compactly,
     $$\frac{\partial g}{\partial X} = (BA)^\top \;\in\; \mathbb{R}^{E\times F}.$$
     Each entry is a row of $B$ dotted with a column of $A$, exactly an entry of $BA$, with the index positions coming out transposed. Recognising this compact form is a convenience rather than a requirement: the expanded four-entry matrix is the same object.
+
+---
+
+## 5.7 · Chain rule with dimensions
+
+*Calculus III · multivariable derivatives*
+
+Compute $df/dx$ for the following functions using the chain rule, giving the dimensions of every partial derivative.
+
+**(a)** $f(z) = \log(1+z)$, where $z = x^\top x$ and $x \in \mathbb{R}^D$.
+
+**(b)** $f(z) = \sin(z)$, where $z = Ax + b$, with $A \in \mathbb{R}^{E \times D}$, $x \in \mathbb{R}^D$, $b \in \mathbb{R}^E$.
+
+!!! theory "Topics & Definitions"
+    - **The chain rule in this form** — when $f$ depends on $x$ through an intermediate $z$, $\dfrac{df}{dx} = \dfrac{df}{dz}\cdot\dfrac{dz}{dx}$. Compute each factor separately, then multiply. The factors are matrices in general, so the order matters.
+    - **Dimensions of a matrix product** — the inner dimensions must match and cancel, the outer ones survive: $(m\times k)(k\times n) = m\times n$. Inner must match because multiplication dots a row against a column (same length required); outer survive because there is one entry per (row, column) pair.
+    - **Overall dimension check** — for $f$ with output in $\mathbb{R}^m$ and input $x \in \mathbb{R}^n$, the final $df/dx$ must be $m\times n$. Verifying this confirms the chain was assembled in the right order.
+
+!!! note "What transforms, and what carries over"
+    The layer being differentiated **transforms into its derivative**; whatever sits **inside** it **carries over unchanged**. So differentiating $\log(u)$ turns the log into $1/u$ (it does not survive, being the layer differentiated), while $u$ is untouched. In Exercise 5.6 the log *did* survive inside $\cos(\log(t^\top t))$, but only because it was nested one level below the sine being differentiated: same rule, different position in the stack. Quick check: $\tfrac{d}{dx}\log(x^2) = \tfrac{1}{x^2}\cdot 2x = \tfrac{2}{x}$, agreeing with $\log(x^2) = 2\log x$.
+
+**Part a**
+
+!!! steps "Step 1, outer layer $df/dz$"
+    With $f(z) = \log(1+z)$ and inside $u = 1+z$,
+    $$\frac{df}{dz} = \frac{1}{1+z} = \frac{1}{1+x^\top x}.$$
+    Both $f$ and $z$ are scalars, so this partial is $1\times1$. No logarithm appears: it was the layer being differentiated, so it became a reciprocal.
+
+!!! steps "Step 2, inner layer $dz/dx$"
+    Write the dot product in components, $z = x^\top x = x_1^2 + \dots + x_D^2$. Differentiating with respect to $x_i$ leaves $2x_i$, so
+    $$\frac{dz}{dx} = \begin{pmatrix}2x_1 & 2x_2 & \cdots & 2x_D\end{pmatrix} = 2x^\top.$$
+    A scalar output with $D$ inputs gives dimension $1\times D$.
+
+!!! steps "Step 3, multiply"
+    $$\frac{df}{dx} = \frac{df}{dz}\cdot\frac{dz}{dx} = \frac{1}{1+x^\top x}\cdot 2x^\top.$$
+    Dimensions: $(1\times1)(1\times D) = 1\times D$.
+
+!!! answer "Part a answer"
+    $$\frac{df}{dx} = \frac{2x^\top}{1+x^\top x} \;\in\; \mathbb{R}^{1\times D}.$$
+
+    Dimensions of each partial:
+    $$\frac{df}{dz} \in \mathbb{R}^{1\times1}, \qquad \frac{dz}{dx} \in \mathbb{R}^{1\times D}, \qquad \frac{df}{dx} \in \mathbb{R}^{1\times D}.$$
+    The final shape is $1\times D$ because $f$ is scalar-valued and $x$ has $D$ components.
+
+**Part b**
+
+!!! steps "Step 1, outer layer $df/dz$"
+    Here $z = Ax+b \in \mathbb{R}^E$, so $f = \sin(z) \in \mathbb{R}^E$ with the sine applied elementwise, and the Jacobian is $E\times E$ with entry $(i,j) = \partial f_i/\partial z_j$. Since $f_i = \sin(z_i)$ depends on $z_i$ **only**, every off-diagonal entry is zero and the matrix is diagonal:
+    $$\frac{df}{dz} = \begin{pmatrix}\cos(z_1) & 0 & \cdots & 0\\ 0 & \cos(z_2) & \cdots & 0\\ \vdots & & \ddots & \vdots\\ 0 & 0 & \cdots & \cos(z_E)\end{pmatrix} = \operatorname{diag}\big(\cos(Ax+b)\big).$$
+
+!!! note "Why diag(...) and not just cos(Ax+b)"
+    $\cos(Ax+b)$ is a **vector** of $E$ entries, and a vector cannot be multiplied by the $E\times D$ matrix that follows. The genuine derivative is the $E\times E$ diagonal matrix above; $\operatorname{diag}(\cdot)$ is shorthand for placing those values on the diagonal with zeros elsewhere, which is what makes the next matrix product valid.
+
+!!! steps "Step 2, inner layer $dz/dx$"
+    With $z = Ax+b$, the term $b$ is constant and $Ax$ is linear in $x$, so
+    $$\frac{dz}{dx} = A \;\in\; \mathbb{R}^{E\times D}.$$
+
+!!! steps "Step 3, multiply"
+    $$\frac{df}{dx} = \frac{df}{dz}\cdot\frac{dz}{dx} = \operatorname{diag}\big(\cos(Ax+b)\big)\,A.$$
+    Dimensions: $(E\times E)(E\times D) = E\times D$. The inner $E$s match and cancel; the outer $E$ and $D$ survive.
+
+!!! note "Keep the factors separate"
+    The $A$ from the inner layer multiplies from **outside**; it does not move into the argument of the cosine, which stays exactly $Ax+b$. Writing something like $\cos(A^2x+b)$ merges two separate chain-rule factors into one and is wrong, in the same way that $\tfrac{d}{dx}\sin(x^3) = 3x^2\cos(x^3)$ keeps $x^3$ inside and puts $3x^2$ outside.
+
+!!! answer "Part b answer"
+    $$\frac{df}{dx} = \operatorname{diag}\big(\cos(Ax+b)\big)\,A \;\in\; \mathbb{R}^{E\times D}.$$
+
+    Dimensions of each partial:
+    $$\frac{df}{dz} \in \mathbb{R}^{E\times E}, \qquad \frac{dz}{dx} \in \mathbb{R}^{E\times D}, \qquad \frac{df}{dx} \in \mathbb{R}^{E\times D}.$$
+    The final shape $E\times D$ matches (output dimension) by (input dimension), since $f \in \mathbb{R}^E$ and $x \in \mathbb{R}^D$.

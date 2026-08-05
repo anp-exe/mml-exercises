@@ -407,3 +407,133 @@ Compute $df/dx$ for the following functions using the chain rule, giving the dim
     Dimensions of each partial:
     $$\frac{df}{dz} \in \mathbb{R}^{E\times E}, \qquad \frac{dz}{dx} \in \mathbb{R}^{E\times D}, \qquad \frac{df}{dx} \in \mathbb{R}^{E\times D}.$$
     The final shape $E\times D$ matches (output dimension) by (input dimension), since $f \in \mathbb{R}^E$ and $x \in \mathbb{R}^D$.
+
+---
+
+## 5.8 · Chain rule, traces, and elementwise functions
+
+*Calculus III · multivariable derivatives*
+
+Compute $df/dx$ for the following functions, describing each step in detail.
+
+**Part a**
+
+Use the chain rule and provide the dimensions of every partial derivative:
+$$f(z) = \exp\!\left(-\tfrac{1}{2}z\right), \qquad z = g(y) = y^\top S^{-1} y, \qquad y = h(x) = x - \mu,$$
+where $x, \mu \in \mathbb{R}^D$ and $S \in \mathbb{R}^{D\times D}$.
+
+!!! theory "Topics & Definitions"
+    - **Three nested layers** — the chain rule applies twice: $\dfrac{df}{dx} = \dfrac{df}{dz}\cdot\dfrac{dz}{dy}\cdot\dfrac{dy}{dx}$.
+    - **A multiplied constant survives; only an added one vanishes** — $S^{-1}$ has no $x$ or $y$, so it is constant, but it is *multiplied* in, so it appears in the answer. Compare $\tfrac{d}{dx}(x+7) = 1$ (added, $7$ vanishes) with $\tfrac{d}{dx}(7x) = 7$ (multiplied, $7$ survives).
+    - **Differentiating a quadratic form** — expanding $y^\top S^{-1} y$ and collecting the partials gives $y^\top(S^{-1} + S^{-\top})$, which simplifies to $2y^\top S^{-1}$ when $S$ is symmetric (as covariance matrices always are).
+    - **Check the shapes** — $y^\top S^{-1} y$ chains as $(1\times D)(D\times D)(D\times 1) = 1\times1$, a scalar. If your expansion produces a matrix, the order has slipped, likely computing $yy^\top$ ($D\times D$) instead of $y^\top y$.
+
+!!! steps "Step 1, outer layer $df/dz$"
+    With $u = -\tfrac12 z$, the derivative of $\exp(u)$ is $\exp(u)\cdot u'$, and $u' = -\tfrac12$:
+    $$\frac{df}{dz} = -\tfrac{1}{2}\exp\!\left(-\tfrac{1}{2}z\right) \;\in\; \mathbb{R}^{1\times1}.$$
+
+!!! steps "Step 2, middle layer $dz/dy$"
+    From the expansion above, with $S$ symmetric:
+    $$\frac{dz}{dy} = 2y^\top S^{-1} \;\in\; \mathbb{R}^{1\times D}.$$
+
+!!! steps "Step 3, inner layer $dy/dx$"
+    With $y = x - \mu$, each $y_i = x_i - \mu_i$, so $\partial y_i/\partial x_i = 1$ and $\partial y_i/\partial x_j = 0$ for $i \neq j$: ones on the diagonal, zeros elsewhere:
+    $$\frac{dy}{dx} = I \;\in\; \mathbb{R}^{D\times D}.$$
+
+!!! steps "Step 4, chain and substitute back"
+    $$\frac{df}{dx} = \left(-\tfrac12\exp\!\left(-\tfrac12 z\right)\right)\cdot 2y^\top S^{-1}\cdot I.$$
+    Dimensions: $(1\times1)(1\times D)(D\times D) = 1\times D$. Multiplying by $I$ changes nothing, so it drops. Finally substitute $y = x-\mu$ and $z = (x-\mu)^\top S^{-1}(x-\mu)$, since the answer must be in $x$ alone.
+
+!!! answer "Part a answer"
+    $$\frac{df}{dx} = -(x-\mu)^\top S^{-1}\exp\!\left(-\tfrac{1}{2}(x-\mu)^\top S^{-1}(x-\mu)\right) \;\in\; \mathbb{R}^{1\times D}.$$
+    The factors of $-\tfrac12$ and $2$ cancel, leaving a single minus sign. Dimensions: $\tfrac{df}{dz}\in\mathbb{R}^{1\times1}$, $\tfrac{dz}{dy}\in\mathbb{R}^{1\times D}$, $\tfrac{dy}{dx}\in\mathbb{R}^{D\times D}$, $\tfrac{df}{dx}\in\mathbb{R}^{1\times D}$.
+
+**Part b**
+
+$$f(x) = \operatorname{tr}\!\left(xx^\top + \sigma^2 I\right), \qquad x \in \mathbb{R}^D.$$
+
+!!! theory "Topics & Definitions"
+    - **Read the space carefully** — $x \in \mathbb{R}^D$ is a vector, so $xx^\top$ is an *outer* product, $(D\times1)(1\times D) = D\times D$, the reverse of the inner product $x^\top x$ (a scalar). Getting these two the wrong way round changes the problem entirely.
+    - **The trace of an outer product** — for $D=2$, $xx^\top = \begin{pmatrix}x_1^2 & x_1x_2\\ x_1x_2 & x_2^2\end{pmatrix}$, whose diagonal sums to $x_1^2 + x_2^2 = x^\top x$.
+    - **The identity term** — $\sigma^2 I$ contributes $\sigma^2$ in each of the $D$ diagonal positions, so $D\sigma^2$ to the trace. That is an *added* constant, so it vanishes on differentiation.
+
+!!! steps "Step 1, write the function out"
+    $$f(x) = x_1^2 + x_2^2 + \dots + x_D^2 + D\sigma^2 = x^\top x + D\sigma^2.$$
+
+!!! steps "Step 2, differentiate componentwise"
+    Differentiating with respect to $x_i$, only the $x_i^2$ term survives, giving $2x_i$; the $D\sigma^2$ term is an added constant and vanishes. These $D$ partials are *separate entries* (not summed), arranged in the Jacobian layout, one column per input variable.
+
+!!! answer "Part b answer"
+    $$\frac{df}{dx} = \begin{pmatrix}2x_1 & 2x_2 & \cdots & 2x_D\end{pmatrix} = 2x^\top \;\in\; \mathbb{R}^{1\times D}.$$
+
+**Part c**
+
+Use the chain rule and provide the dimensions of every partial derivative (the product need not be computed explicitly):
+$$f = \tanh(z) \in \mathbb{R}^M, \qquad z = Ax + b,$$
+with $x \in \mathbb{R}^N$, $A \in \mathbb{R}^{M\times N}$, $b \in \mathbb{R}^M$, and $\tanh$ applied componentwise.
+
+!!! theory "Topics & Definitions"
+    - **Elementwise functions give diagonal Jacobians** — since $f_i = \tanh(z_i)$ depends on $z_i$ only, every off-diagonal entry of $\partial f/\partial z$ is zero, so $\dfrac{df}{dz} = \operatorname{diag}\!\big(\operatorname{sech}^2(Ax+b)\big)$ (using $\tanh' = \operatorname{sech}^2$).
+    - **Why $\operatorname{diag}(\cdot)$, not a vector or a sum** — $\operatorname{sech}^2(Ax+b)$ alone is a *vector* of $M$ entries and cannot multiply the $M\times N$ matrix that follows; nor should the entries be added (they are distinct matrix entries). And it is not $c\cdot I$ either, since the diagonal entries differ, so no scalar factors out.
+    - **Dimensions of a matrix product** — inner dimensions match and cancel, outer survive: $(m\times k)(k\times n) = m\times n$.
+
+!!! steps "Step 1, outer layer $df/dz$"
+    $$\frac{df}{dz} = \operatorname{diag}\!\big(\operatorname{sech}^2(Ax+b)\big) \;\in\; \mathbb{R}^{M\times M}.$$
+
+!!! steps "Step 2, inner layer $dz/dx$"
+    With $z = Ax+b$, the term $b$ is constant and $Ax$ is linear in $x$:
+    $$\frac{dz}{dx} = A \;\in\; \mathbb{R}^{M\times N}.$$
+
+!!! answer "Part c answer"
+    $$\frac{df}{dx} = \operatorname{diag}\!\big(\operatorname{sech}^2(Ax+b)\big)\,A.$$
+    Dimensions: $(M\times M)(M\times N) = M\times N$, the inner $M$s cancel and the outer $M$ and $N$ survive, matching $f \in \mathbb{R}^M$ and $x \in \mathbb{R}^N$. Note $A$ multiplies from *outside*; the argument of $\operatorname{sech}^2$ stays exactly $Ax+b$. Merging into something like $\operatorname{sech}^2(A^2x+b)$ is wrong, for the same reason $\tfrac{d}{dx}\sin(x^3) = 3x^2\cos(x^3)$ keeps $x^3$ inside and puts $3x^2$ outside.
+
+---
+
+## 5.9 · Gradient with multiple dependency paths
+
+*Calculus III · multivariable derivatives*
+
+Define
+$$g(x, z, \nu) := \log p(x,z) - \log q(z,\nu), \qquad z := t(\epsilon,\nu)$$
+for differentiable functions $p, q, t$, with $x \in \mathbb{R}^D$, $z \in \mathbb{R}^E$, $\nu \in \mathbb{R}^F$, $\epsilon \in \mathbb{R}^G$. Using the chain rule, compute $\dfrac{d}{d\nu}g(x,z,\nu)$.
+
+!!! theory "Topics & Definitions"
+    Before differentiating anything, trace how $\nu$ reaches $g$. It travels by **three** separate routes:
+
+    | Path | Route | Term it affects |
+    |:----:|:------|:----------------|
+    | 1 | $\nu \to z \to \log p$ | $\log p(x,z)$ |
+    | 2 | $\nu \to z \to \log q$ | $\log q(z,\nu)$ |
+    | 3 | $\nu \to \log q$ directly | $\log q(z,\nu)$ |
+
+    - **The chain rule sums over all paths** — paths 1 and 2 exist because $z = t(\epsilon,\nu)$ depends on $\nu$; path 3 because $\nu$ is a direct argument of $q$. The multivariable chain rule adds one contribution per path (the same principle as 5.8, where an input reached the output through both $x_1$ and $x_2$).
+    - **Differentiate unspecified functions symbolically** — $p, q, t$ are only stated to be differentiable, with no formula, so write $\partial t/\partial\nu$ rather than evaluating. Leaving a symbol undifferentiated is a common slip; the $\partial$ notation records that the differentiation happened.
+    - **Log of a function** — $\tfrac{\partial}{\partial z}\log p(x,z) = \tfrac{1}{p(x,z)}\tfrac{\partial p}{\partial z}$: the log becomes the reciprocal of its argument (the *inside*, not the log itself) times the derivative of that argument.
+
+!!! steps "Step 1, the inner derivative $dz/d\nu$"
+    From $z = t(\epsilon,\nu)$,
+    $$\frac{\partial z}{\partial\nu} = \frac{\partial t}{\partial\nu} \;\in\; \mathbb{R}^{E\times F}.$$
+    This factor appears in both paths that travel through $z$ (paths 1 and 2).
+
+!!! steps "Step 2, path 1 through $\log p$"
+    $\nu$ does not appear in $\log p(x,z)$ directly, only via $z$. Chaining the two factors:
+    $$\frac{\partial}{\partial\nu}\log p(x,z) = \underbrace{\frac{1}{p(x,z)}\frac{\partial p}{\partial z}}_{1\times E}\;\underbrace{\frac{\partial t}{\partial\nu}}_{E\times F}.$$
+    Dimensions: $(1\times E)(E\times F) = 1\times F$.
+
+!!! steps "Step 3, paths 2 and 3 through $\log q$"
+    $\log q(z,\nu)$ depends on $\nu$ twice over: through its first argument $z$, and through its second argument directly. Both contributions add:
+    $$\frac{\partial}{\partial\nu}\log q(z,\nu) = \frac{1}{q(z,\nu)}\left[\underbrace{\frac{\partial q}{\partial z}\frac{\partial t}{\partial\nu}}_{\text{path 2}} + \underbrace{\frac{\partial q}{\partial\nu}}_{\text{path 3}}\right].$$
+    Inside the bracket both terms are $1\times F$ ($(1\times E)(E\times F)$ for path 2, $1\times F$ for path 3), so they can be added.
+
+!!! steps "Step 4, combine, respecting the minus sign"
+    The definition of $g$ subtracts the second term, so the entire $\log q$ contribution enters negatively.
+
+!!! answer "Answer"
+    $$\frac{d g}{d\nu} = \frac{1}{p(x,z)}\frac{\partial p}{\partial z}\frac{\partial t}{\partial\nu} \;-\; \frac{1}{q(z,\nu)}\left[\frac{\partial q}{\partial z}\frac{\partial t}{\partial\nu} + \frac{\partial q}{\partial\nu}\right].$$
+
+    Dimensions of each partial:
+    $$\frac{\partial t}{\partial\nu} \in \mathbb{R}^{E\times F}, \qquad \frac{\partial p}{\partial z},\;\frac{\partial q}{\partial z} \in \mathbb{R}^{1\times E}, \qquad \frac{\partial q}{\partial\nu} \in \mathbb{R}^{1\times F},$$
+
+    $$\frac{d g}{d\nu} \in \mathbb{R}^{1\times F}.$$
+    The final shape is $1\times F$ because $g$ is scalar-valued and $\nu$ has $F$ components. Every path contributes a $1\times F$ term, which is why they can be summed. The structural lesson: count how many routes the variable takes to reach the function, each route contributes one product of partial derivatives, and the results are added, a variable appearing both inside $z$ and as a direct argument of $q$ produces two separate terms from one symbol.

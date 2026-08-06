@@ -149,6 +149,8 @@ The four spanning vectors are not linearly independent, so the first job is to t
 !!! answer "Answer"
     $$\pi_U(x) = \begin{pmatrix}1\\-5\\-1\\-2\\3\end{pmatrix}, \qquad d(x,U) = 2\sqrt{15} \approx 7.75.$$
 
+    ![Projection of x onto the subspace U, with the residual perpendicular to U](../assets/fig-3-5-projection.png)
+
 ---
 
 ## 3.6 · Projection under a non-standard inner product
@@ -291,6 +293,8 @@ It is cleanest to orthogonalise first (get $u_1, u_2$), then normalise at the ve
     $$c_2 = \begin{pmatrix}-\tfrac{2\sqrt{42}}{21}\\[4pt] \tfrac{5\sqrt{42}}{42}\\[4pt] -\tfrac{\sqrt{42}}{42}\end{pmatrix}.$$
     Both forms are correct; the factored form is usually cleaner to read.
 
+    ![Gram-Schmidt: subtracting the projection of b2 onto u1 leaves a perpendicular residual](../assets/fig-3-8-gramschmidt.png)
+
 Reference: [Gram-Schmidt Process (Professor Dave Explains)](https://www.youtube.com/watch?v=zHbfZWZJTGc)
 
 ---
@@ -384,3 +388,5 @@ A rotation just spins each vector about the origin without stretching it. Write 
     $$R(30^\circ)\,x_1 = \begin{pmatrix}\sqrt3 - \tfrac32\\[4pt] 1 + \tfrac{3\sqrt3}{2}\end{pmatrix} \approx \begin{pmatrix}0.232\\3.598\end{pmatrix},$$
 
     $$R(30^\circ)\,x_2 = \begin{pmatrix}\tfrac12\\[4pt] -\tfrac{\sqrt3}{2}\end{pmatrix} \approx \begin{pmatrix}0.5\\-0.866\end{pmatrix}.$$
+
+    ![Both vectors rotated 30 degrees anticlockwise, lengths unchanged](../assets/fig-3-10-rotation.png)

@@ -161,6 +161,8 @@ The recipe is the same for both matrices: build the characteristic polynomial, f
 
     **Part b's eigenvectors are orthogonal.** $(1,2)\cdot(-2,1) = -2 + 2 = 0$. This is not luck: $B$ is symmetric, and symmetric matrices always have orthogonal eigenvectors for distinct eigenvalues.
 
+    ![Eigenvectors stay on their own line while other vectors swing off](../assets/fig-4-3-eigenvectors.png)
+
 ---
 
 ## 4.4 · Eigenspaces of a $4\times4$ (a defective matrix)

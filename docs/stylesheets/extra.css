@@ -67,3 +67,23 @@
 
 /* softer body */
 .md-typeset { color: #4a4658; }
+
+/* ---- figures ---- */
+.md-typeset .admonition img,
+.md-typeset figure img,
+.md-typeset p > img {
+  display: block;
+  margin: 1.1em auto 0.4em auto;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 14px rgba(0,0,0,.28);
+}
+.md-typeset figure {
+  margin: 1.2em auto;
+  text-align: center;
+}
+.md-typeset figure figcaption {
+  font-size: .82em;
+  opacity: .78;
+  margin-top: .35em;
+}

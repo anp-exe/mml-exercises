@@ -53,6 +53,8 @@ $$f(x) = \log(x^4)\sin(x^3).$$
 
     Two terms, added, one from differentiating each factor while holding the other fixed. Both terms needed the chain rule internally, which is why the exercise combines the two rules.
 
+    ![The curve with its tangent line, whose slope is the derivative at that point](../assets/fig-5-1-tangent.png)
+
 ---
 
 ## 5.2 · Derivative of the logistic sigmoid
@@ -129,6 +131,8 @@ where $\mu, \sigma$ are constants.
     $$f'(x) = -\frac{x-\mu}{\sigma^2}\exp\!\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right).$$
 
     **Sanity check on the shape.** The derivative is zero exactly when $x = \mu$, the peak of the bell curve where the slope is flat. For $x > \mu$ the factor $-(x-\mu)$ is negative, so the curve is descending; for $x < \mu$ it is positive, so the curve is ascending. This matches the familiar Gaussian shape.
+
+    ![Gaussian bell curve and its derivative, crossing zero at the peak](../assets/fig-5-3-gaussian.png)
 
 ---
 

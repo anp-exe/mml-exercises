@@ -3,13 +3,20 @@ name: Deploy MkDocs to GitHub Pages
 on:
   push:
     branches:
-      - main   # change to 'master' if that's your default branch
+      - main
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -23,5 +30,28 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Build and deploy
-        run: mkdocs gh-deploy --force --clean
+      - name: Build site
+        run: mkdocs build --clean
+
+      - name: Show what was built (debug)
+        run: |
+          echo "--- top level ---"
+          ls -la site/
+          echo "--- figures ---"
+          ls -la site/figures/ || echo "NO figures directory!"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

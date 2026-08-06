@@ -53,7 +53,7 @@ $$f(x) = \log(x^4)\sin(x^3).$$
 
     Two terms, added, one from differentiating each factor while holding the other fixed. Both terms needed the chain rule internally, which is why the exercise combines the two rules.
 
-    ![The curve with its tangent line, whose slope is the derivative at that point](../assets/fig-5-1-tangent.png)
+    ![The curve with its tangent line, whose slope is the derivative at that point](../figures/fig-5-1-tangent.png)
 
 ---
 
@@ -92,7 +92,7 @@ $$f(x) = \frac{1}{1 + \exp(-x)}.$$
 !!! note "Where this shows up: backpropagation"
     When a sigmoid is used as a neuron's activation, training the network needs its derivative at every step. Backpropagation works backwards through the layers multiplying by local derivatives (the chain rule again), and the sigmoid's local derivative is exactly $f(x)\big(1 - f(x)\big)$. Because the forward pass already stored the output $f(x)$, the gradient costs just one subtraction and one multiplication, with no new $\exp$ to evaluate. That reuse is a big part of why the sigmoid was such a popular activation.
 
-    ![Sigmoid curve and its bell-shaped derivative peaking at 0.25](../assets/fig-5-2-sigmoid.png)
+    ![Sigmoid curve and its bell-shaped derivative peaking at 0.25](../figures/fig-5-2-sigmoid.png)
 
 ---
 
@@ -132,7 +132,7 @@ where $\mu, \sigma$ are constants.
 
     **Sanity check on the shape.** The derivative is zero exactly when $x = \mu$, the peak of the bell curve where the slope is flat. For $x > \mu$ the factor $-(x-\mu)$ is negative, so the curve is descending; for $x < \mu$ it is positive, so the curve is ascending. This matches the familiar Gaussian shape.
 
-    ![Gaussian bell curve and its derivative, crossing zero at the peak](../assets/fig-5-3-gaussian.png)
+    ![Gaussian bell curve and its derivative, crossing zero at the peak](../figures/fig-5-3-gaussian.png)
 
 ---
 

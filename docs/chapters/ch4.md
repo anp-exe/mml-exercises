@@ -161,7 +161,7 @@ The recipe is the same for both matrices: build the characteristic polynomial, f
 
     **Part b's eigenvectors are orthogonal.** $(1,2)\cdot(-2,1) = -2 + 2 = 0$. This is not luck: $B$ is symmetric, and symmetric matrices always have orthogonal eigenvectors for distinct eigenvalues.
 
-    ![Eigenvectors stay on their own line while other vectors swing off](../assets/fig-4-3-eigenvectors.png)
+    ![Eigenvectors stay on their own line while other vectors swing off](../figures/fig-4-3-eigenvectors.png)
 
 ---
 
@@ -556,7 +556,7 @@ Start from $A^\top A$ (its eigenvectors are the $V$ columns), read off the singu
 
     The singular values $2\sqrt2$ and $\sqrt2$ are the stretch amounts. Here $U$ came out as the identity, so all the rotation lives in $V^\top$. The lesson worth keeping: the choice between $A$ and $A^\top$ in the shortcut is dictated by which matrix you decomposed first, $A^\top A$ gives $V$ (then plain $A$ for $U$), $AA^\top$ gives $U$ (then $A^\top$ for $V$).
 
-    ![SVD maps the unit circle to an ellipse with semi-axes sigma1 and sigma2](../assets/fig-4-9-svd.png)
+    ![SVD maps the unit circle to an ellipse with semi-axes sigma1 and sigma2](../figures/fig-4-9-svd.png)
 
 ---
 

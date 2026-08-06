@@ -103,7 +103,7 @@ Build the ratio one piece at a time: the inner product in the numerator, the two
 
     Both angles are obtuse (negative cosine); the weighted inner product in b pushes the angle slightly wider.
 
-    ![Vectors x and y with the obtuse angle between them](../assets/fig-3-4-angle.png)
+    ![Vectors x and y with the obtuse angle between them](../figures/fig-3-4-angle.png)
 
 ---
 
@@ -149,7 +149,7 @@ The four spanning vectors are not linearly independent, so the first job is to t
 !!! answer "Answer"
     $$\pi_U(x) = \begin{pmatrix}1\\-5\\-1\\-2\\3\end{pmatrix}, \qquad d(x,U) = 2\sqrt{15} \approx 7.75.$$
 
-    ![Projection of x onto the subspace U, with the residual perpendicular to U](../assets/fig-3-5-projection.png)
+    ![Projection of x onto the subspace U, with the residual perpendicular to U](../figures/fig-3-5-projection.png)
 
 ---
 
@@ -190,7 +190,7 @@ Anywhere two vectors would normally be dotted, sandwich the matrix $A$ between t
 !!! note "Part c, the geometry"
     The plane $U = \operatorname{span}(e_1,e_3)$ is the floor; $e_1$ and $e_3$ lie in it and $e_2$ stands above the origin. Under the standard dot product $e_2$ is perpendicular to $U$, so its projection would be the origin. Under this weighted inner product $e_2$ leans toward $e_1$ ($\langle e_1,e_2\rangle = +1$) and away from $e_3$ ($\langle e_2,e_3\rangle = -1$), so the projection lands at $\left(\tfrac12,0,-\tfrac12\right)$: a diagonal in the plane, close to $e_1$ but pulled slightly toward $-e_3$. The dashed residual connects $e_2$ to $\pi_U(e_2)$ and its length is the distance $d = 1$.
 
-    ![Projection of e2 onto U under the weighted inner product](../assets/ch3-projection-e2.png)
+    ![Projection of e2 onto U under the weighted inner product](../figures/ch3-projection-e2.png)
 
 ---
 
@@ -293,7 +293,7 @@ It is cleanest to orthogonalise first (get $u_1, u_2$), then normalise at the ve
     $$c_2 = \begin{pmatrix}-\tfrac{2\sqrt{42}}{21}\\[4pt] \tfrac{5\sqrt{42}}{42}\\[4pt] -\tfrac{\sqrt{42}}{42}\end{pmatrix}.$$
     Both forms are correct; the factored form is usually cleaner to read.
 
-    ![Gram-Schmidt: subtracting the projection of b2 onto u1 leaves a perpendicular residual](../assets/fig-3-8-gramschmidt.png)
+    ![Gram-Schmidt: subtracting the projection of b2 onto u1 leaves a perpendicular residual](../figures/fig-3-8-gramschmidt.png)
 
 Reference: [Gram-Schmidt Process (Professor Dave Explains)](https://www.youtube.com/watch?v=zHbfZWZJTGc)
 
@@ -389,4 +389,4 @@ A rotation just spins each vector about the origin without stretching it. Write 
 
     $$R(30^\circ)\,x_2 = \begin{pmatrix}\tfrac12\\[4pt] -\tfrac{\sqrt3}{2}\end{pmatrix} \approx \begin{pmatrix}0.5\\-0.866\end{pmatrix}.$$
 
-    ![Both vectors rotated 30 degrees anticlockwise, lengths unchanged](../assets/fig-3-10-rotation.png)
+    ![Both vectors rotated 30 degrees anticlockwise, lengths unchanged](../figures/fig-3-10-rotation.png)

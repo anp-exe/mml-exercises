@@ -90,6 +90,8 @@ $$f(x) = \frac{1}{1 + \exp(-x)}.$$
 !!! note "Where this shows up: backpropagation"
     When a sigmoid is used as a neuron's activation, training the network needs its derivative at every step. Backpropagation works backwards through the layers multiplying by local derivatives (the chain rule again), and the sigmoid's local derivative is exactly $f(x)\big(1 - f(x)\big)$. Because the forward pass already stored the output $f(x)$, the gradient costs just one subtraction and one multiplication, with no new $\exp$ to evaluate. That reuse is a big part of why the sigmoid was such a popular activation.
 
+    ![Sigmoid curve and its bell-shaped derivative peaking at 0.25](../assets/fig-5-2-sigmoid.png)
+
 ---
 
 ## 5.3 · Derivative of the Gaussian

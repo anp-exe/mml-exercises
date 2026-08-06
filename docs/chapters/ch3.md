@@ -103,6 +103,8 @@ Build the ratio one piece at a time: the inner product in the numerator, the two
 
     Both angles are obtuse (negative cosine); the weighted inner product in b pushes the angle slightly wider.
 
+    ![Vectors x and y with the obtuse angle between them](../assets/fig-3-4-angle.png)
+
 ---
 
 ## 3.5 · Orthogonal projection onto a subspace

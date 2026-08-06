@@ -554,6 +554,8 @@ Start from $A^\top A$ (its eigenvectors are the $V$ columns), read off the singu
 
     The singular values $2\sqrt2$ and $\sqrt2$ are the stretch amounts. Here $U$ came out as the identity, so all the rotation lives in $V^\top$. The lesson worth keeping: the choice between $A$ and $A^\top$ in the shortcut is dictated by which matrix you decomposed first, $A^\top A$ gives $V$ (then plain $A$ for $U$), $AA^\top$ gives $U$ (then $A^\top$ for $V$).
 
+    ![SVD maps the unit circle to an ellipse with semi-axes sigma1 and sigma2](../assets/fig-4-9-svd.png)
+
 ---
 
 ## 4.10 · Rank-1 approximation

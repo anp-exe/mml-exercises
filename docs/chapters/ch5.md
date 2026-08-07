@@ -543,3 +543,61 @@ for differentiable functions $p, q, t$, with $x \in \mathbb{R}^D$, $z \in \mathb
 
     $$\frac{d g}{d\nu} \in \mathbb{R}^{1\times F}.$$
     The final shape is $1\times F$ because $g$ is scalar-valued and $\nu$ has $F$ components. Every path contributes a $1\times F$ term, which is why they can be summed. The structural lesson: count how many routes the variable takes to reach the function, each route contributes one product of partial derivatives, and the results are added, a variable appearing both inside $z$ and as a direct argument of $q$ produces two separate terms from one symbol.
+
+---
+
+## 5.10 (bonus) · Multivariate Taylor series
+
+*Calculus III · Taylor series* &nbsp;·&nbsp; **Bonus:** not from the textbook, a self-set practice problem following the method of Example 5.15.
+
+Compute the Taylor series expansion of
+$$f(x,y) = x^3 + xy^2 - 2y$$
+at the point $(x_0, y_0) = (2, 1)$.
+
+!!! theory "Topics & Definitions"
+    - **The multivariate expansion** — about $(x_0,y_0)$, writing $\delta = \begin{pmatrix}x-x_0\\ y-y_0\end{pmatrix}$,
+    $$f = f(x_0,y_0) + \frac{D^1 f}{1!}\delta + \frac{D^2 f}{2!}\delta^2 + \frac{D^3 f}{3!}\delta^3 + \dots$$
+    where $D^1 f$ is the gradient, $D^2 f$ the Hessian, and $D^k f$ the $k$-th order derivative tensor, each evaluated at the expansion point.
+    - **Predicting where it terminates** — $f$ is a polynomial of degree $3$, and every fourth derivative of a cubic is zero, so the expansion stops exactly at the third-order term and reproduces $f$ **exactly**. A Taylor series only becomes an infinite approximation when the function is not a polynomial.
+    - **Divide by $k!$, not by $k$** — the denominators are factorials, so the third-order term is divided by $3! = 6$, not $3$. Since $1! = 1$ and $2! = 2$ coincide with their arguments, the distinction only bites from the cubic term onwards, which is exactly where it is easiest to miss.
+    - **Where the $\tfrac12$ goes in the quadratic term** — expanding $\tfrac12\delta^\top H\delta$ gives $\tfrac12 f_{xx}(x-x_0)^2 + \tfrac12 f_{yy}(y-y_0)^2 + f_{xy}(x-x_0)(y-y_0)$. The diagonal entries are halved, but the mixed term appears **twice** in the matrix product (once from each off-diagonal position), so its two halves combine and the $\tfrac12$ cancels.
+
+!!! note "Structural checks"
+    The Hessian must be **symmetric**: if $\partial^2 f/\partial x\partial y \neq \partial^2 f/\partial y\partial x$, there is a slip. Some partials here still contain variables, so evaluating at the expansion point genuinely matters, while others are already constant. And the final expansion, once expanded and simplified, must reproduce the original polynomial exactly, a complete correctness check available for free.
+
+!!! steps "Step 1, constant term"
+    $$f(2,1) = 2^3 + 2(1)^2 - 2(1) = 8 + 2 - 2 = 8.$$
+
+!!! steps "Step 2, first-order derivatives"
+    $$\frac{\partial f}{\partial x} = 3x^2 + y^2 \implies \frac{\partial f}{\partial x}(2,1) = 12 + 1 = 13,$$
+
+    $$\frac{\partial f}{\partial y} = 2xy - 2 \implies \frac{\partial f}{\partial y}(2,1) = 4 - 2 = 2.$$
+    The $y^2$ survives in $\partial f/\partial x$ because it multiplies $x$ in the term $xy^2$; the $-2y$ term vanishes as it contains no $x$. So $D^1 f(2,1) = \begin{pmatrix}13 & 2\end{pmatrix} \in \mathbb{R}^{1\times2}$, giving the linear term
+    $$13(x-2) + 2(y-1).$$
+
+!!! steps "Step 3, the Hessian"
+    $$\frac{\partial^2 f}{\partial x^2} = 6x, \qquad \frac{\partial^2 f}{\partial y^2} = 2x, \qquad \frac{\partial^2 f}{\partial x\partial y} = 2y.$$
+    Unlike Example 5.15, all three still contain variables, so evaluation at $(2,1)$ matters throughout:
+    $$H(2,1) = \begin{pmatrix}12 & 2\\ 2 & 4\end{pmatrix} \in \mathbb{R}^{2\times2},$$
+    symmetric as required. The quadratic term is therefore
+    $$\tfrac12(12)(x-2)^2 + \tfrac12(4)(y-1)^2 + 2(x-2)(y-1) = 6(x-2)^2 + 2(y-1)^2 + 2(x-2)(y-1).$$
+
+!!! steps "Step 4, third-order derivatives"
+    Differentiating the Hessian entries once more, two third derivatives are nonzero:
+    $$\frac{\partial^3 f}{\partial x^3} = 6, \qquad \frac{\partial^3 f}{\partial x\partial y^2} = 2,$$
+    and all others vanish. (Example 5.15 had only one nonzero third derivative; here the $xy^2$ term produces a second.) Dividing by $3! = 6$, the cubic term is
+    $$(x-2)^3 + (x-2)(y-1)^2.$$
+
+!!! steps "Step 5, fourth order and above"
+    Every fourth-order partial derivative of a cubic polynomial is zero, so the expansion terminates here and the result is exact rather than an approximation.
+
+!!! answer "Answer"
+    $$\begin{aligned}
+    f(x,y) =\ & 8 + 13(x-2) + 2(y-1)\\
+    &+ 6(x-2)^2 + 2(x-2)(y-1) + 2(y-1)^2\\
+    &+ (x-2)^3 + (x-2)(y-1)^2
+    \end{aligned}$$
+
+    Expanding and simplifying recovers $x^3 + xy^2 - 2y$ exactly, confirming the expansion is correct and complete.
+
+    **Stretch question.** If $f(x,y) = e^x + xy$ instead, would the series terminate? No: $e^x$ is its own derivative, so derivatives of every order remain nonzero and the series is genuinely infinite. Any truncation is then an approximation whose accuracy depends on how close $(x,y)$ is to the expansion point, rather than an exact rewriting.

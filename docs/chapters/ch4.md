@@ -7,7 +7,9 @@ End-of-chapter exercises. Each has a definitions box, explanation, worked steps,
 ## 4.1 · Determinant via Laplace and Sarrus
 
 Compute the determinant of
+
 $$A = \begin{pmatrix}1&3&5\\2&4&6\\0&2&4\end{pmatrix}$$
+
 using the Laplace expansion (along the first row) and Sarrus' rule.
 
 !!! theory "Topics & Definitions"
@@ -22,15 +24,19 @@ Both methods must land on the same number, so computing it two ways is a built-i
     Row 1 is $(1, 3, 5)$ with signs $+, -, +$ from the checkerboard.
 
     **Entry $a_{11} = 1$, sign $+$.** Delete row 1 and column 1:
+
     $$\det\begin{pmatrix}4&6\\2&4\end{pmatrix} = 16 - 12 = 4.$$
 
     **Entry $a_{12} = 3$, sign $-$.** Delete row 1 and column 2:
+
     $$\det\begin{pmatrix}2&6\\0&4\end{pmatrix} = 8 - 0 = 8.$$
 
     **Entry $a_{13} = 5$, sign $+$.** Delete row 1 and column 3:
+
     $$\det\begin{pmatrix}2&4\\0&2\end{pmatrix} = 4 - 0 = 4.$$
 
     Assemble:
+
     $$\det(A) = +(1)(4) - (3)(8) + (5)(4) = 4 - 24 + 20 = 0.$$
 
 !!! note "Common slip"
@@ -38,17 +44,21 @@ Both methods must land on the same number, so computing it two ways is a built-i
 
 !!! steps "Method 2, Sarrus' rule"
     Copy the first two columns to the right:
+
     $$\begin{array}{ccc|cc}1&3&5&1&3\\2&4&6&2&4\\0&2&4&0&2\end{array}$$
 
     Down-right diagonals ($\searrow$), added:
+
     $$1\cdot4\cdot4 = 16, \qquad 3\cdot6\cdot0 = 0, \qquad 5\cdot2\cdot2 = 20 \;\Longrightarrow\; 36.$$
 
     Up-right diagonals ($\nearrow$), subtracted:
+
     $$0\cdot4\cdot5 = 0, \qquad 2\cdot6\cdot1 = 12, \qquad 4\cdot2\cdot3 = 24 \;\Longrightarrow\; 36.$$
 
     $$\det(A) = 36 - 36 = 0.$$
 
 !!! answer "Answer"
+
     $$\det(A) = 0.$$
 
     Both methods agree, a useful cross-check whenever two independent routes are available. A zero determinant means $A$ is **singular**: its columns are linearly dependent, the parallelepiped they span has collapsed to zero volume, and $A^{-1}$ does not exist. This exercise is quietly a "spot the singular matrix" question, not just an arithmetic drill.
@@ -58,7 +68,9 @@ Both methods must land on the same number, so computing it two ways is a built-i
 ## 4.2 · Computing a $5\times5$ determinant efficiently
 
 Compute the determinant of
+
 $$A = \begin{pmatrix}2&0&1&2&0\\2&-1&0&1&1\\0&1&2&1&2\\-2&0&2&-1&2\\2&0&0&1&1\end{pmatrix}$$
+
 efficiently.
 
 !!! theory "Topics & Definitions"
@@ -82,19 +94,24 @@ Before expanding anything, look at the matrix. Find the line with the most zeros
 
 !!! steps "Step 2, the two surviving minors"
     **Entry $a_{22} = -1$**, sign $(-1)^{2+2} = +1$. Delete row 2 and column 2:
+
     $$M_1 = \begin{pmatrix}2&1&2&0\\0&2&1&2\\-2&2&-1&2\\2&0&1&1\end{pmatrix}, \qquad \det(M_1) = -6.$$
 
     **Entry $a_{32} = 1$**, sign $(-1)^{3+2} = -1$. Delete row 3 and column 2:
+
     $$M_2 = \begin{pmatrix}2&1&2&0\\2&0&1&1\\-2&2&-1&2\\2&0&1&1\end{pmatrix}.$$
 
 !!! note "Free win, do not expand this one"
     **Rows 2 and 4 of $M_2$ are identical** ($2, 0, 1, 1$ both times). Identical rows force $\det(M_2) = 0$ with no computation at all. Spotting this saves an entire $4\times4$ expansion.
 
 !!! steps "Step 3, assemble"
+
     $$\det(A) = \underbrace{(+1)(-1)(-6)}_{\text{entry } a_{22}} \;+\; \underbrace{(-1)(1)(0)}_{\text{entry } a_{32}} = 6 + 0 = 6.$$
+
     Note the first term: the entry is $-1$ and the minor is $-6$, so the two negatives cancel to give $+6$.
 
 !!! answer "Answer"
+
     $$\det(A) = 6.$$
 
     **What made it efficient.** The naive route is $20$ sub-determinants. Here column 2's three zeros cut five minors down to two, $M_2$'s duplicate rows made it zero for free, and only one $4\times4$ ever needed real work. The exercise tests strategy, not arithmetic: scan for zeros and duplicate lines before computing anything, the single highest-leverage move in the whole determinants topic.
@@ -104,6 +121,7 @@ Before expanding anything, look at the matrix. Find the line with the most zeros
 ## 4.3 · Computing eigenspaces
 
 Compute the eigenspaces of
+
 $$\text{(a)}\quad A := \begin{pmatrix}1&0\\1&1\end{pmatrix}, \qquad \text{(b)}\quad B := \begin{pmatrix}-2&2\\2&1\end{pmatrix}.$$
 
 !!! theory "Topics & Definitions"
@@ -116,6 +134,7 @@ $$\text{(a)}\quad A := \begin{pmatrix}1&0\\1&1\end{pmatrix}, \qquad \text{(b)}\q
 The recipe is the same for both matrices: build the characteristic polynomial, find its roots, then solve a separate singular system for each root. Part a lands on one repeated eigenvalue; part b on two distinct ones.
 
 !!! steps "Part a, characteristic polynomial"
+
     $$A - \lambda I = \begin{pmatrix}1-\lambda & 0\\1 & 1-\lambda\end{pmatrix}.$$
 
     $$\det(A - \lambda I) = (1-\lambda)(1-\lambda) - (0)(1) = (1-\lambda)^2 = \lambda^2 - 2\lambda + 1.$$
@@ -124,37 +143,54 @@ The recipe is the same for both matrices: build the characteristic polynomial, f
 
 !!! steps "Part a, eigenspace for $\lambda = 1$"
     Substitute $\lambda = 1$:
+
     $$A - I = \begin{pmatrix}0 & 0\\1 & 0\end{pmatrix}.$$
+
     Reading $(A - I)v = 0$ row by row: row 1 is $0v_1 + 0v_2 = 0$, no information, discard; row 2 is $v_1 = 0$. So $v_1 = 0$ and $v_2$ is free:
+
     $$v = \begin{pmatrix}0\\v_2\end{pmatrix} = v_2\begin{pmatrix}0\\1\end{pmatrix}.$$
+
     Check: $A\begin{pmatrix}0\\1\end{pmatrix} = \begin{pmatrix}0\\1\end{pmatrix} = 1\cdot\begin{pmatrix}0\\1\end{pmatrix}$. $\checkmark$
 
 !!! steps "Part b, characteristic polynomial"
+
     $$B - \lambda I = \begin{pmatrix}-2-\lambda & 2\\2 & 1-\lambda\end{pmatrix}.$$
 
     $$\det(B - \lambda I) = (-2-\lambda)(1-\lambda) - (2)(2) = \lambda^2 + \lambda - 6.$$
 
     Factorising (two numbers multiplying to $-6$ and summing to $+1$, namely $-2$ and $3$):
+
     $$\lambda^2 + \lambda - 6 = (\lambda - 2)(\lambda + 3) = 0 \Rightarrow \lambda = 2 \ \text{and}\ \lambda = -3.$$
+
     Two distinct eigenvalues, so two separate eigenspaces.
 
 !!! steps "Part b, eigenspace for $\lambda = 2$"
+
     $$B - 2I = \begin{pmatrix}-4 & 2\\2 & -1\end{pmatrix}.$$
+
     Row 1: $-4v_1 + 2v_2 = 0 \Rightarrow v_2 = 2v_1$. Row 2: $2v_1 - v_2 = 0 \Rightarrow v_2 = 2v_1$ (the same information, as expected). Taking $v_1 = 1$:
+
     $$E_2 = \operatorname{span}\left\{\begin{pmatrix}1\\2\end{pmatrix}\right\}.$$
+
     Check: $B\begin{pmatrix}1\\2\end{pmatrix} = \begin{pmatrix}2\\4\end{pmatrix} = 2\begin{pmatrix}1\\2\end{pmatrix}$. $\checkmark$
 
 !!! steps "Part b, eigenspace for $\lambda = -3$"
+
     $$B + 3I = \begin{pmatrix}1 & 2\\2 & 4\end{pmatrix}.$$
+
     Row 1: $v_1 + 2v_2 = 0 \Rightarrow v_1 = -2v_2$. Row 2: $2v_1 + 4v_2 = 0 \Rightarrow v_1 = -2v_2$ (redundant, as expected). Taking $v_2 = 1$:
+
     $$E_{-3} = \operatorname{span}\left\{\begin{pmatrix}-2\\1\end{pmatrix}\right\}.$$
+
     Check: $B\begin{pmatrix}-2\\1\end{pmatrix} = \begin{pmatrix}6\\-3\end{pmatrix} = -3\begin{pmatrix}-2\\1\end{pmatrix}$. $\checkmark$
 
 !!! answer "Answer"
     **a)** One eigenvalue $\lambda = 1$, with a one-dimensional eigenspace:
+
     $$E_1 = \operatorname{span}\left\{\begin{pmatrix}0\\1\end{pmatrix}\right\}.$$
 
     **b)** Two eigenvalues, each with a one-dimensional eigenspace:
+
     $$E_2 = \operatorname{span}\left\{\begin{pmatrix}1\\2\end{pmatrix}\right\}, \qquad E_{-3} = \operatorname{span}\left\{\begin{pmatrix}-2\\1\end{pmatrix}\right\}.$$
 
     **Part a is defective.** The eigenvalue $\lambda = 1$ has algebraic multiplicity $2$ but geometric multiplicity $1$: a $2\times2$ matrix yielding only one independent eigenvector direction. Geometrically $A$ is a shear, leaving the $y$-axis fixed but tilting everything else, so only one line survives unchanged. Such a matrix is not diagonalisable.
@@ -168,6 +204,7 @@ The recipe is the same for both matrices: build the characteristic polynomial, f
 ## 4.4 · Eigenspaces of a $4\times4$ (a defective matrix)
 
 Compute all eigenspaces of
+
 $$A = \begin{pmatrix}0&-1&1&1\\-1&1&-2&3\\2&-1&0&0\\1&-1&1&0\end{pmatrix}.$$
 
 !!! theory "Topics & Definitions"
@@ -180,32 +217,45 @@ The size jumps to $4\times4$ but nothing conceptual changes. The one thing to wa
 
 !!! steps "Step 1, characteristic polynomial"
     Expanding $\det(A - \lambda I)$ by Laplace along column 4 (its zero entry kills one term, leaving three minors):
+
     $$p_A(\lambda) = \lambda^4 - \lambda^3 - 3\lambda^2 + \lambda + 2.$$
+
     Check: the $\lambda^3$ coefficient is $-1 = -\operatorname{tr}(A)$ $\checkmark$, and the constant is $2 = \det(A)$ $\checkmark$.
 
 !!! steps "Step 2, factorise"
     By the rational root test the candidates are $\pm1, \pm2$. Testing $\lambda = 1$ gives zero, so $(\lambda - 1)$ is a factor; dividing out and repeating:
+
     $$p_A(\lambda) = (\lambda + 1)^2 (\lambda - 1)(\lambda - 2).$$
+
     Eigenvalues: $\lambda = -1$ (algebraic multiplicity $2$), $\lambda = 1$, $\lambda = 2$. Multiplicities sum to $4$ $\checkmark$.
 
 !!! steps "Step 3, eigenspace for $\lambda = 2$"
     Row-reduce $A - 2I$; one free variable remains, giving
+
     $$E_2 = \operatorname{span}\left\{\begin{pmatrix}1\\0\\1\\1\end{pmatrix}\right\}.$$
+
     Check: $A(1,0,1,1)^\top = (2,0,2,2)^\top = 2(1,0,1,1)^\top$. $\checkmark$
 
 !!! steps "Step 4, eigenspace for $\lambda = 1$"
     Row-reduce $A - I$; one free variable:
+
     $$E_1 = \operatorname{span}\left\{\begin{pmatrix}1\\1\\1\\1\end{pmatrix}\right\}.$$
+
     Check: $A(1,1,1,1)^\top = (1,1,1,1)^\top = 1\cdot(1,1,1,1)^\top$. $\checkmark$
 
 !!! steps "Step 5, eigenspace for $\lambda = -1$"
     Row-reduce $A + I$. The RREF is
+
     $$\begin{pmatrix}1&0&0&0\\0&1&-1&0\\0&0&0&1\\0&0&0&0\end{pmatrix}.$$
+
     Pivots sit in columns 1, 2, 4, so only column 3 is free, a single free variable. Reading the rows: $v_1 = 0$, $v_2 = v_3$, $v_4 = 0$. Hence
+
     $$E_{-1} = \operatorname{span}\left\{\begin{pmatrix}0\\1\\1\\0\end{pmatrix}\right\}.$$
+
     Check: $A(0,1,1,0)^\top = (0,-1,-1,0)^\top = -1\cdot(0,1,1,0)^\top$. $\checkmark$ Despite $\lambda = -1$ having algebraic multiplicity $2$, its eigenspace is only $1$-dimensional.
 
 !!! answer "Answer"
+
     $$E_{-1} = \operatorname{span}\left\{\begin{pmatrix}0\\1\\1\\0\end{pmatrix}\right\}, \quad E_{1} = \operatorname{span}\left\{\begin{pmatrix}1\\1\\1\\1\end{pmatrix}\right\}, \quad E_{2} = \operatorname{span}\left\{\begin{pmatrix}1\\0\\1\\1\end{pmatrix}\right\}.$$
 
     **This matrix is defective.** The eigenvalue $\lambda = -1$ has algebraic multiplicity $2$ but geometric multiplicity $1$. The geometric multiplicities sum to $1 + 1 + 1 = 3$, short of the matrix size $4$, so there are not enough independent eigenvectors to form a basis: $A$ is **not diagonalisable**.
@@ -215,6 +265,7 @@ The size jumps to $4\times4$ but nothing conceptual changes. The one thing to wa
 ## 4.5 · Diagonalizability vs invertibility
 
 Diagonalizability of a matrix is unrelated to its invertibility. Determine for the following four matrices whether they are diagonalizable and/or invertible:
+
 $$\begin{pmatrix}1&0\\0&1\end{pmatrix}, \quad \begin{pmatrix}1&0\\0&0\end{pmatrix}, \quad \begin{pmatrix}1&1\\0&1\end{pmatrix}, \quad \begin{pmatrix}0&1\\0&0\end{pmatrix}.$$
 
 !!! theory "Topics & Definitions"
@@ -227,19 +278,27 @@ $$\begin{pmatrix}1&0\\0&1\end{pmatrix}, \quad \begin{pmatrix}1&0\\0&0\end{pmatri
     For a triangular matrix the eigenvalues are just the diagonal entries. All four matrices here are triangular, so their eigenvalues can be read straight off.
 
 !!! steps "Matrix 1, the identity"
+
     $$\begin{pmatrix}1&0\\0&1\end{pmatrix}.$$
+
     Eigenvalues $1, 1$ (from the diagonal). Neither is zero, so $\det = 1 \neq 0$: **invertible**. Every vector satisfies $Iv = v$, so the whole plane is the eigenspace for $\lambda = 1$: geometric multiplicity $2$ matches algebraic multiplicity $2$, so **diagonalizable** (it is already diagonal).
 
 !!! steps "Matrix 2, a projection"
+
     $$\begin{pmatrix}1&0\\0&0\end{pmatrix}.$$
+
     Eigenvalues $1, 0$. One eigenvalue is zero, so $\det = 0$: **not invertible**. Two distinct eigenvalues in a $2\times2$ always give two independent eigenvectors (here $(1,0)$ and $(0,1)$), which span the space, so **diagonalizable** (already diagonal).
 
 !!! steps "Matrix 3, a shear"
+
     $$\begin{pmatrix}1&1\\0&1\end{pmatrix}.$$
+
     Eigenvalues $1, 1$. Neither is zero, so $\det = 1 \neq 0$: **invertible**. Solving $(A - I)v = 0$ gives only the single direction $(1,0)$: algebraic multiplicity $2$ but geometric multiplicity $1$. Not enough eigenvectors, so **not diagonalizable** (defective).
 
 !!! steps "Matrix 4, a nilpotent shear"
+
     $$\begin{pmatrix}0&1\\0&0\end{pmatrix}.$$
+
     Eigenvalues $0, 0$. Zero is an eigenvalue, so $\det = 0$: **not invertible**. Solving $(A - 0I)v = 0$ gives only $(1,0)$: algebraic multiplicity $2$ but geometric multiplicity $1$, so **not diagonalizable** (defective).
 
 !!! answer "Answer"
@@ -273,25 +332,34 @@ Find the eigenvalues, compute each eigenspace, then tally the geometric multipli
 
 !!! steps "Step 1, characteristic polynomial"
     Expanding $\det(A - \lambda I)$:
+
     $$p_A(\lambda) = -(\lambda - 5)(\lambda - 1)^2.$$
+
     Eigenvalues: $\lambda = 5$ (algebraic multiplicity $1$) and $\lambda = 1$ (algebraic multiplicity $2$). Sanity check: sum of eigenvalues $5 + 1 + 1 = 7 = \operatorname{tr}(A)$ $\checkmark$, product $5\cdot1\cdot1 = 5 = \det(A)$ $\checkmark$.
 
 !!! steps "Step 2, eigenspace for $\lambda = 5$"
     Row-reduce $A - 5I$; one free variable gives
+
     $$E_5 = \operatorname{span}\left\{\begin{pmatrix}1\\1\\0\end{pmatrix}\right\}.$$
+
     Geometric multiplicity $1$, matching its algebraic multiplicity.
 
 !!! steps "Step 3, eigenspace for $\lambda = 1$"
     Row-reduce $A - I$. Despite $\lambda = 1$ being a repeated root, only one free variable remains:
+
     $$E_1 = \operatorname{span}\left\{\begin{pmatrix}-3\\1\\0\end{pmatrix}\right\}.$$
+
     Geometric multiplicity $1$, but algebraic multiplicity $2$: a mismatch.
 
 !!! steps "Step 4, diagonalizable?"
     Count the independent eigenvectors:
+
     $$\underbrace{1}_{\lambda = 5} + \underbrace{1}_{\lambda = 1} = 2.$$
+
     A $3\times3$ matrix needs $3$ independent eigenvectors to be diagonalizable. Only $2$ exist, so $A$ is not diagonalizable. The shortfall is at $\lambda = 1$, whose eigenspace is one dimension smaller than its algebraic multiplicity.
 
 !!! answer "Answer"
+
     $$E_5 = \operatorname{span}\left\{\begin{pmatrix}1\\1\\0\end{pmatrix}\right\}, \qquad E_1 = \operatorname{span}\left\{\begin{pmatrix}-3\\1\\0\end{pmatrix}\right\}.$$
 
     **Not diagonalizable.** The eigenvalue $\lambda = 1$ has algebraic multiplicity $2$ but geometric multiplicity $1$, so $A$ has only $2$ independent eigenvectors, one short of the $3$ needed for a $3\times3$. The matrix is defective.
@@ -304,6 +372,7 @@ Three all-zero rows make $A$ singular, so $\det(A) = 0$ and zero will be an eige
 
 !!! steps "Step 1, characteristic polynomial"
     Only the top-left entry $1-\lambda$ survives the expansion, times a diagonal minor:
+
     $$p_A(\lambda) = (1-\lambda)(-\lambda)^3 = \lambda^3(1-\lambda) = \lambda^4 - \lambda^3.$$
 
 !!! note "A vanishing constant term is a signal, not an error"
@@ -314,14 +383,18 @@ Three all-zero rows make $A$ singular, so $\det(A) = 0$ and zero will be an eige
 
 !!! steps "Step 3, eigenspace for $\lambda = 0$"
     Solve $Av = 0$ (the null space of $A$). Only the first row constrains anything ($v_1 + v_2 = 0$), leaving three free variables:
+
     $$E_0 = \operatorname{span}\left\{\begin{pmatrix}-1\\1\\0\\0\end{pmatrix}, \begin{pmatrix}0\\0\\1\\0\end{pmatrix}, \begin{pmatrix}0\\0\\0\\1\end{pmatrix}\right\}.$$
+
     Geometric multiplicity $3$, matching the algebraic multiplicity.
 
 !!! steps "Step 4, eigenspace for $\lambda = 1$"
     Solve $(A - I)v = 0$; one free variable:
+
     $$E_1 = \operatorname{span}\left\{\begin{pmatrix}1\\0\\0\\0\end{pmatrix}\right\}.$$
 
 !!! answer "Answer"
+
     $$E_0 = \operatorname{span}\left\{\begin{pmatrix}-1\\1\\0\\0\end{pmatrix}, \begin{pmatrix}0\\0\\1\\0\end{pmatrix}, \begin{pmatrix}0\\0\\0\\1\end{pmatrix}\right\}, \qquad E_1 = \operatorname{span}\left\{\begin{pmatrix}1\\0\\0\\0\end{pmatrix}\right\}.$$
 
     **Diagonalizable.** The eigenvectors number $3 + 1 = 4$, enough for a $4\times4$, and both eigenvalues have geometric multiplicity equal to algebraic multiplicity. So $A$ is diagonalizable even though it is singular: diagonalizability and invertibility are independent, and this matrix has a zero eigenvalue yet still diagonalizes.
@@ -344,11 +417,14 @@ $$A = \begin{pmatrix}0&1\\-8&4\end{pmatrix}.$$
 
 !!! steps "Part a, characteristic polynomial"
     Using the $2\times2$ form $\lambda^2 - \operatorname{tr}(A)\lambda + \det(A)$, with $\operatorname{tr}(A) = 4$ and $\det(A) = (0)(4) - (1)(-8) = 8$:
+
     $$p_A(\lambda) = \lambda^2 - 4\lambda + 8.$$
 
 !!! steps "Part a, solve"
     The discriminant is $(-4)^2 - 4(8) = 16 - 32 = -16 < 0$. Applying the quadratic formula:
+
     $$\lambda = \frac{4 \pm \sqrt{-16}}{2} = 2 \pm 2i.$$
+
     The eigenvalues are complex ($2 + 2i$ and $2 - 2i$).
 
 !!! answer "Answer"
@@ -360,26 +436,34 @@ $$A = \begin{pmatrix}1&1&1\\1&1&1\\1&1&1\end{pmatrix}.$$
 
 !!! steps "Part b, characteristic polynomial"
     Expanding $\det(A - \lambda I)$ for the all-ones matrix:
+
     $$p_A(\lambda) = \lambda^2(\lambda - 3) = 0.$$
+
     Check: $\operatorname{tr}(A) = 3$ matches the eigenvalue sum $0 + 0 + 3$ $\checkmark$, and $\det(A) = 0$ matches the product $\checkmark$. Eigenvalues: $\lambda = 0$ (algebraic multiplicity $2$) and $\lambda = 3$ (algebraic multiplicity $1$).
 
 !!! steps "Part b, eigenspace for $\lambda = 0$"
     Solve $Av = 0$. Every row of $A$ is identical ($v_1 + v_2 + v_3 = 0$), leaving two free variables:
+
     $$E_0 = \operatorname{span}\left\{\begin{pmatrix}-1\\1\\0\end{pmatrix}, \begin{pmatrix}-1\\0\\1\end{pmatrix}\right\}.$$
+
     Geometric multiplicity $2$, matching the algebraic multiplicity.
 
 !!! steps "Part b, eigenspace for $\lambda = 3$"
     Solve $(A - 3I)v = 0$; one free variable:
+
     $$E_3 = \operatorname{span}\left\{\begin{pmatrix}1\\1\\1\end{pmatrix}\right\}.$$
 
 !!! answer "Answer"
     **Diagonalizable.** The eigenvectors number $2 + 1 = 3$, enough for a $3\times3$, and every eigenvalue's geometric multiplicity equals its algebraic multiplicity.
 
     Diagonal form:
+
     $$D = \begin{pmatrix}0&0&0\\0&0&0\\0&0&3\end{pmatrix}.$$
 
     Eigenbasis (columns of $P$, ordered to match $D$):
+
     $$\left\{\begin{pmatrix}-1\\1\\0\end{pmatrix}, \begin{pmatrix}-1\\0\\1\end{pmatrix}, \begin{pmatrix}1\\1\\1\end{pmatrix}\right\}.$$
+
     With respect to this basis the transformation is diagonal with entries $0, 0, 3$.
 
 **Part c**
@@ -393,7 +477,9 @@ $$A = \begin{pmatrix}5&4&2&1\\0&1&-1&-1\\-1&-1&3&0\\1&1&-1&2\end{pmatrix}.$$
 
 !!! steps "Step 1, characteristic polynomial"
     Expanding $\det(A - \lambda I)$:
+
     $$p_A(\lambda) = \lambda^4 - 11\lambda^3 + 42\lambda^2 - 64\lambda + 32 = (\lambda - 4)^2(\lambda - 2)(\lambda - 1).$$
+
     Sanity checks: sum of eigenvalues $4 + 4 + 2 + 1 = 11 = \operatorname{tr}(A)$ $\checkmark$, product $4\cdot4\cdot2\cdot1 = 32 = \det(A)$ $\checkmark$. Eigenvalues: $\lambda = 4$ (algebraic multiplicity $2$), $\lambda = 2$, $\lambda = 1$.
 
 !!! note "Factorising the quartic"
@@ -401,9 +487,13 @@ $$A = \begin{pmatrix}5&4&2&1\\0&1&-1&-1\\-1&-1&3&0\\1&1&-1&2\end{pmatrix}.$$
 
 !!! steps "Step 2, check the repeated eigenvalue $\lambda = 4$"
     Since $\lambda = 4$ is the only repeated eigenvalue, it is the only one that can break diagonalizability. Row-reduce $A - 4I$:
+
     $$A - 4I \;\xrightarrow{\text{RREF}}\; \begin{pmatrix}1&0&0&-1\\0&1&0&0\\0&0&1&1\\0&0&0&0\end{pmatrix}.$$
+
     Pivots sit in columns 1, 2, 3, so only column 4 is free, a single free variable. Reading the rows: $v_1 = v_4$, $v_2 = 0$, $v_3 = -v_4$. Taking $v_4 = 1$:
+
     $$E_4 = \operatorname{span}\left\{\begin{pmatrix}1\\0\\-1\\1\end{pmatrix}\right\}.$$
+
     Geometric multiplicity $1$.
 
 !!! answer "Answer"
@@ -423,29 +513,40 @@ $$A = \begin{pmatrix}5&-6&-6\\-1&4&2\\3&-6&-4\end{pmatrix}.$$
 
 !!! steps "Step 1, characteristic polynomial"
     Expanding $\det(A - \lambda I)$:
+
     $$p_A(\lambda) = -\lambda^3 + 5\lambda^2 - 8\lambda + 4 = -(\lambda - 2)^2(\lambda - 1).$$
+
     Sanity checks: sum of eigenvalues $2 + 2 + 1 = 5 = \operatorname{tr}(A)$ $\checkmark$, product $2\cdot2\cdot1 = 4 = \det(A)$ $\checkmark$. Eigenvalues: $\lambda = 2$ (algebraic multiplicity $2$) and $\lambda = 1$.
 
 !!! steps "Step 2, eigenspace for $\lambda = 2$"
     Row-reduce $A - 2I$:
+
     $$A - 2I \;\xrightarrow{\text{RREF}}\; \begin{pmatrix}1&-2&-2\\0&0&0\\0&0&0\end{pmatrix}.$$
+
     Only column 1 has a pivot, so columns 2 and 3 are free, two free variables. From $v_1 = 2v_2 + 2v_3$, setting each free variable to $1$ in turn:
+
     $$E_2 = \operatorname{span}\left\{\begin{pmatrix}2\\1\\0\end{pmatrix}, \begin{pmatrix}2\\0\\1\end{pmatrix}\right\}.$$
+
     Geometric multiplicity $2$, matching the algebraic multiplicity, so this eigenvalue does not break diagonalizability.
 
 !!! steps "Step 3, eigenspace for $\lambda = 1$"
     Row-reduce $A - I$; one free variable, scaled to clear the fraction:
+
     $$E_1 = \operatorname{span}\left\{\begin{pmatrix}3\\-1\\3\end{pmatrix}\right\}.$$
+
     Check: $A(3,-1,3)^\top = (3,-1,3)^\top = 1\cdot(3,-1,3)^\top$. $\checkmark$
 
 !!! answer "Answer"
     **Diagonalizable.** Both eigenvalues have geometric multiplicity equal to algebraic multiplicity ($\lambda = 2$: $2$ and $2$; $\lambda = 1$: $1$ and $1$), giving $3$ independent eigenvectors for a $3\times3$.
 
     Diagonal form:
+
     $$D = \begin{pmatrix}2&0&0\\0&2&0\\0&0&1\end{pmatrix}.$$
 
     Basis (columns ordered to match $D$):
+
     $$\left\{\begin{pmatrix}2\\1\\0\end{pmatrix}, \begin{pmatrix}2\\0\\1\end{pmatrix}, \begin{pmatrix}3\\-1\\3\end{pmatrix}\right\}.$$
+
     With respect to this basis the transformation is diagonal with entries $2, 2, 1$.
 
 ---
@@ -453,6 +554,7 @@ $$A = \begin{pmatrix}5&-6&-6\\-1&4&2\\3&-6&-4\end{pmatrix}.$$
 ## 4.8 · Singular value decomposition
 
 Find the SVD of
+
 $$A = \begin{pmatrix}3&2&2\\2&3&-2\end{pmatrix}.$$
 
 !!! theory "Topics & Definitions"
@@ -465,20 +567,28 @@ $$A = \begin{pmatrix}3&2&2\\2&3&-2\end{pmatrix}.$$
     **Normalise every singular vector**: SVD needs *unit* vectors, so divide each by its length. **And transpose $V$** at the end: the equation is $U\Sigma V^\top$, not $U\Sigma V$. Also, when $A$ is wider than tall (like $2\times3$) the shortcut produces one fewer $V$ column than needed, because the extra eigenvalue is $0$ and you cannot divide by it. Fill the last column with the **null space** of $A$ (the direction $A$ crushes to zero), found by solving $Av = 0$.
 
 !!! steps "Step 1, singular values via $AA^\top$"
+
     $$AA^\top = \begin{pmatrix}17&8\\8&17\end{pmatrix}.$$
+
     Using the $2\times2$ shortcut $\lambda^2 - \operatorname{tr}\lambda + \det$, with trace $34$ and determinant $289 - 64 = 225$:
+
     $$\lambda^2 - 34\lambda + 225 = (\lambda - 25)(\lambda - 9).$$
+
     Eigenvalues $25$ and $9$, so the singular values are $\sigma_1 = \sqrt{25} = 5$ and $\sigma_2 = \sqrt{9} = 3$:
+
     $$\Sigma = \begin{pmatrix}5&0&0\\0&3&0\end{pmatrix}.$$
+
     ($\Sigma$ matches $A$'s shape; the extra zero column reflects that $A$ is wider than tall.)
 
 !!! steps "Step 2, $U$ from the $AA^\top$ eigenvectors"
     $\lambda = 25$: $(AA^\top - 25I)u = 0$ gives $u_1 = u_2$, so $(1,1)$ normalised is $u_1 = \tfrac{1}{\sqrt2}(1,1)$.
     $\lambda = 9$: gives $u_1 = -u_2$, so $(1,-1)$ normalised is $u_2 = \tfrac{1}{\sqrt2}(1,-1)$.
+
     $$U = \frac{1}{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}.$$
 
 !!! steps "Step 3, $v_1$ and $v_2$ from the shortcut"
     Use $v_i = \tfrac{1}{\sigma_i}A^\top u_i$:
+
     $$v_1 = \tfrac{1}{5}A^\top u_1 = \tfrac{1}{\sqrt2}(1, 1, 0).$$
 
     $$v_2 = \tfrac{1}{3}A^\top u_2 = \tfrac{1}{3\sqrt2}(1, -1, 4).$$
@@ -487,12 +597,17 @@ $$A = \begin{pmatrix}3&2&2\\2&3&-2\end{pmatrix}.$$
 
 !!! steps "Step 4, the third $V$ column (null space)"
     $V$ must be $3\times3$, but the shortcut gave only two columns. The third is the direction $A$ sends to zero, so solve $Av = 0$:
+
     $$3v_1 + 2v_2 + 2v_3 = 0, \qquad 2v_1 + 3v_2 - 2v_3 = 0.$$
+
     Adding the equations gives $v_1 = -v_2$; substituting gives $v_2 = 2v_3$. Taking $v_3 = 1$ yields $(-2, 2, 1)$, of length $3$:
+
     $$v_3 = \tfrac{1}{3}(-2, 2, 1).$$
+
     This is orthogonal to $v_1$ and $v_2$, and $Av_3 = 0$ confirms it is the crushed direction.
 
 !!! answer "Answer"
+
     $$A = U\Sigma V^\top,$$
 
     $$U = \frac{1}{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}, \qquad \Sigma = \begin{pmatrix}5&0&0\\0&3&0\end{pmatrix},$$
@@ -506,6 +621,7 @@ $$A = \begin{pmatrix}3&2&2\\2&3&-2\end{pmatrix}.$$
 ## 4.9 · SVD of a square matrix
 
 Find the singular value decomposition of
+
 $$A = \begin{pmatrix}2&2\\-1&1\end{pmatrix}.$$
 
 !!! theory "Topics & Definitions"
@@ -528,11 +644,17 @@ $$A = \begin{pmatrix}2&2\\-1&1\end{pmatrix}.$$
 Start from $A^\top A$ (its eigenvectors are the $V$ columns), read off the singular values, then travel to $U$ with plain $A$.
 
 !!! steps "Step 1, singular values"
+
     $$A^\top A = \begin{pmatrix}5&3\\3&5\end{pmatrix}.$$
+
     Using $\lambda^2 - \operatorname{tr}\lambda + \det$, with trace $10$ and determinant $25 - 9 = 16$:
+
     $$\lambda^2 - 10\lambda + 16 = (\lambda - 8)(\lambda - 2).$$
+
     Eigenvalues $8$ and $2$, so $\sigma_1 = \sqrt8 = 2\sqrt2$ and $\sigma_2 = \sqrt2$:
+
     $$\Sigma = \begin{pmatrix}2\sqrt2 & 0\\0 & \sqrt2\end{pmatrix}.$$
+
     (Square $A$ gives a square $\Sigma$, no leftover zero column.)
 
 !!! steps "Step 2, $V$ from the $A^\top A$ eigenvectors"
@@ -542,14 +664,17 @@ Start from $A^\top A$ (its eigenvectors are the $V$ columns), read off the singu
 
 !!! steps "Step 3, $U$ from the shortcut (plain $A$)"
     We have $V$ and want $U$, so use $u_i = \tfrac{1}{\sigma_i}A v_i$ with plain $A$ (no transpose):
+
     $$u_1 = \tfrac{1}{2\sqrt2}\,A v_1 = \tfrac{1}{2\sqrt2}\cdot\tfrac{1}{\sqrt2}(4, 0) = \tfrac14(4,0) = (1, 0).$$
 
     $$u_2 = \tfrac{1}{\sqrt2}\,A v_2 = \tfrac{1}{\sqrt2}\cdot\tfrac{1}{\sqrt2}(0, 2) = \tfrac12(0,2) = (0, 1).$$
 
     So $U$ is the identity:
+
     $$U = \begin{pmatrix}1&0\\0&1\end{pmatrix}.$$
 
 !!! answer "Answer"
+
     $$A = U\Sigma V^\top,$$
 
     $$U = \begin{pmatrix}1&0\\0&1\end{pmatrix}, \qquad \Sigma = \begin{pmatrix}2\sqrt2 & 0\\0 & \sqrt2\end{pmatrix}, \qquad V^\top = \begin{pmatrix}\tfrac{1}{\sqrt2} & \tfrac{1}{\sqrt2}\\[4pt] -\tfrac{1}{\sqrt2} & \tfrac{1}{\sqrt2}\end{pmatrix}.$$
@@ -563,6 +688,7 @@ Start from $A^\top A$ (its eigenvectors are the $V$ columns), read off the singu
 ## 4.10 · Rank-1 approximation
 
 Find the rank-1 approximation of
+
 $$A = \begin{pmatrix}3&2&2\\2&3&-2\end{pmatrix}.$$
 
 !!! theory "Topics & Definitions"
@@ -576,17 +702,22 @@ $$A = \begin{pmatrix}3&2&2\\2&3&-2\end{pmatrix}.$$
 
 !!! steps "Step 1, pull out the first pieces"
     From the SVD of $A$ (Exercise 4.8):
+
     $$\sigma_1 = 5, \qquad u_1 = \tfrac{1}{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix}, \qquad v_1 = \tfrac{1}{\sqrt2}\begin{pmatrix}1\\1\\0\end{pmatrix}.$$
+
     $\sigma_1$ is the largest singular value, $u_1$ is the first column of $U$, and $v_1$ is the first row of $V^\top$. Note the third entry of $v_1$ is $0$.
 
 !!! steps "Step 2, outer product $u_1 v_1^\top$"
     Multiply the column by the row (each entry scaled by $\tfrac{1}{\sqrt2}\cdot\tfrac{1}{\sqrt2} = \tfrac12$):
+
     $$u_1 v_1^\top = \tfrac12\begin{pmatrix}1\\1\end{pmatrix}\begin{pmatrix}1&1&0\end{pmatrix} = \tfrac12\begin{pmatrix}1&1&0\\1&1&0\end{pmatrix} = \begin{pmatrix}0.5&0.5&0\\0.5&0.5&0\end{pmatrix}.$$
 
 !!! steps "Step 3, scale by $\sigma_1$"
+
     $$\hat A(1) = \sigma_1\, u_1 v_1^\top = 5\begin{pmatrix}0.5&0.5&0\\0.5&0.5&0\end{pmatrix}.$$
 
 !!! answer "Answer"
+
     $$\hat A(1) = \begin{pmatrix}2.5&2.5&0\\2.5&2.5&0\end{pmatrix}.$$
 
     The two rows are identical because $u_1 = \tfrac{1}{\sqrt2}(1,1)$ weights both output directions equally, and the third column is zero because $v_1$ has a zero third entry. Compared with the original $A = \begin{pmatrix}3&2&2\\2&3&-2\end{pmatrix}$, this rank-1 layer captures the dominant shared structure; the finer detail (the differences between entries and the $-2$) lives in the discarded $\sigma_2$ layer, and the error it costs is exactly $\sigma_2 = 3$.
@@ -604,11 +735,17 @@ Show that for any $A \in \mathbb{R}^{m\times n}$, the matrices $A^\top A$ and $A
 
 !!! steps "Proof"
     Let $\lambda \neq 0$ be an eigenvalue of $A^\top A$ with eigenvector $x \neq 0$:
+
     $$A^\top A\, x = \lambda x.$$
+
     Multiply on the left by $A$:
+
     $$A A^\top A\, x = \lambda A x.$$
+
     Regroup using associativity:
+
     $$(AA^\top)(Ax) = \lambda (Ax).$$
+
     This has the form of an eigenvalue equation for $AA^\top$, with eigenvector $Ax$ and eigenvalue $\lambda$.
 
     **Check $Ax \neq 0$:** if $Ax = 0$, then $A^\top A\, x = A^\top(Ax) = 0 = \lambda x$, forcing $\lambda = 0$ (since $x \neq 0$), contradicting $\lambda \neq 0$. So $Ax$ is a genuine eigenvector. The reverse direction is identical, swapping $A$ and $A^\top$ (start from $AA^\top y = \lambda y$ and multiply by $A^\top$).
@@ -623,7 +760,9 @@ Show that for any $A \in \mathbb{R}^{m\times n}$, the matrices $A^\top A$ and $A
 ## 4.12 · The largest singular value is the maximum stretch
 
 Show that for $x \neq 0$,
+
 $$\max_{x} \frac{\lVert Ax\rVert_2}{\lVert x\rVert_2} = \sigma_1,$$
+
 where $\sigma_1$ is the largest singular value of $A \in \mathbb{R}^{m\times n}$.
 
 !!! theory "Topics & Definitions"
@@ -634,21 +773,30 @@ where $\sigma_1$ is the largest singular value of $A \in \mathbb{R}^{m\times n}$
 
 !!! steps "Step 1, reduce to the diagonal matrix"
     Write $A = U\Sigma V^\top$. For $x \neq 0$, set $y = V^\top x$; since $V$ is orthogonal, $\lVert y\rVert = \lVert x\rVert$. Using that $U$ preserves length:
+
     $$\lVert Ax\rVert = \lVert U\Sigma V^\top x\rVert = \lVert \Sigma V^\top x\rVert = \lVert \Sigma y\rVert.$$
+
     So $\dfrac{\lVert Ax\rVert}{\lVert x\rVert} = \dfrac{\lVert \Sigma y\rVert}{\lVert y\rVert}$.
 
 !!! steps "Step 2, upper bound"
     Since $\Sigma$ is diagonal, $\Sigma y = (\sigma_1 y_1, \sigma_2 y_2, \dots)$, so
+
     $$\lVert \Sigma y\rVert^2 = \sum_i \sigma_i^2 y_i^2 \le \sigma_1^2 \sum_i y_i^2 = \sigma_1^2 \lVert y\rVert^2$$
+
     (each $\sigma_i^2$ replaced by the larger $\sigma_1^2$). Taking square roots:
+
     $$\frac{\lVert Ax\rVert}{\lVert x\rVert} \le \sigma_1 \quad\text{for all } x.$$
 
 !!! steps "Step 3, the bound is attained"
     Choose $x = v_1$, the first right-singular vector. Then $y = V^\top v_1 = e_1 = (1,0,\dots,0)$, so
+
     $$\lVert \Sigma y\rVert = \sigma_1, \qquad \lVert y\rVert = 1, \qquad \frac{\lVert Av_1\rVert}{\lVert v_1\rVert} = \sigma_1.$$
+
     Some vector reaches $\sigma_1$, so the bound is tight.
 
 !!! answer "Conclusion"
     The ratio is bounded above by $\sigma_1$ for every $x$ and equals $\sigma_1$ when $x = v_1$, so
+
     $$\max_{x \neq 0} \frac{\lVert Ax\rVert_2}{\lVert x\rVert_2} = \sigma_1. \qquad \blacksquare$$
+
     The maximum stretch of $A$ is its largest singular value, achieved along the first right-singular vector $v_1$.

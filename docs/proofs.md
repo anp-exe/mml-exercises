@@ -76,7 +76,9 @@ The form $\langle\mathbf{x},\mathbf{y}\rangle = x_1y_1 - (x_1y_2 + x_2y_1) + 2x_
     **Symmetric.** $A = \begin{bmatrix}1&-1\\-1&2\end{bmatrix} = A^\top$, so $\langle\mathbf{x},\mathbf{y}\rangle = \langle\mathbf{y},\mathbf{x}\rangle$.
 
     **Positive definite.** Leading principal minors of $A$: the top-left entry $1 > 0$, and $\det A = (1)(2) - (-1)(-1) = 1 > 0$. Both positive, so $A$ is positive definite. Equivalently, completing the square,
+
     $$\langle\mathbf{x},\mathbf{x}\rangle = x_1^2 - 2x_1x_2 + 2x_2^2 = (x_1 - x_2)^2 + x_2^2 \ge 0,$$
+
     which is $0$ only when $x_1 = x_2 = 0$.
 
 !!! answer "Answer"
@@ -102,12 +104,16 @@ Part a is pure algebra: expand $(\operatorname{id} - \pi)^2$ and watch the condi
 
 !!! steps "Part a, expand $(\operatorname{id} - \pi)^2$"
     Write $\operatorname{id}$ for $\operatorname{id}_V$. Expanding the composition:
+
     $$(\operatorname{id} - \pi)^2 = \operatorname{id}\circ\operatorname{id} - \operatorname{id}\circ\pi - \pi\circ\operatorname{id} + \pi\circ\pi = \operatorname{id} - 2\pi + \pi^2.$$
+
     The two middle terms each collapse to $\pi$, since composing with the identity does nothing.
 
 !!! steps "Part a, chain of equivalences"
     $\operatorname{id} - \pi$ is a projection precisely when it is idempotent:
+
     $$\begin{aligned}(\operatorname{id} - \pi)^2 = \operatorname{id} - \pi &\iff \operatorname{id} - 2\pi + \pi^2 = \operatorname{id} - \pi\\ &\iff -2\pi + \pi^2 = -\pi\\ &\iff \pi^2 = \pi.\end{aligned}$$
+
     Every step is reversible (subtract $\operatorname{id}$, then add $2\pi$, to both sides), so the biconditional holds in both directions at once. $\blacksquare$
 
 !!! note "Why both directions come free"
@@ -115,18 +121,26 @@ Part a is pure algebra: expand $(\operatorname{id} - \pi)^2$ and watch the condi
 
 !!! steps "Part b, $\ker(\operatorname{id} - \pi) = \operatorname{Im}(\pi)$"
     Work directly from the definition of the kernel:
+
     $$v \in \ker(\operatorname{id}-\pi) \iff (\operatorname{id}-\pi)(v) = 0 \iff v - \pi(v) = 0 \iff v = \pi(v).$$
+
     The statement $v = \pi(v)$ says that $v$ is an output of $\pi$, which is exactly what it means for $v$ to lie in $\operatorname{Im}(\pi)$. Every step is an equivalence, so
+
     $$\ker(\operatorname{id}-\pi) = \operatorname{Im}(\pi).$$
+
     Note this direction does not even require idempotency.
 
 !!! steps "Part b, $\operatorname{Im}(\operatorname{id} - \pi) = \ker(\pi)$"
     **($\subseteq$)** Let $w \in \operatorname{Im}(\operatorname{id} - \pi)$, so $w = v - \pi(v)$ for some $v$. Apply $\pi$:
+
     $$\pi(w) = \pi(v) - \pi^2(v) = \pi(v) - \pi(v) = 0,$$
+
     using $\pi^2 = \pi$. So $w \in \ker(\pi)$.
 
     **($\supseteq$)** Let $w \in \ker(\pi)$, so $\pi(w) = 0$. Then
+
     $$(\operatorname{id}-\pi)(w) = w - \pi(w) = w - 0 = w,$$
+
     so $w$ is its own image under $\operatorname{id} - \pi$, hence $w \in \operatorname{Im}(\operatorname{id}-\pi)$.
 
     Both inclusions hold, so $\operatorname{Im}(\operatorname{id}-\pi) = \ker(\pi)$. $\blacksquare$
@@ -135,6 +149,7 @@ Part a is pure algebra: expand $(\operatorname{id} - \pi)^2$ and watch the condi
     **a)** $\pi$ is a projection $\iff \pi^2 = \pi \iff (\operatorname{id}_V - \pi)^2 = \operatorname{id}_V - \pi \iff \operatorname{id}_V - \pi$ is a projection.
 
     **b)** The image and kernel swap:
+
     $$\operatorname{Im}(\operatorname{id}_V - \pi) = \ker(\pi), \qquad \ker(\operatorname{id}_V - \pi) = \operatorname{Im}(\pi).$$
 
     **Intuition.** A projection splits the space as $V = \operatorname{Im}(\pi) \oplus \ker(\pi)$, acting as the identity on the first part and as zero on the second. The complementary map $\operatorname{id}_V - \pi$ keeps the residual instead, so it kills exactly what $\pi$ keeps and keeps exactly what $\pi$ kills. Their images and kernels therefore trade places.
@@ -152,11 +167,17 @@ Show that for any $A \in \mathbb{R}^{m\times n}$, the matrices $A^\top A$ and $A
 
 !!! steps "Proof"
     Let $\lambda \neq 0$ be an eigenvalue of $A^\top A$ with eigenvector $x \neq 0$:
+
     $$A^\top A\, x = \lambda x.$$
+
     Multiply on the left by $A$:
+
     $$A A^\top A\, x = \lambda A x.$$
+
     Regroup using associativity:
+
     $$(AA^\top)(Ax) = \lambda (Ax).$$
+
     This has the form of an eigenvalue equation for $AA^\top$, with eigenvector $Ax$ and eigenvalue $\lambda$.
 
     **Check $Ax \neq 0$:** if $Ax = 0$, then $A^\top A\, x = A^\top(Ax) = 0 = \lambda x$, forcing $\lambda = 0$ (since $x \neq 0$), contradicting $\lambda \neq 0$. So $Ax$ is a genuine eigenvector. The reverse direction is identical, swapping $A$ and $A^\top$ (start from $AA^\top y = \lambda y$ and multiply by $A^\top$).
@@ -171,7 +192,9 @@ Show that for any $A \in \mathbb{R}^{m\times n}$, the matrices $A^\top A$ and $A
 ## 4.12 · The largest singular value is the maximum stretch
 
 Show that for $x \neq 0$,
+
 $$\max_{x} \frac{\lVert Ax\rVert_2}{\lVert x\rVert_2} = \sigma_1,$$
+
 where $\sigma_1$ is the largest singular value of $A \in \mathbb{R}^{m\times n}$.
 
 !!! theory "Topics & Definitions"
@@ -182,23 +205,32 @@ where $\sigma_1$ is the largest singular value of $A \in \mathbb{R}^{m\times n}$
 
 !!! steps "Step 1, reduce to the diagonal matrix"
     Write $A = U\Sigma V^\top$. For $x \neq 0$, set $y = V^\top x$; since $V$ is orthogonal, $\lVert y\rVert = \lVert x\rVert$. Using that $U$ preserves length:
+
     $$\lVert Ax\rVert = \lVert U\Sigma V^\top x\rVert = \lVert \Sigma V^\top x\rVert = \lVert \Sigma y\rVert.$$
+
     So $\dfrac{\lVert Ax\rVert}{\lVert x\rVert} = \dfrac{\lVert \Sigma y\rVert}{\lVert y\rVert}$.
 
 !!! steps "Step 2, upper bound"
     Since $\Sigma$ is diagonal, $\Sigma y = (\sigma_1 y_1, \sigma_2 y_2, \dots)$, so
+
     $$\lVert \Sigma y\rVert^2 = \sum_i \sigma_i^2 y_i^2 \le \sigma_1^2 \sum_i y_i^2 = \sigma_1^2 \lVert y\rVert^2$$
+
     (each $\sigma_i^2$ replaced by the larger $\sigma_1^2$). Taking square roots:
+
     $$\frac{\lVert Ax\rVert}{\lVert x\rVert} \le \sigma_1 \quad\text{for all } x.$$
 
 !!! steps "Step 3, the bound is attained"
     Choose $x = v_1$, the first right-singular vector. Then $y = V^\top v_1 = e_1 = (1,0,\dots,0)$, so
+
     $$\lVert \Sigma y\rVert = \sigma_1, \qquad \lVert y\rVert = 1, \qquad \frac{\lVert Av_1\rVert}{\lVert v_1\rVert} = \sigma_1.$$
+
     Some vector reaches $\sigma_1$, so the bound is tight.
 
 !!! answer "Conclusion"
     The ratio is bounded above by $\sigma_1$ for every $x$ and equals $\sigma_1$ when $x = v_1$, so
+
     $$\max_{x \neq 0} \frac{\lVert Ax\rVert_2}{\lVert x\rVert_2} = \sigma_1. \qquad \blacksquare$$
+
     The maximum stretch of $A$ is its largest singular value, achieved along the first right-singular vector $v_1$.
 
 ---

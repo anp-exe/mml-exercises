@@ -107,6 +107,7 @@ Part **a** is a $3\times 2$ times a $3\times 3$: inner dimensions $2$ and $3$ do
 Reducing $[A\mid \mathbf{b}]$ to RREF puts pivots in columns $2, 4, 5$; columns $1, 3, 6$ are free.
 
 !!! steps "RREF of $[A \mid \mathbf{b}]$"
+
     $$\left[\begin{array}{cccccc|c}
     0&1&0&0&0&1&1\\
     0&0&0&1&0&1&-2\\
@@ -116,6 +117,7 @@ Reducing $[A\mid \mathbf{b}]$ to RREF puts pivots in columns $2, 4, 5$; columns 
     Pivots in columns $2, 4, 5 \Rightarrow x_2, x_4, x_5$ basic; $x_1, x_3, x_6$ free.
 
 !!! answer "Answer"
+
     $$\mathbf{x} = \begin{pmatrix}0\\1\\0\\-2\\1\\0\end{pmatrix}
     + x_1\begin{pmatrix}1\\0\\0\\0\\0\\0\end{pmatrix}
     + x_3\begin{pmatrix}0\\0\\1\\0\\0\\0\end{pmatrix}
@@ -132,6 +134,7 @@ Reducing $[A\mid \mathbf{b}]$ to RREF puts pivots in columns $2, 4, 5$; columns 
     - **Constraint** — an extra equation like $\sum x_i = 1$ picks one point on that line.
 
 !!! steps "$(A - 12I)\mathbf{x} = 0$ elimination"
+
     $$\begin{bmatrix}-6&4&3\\6&-12&9\\0&8&-12\end{bmatrix}
     \longrightarrow
     \begin{bmatrix}-6&4&3\\0&-8&12\\0&0&0\end{bmatrix}$$
@@ -140,6 +143,7 @@ Reducing $[A\mid \mathbf{b}]$ to RREF puts pivots in columns $2, 4, 5$; columns 
     The constraint $3t + 3t + 2t = 1$ gives $t = \tfrac18$.
 
 !!! answer "Answer"
+
     $$\mathbf{x} = \left(\tfrac38,\ \tfrac38,\ \tfrac14\right)$$
 
 ---
@@ -155,6 +159,7 @@ Reducing $[A\mid \mathbf{b}]$ to RREF puts pivots in columns $2, 4, 5$; columns 
 **Part a.** $\det = 0$ (row 1 + row 3 = $2\times$ row 2), so no inverse.
 
 !!! steps "$[A \mid I] \to [I \mid A^{-1}]$"
+
     $$\left[\begin{array}{cccc|cccc}
     1&0&1&0&1&0&0&0\\
     0&1&1&0&0&1&0&0\\
@@ -203,6 +208,7 @@ Reducing $[A\mid \mathbf{b}]$ to RREF puts pivots in columns $2, 4, 5$; columns 
     - **Rule** — pivot in every column $\Rightarrow$ independent; a missing column pivot $\Rightarrow$ dependent.
 
 !!! steps "Vectors as columns, then reduce"
+
     $$\text{a)}\ \begin{bmatrix}2&1&3\\-1&1&-3\\3&-2&8\end{bmatrix}
     \longrightarrow
     \begin{bmatrix}2&1&3\\0&3&-3\\0&0&0\end{bmatrix}$$
@@ -224,6 +230,7 @@ Reducing $[A\mid \mathbf{b}]$ to RREF puts pivots in columns $2, 4, 5$; columns 
     - **Method** — reduce to RREF; the coefficients appear in the final column.
 
 !!! steps "$[\mathbf{x}_1\ \mathbf{x}_2\ \mathbf{x}_3 \mid \mathbf{y}] \to$ RREF"
+
     $$\left[\begin{array}{ccc|c}
     1&1&2&1\\1&2&-1&-2\\1&3&1&5
     \end{array}\right]
@@ -235,6 +242,7 @@ Reducing $[A\mid \mathbf{b}]$ to RREF puts pivots in columns $2, 4, 5$; columns 
     Check: $-6(1) + 3(1) + 2(2) = 1$, matching $\mathbf{y}$.
 
 !!! answer "Answer"
+
     $$\mathbf{y} = -6\,\mathbf{x}_1 + 3\,\mathbf{x}_2 + 2\,\mathbf{x}_3$$
 
 ---
@@ -260,16 +268,20 @@ Stack the six vectors as columns of a $4\times 6$ matrix and row-reduce. Two $\m
     \end{array}\right]$$
 
     Column $b_3$ has no pivot, so set $b_3 = t$. Back-substitution gives
+
     $$b_2 = \tfrac72 t, \qquad b_1 = -b_2 + \tfrac72 t = 0.$$
+
     Choosing $t = 2$ to clear fractions: $b_1 = 0,\ b_2 = 7,\ b_3 = 2$.
 
     Rebuild the intersection vector from the $\mathbf{w}$ side:
+
     $$7\mathbf{w}_2 + 2\mathbf{w}_3 = 7\begin{pmatrix}2\\-2\\0\\0\end{pmatrix} + 2\begin{pmatrix}-3\\6\\-2\\-1\end{pmatrix} = \begin{pmatrix}14\\-14\\0\\0\end{pmatrix} + \begin{pmatrix}-6\\12\\-4\\-2\end{pmatrix} = \begin{pmatrix}8\\-2\\-4\\-2\end{pmatrix}.$$
 
     Dividing by $2$ gives the simplest representative $(4,-1,-2,-1)$.
 
 !!! answer "Answer"
     $U_1 \cap U_2$ is one-dimensional, with basis
+
     $$\left\{\,(4,\ -1,\ -2,\ -1)\,\right\}.$$
 
 ---
@@ -285,12 +297,15 @@ Stack the six vectors as columns of a $4\times 6$ matrix and row-reduce. Two $\m
 Both $A_1$ and $A_2$ are $4\times 3$, so $\mathbf{x}\in\mathbb{R}^3$. Row-reducing each one gives rank $2$, leaving a single free variable, so both solution spaces are one-dimensional. Strikingly, the two matrices reduce to the *same* echelon form, so $U_1$ and $U_2$ turn out to be the identical line.
 
 !!! steps "Reduce each $A_i$ and read the null space"
+
     $$A_1 \longrightarrow \begin{bmatrix}1&0&1\\0&1&1\\0&0&0\\0&0&0\end{bmatrix},
     \qquad
     A_2 \longrightarrow \begin{bmatrix}1&0&1\\0&1&1\\0&0&0\\0&0&0\end{bmatrix}$$
 
     Both give $x_1 = -x_3$ and $x_2 = -x_3$. Setting $x_3 = t$:
+
     $$\mathbf{x} = t\,(-1,\,-1,\,1).$$
+
     Same for both, so $U_1 = U_2$ and the intersection is that same line.
 
 !!! answer "Answer"
@@ -313,6 +328,7 @@ Both $A_1$ and $A_2$ are $4\times 3$, so $\mathbf{x}\in\mathbb{R}^3$. Row-reduci
 Same two matrices as 2.13, but now the $U$'s are spanned by the columns. Each has rank $2$ with pivots in columns $1$ and $2$, so the first two columns of each original matrix form a basis. For the intersection, stack the two bases (negating $U_2$'s) and solve.
 
 !!! steps "Intersection system $[\mathbf{v}_1\ \mathbf{v}_2 \mid -\mathbf{w}_1\ -\mathbf{w}_2]$"
+
     $$\left[\begin{array}{cc|cc}
     1&0&-3&3\\
     1&-2&-1&-2\\
@@ -328,7 +344,9 @@ Same two matrices as 2.13, but now the $U$'s are spanned by the columns. Each ha
     \end{array}\right]$$
 
     Pivots in $c_1, c_2, d_2$; the $d_1$ column is free. Back-substitution gives $d_2 = 0$, $c_2 = d_1$, $c_1 = 3d_1$. Taking $d_1 = 1$:
+
     $$\mathbf{x} = 3\mathbf{v}_1 + \mathbf{v}_2 = 3\begin{pmatrix}1\\1\\2\\1\end{pmatrix} + \begin{pmatrix}0\\-2\\1\\0\end{pmatrix} = \begin{pmatrix}3\\1\\7\\3\end{pmatrix},$$
+
     which is exactly $\mathbf{w}_1$, confirming it lies in both spaces. By Grassmann, $\dim(U_1\cap U_2) = 2 + 2 - 3 = 1$.
 
 !!! answer "Answer"
@@ -381,18 +399,26 @@ $F = \{(x,y,z)\in\mathbb{R}^3 \mid x+y-z = 0\}$ is a plane through the origin. $
 
 !!! steps "Part b, intersection without a basis"
     A general vector in $G$ is $(a-b,\ a+b,\ a-3b)$. For it to lie in $F$ it must satisfy $x+y-z=0$:
+
     $$(a-b)+(a+b)-(a-3b) = a + 3b = 0 \;\Rightarrow\; a = -3b.$$
+
     Substituting $a=-3b$ back into $G$'s coordinates:
+
     $$x = -3b-b = -4b,\quad y = -3b+b = -2b,\quad z = -3b-3(-3b) = -6b.$$
+
     So $F\cap G = \{(-4b,-2b,-6b)\mid b\in\mathbb{R}\} = \{k(2,1,3)\mid k\in\mathbb{R}\}$.
 
 !!! steps "Part c, intersection using bases"
     Basis for $F$: rewrite $x+y-z=0$ as $z=x+y$, so $(x,y,x+y) = x(1,0,1)+y(0,1,1)$, giving $B_F = \{(1,0,1),(0,1,1)\}$.
     Basis for $G$: separate the parameters, $a(1,1,1)+b(-1,1,-3)$, giving $B_G = \{(1,1,1),(-1,1,-3)\}$.
     Set a combination of $B_F$ equal to a combination of $B_G$:
+
     $$c_1(1,0,1)+c_2(0,1,1) = d_1(1,1,1)+d_2(-1,1,-3).$$
+
     Matching coordinates gives $c_1 = d_1-d_2$, $c_2 = d_1+d_2$, $c_1+c_2 = d_1-3d_2$. Substituting the first two into the third: $2d_1 = d_1 - 3d_2 \Rightarrow d_1 = -3d_2$. Let $d_2 = t$, so $d_1 = -3t$:
+
     $$-3t(1,1,1)+t(-1,1,-3) = (-4t,-2t,-6t) = k(2,1,3).$$
+
     This matches part b exactly.
 
 !!! answer "Answer"
@@ -465,19 +491,25 @@ Reading the four output rows gives the coefficient matrix $A_\Phi$. Row-reducing
 
 !!! steps "Build $A_\Phi$ and row-reduce"
     Pull the coefficients out of $\Phi(x_1,x_2,x_3) = (3x_1+2x_2+x_3,\ x_1+x_2+x_3,\ x_1-3x_2,\ 2x_1+3x_2+x_3)$:
+
     $$A_\Phi = \begin{bmatrix}3&2&1\\1&1&1\\1&-3&0\\2&3&1\end{bmatrix}.$$
+
     Swap to get a leading $1$, then clear below:
+
     $$\begin{bmatrix}1&1&1\\3&2&1\\1&-3&0\\2&3&1\end{bmatrix}
     \longrightarrow
     \begin{bmatrix}1&1&1\\0&1&2\\0&0&1\\0&0&0\end{bmatrix}.$$
+
     Three pivots, so $\operatorname{rk}(A_\Phi) = 3$.
 
 !!! answer "Answer"
+
     $$A_\Phi = \begin{bmatrix}3&2&1\\1&1&1\\1&-3&0\\2&3&1\end{bmatrix},\qquad \operatorname{rk}(A_\Phi) = 3.$$
 
     $\ker(\Phi) = \{\mathbf{0}\}$, so $\dim(\ker(\Phi)) = 0$.
 
     $\dim(\operatorname{Im}(\Phi)) = 3$, with
+
     $$\operatorname{Im}(\Phi) = \operatorname{span}\left\{\begin{pmatrix}3\\1\\1\\2\end{pmatrix},\begin{pmatrix}2\\1\\-3\\3\end{pmatrix},\begin{pmatrix}1\\1\\0\\1\end{pmatrix}\right\}.$$
 
 !!! note "Transformation matrix, kernel, image: what they actually are"
@@ -525,6 +557,7 @@ The transformation matrix is $A_\Phi = \begin{bmatrix}1&1&0\\1&-1&0\\1&1&1\end{b
 
 !!! steps "Part a, kernel and image"
     $\det A_\Phi = -2 \neq 0$, so $\operatorname{rk}(A_\Phi) = 3$.
+
     $$\ker(\Phi) = \{\mathbf{0}\}, \qquad \dim(\ker(\Phi)) = 0.$$
 
     $$\operatorname{Im}(\Phi) = \mathbb{R}^3, \qquad \dim(\operatorname{Im}(\Phi)) = 3.$$
@@ -532,6 +565,7 @@ The transformation matrix is $A_\Phi = \begin{bmatrix}1&1&0\\1&-1&0\\1&1&1\end{b
 !!! steps "Part b, basis change to $B$"
     Put the new basis vectors as columns: $B = \begin{bmatrix}1&1&1\\1&2&0\\1&1&0\end{bmatrix}$.
     Then
+
     $$\tilde{A}_\Phi = B^{-1} A_\Phi B = \begin{bmatrix}6&9&1\\-3&-5&0\\-1&-1&0\end{bmatrix}.$$
 
 !!! answer "Answer"
@@ -555,6 +589,7 @@ The vectors $b_1,b_2$ and $b_1',b_2'$ each form a basis of $\mathbb{R}^2$ (nonze
 !!! steps "Parts a & b, bases and $P_1$"
     $\det[b_1\ b_2] = \det\begin{bmatrix}2&-1\\1&-1\end{bmatrix} = -1 \neq 0$, and $\det[b_1'\ b_2'] = \det\begin{bmatrix}2&1\\-2&1\end{bmatrix} = 4 \neq 0$. Both are bases.
     $P_1$ changes coordinates from $B'$ to $B$: $[x]_B = P_1 [x]_{B'}$, so $P_1 = [b_1\ b_2]^{-1}[b_1'\ b_2']$:
+
     $$P_1 = \begin{bmatrix}4&0\\6&-1\end{bmatrix}.$$
 
 !!! steps "Part c, the basis $C$ and $P_2$"
@@ -564,12 +599,16 @@ The vectors $b_1,b_2$ and $b_1',b_2'$ each form a basis of $\mathbb{R}^2$ (nonze
 
 !!! steps "Part d, transformation matrix $A_\Phi$ w.r.t. $B$ and $C$"
     Given $\Phi(b_1+b_2) = c_2 + c_3$ and $\Phi(b_1-b_2) = 2c_1 - c_2 + 3c_3$. In $C$-coordinates these are $(0,1,1)$ and $(2,-1,3)$. Solving:
+
     $$\Phi(b_1) = \tfrac12\big[(0,1,1)+(2,-1,3)\big] = (1,0,2)_C, \quad \Phi(b_2) = \tfrac12\big[(0,1,1)-(2,-1,3)\big] = (-1,1,-1)_C.$$
+
     The columns of $A_\Phi$ are these coordinate vectors:
+
     $$A_\Phi = \begin{bmatrix}1&-1\\0&1\\2&-1\end{bmatrix}.$$
 
 !!! steps "Part e, $A'$ w.r.t. $B'$ and $C'$"
     Input coords change by $P_1$ ($B' \to B$) and output coords by $P_2$ ($C \to C'$), so
+
     $$A' = P_2\, A_\Phi\, P_1 = \begin{bmatrix}0&2\\-10&3\\12&-4\end{bmatrix}.$$
 
 !!! steps "Part f, chasing $x$ with coords $[2,3]^\top$ in $B'$"

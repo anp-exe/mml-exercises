@@ -9,6 +9,7 @@ End-of-chapter exercises. Each has a definitions box, explanation, worked steps,
 *Calculus I · differentiation rules*
 
 Compute the derivative $f'(x)$ for
+
 $$f(x) = \log(x^4)\sin(x^3).$$
 
 !!! theory "Topics & Definitions"
@@ -32,23 +33,31 @@ $$f(x) = \log(x^4)\sin(x^3).$$
 
 !!! steps "Step 1, identify the structure"
     The expression is a product of two factors:
+
     $$u = \log(x^4), \qquad v = \sin(x^3).$$
+
     So the top-level rule is the product rule, $f' = u'v + uv'$, and each factor then needs the chain rule.
 
 !!! steps "Step 2, differentiate $u = \log(x^4)$"
     Chain rule: $\tfrac{d}{dx}\log(\text{inside}) = \tfrac{1}{\text{inside}}\cdot(\text{inside})'$.
+
     $$u' = \frac{1}{x^4}\cdot 4x^3 = \frac{4x^3}{x^4} = \frac{4}{x}.$$
+
     The $4x^3$ lands on the numerator, then $x^3/x^4$ simplifies to $1/x$.
 
 !!! steps "Step 3, differentiate $v = \sin(x^3)$"
     Chain rule: $\tfrac{d}{dx}\sin(\text{inside}) = \cos(\text{inside})\cdot(\text{inside})'$.
+
     $$v' = \cos(x^3)\cdot 3x^2 = 3x^2\cos(x^3).$$
+
     The inside of the cosine stays $x^3$; the $3x^2$ multiplies from outside.
 
 !!! steps "Step 4, assemble with the product rule"
+
     $$f' = u'v + uv' = \frac{4}{x}\sin(x^3) + \log(x^4)\cdot 3x^2\cos(x^3).$$
 
 !!! answer "Answer"
+
     $$f'(x) = \frac{4\sin(x^3)}{x} + 3x^2\log(x^4)\cos(x^3).$$
 
     Two terms, added, one from differentiating each factor while holding the other fixed. Both terms needed the chain rule internally, which is why the exercise combines the two rules.
@@ -62,6 +71,7 @@ $$f(x) = \log(x^4)\sin(x^3).$$
 *Calculus I · differentiation rules*
 
 Compute the derivative $f'(x)$ of the logistic sigmoid
+
 $$f(x) = \frac{1}{1 + \exp(-x)}.$$
 
 !!! theory "Topics & Definitions"
@@ -74,19 +84,27 @@ $$f(x) = \frac{1}{1 + \exp(-x)}.$$
     In $v^2$, square the **whole denominator** $v = 1 + \exp(-x)$, not its derivative. Writing $(-\exp(-x))^2$ squares $v'$ by mistake.
 
 !!! steps "Step 1, identify $u$ and $v$"
+
     $$u = 1, \qquad v = 1 + \exp(-x),$$
+
     so $u' = 0$ and, by the chain rule, $v' = -\exp(-x)$.
 
 !!! steps "Step 2, apply the quotient rule"
+
     $$f'(x) = \frac{u'v - uv'}{v^2} = \frac{0\cdot(1+\exp(-x)) - 1\cdot(-\exp(-x))}{(1+\exp(-x))^2}.$$
+
     The first term is zero, and the double negative in the second becomes positive:
+
     $$f'(x) = \frac{\exp(-x)}{(1+\exp(-x))^2}.$$
 
 !!! answer "Answer"
+
     $$f'(x) = \frac{\exp(-x)}{\left(1+\exp(-x)\right)^2}.$$
 
     **A useful rearrangement.** This is equivalent to
+
     $$f'(x) = f(x)\big(1 - f(x)\big),$$
+
     expressing the derivative purely in terms of the sigmoid's own output.
 
 !!! note "Where this shows up: backpropagation"
@@ -101,7 +119,9 @@ $$f(x) = \frac{1}{1 + \exp(-x)}.$$
 *Calculus I · differentiation rules*
 
 Compute the derivative $f'(x)$ of
+
 $$f(x) = \exp\!\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right),$$
+
 where $\mu, \sigma$ are constants.
 
 !!! theory "Topics & Definitions"
@@ -111,23 +131,32 @@ where $\mu, \sigma$ are constants.
 
 !!! note "A fraction does not automatically mean the quotient rule"
     The quotient rule applies to $\tfrac{u}{v}$ where **both** parts are functions of $x$. Here $2\sigma^2$ contains no $x$ at all, so $-\tfrac{1}{2\sigma^2}(x-\mu)^2$ is simply *(constant) $\times$ (function)*: differentiate the function and carry the constant along. Likewise, when multiplying a fraction by a term, only the numerator is affected:
+
     $$-\frac{1}{2\sigma^2}\times 2(x-\mu) = \frac{-2(x-\mu)}{2\sigma^2},$$
+
     the denominator is untouched, because the second factor has denominator $1$.
 
 !!! steps "Step 1, differentiate the exponent"
     Let $g(x) = -\dfrac{1}{2\sigma^2}(x-\mu)^2$. The constant $-\tfrac{1}{2\sigma^2}$ comes along for the ride; apply the power rule to $(x-\mu)^2$:
+
     $$\frac{d}{dx}(x-\mu)^2 = 2(x-\mu)\cdot\frac{d}{dx}(x-\mu) = 2(x-\mu)\cdot 1 = 2(x-\mu).$$
+
     The innermost chain-rule factor is $1$ (since $\mu$ is constant), so it is invisible here, but it is still a chain-rule step, and it is $1$, not $0$.
 
 !!! steps "Step 2, combine the constant"
+
     $$g'(x) = -\frac{1}{2\sigma^2}\times 2(x-\mu) = \frac{-2(x-\mu)}{2\sigma^2} = -\frac{x-\mu}{\sigma^2}.$$
+
     Only the $2$s cancel; the $\sigma^2$ stays in the denominator and the minus sign survives.
 
 !!! steps "Step 3, apply the outer chain rule"
+
     $$f'(x) = g'(x)\,\exp(g(x)),$$
+
     substituting $g'(x)$ from Step 2 and leaving the exponent unchanged.
 
 !!! answer "Answer"
+
     $$f'(x) = -\frac{x-\mu}{\sigma^2}\exp\!\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right).$$
 
     **Sanity check on the shape.** The derivative is zero exactly when $x = \mu$, the peak of the bell curve where the slope is flat. For $x > \mu$ the factor $-(x-\mu)$ is negative, so the curve is descending; for $x < \mu$ it is positive, so the curve is ascending. This matches the familiar Gaussian shape.
@@ -141,7 +170,9 @@ where $\mu, \sigma$ are constants.
 *Calculus II · Taylor series*
 
 Compute the Taylor polynomials $T_n$ for $n = 0, \dots, 5$ of
+
 $$f(x) = \sin(x) + \cos(x)$$
+
 at $x_0 = 0$.
 
 !!! theory "Topics & Definitions"
@@ -166,9 +197,11 @@ at $x_0 = 0$.
 
 !!! steps "Step 2, assemble the coefficients"
     Divide each value by $k!$:
+
     $$\frac{1}{0!} = 1,\quad \frac{1}{1!} = 1,\quad \frac{-1}{2!} = -\frac12,\quad \frac{-1}{3!} = -\frac16,\quad \frac{1}{4!} = \frac{1}{24},\quad \frac{1}{5!} = \frac{1}{120}.$$
 
 !!! answer "Answer"
+
     $$\begin{aligned}
     T_0(x) &= 1\\
     T_1(x) &= 1 + x\\
@@ -187,6 +220,7 @@ at $x_0 = 0$.
 *Calculus III · multivariable derivatives*
 
 Consider the functions
+
 $$\begin{aligned}
 f_1(\boldsymbol{x}) &= \sin(x_1)\cos(x_2), && \boldsymbol{x} \in \mathbb{R}^2\\
 f_2(\boldsymbol{x}, \boldsymbol{y}) &= \boldsymbol{x}^\top \boldsymbol{y}, && \boldsymbol{x}, \boldsymbol{y} \in \mathbb{R}^n\\
@@ -212,6 +246,7 @@ What are the dimensions of $\partial f_i / \partial \boldsymbol{x}$?
     | $f_3$ | $\mathbb{R}$ | $\mathbb{R}$ | $1 \times 1$ |
 
 !!! answer "Answer"
+
     $$\frac{\partial f_1}{\partial \boldsymbol{x}} \in \mathbb{R}^{1\times 2}, \qquad \frac{\partial f_2}{\partial \boldsymbol{x}} \in \mathbb{R}^{1\times n}, \qquad \frac{\partial f_3}{\partial x} \in \mathbb{R}^{1\times 1}.$$
 
     All three are row vectors, since every function here maps into $\mathbb{R}$, a useful structural check before computing anything.
@@ -230,24 +265,35 @@ Compute the Jacobians.
 
 !!! steps "Jacobian of $f_1$"
     Two partial derivatives, one per input variable, each holding the other constant:
+
     $$\frac{\partial f_1}{\partial x_1} = \cos(x_1)\cos(x_2), \qquad \frac{\partial f_1}{\partial x_2} = -\sin(x_1)\sin(x_2).$$
+
     Arranged as a row:
+
     $$\frac{\partial f_1}{\partial \boldsymbol{x}} = \begin{pmatrix}\cos(x_1)\cos(x_2) & -\sin(x_1)\sin(x_2)\end{pmatrix}.$$
+
     This is $1\times2$, matching part a.
 
 !!! steps "Jacobian of $f_2$"
     Expand the dot product:
+
     $$\boldsymbol{x}^\top\boldsymbol{y} = x_1y_1 + x_2y_2 + \dots + x_ny_n.$$
+
     Differentiating with respect to $x_1$, the terms $x_2y_2, \dots, x_ny_n$ contain no $x_1$ and vanish; the surviving $x_1y_1$ has $y_1$ as a constant multiplier, giving $y_1$. The same for each $x_i$ gives $y_i$. Collecting all $n$ partials:
+
     $$\frac{\partial f_2}{\partial \boldsymbol{x}} = \begin{pmatrix}y_1 & y_2 & \cdots & y_n\end{pmatrix} = \boldsymbol{y}^\top.$$
+
     This is $1\times n$, matching part a.
 
 !!! steps "Jacobian of $f_3$"
     Since $x \in \mathbb{R}$ is a scalar, $xx^\top = x^2$, so by the power rule
+
     $$\frac{\partial f_3}{\partial x} = 2x.$$
+
     This is $1\times1$, matching part a.
 
 !!! answer "Answer"
+
     $$\frac{\partial f_1}{\partial \boldsymbol{x}} = \begin{pmatrix}\cos(x_1)\cos(x_2) & -\sin(x_1)\sin(x_2)\end{pmatrix},$$
 
     $$\frac{\partial f_2}{\partial \boldsymbol{x}} = \boldsymbol{y}^\top, \qquad \frac{\partial f_3}{\partial x} = 2x.$$
@@ -261,6 +307,7 @@ Compute the Jacobians.
 *Calculus III · multivariable derivatives*
 
 Differentiate $f$ with respect to $t$ and $g$ with respect to $X$, where
+
 $$f(t) = \sin\!\big(\log(t^\top t)\big), \qquad t \in \mathbb{R}^D,$$
 
 $$g(X) = \operatorname{tr}(AXB), \qquad A \in \mathbb{R}^{D\times E},\ X \in \mathbb{R}^{E\times F},\ B \in \mathbb{R}^{F\times D}.$$
@@ -285,24 +332,32 @@ $$g(X) = \operatorname{tr}(AXB), \qquad A \in \mathbb{R}^{D\times E},\ X \in \ma
 
 !!! steps "Layer 1, peel the sine"
     Differentiate $\sin(\,\cdot\,)$ into $\cos(\,\cdot\,)$, keeping the inside exactly as it was:
+
     $$\cos\!\big(\log(t^\top t)\big).$$
+
     The $\log(t^\top t)$ is carried across untouched; nothing from the inner layers has appeared yet.
 
 !!! steps "Layer 2, peel the logarithm"
     The derivative of $\log(u)$ is $\tfrac{1}{u}$, so this layer contributes
+
     $$\frac{1}{t^\top t}.$$
+
     Again the inside $t^\top t$ stays as it is.
 
 !!! steps "Layer 3, peel the dot product"
     From the working above, the innermost layer contributes
+
     $$2t^\top.$$
 
 !!! steps "Multiply the layers together"
     The chain rule joins the three factors by multiplication:
+
     $$f'(t) = \underbrace{\cos\!\big(\log(t^\top t)\big)}_{\text{layer 1}} \cdot \underbrace{\frac{1}{t^\top t}}_{\text{layer 2}} \cdot \underbrace{2t^\top}_{\text{layer 3}}.$$
 
 !!! answer "Part a answer"
+
     $$\frac{df}{dt} = \frac{2t^\top \cos\!\big(\log(t^\top t)\big)}{t^\top t} \;\in\; \mathbb{R}^{1\times D}.$$
+
     Three nested functions, three chain-rule factors, all multiplied. The result is a row vector because $f$ is scalar-valued and $t$ is a vector.
 
 **Part b**
@@ -315,25 +370,32 @@ $$g(X) = \operatorname{tr}(AXB), \qquad A \in \mathbb{R}^{D\times E},\ X \in \ma
 
 !!! steps "Step 1, set up $2\times2$ matrices"
     Take $D=E=F=2$:
+
     $$A = \begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}, \quad X = \begin{pmatrix}x_{11}&x_{12}\\x_{21}&x_{22}\end{pmatrix}, \quad B = \begin{pmatrix}b_{11}&b_{12}\\b_{21}&b_{22}\end{pmatrix}.$$
+
     The product $AXB$ is $2\times2$, so its trace is $(AXB)_{11} + (AXB)_{22}$.
 
 !!! steps "Step 2, expand the trace"
     Multiplying out and summing the two diagonal entries gives eight terms:
+
     $$\begin{aligned}
     \operatorname{tr}(AXB) =\ & b_{11}a_{11}x_{11} + b_{11}a_{12}x_{21} + b_{12}a_{21}x_{11} + b_{12}a_{22}x_{21}\\
     +\ & b_{21}a_{11}x_{12} + b_{21}a_{12}x_{22} + b_{22}a_{21}x_{12} + b_{22}a_{22}x_{22}.
     \end{aligned}$$
+
     Every term is linear in exactly one entry of $X$, with a coefficient built from one $a$ and one $b$. That linearity is what makes the differentiation straightforward.
 
 !!! steps "Step 3, take the partial derivatives"
     For each entry of $X$, keep only the terms containing it; the rest are constant and vanish, leaving the coefficient beside it:
+
     $$\frac{\partial g}{\partial x_{11}} = b_{11}a_{11} + b_{12}a_{21}, \qquad \frac{\partial g}{\partial x_{12}} = b_{21}a_{11} + b_{22}a_{21},$$
 
     $$\frac{\partial g}{\partial x_{21}} = b_{11}a_{12} + b_{12}a_{22}, \qquad \frac{\partial g}{\partial x_{22}} = b_{21}a_{12} + b_{22}a_{22}.$$
+
     Across all four partials, each of the eight terms is picked up exactly once.
 
 !!! steps "Step 4, arrange in the shape of $X$"
+
     $$\frac{\partial g}{\partial X} = \begin{pmatrix}
     b_{11}a_{11} + b_{12}a_{21} & b_{21}a_{11} + b_{22}a_{21}\\
     b_{11}a_{12} + b_{12}a_{22} & b_{21}a_{12} + b_{22}a_{22}
@@ -341,7 +403,9 @@ $$g(X) = \operatorname{tr}(AXB), \qquad A \in \mathbb{R}^{D\times E},\ X \in \ma
 
 !!! answer "Part b answer"
     The four partials arranged in the shape of $X$ are a complete and correct answer. Written compactly,
+
     $$\frac{\partial g}{\partial X} = (BA)^\top \;\in\; \mathbb{R}^{E\times F}.$$
+
     Each entry is a row of $B$ dotted with a column of $A$, exactly an entry of $BA$, with the index positions coming out transposed. Recognising this compact form is a convenience rather than a requirement: the expanded four-entry matrix is the same object.
 
 ---
@@ -368,29 +432,39 @@ Compute $df/dx$ for the following functions using the chain rule, giving the dim
 
 !!! steps "Step 1, outer layer $df/dz$"
     With $f(z) = \log(1+z)$ and inside $u = 1+z$,
+
     $$\frac{df}{dz} = \frac{1}{1+z} = \frac{1}{1+x^\top x}.$$
+
     Both $f$ and $z$ are scalars, so this partial is $1\times1$. No logarithm appears: it was the layer being differentiated, so it became a reciprocal.
 
 !!! steps "Step 2, inner layer $dz/dx$"
     Write the dot product in components, $z = x^\top x = x_1^2 + \dots + x_D^2$. Differentiating with respect to $x_i$ leaves $2x_i$, so
+
     $$\frac{dz}{dx} = \begin{pmatrix}2x_1 & 2x_2 & \cdots & 2x_D\end{pmatrix} = 2x^\top.$$
+
     A scalar output with $D$ inputs gives dimension $1\times D$.
 
 !!! steps "Step 3, multiply"
+
     $$\frac{df}{dx} = \frac{df}{dz}\cdot\frac{dz}{dx} = \frac{1}{1+x^\top x}\cdot 2x^\top.$$
+
     Dimensions: $(1\times1)(1\times D) = 1\times D$.
 
 !!! answer "Part a answer"
+
     $$\frac{df}{dx} = \frac{2x^\top}{1+x^\top x} \;\in\; \mathbb{R}^{1\times D}.$$
 
     Dimensions of each partial:
+
     $$\frac{df}{dz} \in \mathbb{R}^{1\times1}, \qquad \frac{dz}{dx} \in \mathbb{R}^{1\times D}, \qquad \frac{df}{dx} \in \mathbb{R}^{1\times D}.$$
+
     The final shape is $1\times D$ because $f$ is scalar-valued and $x$ has $D$ components.
 
 **Part b**
 
 !!! steps "Step 1, outer layer $df/dz$"
     Here $z = Ax+b \in \mathbb{R}^E$, so $f = \sin(z) \in \mathbb{R}^E$ with the sine applied elementwise, and the Jacobian is $E\times E$ with entry $(i,j) = \partial f_i/\partial z_j$. Since $f_i = \sin(z_i)$ depends on $z_i$ **only**, every off-diagonal entry is zero and the matrix is diagonal:
+
     $$\frac{df}{dz} = \begin{pmatrix}\cos(z_1) & 0 & \cdots & 0\\ 0 & \cos(z_2) & \cdots & 0\\ \vdots & & \ddots & \vdots\\ 0 & 0 & \cdots & \cos(z_E)\end{pmatrix} = \operatorname{diag}\big(\cos(Ax+b)\big).$$
 
 !!! note "Why diag(...) and not just cos(Ax+b)"
@@ -398,20 +472,26 @@ Compute $df/dx$ for the following functions using the chain rule, giving the dim
 
 !!! steps "Step 2, inner layer $dz/dx$"
     With $z = Ax+b$, the term $b$ is constant and $Ax$ is linear in $x$, so
+
     $$\frac{dz}{dx} = A \;\in\; \mathbb{R}^{E\times D}.$$
 
 !!! steps "Step 3, multiply"
+
     $$\frac{df}{dx} = \frac{df}{dz}\cdot\frac{dz}{dx} = \operatorname{diag}\big(\cos(Ax+b)\big)\,A.$$
+
     Dimensions: $(E\times E)(E\times D) = E\times D$. The inner $E$s match and cancel; the outer $E$ and $D$ survive.
 
 !!! note "Keep the factors separate"
     The $A$ from the inner layer multiplies from **outside**; it does not move into the argument of the cosine, which stays exactly $Ax+b$. Writing something like $\cos(A^2x+b)$ merges two separate chain-rule factors into one and is wrong, in the same way that $\tfrac{d}{dx}\sin(x^3) = 3x^2\cos(x^3)$ keeps $x^3$ inside and puts $3x^2$ outside.
 
 !!! answer "Part b answer"
+
     $$\frac{df}{dx} = \operatorname{diag}\big(\cos(Ax+b)\big)\,A \;\in\; \mathbb{R}^{E\times D}.$$
 
     Dimensions of each partial:
+
     $$\frac{df}{dz} \in \mathbb{R}^{E\times E}, \qquad \frac{dz}{dx} \in \mathbb{R}^{E\times D}, \qquad \frac{df}{dx} \in \mathbb{R}^{E\times D}.$$
+
     The final shape $E\times D$ matches (output dimension) by (input dimension), since $f \in \mathbb{R}^E$ and $x \in \mathbb{R}^D$.
 
 ---
@@ -425,7 +505,9 @@ Compute $df/dx$ for the following functions, describing each step in detail.
 **Part a**
 
 Use the chain rule and provide the dimensions of every partial derivative:
+
 $$f(z) = \exp\!\left(-\tfrac{1}{2}z\right), \qquad z = g(y) = y^\top S^{-1} y, \qquad y = h(x) = x - \mu,$$
+
 where $x, \mu \in \mathbb{R}^D$ and $S \in \mathbb{R}^{D\times D}$.
 
 !!! theory "Topics & Definitions"
@@ -436,22 +518,29 @@ where $x, \mu \in \mathbb{R}^D$ and $S \in \mathbb{R}^{D\times D}$.
 
 !!! steps "Step 1, outer layer $df/dz$"
     With $u = -\tfrac12 z$, the derivative of $\exp(u)$ is $\exp(u)\cdot u'$, and $u' = -\tfrac12$:
+
     $$\frac{df}{dz} = -\tfrac{1}{2}\exp\!\left(-\tfrac{1}{2}z\right) \;\in\; \mathbb{R}^{1\times1}.$$
 
 !!! steps "Step 2, middle layer $dz/dy$"
     From the expansion above, with $S$ symmetric:
+
     $$\frac{dz}{dy} = 2y^\top S^{-1} \;\in\; \mathbb{R}^{1\times D}.$$
 
 !!! steps "Step 3, inner layer $dy/dx$"
     With $y = x - \mu$, each $y_i = x_i - \mu_i$, so $\partial y_i/\partial x_i = 1$ and $\partial y_i/\partial x_j = 0$ for $i \neq j$: ones on the diagonal, zeros elsewhere:
+
     $$\frac{dy}{dx} = I \;\in\; \mathbb{R}^{D\times D}.$$
 
 !!! steps "Step 4, chain and substitute back"
+
     $$\frac{df}{dx} = \left(-\tfrac12\exp\!\left(-\tfrac12 z\right)\right)\cdot 2y^\top S^{-1}\cdot I.$$
+
     Dimensions: $(1\times1)(1\times D)(D\times D) = 1\times D$. Multiplying by $I$ changes nothing, so it drops. Finally substitute $y = x-\mu$ and $z = (x-\mu)^\top S^{-1}(x-\mu)$, since the answer must be in $x$ alone.
 
 !!! answer "Part a answer"
+
     $$\frac{df}{dx} = -(x-\mu)^\top S^{-1}\exp\!\left(-\tfrac{1}{2}(x-\mu)^\top S^{-1}(x-\mu)\right) \;\in\; \mathbb{R}^{1\times D}.$$
+
     The factors of $-\tfrac12$ and $2$ cancel, leaving a single minus sign. Dimensions: $\tfrac{df}{dz}\in\mathbb{R}^{1\times1}$, $\tfrac{dz}{dy}\in\mathbb{R}^{1\times D}$, $\tfrac{dy}{dx}\in\mathbb{R}^{D\times D}$, $\tfrac{df}{dx}\in\mathbb{R}^{1\times D}$.
 
 **Part b**
@@ -464,18 +553,22 @@ $$f(x) = \operatorname{tr}\!\left(xx^\top + \sigma^2 I\right), \qquad x \in \mat
     - **The identity term** — $\sigma^2 I$ contributes $\sigma^2$ in each of the $D$ diagonal positions, so $D\sigma^2$ to the trace. That is an *added* constant, so it vanishes on differentiation.
 
 !!! steps "Step 1, write the function out"
+
     $$f(x) = x_1^2 + x_2^2 + \dots + x_D^2 + D\sigma^2 = x^\top x + D\sigma^2.$$
 
 !!! steps "Step 2, differentiate componentwise"
     Differentiating with respect to $x_i$, only the $x_i^2$ term survives, giving $2x_i$; the $D\sigma^2$ term is an added constant and vanishes. These $D$ partials are *separate entries* (not summed), arranged in the Jacobian layout, one column per input variable.
 
 !!! answer "Part b answer"
+
     $$\frac{df}{dx} = \begin{pmatrix}2x_1 & 2x_2 & \cdots & 2x_D\end{pmatrix} = 2x^\top \;\in\; \mathbb{R}^{1\times D}.$$
 
 **Part c**
 
 Use the chain rule and provide the dimensions of every partial derivative (the product need not be computed explicitly):
+
 $$f = \tanh(z) \in \mathbb{R}^M, \qquad z = Ax + b,$$
+
 with $x \in \mathbb{R}^N$, $A \in \mathbb{R}^{M\times N}$, $b \in \mathbb{R}^M$, and $\tanh$ applied componentwise.
 
 !!! theory "Topics & Definitions"
@@ -484,14 +577,18 @@ with $x \in \mathbb{R}^N$, $A \in \mathbb{R}^{M\times N}$, $b \in \mathbb{R}^M$,
     - **Dimensions of a matrix product** — inner dimensions match and cancel, outer survive: $(m\times k)(k\times n) = m\times n$.
 
 !!! steps "Step 1, outer layer $df/dz$"
+
     $$\frac{df}{dz} = \operatorname{diag}\!\big(\operatorname{sech}^2(Ax+b)\big) \;\in\; \mathbb{R}^{M\times M}.$$
 
 !!! steps "Step 2, inner layer $dz/dx$"
     With $z = Ax+b$, the term $b$ is constant and $Ax$ is linear in $x$:
+
     $$\frac{dz}{dx} = A \;\in\; \mathbb{R}^{M\times N}.$$
 
 !!! answer "Part c answer"
+
     $$\frac{df}{dx} = \operatorname{diag}\!\big(\operatorname{sech}^2(Ax+b)\big)\,A.$$
+
     Dimensions: $(M\times M)(M\times N) = M\times N$, the inner $M$s cancel and the outer $M$ and $N$ survive, matching $f \in \mathbb{R}^M$ and $x \in \mathbb{R}^N$. Note $A$ multiplies from *outside*; the argument of $\operatorname{sech}^2$ stays exactly $Ax+b$. Merging into something like $\operatorname{sech}^2(A^2x+b)$ is wrong, for the same reason $\tfrac{d}{dx}\sin(x^3) = 3x^2\cos(x^3)$ keeps $x^3$ inside and puts $3x^2$ outside.
 
 ---
@@ -501,7 +598,9 @@ with $x \in \mathbb{R}^N$, $A \in \mathbb{R}^{M\times N}$, $b \in \mathbb{R}^M$,
 *Calculus III · multivariable derivatives*
 
 Define
+
 $$g(x, z, \nu) := \log p(x,z) - \log q(z,\nu), \qquad z := t(\epsilon,\nu)$$
+
 for differentiable functions $p, q, t$, with $x \in \mathbb{R}^D$, $z \in \mathbb{R}^E$, $\nu \in \mathbb{R}^F$, $\epsilon \in \mathbb{R}^G$. Using the chain rule, compute $\dfrac{d}{d\nu}g(x,z,\nu)$.
 
 !!! theory "Topics & Definitions"
@@ -519,29 +618,38 @@ for differentiable functions $p, q, t$, with $x \in \mathbb{R}^D$, $z \in \mathb
 
 !!! steps "Step 1, the inner derivative $dz/d\nu$"
     From $z = t(\epsilon,\nu)$,
+
     $$\frac{\partial z}{\partial\nu} = \frac{\partial t}{\partial\nu} \;\in\; \mathbb{R}^{E\times F}.$$
+
     This factor appears in both paths that travel through $z$ (paths 1 and 2).
 
 !!! steps "Step 2, path 1 through $\log p$"
     $\nu$ does not appear in $\log p(x,z)$ directly, only via $z$. Chaining the two factors:
+
     $$\frac{\partial}{\partial\nu}\log p(x,z) = \underbrace{\frac{1}{p(x,z)}\frac{\partial p}{\partial z}}_{1\times E}\;\underbrace{\frac{\partial t}{\partial\nu}}_{E\times F}.$$
+
     Dimensions: $(1\times E)(E\times F) = 1\times F$.
 
 !!! steps "Step 3, paths 2 and 3 through $\log q$"
     $\log q(z,\nu)$ depends on $\nu$ twice over: through its first argument $z$, and through its second argument directly. Both contributions add:
+
     $$\frac{\partial}{\partial\nu}\log q(z,\nu) = \frac{1}{q(z,\nu)}\left[\underbrace{\frac{\partial q}{\partial z}\frac{\partial t}{\partial\nu}}_{\text{path 2}} + \underbrace{\frac{\partial q}{\partial\nu}}_{\text{path 3}}\right].$$
+
     Inside the bracket both terms are $1\times F$ ($(1\times E)(E\times F)$ for path 2, $1\times F$ for path 3), so they can be added.
 
 !!! steps "Step 4, combine, respecting the minus sign"
     The definition of $g$ subtracts the second term, so the entire $\log q$ contribution enters negatively.
 
 !!! answer "Answer"
+
     $$\frac{d g}{d\nu} = \frac{1}{p(x,z)}\frac{\partial p}{\partial z}\frac{\partial t}{\partial\nu} \;-\; \frac{1}{q(z,\nu)}\left[\frac{\partial q}{\partial z}\frac{\partial t}{\partial\nu} + \frac{\partial q}{\partial\nu}\right].$$
 
     Dimensions of each partial:
+
     $$\frac{\partial t}{\partial\nu} \in \mathbb{R}^{E\times F}, \qquad \frac{\partial p}{\partial z},\;\frac{\partial q}{\partial z} \in \mathbb{R}^{1\times E}, \qquad \frac{\partial q}{\partial\nu} \in \mathbb{R}^{1\times F},$$
 
     $$\frac{d g}{d\nu} \in \mathbb{R}^{1\times F}.$$
+
     The final shape is $1\times F$ because $g$ is scalar-valued and $\nu$ has $F$ components. Every path contributes a $1\times F$ term, which is why they can be summed. The structural lesson: count how many routes the variable takes to reach the function, each route contributes one product of partial derivatives, and the results are added, a variable appearing both inside $z$ and as a direct argument of $q$ produces two separate terms from one symbol.
 
 ---
@@ -551,12 +659,16 @@ for differentiable functions $p, q, t$, with $x \in \mathbb{R}^D$, $z \in \mathb
 *Calculus III · Taylor series* &nbsp;·&nbsp; **Bonus:** not from the textbook, a self-set practice problem following the method of Example 5.15.
 
 Compute the Taylor series expansion of
+
 $$f(x,y) = x^3 + xy^2 - 2y$$
+
 at the point $(x_0, y_0) = (2, 1)$.
 
 !!! theory "Topics & Definitions"
     - **The multivariate expansion** — about $(x_0,y_0)$, writing $\delta = \begin{pmatrix}x-x_0\\ y-y_0\end{pmatrix}$,
+
     $$f = f(x_0,y_0) + \frac{D^1 f}{1!}\delta + \frac{D^2 f}{2!}\delta^2 + \frac{D^3 f}{3!}\delta^3 + \dots$$
+
     where $D^1 f$ is the gradient, $D^2 f$ the Hessian, and $D^k f$ the $k$-th order derivative tensor, each evaluated at the expansion point.
     - **Predicting where it terminates** — $f$ is a polynomial of degree $3$, and every fourth derivative of a cubic is zero, so the expansion stops exactly at the third-order term and reproduces $f$ **exactly**. A Taylor series only becomes an infinite approximation when the function is not a polynomial.
     - **Divide by $k!$, not by $k$** — the denominators are factorials, so the third-order term is divided by $3! = 6$, not $3$. Since $1! = 1$ and $2! = 2$ coincide with their arguments, the distinction only bites from the cubic term onwards, which is exactly where it is easiest to miss.
@@ -566,32 +678,72 @@ at the point $(x_0, y_0) = (2, 1)$.
     The Hessian must be **symmetric**: if $\partial^2 f/\partial x\partial y \neq \partial^2 f/\partial y\partial x$, there is a slip. Some partials here still contain variables, so evaluating at the expansion point genuinely matters, while others are already constant. And the final expansion, once expanded and simplified, must reproduce the original polynomial exactly, a complete correctness check available for free.
 
 !!! steps "Step 1, constant term"
+
     $$f(2,1) = 2^3 + 2(1)^2 - 2(1) = 8 + 2 - 2 = 8.$$
 
 !!! steps "Step 2, first-order derivatives"
+
     $$\frac{\partial f}{\partial x} = 3x^2 + y^2 \implies \frac{\partial f}{\partial x}(2,1) = 12 + 1 = 13,$$
 
     $$\frac{\partial f}{\partial y} = 2xy - 2 \implies \frac{\partial f}{\partial y}(2,1) = 4 - 2 = 2.$$
+
     The $y^2$ survives in $\partial f/\partial x$ because it multiplies $x$ in the term $xy^2$; the $-2y$ term vanishes as it contains no $x$. So $D^1 f(2,1) = \begin{pmatrix}13 & 2\end{pmatrix} \in \mathbb{R}^{1\times2}$, giving the linear term
+
     $$13(x-2) + 2(y-1).$$
 
-!!! steps "Step 3, the Hessian"
-    $$\frac{\partial^2 f}{\partial x^2} = 6x, \qquad \frac{\partial^2 f}{\partial y^2} = 2x, \qquad \frac{\partial^2 f}{\partial x\partial y} = 2y.$$
+!!! steps "Step 3, the Hessian and its layout"
+    The Hessian collects the second derivatives in a fixed grid: row $i$, column $j$ holds "differentiate by variable $i$, then variable $j$".
+
+    $$H = \begin{pmatrix}
+    \dfrac{\partial^2 f}{\partial x^2} & \dfrac{\partial^2 f}{\partial x\,\partial y}\\[10pt]
+    \dfrac{\partial^2 f}{\partial y\,\partial x} & \dfrac{\partial^2 f}{\partial y^2}
+    \end{pmatrix}$$
+
+    The diagonal holds the pure second derivatives; the off-diagonal holds the mixed ones, and those two entries are always equal for a well-behaved $f$, which is why the Hessian is symmetric. Computing each entry:
+
+    $$\frac{\partial^2 f}{\partial x^2} = 6x, \qquad \frac{\partial^2 f}{\partial y^2} = 2x, \qquad \frac{\partial^2 f}{\partial x\,\partial y} = \frac{\partial^2 f}{\partial y\,\partial x} = 2y.$$
+
     Unlike Example 5.15, all three still contain variables, so evaluation at $(2,1)$ matters throughout:
-    $$H(2,1) = \begin{pmatrix}12 & 2\\ 2 & 4\end{pmatrix} \in \mathbb{R}^{2\times2},$$
-    symmetric as required. The quadratic term is therefore
-    $$\tfrac12(12)(x-2)^2 + \tfrac12(4)(y-1)^2 + 2(x-2)(y-1) = 6(x-2)^2 + 2(y-1)^2 + 2(x-2)(y-1).$$
+
+    $$H(2,1) = \begin{pmatrix}6(2) & 2(1)\\ 2(1) & 2(2)\end{pmatrix} = \begin{pmatrix}12 & 2\\ 2 & 4\end{pmatrix} \in \mathbb{R}^{2\times2},$$
+
+    symmetric as required.
+
+!!! steps "Step 3b, multiplying out $\tfrac12\,\delta^\top H\,\delta$"
+    With $\delta = \begin{pmatrix}x-2\\ y-1\end{pmatrix}$, the quadratic term is a row times a matrix times a column, which chains as $(1\times2)(2\times2)(2\times1) = 1\times1$, a single number as expected.
+
+    **First multiply $\delta^\top H$** (row times matrix, giving a row):
+
+    $$\begin{pmatrix}x-2 & y-1\end{pmatrix}\begin{pmatrix}12 & 2\\ 2 & 4\end{pmatrix} = \begin{pmatrix}12(x-2) + 2(y-1) & \;\; 2(x-2) + 4(y-1)\end{pmatrix}.$$
+
+    **Then multiply by $\delta$** (row times column, giving a scalar):
+
+    $$\big[12(x-2) + 2(y-1)\big](x-2) \;+\; \big[2(x-2) + 4(y-1)\big](y-1),$$
+
+    $$= 12(x-2)^2 + \underbrace{2(x-2)(y-1) + 2(x-2)(y-1)}_{\text{the mixed term, twice}} + 4(y-1)^2.$$
+
+    The mixed term appears **twice**, once from each off-diagonal entry of $H$, so the two copies combine into $4(x-2)(y-1)$.
+
+    **Finally halve everything:**
+
+    $$\tfrac12\Big[12(x-2)^2 + 4(x-2)(y-1) + 4(y-1)^2\Big] = 6(x-2)^2 + 2(x-2)(y-1) + 2(y-1)^2.$$
+
+    This is why the diagonal terms end up halved ($12 \to 6$, $4 \to 2$) while the mixed term keeps the full off-diagonal value ($2 \to 2$): it was counted twice before the halving.
 
 !!! steps "Step 4, third-order derivatives"
     Differentiating the Hessian entries once more, two third derivatives are nonzero:
+
     $$\frac{\partial^3 f}{\partial x^3} = 6, \qquad \frac{\partial^3 f}{\partial x\partial y^2} = 2,$$
+
     and all others vanish. (Example 5.15 had only one nonzero third derivative; here the $xy^2$ term produces a second.) Dividing by $3! = 6$, the cubic term is
+
     $$(x-2)^3 + (x-2)(y-1)^2.$$
 
 !!! steps "Step 5, fourth order and above"
     Every fourth-order partial derivative of a cubic polynomial is zero, so the expansion terminates here and the result is exact rather than an approximation.
 
 !!! answer "Answer"
+
     $$\begin{aligned}
     f(x,y) =\ & 8 + 13(x-2) + 2(y-1)\\
     &+ 6(x-2)^2 + 2(x-2)(y-1) + 2(y-1)^2\\

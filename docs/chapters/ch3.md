@@ -21,7 +21,9 @@ The form $\langle\mathbf{x},\mathbf{y}\rangle = x_1y_1 - (x_1y_2 + x_2y_1) + 2x_
     **Symmetric.** $A = \begin{bmatrix}1&-1\\-1&2\end{bmatrix} = A^\top$, so $\langle\mathbf{x},\mathbf{y}\rangle = \langle\mathbf{y},\mathbf{x}\rangle$.
 
     **Positive definite.** Leading principal minors of $A$: the top-left entry $1 > 0$, and $\det A = (1)(2) - (-1)(-1) = 1 > 0$. Both positive, so $A$ is positive definite. Equivalently, completing the square,
+
     $$\langle\mathbf{x},\mathbf{x}\rangle = x_1^2 - 2x_1x_2 + 2x_2^2 = (x_1 - x_2)^2 + x_2^2 \ge 0,$$
+
     which is $0$ only when $x_1 = x_2 = 0$.
 
 !!! answer "Answer"
@@ -39,9 +41,11 @@ The form $\langle\mathbf{x},\mathbf{y}\rangle = x_1y_1 - (x_1y_2 + x_2y_1) + 2x_
 Here $A = \begin{bmatrix}2&0\\1&2\end{bmatrix}$, and $A^\top = \begin{bmatrix}2&1\\0&2\end{bmatrix} \neq A$. Since $A$ is not symmetric, the form should fail the symmetry test, and a single well-chosen pair exposes it.
 
 !!! steps "Counterexample with $\mathbf{x} = (2,0)^\top$, $\mathbf{y} = (0,2)^\top$"
+
     $$\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top A\mathbf{y} = \begin{bmatrix}2&0\end{bmatrix}\begin{bmatrix}2&0\\1&2\end{bmatrix}\begin{bmatrix}0\\2\end{bmatrix} = \begin{bmatrix}2&0\end{bmatrix}\begin{bmatrix}0\\4\end{bmatrix} = 0.$$
 
     $$\langle\mathbf{y},\mathbf{x}\rangle = \mathbf{y}^\top A\mathbf{x} = \begin{bmatrix}0&2\end{bmatrix}\begin{bmatrix}2&0\\1&2\end{bmatrix}\begin{bmatrix}2\\0\end{bmatrix} = \begin{bmatrix}0&2\end{bmatrix}\begin{bmatrix}4\\2\end{bmatrix} = 4.$$
+
     Since $0 \neq 4$, the form is not symmetric.
 
 !!! answer "Answer"
@@ -60,12 +64,14 @@ Here $A = \begin{bmatrix}2&0\\1&2\end{bmatrix}$, and $A^\top = \begin{bmatrix}2&
 Distance is just the length of the arrow joining the points. So compute $\mathbf{x}-\mathbf{y}$ once, then take the inner product of that difference with itself and square-root it. With $\mathbf{x} = (1,2,3)^\top$ and $\mathbf{y} = (-1,-1,0)^\top$, the difference is $\mathbf{x}-\mathbf{y} = (2,3,3)^\top$ for both parts; only the inner product changes.
 
 !!! steps "Part a, dot product $\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top\mathbf{y}$"
+
     $$\mathbf{x}-\mathbf{y} = (2,3,3)^\top, \qquad \langle\mathbf{x}-\mathbf{y},\mathbf{x}-\mathbf{y}\rangle = 2^2 + 3^2 + 3^2 = 22.$$
 
     $$d = \sqrt{22} \approx 4.69.$$
 
 !!! steps "Part b, weighted product $\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top A\mathbf{y}$"
     With $A = \begin{bmatrix}2&1&0\\1&3&-1\\0&-1&2\end{bmatrix}$ and $\mathbf{d} = \mathbf{x}-\mathbf{y} = (2,3,3)^\top$, first apply $A$:
+
     $$A\mathbf{d} = \begin{bmatrix}2&1&0\\1&3&-1\\0&-1&2\end{bmatrix}\begin{bmatrix}2\\3\\3\end{bmatrix} = \begin{bmatrix}7\\8\\3\end{bmatrix},\qquad \mathbf{d}^\top A\mathbf{d} = 2(7)+3(8)+3(3) = 47.$$
 
     $$d = \sqrt{47} \approx 6.86.$$
@@ -89,6 +95,7 @@ Build the ratio one piece at a time: the inner product in the numerator, the two
     Inner product: $\langle\mathbf{x},\mathbf{y}\rangle = (1)(-1) + (2)(-1) = -3$.
     Magnitudes: $\lVert\mathbf{x}\rVert = \sqrt{1^2+2^2} = \sqrt{5}$, $\lVert\mathbf{y}\rVert = \sqrt{(-1)^2+(-1)^2} = \sqrt{2}$.
     Combine:
+
     $$\cos\theta = \frac{-3}{\sqrt{5}\,\sqrt{2}} = \frac{-3}{\sqrt{10}} \approx -0.9487 \;\Rightarrow\; \theta \approx 161.57^\circ \approx 2.82\ \text{rad}.$$
 
 !!! steps "Part b, weighted product $\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top B\mathbf{y}$"
@@ -96,6 +103,7 @@ Build the ratio one piece at a time: the inner product in the numerator, the two
     Inner product: $B\mathbf{y} = \begin{bmatrix}2&1\\1&3\end{bmatrix}\begin{bmatrix}-1\\-1\end{bmatrix} = \begin{bmatrix}-3\\-4\end{bmatrix}$, so $\langle\mathbf{x},\mathbf{y}\rangle = \mathbf{x}^\top B\mathbf{y} = (1)(-3)+(2)(-4) = -11$.
     Magnitudes: $\lVert\mathbf{x}\rVert_B = \sqrt{\mathbf{x}^\top B\mathbf{x}} = \sqrt{18}$, $\lVert\mathbf{y}\rVert_B = \sqrt{\mathbf{y}^\top B\mathbf{y}} = \sqrt{7}$.
     Combine:
+
     $$\cos\theta = \frac{-11}{\sqrt{18}\,\sqrt{7}} = \frac{-11}{\sqrt{126}} \approx -0.9800 \;\Rightarrow\; \theta \approx 168.51^\circ \approx 2.94\ \text{rad}.$$
 
 !!! answer "Answer"
@@ -110,6 +118,7 @@ Build the ratio one piece at a time: the inner product in the numerator, the two
 ## 3.5 · Orthogonal projection onto a subspace
 
 In $\mathbb{R}^5$ with the standard dot product, a subspace $U$ and a vector $x$ are given by
+
 $$U = \operatorname{span}\left[\begin{pmatrix}0\\-1\\2\\0\\2\end{pmatrix},\begin{pmatrix}1\\-3\\1\\-1\\2\end{pmatrix},\begin{pmatrix}-3\\4\\1\\2\\1\end{pmatrix},\begin{pmatrix}-1\\-3\\5\\0\\7\end{pmatrix}\right], \qquad x = \begin{pmatrix}-1\\-9\\-1\\4\\1\end{pmatrix}.$$
 
 Find **(a)** the orthogonal projection $\pi_U(x)$ and **(b)** the distance $d(x,U)$.
@@ -123,30 +132,40 @@ The four spanning vectors are not linearly independent, so the first job is to t
 
 !!! steps "Step 1, trim the spanning set to a basis (RREF)"
     Stack the four spanning vectors as columns of $A$ and row-reduce to find the pivot columns:
+
     $$A = \begin{pmatrix}0&1&-3&-1\\-1&-3&4&-3\\2&1&1&5\\0&-1&2&0\\2&2&1&7\end{pmatrix} \xrightarrow{\text{RREF}} \begin{pmatrix}1&0&0&1\\0&1&0&2\\0&0&1&1\\0&0&0&0\\0&0&0&0\end{pmatrix}.$$
+
     Pivots sit in columns 1, 2, 3, so those three vectors form a basis of $U$. Column 4 is dependent: reading off the last RREF column, $v_4 = v_1 + 2v_2 + v_3$.
 
 !!! note "Pitfall"
     Take the basis vectors from the **original** matrix $A$, never from the RREF. Row reduction only *identifies* which columns are independent; it changes the columns themselves.
 
 !!! steps "Step 2, build $B$ and compute $B^\top B$"
+
     $$B = \begin{pmatrix}0&1&-3\\-1&-3&4\\2&1&1\\0&-1&2\\2&2&1\end{pmatrix}, \qquad B^\top B = \begin{pmatrix}9&9&0\\9&16&-14\\0&-14&31\end{pmatrix}.$$
+
     Each entry is a dot product of two columns of $B$; the matrix is symmetric, so only six of the nine entries need computing.
 
 !!! steps "Step 3, solve the normal equations for $\lambda$"
+
     $$B^\top x = \begin{pmatrix}9\\23\\-25\end{pmatrix}, \qquad \lambda = (B^\top B)^{-1}B^\top x = \begin{pmatrix}-3\\4\\1\end{pmatrix}.$$
+
     The coordinates come out as clean integers, a good sign the arithmetic is right.
 
 !!! steps "Step 4, projection and distance"
+
     $$\pi_U(x) = B\lambda = \begin{pmatrix}1\\-5\\-1\\-2\\3\end{pmatrix}.$$
 
     The residual is
+
     $$x - \pi_U(x) = \begin{pmatrix}-2\\-4\\0\\6\\-2\end{pmatrix},$$
 
     which is orthogonal to each basis vector (dotting with $v_1$: $0 + 4 + 0 + 0 - 4 = 0$). Its length is the distance:
+
     $$d(x,U) = \sqrt{(-2)^2 + (-4)^2 + 0^2 + 6^2 + (-2)^2} = \sqrt{60} = 2\sqrt{15}.$$
 
 !!! answer "Answer"
+
     $$\pi_U(x) = \begin{pmatrix}1\\-5\\-1\\-2\\3\end{pmatrix}, \qquad d(x,U) = 2\sqrt{15} \approx 7.75.$$
 
     ![Projection of x onto the subspace U, with the residual perpendicular to U](../figures/fig-3-5-projection.png)
@@ -156,7 +175,9 @@ The four spanning vectors are not linearly independent, so the first job is to t
 ## 3.6 · Projection under a non-standard inner product
 
 In $\mathbb{R}^3$ with the inner product
+
 $$\langle x,y\rangle := x^\top \begin{pmatrix}2&1&0\\1&2&-1\\0&-1&2\end{pmatrix} y,$$
+
 let $e_1,e_2,e_3$ be the standard basis and $U = \operatorname{span}[e_1,e_3]$. Find **(a)** $\pi_U(e_2)$, **(b)** $d(e_2,U)$, and **(c)** a sketch of the scenario.
 
 !!! theory "Topics & Definitions"
@@ -168,23 +189,29 @@ Anywhere two vectors would normally be dotted, sandwich the matrix $A$ between t
 
 !!! steps "Step 1, set up $B$, then $B^\top A B$ and $B^\top A e_2$"
     The basis of $U$ is $e_1,e_3$, so $B = \begin{pmatrix}1&0\\0&0\\0&1\end{pmatrix}$. Then
+
     $$B^\top A B = \begin{pmatrix}2&0\\0&2\end{pmatrix}, \qquad B^\top A e_2 = \begin{pmatrix}1\\-1\end{pmatrix}.$$
+
     ($A e_2$ is simply the second column of $A$: $(1,2,-1)^\top$.)
 
 !!! steps "Step 2, solve for $\lambda$ and form the projection"
+
     $$\lambda = (B^\top A B)^{-1}B^\top A e_2 = \begin{pmatrix}\tfrac12&0\\0&\tfrac12\end{pmatrix}\begin{pmatrix}1\\-1\end{pmatrix} = \begin{pmatrix}\tfrac12\\-\tfrac12\end{pmatrix},$$
 
     $$\pi_U(e_2) = B\lambda = \tfrac12 e_1 - \tfrac12 e_3 = \begin{pmatrix}\tfrac12\\0\\-\tfrac12\end{pmatrix}.$$
 
 !!! steps "Step 3, distance under the weighted norm"
     The residual is $r = e_2 - \pi_U(e_2) = \left(-\tfrac12,\ 1,\ \tfrac12\right)^\top$. Measure its length with the same inner product, not the plain norm:
+
     $$A r = \begin{pmatrix}0\\1\\0\end{pmatrix}, \qquad r^\top A r = \left(-\tfrac12\right)(0) + (1)(1) + \left(\tfrac12\right)(0) = 1,$$
+
     so $d(e_2,U) = \sqrt{1} = 1$.
 
 !!! note "Common mistake"
     Using the plain norm $\sqrt{r^\top r} = \sqrt{3/2}$ here is wrong. Once the problem defines a weighted inner product, *every* length, angle, and orthogonality check uses that same inner product.
 
 !!! answer "Answer"
+
     $$\pi_U(e_2) = \begin{pmatrix}\tfrac12\\0\\-\tfrac12\end{pmatrix}, \qquad d(e_2,U) = 1.$$
 
 !!! note "Part c, the geometry"
@@ -212,12 +239,16 @@ Part a is pure algebra: expand $(\operatorname{id} - \pi)^2$ and watch the condi
 
 !!! steps "Part a, expand $(\operatorname{id} - \pi)^2$"
     Write $\operatorname{id}$ for $\operatorname{id}_V$. Expanding the composition:
+
     $$(\operatorname{id} - \pi)^2 = \operatorname{id}\circ\operatorname{id} - \operatorname{id}\circ\pi - \pi\circ\operatorname{id} + \pi\circ\pi = \operatorname{id} - 2\pi + \pi^2.$$
+
     The two middle terms each collapse to $\pi$, since composing with the identity does nothing.
 
 !!! steps "Part a, chain of equivalences"
     $\operatorname{id} - \pi$ is a projection precisely when it is idempotent:
+
     $$\begin{aligned}(\operatorname{id} - \pi)^2 = \operatorname{id} - \pi &\iff \operatorname{id} - 2\pi + \pi^2 = \operatorname{id} - \pi\\ &\iff -2\pi + \pi^2 = -\pi\\ &\iff \pi^2 = \pi.\end{aligned}$$
+
     Every step is reversible (subtract $\operatorname{id}$, then add $2\pi$, to both sides), so the biconditional holds in both directions at once. $\blacksquare$
 
 !!! note "Why both directions come free"
@@ -225,18 +256,26 @@ Part a is pure algebra: expand $(\operatorname{id} - \pi)^2$ and watch the condi
 
 !!! steps "Part b, $\ker(\operatorname{id} - \pi) = \operatorname{Im}(\pi)$"
     Work directly from the definition of the kernel:
+
     $$v \in \ker(\operatorname{id}-\pi) \iff (\operatorname{id}-\pi)(v) = 0 \iff v - \pi(v) = 0 \iff v = \pi(v).$$
+
     The statement $v = \pi(v)$ says that $v$ is an output of $\pi$, which is exactly what it means for $v$ to lie in $\operatorname{Im}(\pi)$. Every step is an equivalence, so
+
     $$\ker(\operatorname{id}-\pi) = \operatorname{Im}(\pi).$$
+
     Note this direction does not even require idempotency.
 
 !!! steps "Part b, $\operatorname{Im}(\operatorname{id} - \pi) = \ker(\pi)$"
     **($\subseteq$)** Let $w \in \operatorname{Im}(\operatorname{id} - \pi)$, so $w = v - \pi(v)$ for some $v$. Apply $\pi$:
+
     $$\pi(w) = \pi(v) - \pi^2(v) = \pi(v) - \pi(v) = 0,$$
+
     using $\pi^2 = \pi$. So $w \in \ker(\pi)$.
 
     **($\supseteq$)** Let $w \in \ker(\pi)$, so $\pi(w) = 0$. Then
+
     $$(\operatorname{id}-\pi)(w) = w - \pi(w) = w - 0 = w,$$
+
     so $w$ is its own image under $\operatorname{id} - \pi$, hence $w \in \operatorname{Im}(\operatorname{id}-\pi)$.
 
     Both inclusions hold, so $\operatorname{Im}(\operatorname{id}-\pi) = \ker(\pi)$. $\blacksquare$
@@ -245,6 +284,7 @@ Part a is pure algebra: expand $(\operatorname{id} - \pi)^2$ and watch the condi
     **a)** $\pi$ is a projection $\iff \pi^2 = \pi \iff (\operatorname{id}_V - \pi)^2 = \operatorname{id}_V - \pi \iff \operatorname{id}_V - \pi$ is a projection.
 
     **b)** The image and kernel swap:
+
     $$\operatorname{Im}(\operatorname{id}_V - \pi) = \ker(\pi), \qquad \ker(\operatorname{id}_V - \pi) = \operatorname{Im}(\pi).$$
 
     **Intuition.** A projection splits the space as $V = \operatorname{Im}(\pi) \oplus \ker(\pi)$, acting as the identity on the first part and as zero on the second. The complementary map $\operatorname{id}_V - \pi$ keeps the residual instead, so it kills exactly what $\pi$ keeps and keeps exactly what $\pi$ kills. Their images and kernels therefore trade places.
@@ -254,6 +294,7 @@ Part a is pure algebra: expand $(\operatorname{id} - \pi)^2$ and watch the condi
 ## 3.8 · Gram-Schmidt orthonormalisation
 
 Using the Gram-Schmidt method, turn the basis $B = (b_1, b_2)$ of a two-dimensional subspace $U \subseteq \mathbb{R}^3$ into an orthonormal basis (ONB) $C = (c_1, c_2)$ of $U$, where
+
 $$b_1 := \begin{pmatrix}1\\1\\1\end{pmatrix}, \qquad b_2 := \begin{pmatrix}-1\\2\\0\end{pmatrix}.$$
 
 !!! theory "Topics & Definitions"
@@ -265,32 +306,41 @@ It is cleanest to orthogonalise first (get $u_1, u_2$), then normalise at the ve
 
 !!! steps "Step 1, first vector"
     Take $u_1 = b_1 = (1,1,1)^\top$, with $\lVert u_1\rVert = \sqrt{3}$. Normalising:
+
     $$c_1 = \frac{1}{\sqrt{3}}\begin{pmatrix}1\\1\\1\end{pmatrix}.$$
 
 !!! steps "Step 2, subtract the projection from $b_2$"
     The projection coefficient of $b_2$ onto $u_1$:
+
     $$\frac{\langle b_2, u_1\rangle}{\lVert u_1\rVert^2} = \frac{-1 + 2 + 0}{3} = \frac{1}{3}.$$
+
     Subtract that component off:
+
     $$u_2 = b_2 - \tfrac13 u_1 = \begin{pmatrix}-1\\2\\0\end{pmatrix} - \tfrac13\begin{pmatrix}1\\1\\1\end{pmatrix} = \begin{pmatrix}-\tfrac43\\\tfrac53\\-\tfrac13\end{pmatrix}.$$
 
 !!! note "Simplification"
     Scaling a vector does not change its direction, so $u_2$ can be rescaled to the clean integer vector $(-4, 5, -1)^\top$ before normalising. Same unit vector, far less fraction wrangling.
 
 !!! steps "Step 3, normalise $u_2$"
+
     $$\lVert u_2\rVert = \sqrt{\tfrac{16}{9} + \tfrac{25}{9} + \tfrac{1}{9}} = \frac{\sqrt{42}}{3}.$$
 
     $$c_2 = \frac{u_2}{\lVert u_2\rVert} = \frac{1}{\sqrt{42}}\begin{pmatrix}-4\\5\\-1\end{pmatrix}.$$
 
 !!! steps "Step 4, verify"
+
     $$\langle c_1, c_2\rangle = \frac{1}{\sqrt{3}\sqrt{42}}\big(-4 + 5 - 1\big) = 0 \quad\checkmark\ \text{orthogonal}.$$
 
     $$\lVert c_1\rVert = 1, \qquad \lVert c_2\rVert = \frac{\sqrt{16 + 25 + 1}}{\sqrt{42}} = 1 \quad\checkmark\ \text{normalised}.$$
 
 !!! answer "Answer"
+
     $$c_1 = \frac{1}{\sqrt{3}}\begin{pmatrix}1\\1\\1\end{pmatrix}, \qquad c_2 = \frac{1}{\sqrt{42}}\begin{pmatrix}-4\\5\\-1\end{pmatrix}.$$
 
     Equivalently, with denominators rationalised,
+
     $$c_2 = \begin{pmatrix}-\tfrac{2\sqrt{42}}{21}\\[4pt] \tfrac{5\sqrt{42}}{42}\\[4pt] -\tfrac{\sqrt{42}}{42}\end{pmatrix}.$$
+
     Both forms are correct; the factored form is usually cleaner to read.
 
     ![Gram-Schmidt: subtracting the projection of b2 onto u1 leaves a perpendicular residual](../figures/fig-3-8-gramschmidt.png)
@@ -315,30 +365,43 @@ Both parts follow the same recipe: put the target in a norm slot, choosing the c
 
 !!! steps "Part a, choose the vectors"
     The target $\sum x_i^2$ is already a sum of squares, so it drops straight into a norm slot with no roots:
+
     $$u = \begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix} \;\Longrightarrow\; \lVert u\rVert^2 = \sum_{i=1}^n x_i^2 \quad\text{(the target)}.$$
+
     The constraint $\sum x_i = 1$ is a plain sum, so it belongs in the dot product. Solving $u \cdot v = \sum x_i$ term by term forces $v_i = 1$:
+
     $$v = \begin{pmatrix}1\\\vdots\\1\end{pmatrix} \;\Longrightarrow\; u \cdot v = \sum_{i=1}^n x_i = 1, \qquad \lVert v\rVert^2 = n.$$
 
 !!! steps "Part a, apply the inequality"
+
     $$\underbrace{1}_{(u\cdot v)^2} \;\leq\; \underbrace{\left(\sum_{i=1}^n x_i^2\right)}_{\lVert u\rVert^2} \cdot \underbrace{n}_{\lVert v\rVert^2}.$$
+
     Dividing by $n$ (positive, so the direction is preserved):
+
     $$\sum_{i=1}^n x_i^2 \geq \frac{1}{n}. \qquad \blacksquare$$
 
 !!! steps "Part b, choose the vectors"
     Nothing in Cauchy-Schwarz manufactures reciprocals, so they must be built into a vector from the start. For the **target**, solve $(v_i)^2 = \tfrac{1}{x_i}$:
+
     $$v = \begin{pmatrix}\tfrac{1}{\sqrt{x_1}}\\\vdots\\\tfrac{1}{\sqrt{x_n}}\end{pmatrix} \;\Longrightarrow\; \lVert v\rVert^2 = \sum_{i=1}^n \frac{1}{x_i} \quad\text{(the target)}.$$
+
     For the **constraint**, solve $(u_i)^2 = x_i$:
+
     $$u = \begin{pmatrix}\sqrt{x_1}\\\vdots\\\sqrt{x_n}\end{pmatrix} \;\Longrightarrow\; \lVert u\rVert^2 = \sum_{i=1}^n x_i = 1 \quad\text{(the constraint)}.$$
 
 !!! steps "Part b, apply the inequality"
     Both vectors are now fixed, and the reciprocal pairing cancels inside the dot product:
+
     $$u \cdot v = \sum_{i=1}^n \sqrt{x_i}\cdot\frac{1}{\sqrt{x_i}} = \sum_{i=1}^n 1 = n.$$
+
     Substituting into Cauchy-Schwarz:
+
     $$\underbrace{n^2}_{(u\cdot v)^2} \;\leq\; \underbrace{1}_{\lVert u\rVert^2} \cdot \underbrace{\left(\sum_{i=1}^n \frac{1}{x_i}\right)}_{\lVert v\rVert^2},$$
 
     $$\sum_{i=1}^n \frac{1}{x_i} \geq n^2. \qquad \blacksquare$$
 
 !!! answer "Answer"
+
     $$\sum_{i=1}^n x_i^2 \geq \frac{1}{n}, \qquad \sum_{i=1}^n \frac{1}{x_i} \geq n^2.$$
 
     **The pattern.** In both parts: put the *target* in a norm slot (solving for components so squaring produces it), put the *constraint* wherever it fits, and let the remaining slot fall out. Part a needs no square roots because its target is already a sum of squares; part b needs them because neither the target nor the constraint is.
@@ -350,7 +413,9 @@ Both parts follow the same recipe: put the target in a norm slot, choosing the c
 ## 3.10 · Rotating vectors in the plane
 
 Rotate the vectors
+
 $$x_1 := \begin{pmatrix}2\\3\end{pmatrix}, \qquad x_2 := \begin{pmatrix}0\\-1\end{pmatrix}$$
+
 by $30^\circ$.
 
 !!! theory "Topics & Definitions"
@@ -363,21 +428,25 @@ A rotation just spins each vector about the origin without stretching it. Write 
 
 !!! steps "Step 1, write down $R(30^\circ)$"
     With $\cos 30^\circ = \tfrac{\sqrt3}{2}$ and $\sin 30^\circ = \tfrac12$:
+
     $$R(30^\circ) = \begin{pmatrix}\cos 30^\circ & -\sin 30^\circ\\\sin 30^\circ & \cos 30^\circ\end{pmatrix} = \begin{pmatrix}\tfrac{\sqrt3}{2} & -\tfrac12\\[4pt] \tfrac12 & \tfrac{\sqrt3}{2}\end{pmatrix}.$$
 
 !!! note "Keep the surds"
     Work with exact values $\tfrac{\sqrt3}{2}$ and $\tfrac12$ rather than decimals. Rounding early accumulates error and hides the structure of the answer.
 
 !!! steps "Step 2, rotate $x_1$"
+
     $$R(30^\circ)\,x_1 = \begin{pmatrix}\tfrac{\sqrt3}{2} & -\tfrac12\\[4pt] \tfrac12 & \tfrac{\sqrt3}{2}\end{pmatrix}\begin{pmatrix}2\\3\end{pmatrix} = \begin{pmatrix}\tfrac{\sqrt3}{2}(2) - \tfrac12(3)\\[4pt] \tfrac12(2) + \tfrac{\sqrt3}{2}(3)\end{pmatrix} = \begin{pmatrix}\sqrt3 - \tfrac32\\[4pt] 1 + \tfrac{3\sqrt3}{2}\end{pmatrix} \approx \begin{pmatrix}0.232\\3.598\end{pmatrix}.$$
 
 !!! steps "Step 3, rotate $x_2$"
+
     $$R(30^\circ)\,x_2 = \begin{pmatrix}\tfrac{\sqrt3}{2} & -\tfrac12\\[4pt] \tfrac12 & \tfrac{\sqrt3}{2}\end{pmatrix}\begin{pmatrix}0\\-1\end{pmatrix} = \begin{pmatrix}\tfrac{\sqrt3}{2}(0) - \tfrac12(-1)\\[4pt] \tfrac12(0) + \tfrac{\sqrt3}{2}(-1)\end{pmatrix} = \begin{pmatrix}\tfrac12\\[4pt] -\tfrac{\sqrt3}{2}\end{pmatrix} \approx \begin{pmatrix}0.5\\-0.866\end{pmatrix}.$$
 
     A nice cross-check: $x_2$ starts pointing straight down, at $270^\circ$. Rotating anticlockwise by $30^\circ$ lands it at $300^\circ$, and indeed $(\cos 300^\circ, \sin 300^\circ) = (\tfrac12, -\tfrac{\sqrt3}{2})$.
 
 !!! steps "Step 4, verify lengths are preserved"
     Rotations are isometries, so the norms must be unchanged:
+
     $$\lVert x_1\rVert = \sqrt{4 + 9} = \sqrt{13}, \qquad \lVert R x_1\rVert = \sqrt{13} \quad\checkmark$$
 
     $$\lVert x_2\rVert = 1, \qquad \lVert R x_2\rVert = \sqrt{\tfrac14 + \tfrac34} = 1 \quad\checkmark$$
@@ -385,6 +454,7 @@ A rotation just spins each vector about the origin without stretching it. Write 
     If a rotated vector has a different length from the original, there is an arithmetic error somewhere.
 
 !!! answer "Answer"
+
     $$R(30^\circ)\,x_1 = \begin{pmatrix}\sqrt3 - \tfrac32\\[4pt] 1 + \tfrac{3\sqrt3}{2}\end{pmatrix} \approx \begin{pmatrix}0.232\\3.598\end{pmatrix},$$
 
     $$R(30^\circ)\,x_2 = \begin{pmatrix}\tfrac12\\[4pt] -\tfrac{\sqrt3}{2}\end{pmatrix} \approx \begin{pmatrix}0.5\\-0.866\end{pmatrix}.$$

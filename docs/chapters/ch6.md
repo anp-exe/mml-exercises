@@ -86,57 +86,55 @@ Compute **(a)** the marginal distributions $p(x)$ and $p(y)$, and **(b)** the co
     $p(y \mid X = x_3) = \left(\tfrac{3}{11},\ \tfrac{5}{11},\ \tfrac{3}{11}\right)$
 
 ---
+## 6.2 · Marginals of a Gaussian mixture
 
-## 6.2 · Marginal distributions
+Consider a mixture of two Gaussian distributions,
 
-Consider the following bivariate distribution $p(x,y)$ of two discrete random variables $X$ and $Y$.
+$$0.4\,\mathcal{N}\!\left(\begin{pmatrix}10\\2\end{pmatrix},\ \begin{pmatrix}1&0\\0&1\end{pmatrix}\right) + 0.6\,\mathcal{N}\!\left(\begin{pmatrix}0\\0\end{pmatrix},\ \begin{pmatrix}8.4&2.0\\2.0&1.7\end{pmatrix}\right).$$
 
-|  | $x_1$ | $x_2$ | $x_3$ | $x_4$ | $x_5$ |
-|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-| $y_1$ | 0.01 | 0.02 | 0.03 | 0.1 | 0.1 |
-| $y_2$ | 0.05 | 0.1 | 0.05 | 0.07 | 0.2 |
-| $y_3$ | 0.1 | 0.05 | 0.03 | 0.05 | 0.04 |
-
-Compute **(a)** the marginal distributions $p(x)$ and $p(y)$, and **(b)** the conditional distributions $p(x \mid Y = y_1)$ and $p(y \mid X = x_3)$.
+Compute **(a)** the marginal distributions for each dimension, **(b)** the mean, mode and median of each marginal, and **(c)** the mean and mode of the two-dimensional distribution.
 
 **Part a**
 
-Compute the marginal distributions $p(x)$ and $p(y)$.
+Compute the marginal distributions for each dimension.
 
 !!! theory "Topics & Definitions"
-    - **Joint distribution** — $p(x_i, y_j)$ gives the probability that $X = x_i$ and $Y = y_j$ occur together. Every cell of the table is one joint probability, and all fifteen cells sum to $1$.
-    - **Marginal distribution (sum rule)** — to recover the distribution of one variable alone, sum the joint over every value of the other:
+    - **Mixture distribution** — a weighted sum of component densities, $p(\boldsymbol{x}) = \sum_k \pi_k\, p_k(\boldsymbol{x})$, with weights $\pi_k \ge 0$ summing to $1$. Here $\pi_1 = 0.4$ and $\pi_2 = 0.6$.
+    - **Marginalising a Gaussian is just deleting** — for $\mathcal{N}(\boldsymbol{\mu}, \Sigma)$, the marginal of one coordinate is $\mathcal{N}(\mu_i, \Sigma_{ii})$: keep that entry of the mean and the matching **diagonal** entry of the covariance, and discard every row and column belonging to the variable being integrated out. No integration is actually performed.
+    - **Off-diagonal entries drop out** — the covariance $\Sigma_{12} = 2.0$ describes how the two coordinates vary together, which is information about the pair. Once one coordinate is marginalised away there is no pair left, so that entry plays no part in the answer.
+    - **Marginal of a mixture is the mixture of the marginals** — integration is linear, so it passes through the weighted sum:
 
-    $$p(x_i) = \sum_{j} p(x_i, y_j), \qquad p(y_j) = \sum_{i} p(x_i, y_j)$$
+    $$\int \sum_k \pi_k\, p_k(x,y)\ \mathrm{d}y = \sum_k \pi_k \int p_k(x,y)\ \mathrm{d}y$$
 
-    Summing over $y$ collapses the table to a single row of $x$ probabilities, and summing over $x$ collapses it to a single column of $y$ probabilities. The variable being summed out disappears: you begin with a function of two variables and end with a function of one.
+    The weights $0.4$ and $0.6$ are therefore unchanged by marginalising. Only the components simplify.
 
-    - **Why summing is valid** — $Y$ must take exactly one of its values, so the cases $y_1, y_2, y_3$ are mutually exclusive and cover every possibility. Adding their probabilities therefore double counts nothing and misses nothing.
-    - **Why no division is needed** — the table is already normalised, so each cell holds a probability directly and a column or row total is itself a probability. The name "marginal" comes from exactly this operation: the totals are written in the margin of the table.
+!!! steps "Marginal of the first dimension"
+    Take the first entry of each mean and the top-left entry of each covariance.
 
-!!! steps "Marginals of $X$ (column sums)"
+    Component 1: $\mu_1 = 10$ and $\Sigma_{11} = 1$, giving $\mathcal{N}(10,\ 1)$.
 
-    $$\begin{aligned}
-    p(x_1) &= 0.01 + 0.05 + 0.1 = 0.16\\
-    p(x_2) &= 0.02 + 0.1 + 0.05 = 0.17\\
-    p(x_3) &= 0.03 + 0.05 + 0.03 = 0.11\\
-    p(x_4) &= 0.1 + 0.07 + 0.05 = 0.22\\
-    p(x_5) &= 0.1 + 0.2 + 0.04 = 0.34
-    \end{aligned}$$
+    Component 2: $\mu_1 = 0$ and $\Sigma_{11} = 8.4$, giving $\mathcal{N}(0,\ 8.4)$.
 
-    Check: $0.16 + 0.17 + 0.11 + 0.22 + 0.34 = 1$.
+    Reattaching the weights:
 
-!!! steps "Marginals of $Y$ (row sums)"
+    $$p(x_1) = 0.4\,\mathcal{N}(x_1 \mid 10,\ 1) + 0.6\,\mathcal{N}(x_1 \mid 0,\ 8.4)$$
 
-    $$\begin{aligned}
-    p(y_1) &= 0.01 + 0.02 + 0.03 + 0.1 + 0.1 = 0.26\\
-    p(y_2) &= 0.05 + 0.1 + 0.05 + 0.07 + 0.2 = 0.47\\
-    p(y_3) &= 0.1 + 0.05 + 0.03 + 0.05 + 0.04 = 0.27
-    \end{aligned}$$
+!!! steps "Marginal of the second dimension"
+    Take the second entry of each mean and the bottom-right entry of each covariance.
 
-    Check: $0.26 + 0.47 + 0.27 = 1$. Both marginals summing to $1$ confirms the joint table is normalised and the arithmetic holds in both directions. This is a free correctness check available on any marginal.
+    Component 1: $\mu_2 = 2$ and $\Sigma_{22} = 1$, giving $\mathcal{N}(2,\ 1)$.
+
+    Component 2: $\mu_2 = 0$ and $\Sigma_{22} = 1.7$, giving $\mathcal{N}(0,\ 1.7)$.
+
+    Reattaching the weights:
+
+    $$p(x_2) = 0.4\,\mathcal{N}(x_2 \mid 2,\ 1) + 0.6\,\mathcal{N}(x_2 \mid 0,\ 1.7)$$
 
 !!! answer "Part a answer"
-    Marginal of $X$: $p(x) = (0.16,\ 0.17,\ 0.11,\ 0.22,\ 0.34)$ for $x_1$ through $x_5$.
+    Each marginal is again a mixture of two univariate Gaussians, with the original weights:
 
-    Marginal of $Y$: $p(y) = (0.26,\ 0.47,\ 0.27)$ for $y_1$ through $y_3$.
+    $$p(x_1) = 0.4\,\mathcal{N}(10,\ 1) + 0.6\,\mathcal{N}(0,\ 8.4)$$
+
+    $$p(x_2) = 0.4\,\mathcal{N}(2,\ 1) + 0.6\,\mathcal{N}(0,\ 1.7)$$
+
+    The variances quoted are $\Sigma_{11}$ and $\Sigma_{22}$ respectively, so the standard deviations are $\sqrt{8.4} \approx 2.898$ and $\sqrt{1.7} \approx 1.304$ for the second component.

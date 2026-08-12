@@ -1,0 +1,1617 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Worked end-of-chapter exercise solutions for Mathematics for Machine Learning">
+      
+      
+        <meta name="author" content="Anna">
+      
+      
+        <link rel="canonical" href="https://anp-exe.github.io/mml-excerises/chapters/ch5/">
+      
+      
+        <link rel="prev" href="../ch4/">
+      
+      
+        <link rel="next" href="../ch6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Ch 5 · Vector Calculus - MML Exercise Answers</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Nunito";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-5-vector-calculus" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MML Exercise Answers" class="md-header__button md-logo" aria-label="MML Exercise Answers" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MML Exercise Answers
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ch 5 · Vector Calculus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MML Exercise Answers" class="md-nav__button md-logo" aria-label="MML Exercise Answers" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MML Exercise Answers
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 2 · Linear Algebra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 3 · Analytic Geometry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 4 · Matrix Decompositions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 5 · Vector Calculus
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 5 · Vector Calculus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-differentiating-a-product-with-nested-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 · Differentiating a product with nested functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-derivative-of-the-logistic-sigmoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 · Derivative of the logistic sigmoid
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-derivative-of-the-gaussian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 · Derivative of the Gaussian
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-taylor-polynomials-of-sinx-cosx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 · Taylor polynomials of \(\sin(x) + \cos(x)\)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-jacobian-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 · Jacobian dimensions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-chain-rule-with-nested-functions-and-a-gradient-with-respect-to-a-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 · Chain rule with nested functions, and a gradient with respect to a matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-chain-rule-with-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 · Chain rule with dimensions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#58-chain-rule-traces-and-elementwise-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 · Chain rule, traces, and elementwise functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#59-gradient-with-multiple-dependency-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 · Gradient with multiple dependency paths
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#510-bonus-multivariate-taylor-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.10 (bonus) · Multivariate Taylor series
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 6 · Probability & Distributions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 7 · Continuous Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 8 · When Models Meet Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 9 · Linear Regression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 10 · Dimensionality Reduction (PCA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 11 · Density Estimation (GMM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch 12 · Classification (SVM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../proofs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proofs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-5-vector-calculus">Chapter 5 · Vector Calculus<a class="headerlink" href="#chapter-5-vector-calculus" title="Permanent link">&para;</a></h1>
+<p>End-of-chapter exercises. Each has a definitions box, explanation, worked steps, and the answer.</p>
+<hr />
+<h2 id="51-differentiating-a-product-with-nested-functions">5.1 · Differentiating a product with nested functions<a class="headerlink" href="#51-differentiating-a-product-with-nested-functions" title="Permanent link">&para;</a></h2>
+<p><em>Calculus I · differentiation rules</em></p>
+<p>Compute the derivative <span class="arithmatex">\(f'(x)\)</span> for</p>
+<div class="arithmatex">\[f(x) = \log(x^4)\sin(x^3).\]</div>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<p>Read the structure of the expression <em>before</em> differentiating. Ask, in order:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">What you see</th>
+<th style="text-align: left;">Rule to use</th>
+<th style="text-align: left;">Form</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Two things <strong>multiplied</strong></td>
+<td style="text-align: left;">product rule</td>
+<td style="text-align: left;"><span class="arithmatex">\((uv)' = u'v + uv'\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Two things <strong>divided</strong></td>
+<td style="text-align: left;">quotient rule</td>
+<td style="text-align: left;"><span class="arithmatex">\(\left(\tfrac{u}{v}\right)' = \tfrac{u'v - uv'}{v^2}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">A function <strong>inside</strong> another</td>
+<td style="text-align: left;">chain rule</td>
+<td style="text-align: left;"><span class="arithmatex">\(\big(g(h(x))\big)' = g'(h(x))\cdot h'(x)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Terms <strong>added or subtracted</strong></td>
+<td style="text-align: left;">differentiate each separately</td>
+<td style="text-align: left;"><span class="arithmatex">\((u+v)' = u' + v'\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Here <span class="arithmatex">\(\log(x^4)\sin(x^3)\)</span> is two things <em>multiplied</em>, so the product rule applies at the top level. Each factor then has something <em>inside</em> it (<span class="arithmatex">\(x^4\)</span> in the log, <span class="arithmatex">\(x^3\)</span> in the sin), so the chain rule applies within each factor. Rules nest: identify the outermost structure first, then work inward.</p>
+<p>A handy log simplification: <span class="arithmatex">\(\log(x^n) = n\log(x)\)</span>, so <span class="arithmatex">\(\log(x^4) = 4\log(x)\)</span> and its derivative is immediately <span class="arithmatex">\(4/x\)</span>. The chain rule gives the same thing: <span class="arithmatex">\(\tfrac{1}{x^4}\cdot 4x^3 = \tfrac{4x^3}{x^4} = \tfrac{4}{x}\)</span>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">The two most common slips</p>
+<p><strong>Do not multiply the derivatives.</strong> The product rule is <span class="arithmatex">\(u'v + uv'\)</span>, two terms <em>added</em>, not <span class="arithmatex">\(u'v'\)</span>.</p>
+<p><strong>The inner derivative goes outside.</strong> For <span class="arithmatex">\(\sin(x^3)\)</span> the chain rule gives <span class="arithmatex">\(\cos(x^3)\cdot 3x^2\)</span>: the <span class="arithmatex">\(3x^2\)</span> multiplies from outside, and the inside of the cosine stays <span class="arithmatex">\(x^3\)</span>. Writing <span class="arithmatex">\(\cos(3x^2)\)</span> is wrong, the inside never changes.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, identify the structure</p>
+<p>The expression is a product of two factors:</p>
+<div class="arithmatex">\[u = \log(x^4), \qquad v = \sin(x^3).\]</div>
+<p>So the top-level rule is the product rule, <span class="arithmatex">\(f' = u'v + uv'\)</span>, and each factor then needs the chain rule.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, differentiate <span class="arithmatex">\(u = \log(x^4)\)</span></p>
+<p>Chain rule: <span class="arithmatex">\(\tfrac{d}{dx}\log(\text{inside}) = \tfrac{1}{\text{inside}}\cdot(\text{inside})'\)</span>.</p>
+<div class="arithmatex">\[u' = \frac{1}{x^4}\cdot 4x^3 = \frac{4x^3}{x^4} = \frac{4}{x}.\]</div>
+<p>The <span class="arithmatex">\(4x^3\)</span> lands on the numerator, then <span class="arithmatex">\(x^3/x^4\)</span> simplifies to <span class="arithmatex">\(1/x\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, differentiate <span class="arithmatex">\(v = \sin(x^3)\)</span></p>
+<p>Chain rule: <span class="arithmatex">\(\tfrac{d}{dx}\sin(\text{inside}) = \cos(\text{inside})\cdot(\text{inside})'\)</span>.</p>
+<div class="arithmatex">\[v' = \cos(x^3)\cdot 3x^2 = 3x^2\cos(x^3).\]</div>
+<p>The inside of the cosine stays <span class="arithmatex">\(x^3\)</span>; the <span class="arithmatex">\(3x^2\)</span> multiplies from outside.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 4, assemble with the product rule</p>
+<div class="arithmatex">\[f' = u'v + uv' = \frac{4}{x}\sin(x^3) + \log(x^4)\cdot 3x^2\cos(x^3).\]</div>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[f'(x) = \frac{4\sin(x^3)}{x} + 3x^2\log(x^4)\cos(x^3).\]</div>
+<p>Two terms, added, one from differentiating each factor while holding the other fixed. Both terms needed the chain rule internally, which is why the exercise combines the two rules.</p>
+<p><img alt="The curve with its tangent line, whose slope is the derivative at that point" src="../../figures/fig-5-1-tangent.png" /></p>
+</div>
+<hr />
+<h2 id="52-derivative-of-the-logistic-sigmoid">5.2 · Derivative of the logistic sigmoid<a class="headerlink" href="#52-derivative-of-the-logistic-sigmoid" title="Permanent link">&para;</a></h2>
+<p><em>Calculus I · differentiation rules</em></p>
+<p>Compute the derivative <span class="arithmatex">\(f'(x)\)</span> of the logistic sigmoid</p>
+<div class="arithmatex">\[f(x) = \frac{1}{1 + \exp(-x)}.\]</div>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Structure first</strong> — this is one thing divided by another, so the quotient rule applies: <span class="arithmatex">\(\left(\tfrac{u}{v}\right)' = \tfrac{u'v - uv'}{v^2}\)</span>.</li>
+<li><strong>Constant numerator</strong> — here <span class="arithmatex">\(u = 1\)</span> and <span class="arithmatex">\(v = 1 + \exp(-x)\)</span>. Since <span class="arithmatex">\(u' = 0\)</span>, the first term of the quotient rule vanishes entirely and only <span class="arithmatex">\(-uv'/v^2\)</span> survives. Spotting that early saves work.</li>
+<li><strong>The denominator needs the chain rule</strong> — <span class="arithmatex">\(\tfrac{d}{dx}\exp(\text{inside}) = \exp(\text{inside})\cdot(\text{inside})'\)</span>. With inside <span class="arithmatex">\(-x\)</span> (derivative <span class="arithmatex">\(-1\)</span>), <span class="arithmatex">\(\tfrac{d}{dx}\exp(-x) = -\exp(-x)\)</span>.</li>
+<li><strong>Alternative route</strong> — rewriting <span class="arithmatex">\(f(x) = (1 + \exp(-x))^{-1}\)</span> turns this into a pure chain-rule exercise (outer <span class="arithmatex">\((\cdot)^{-1}\)</span>, inner <span class="arithmatex">\(1 + \exp(-x)\)</span>) and gives the same answer.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Common slip</p>
+<p>In <span class="arithmatex">\(v^2\)</span>, square the <strong>whole denominator</strong> <span class="arithmatex">\(v = 1 + \exp(-x)\)</span>, not its derivative. Writing <span class="arithmatex">\((-\exp(-x))^2\)</span> squares <span class="arithmatex">\(v'\)</span> by mistake.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, identify <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span></p>
+<div class="arithmatex">\[u = 1, \qquad v = 1 + \exp(-x),\]</div>
+<p>so <span class="arithmatex">\(u' = 0\)</span> and, by the chain rule, <span class="arithmatex">\(v' = -\exp(-x)\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, apply the quotient rule</p>
+<div class="arithmatex">\[f'(x) = \frac{u'v - uv'}{v^2} = \frac{0\cdot(1+\exp(-x)) - 1\cdot(-\exp(-x))}{(1+\exp(-x))^2}.\]</div>
+<p>The first term is zero, and the double negative in the second becomes positive:</p>
+<div class="arithmatex">\[f'(x) = \frac{\exp(-x)}{(1+\exp(-x))^2}.\]</div>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[f'(x) = \frac{\exp(-x)}{\left(1+\exp(-x)\right)^2}.\]</div>
+<p><strong>A useful rearrangement.</strong> This is equivalent to</p>
+<div class="arithmatex">\[f'(x) = f(x)\big(1 - f(x)\big),\]</div>
+<p>expressing the derivative purely in terms of the sigmoid's own output.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Where this shows up: backpropagation</p>
+<p>When a sigmoid is used as a neuron's activation, training the network needs its derivative at every step. Backpropagation works backwards through the layers multiplying by local derivatives (the chain rule again), and the sigmoid's local derivative is exactly <span class="arithmatex">\(f(x)\big(1 - f(x)\big)\)</span>. Because the forward pass already stored the output <span class="arithmatex">\(f(x)\)</span>, the gradient costs just one subtraction and one multiplication, with no new <span class="arithmatex">\(\exp\)</span> to evaluate. That reuse is a big part of why the sigmoid was such a popular activation.</p>
+<p><img alt="Sigmoid curve and its bell-shaped derivative peaking at 0.25" src="../../figures/fig-5-2-sigmoid.png" /></p>
+</div>
+<hr />
+<h2 id="53-derivative-of-the-gaussian">5.3 · Derivative of the Gaussian<a class="headerlink" href="#53-derivative-of-the-gaussian" title="Permanent link">&para;</a></h2>
+<p><em>Calculus I · differentiation rules</em></p>
+<p>Compute the derivative <span class="arithmatex">\(f'(x)\)</span> of</p>
+<div class="arithmatex">\[f(x) = \exp\!\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right),\]</div>
+<p>where <span class="arithmatex">\(\mu, \sigma\)</span> are constants.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>What is constant here</strong> — we differentiate with respect to <span class="arithmatex">\(x\)</span>, so everything that is not <span class="arithmatex">\(x\)</span> is held fixed. Both <span class="arithmatex">\(\mu\)</span> (the mean) and <span class="arithmatex">\(\sigma\)</span> (the standard deviation) are fixed, so <span class="arithmatex">\(\tfrac{1}{2\sigma^2}\)</span> is just a constant multiplier and <span class="arithmatex">\(\tfrac{d}{dx}(-\mu) = 0\)</span>.</li>
+<li><strong>The chain rule applies twice</strong> — the outermost function is <span class="arithmatex">\(\exp(\cdot)\)</span>; inside it is <span class="arithmatex">\(-\tfrac{1}{2\sigma^2}(x-\mu)^2\)</span>; inside <em>that</em> is <span class="arithmatex">\((x-\mu)\)</span>. Each layer contributes a factor.</li>
+<li><strong>Key pattern</strong> — <span class="arithmatex">\(\tfrac{d}{dx}\exp(g(x)) = g'(x)\exp(g(x))\)</span>: the exponential is reproduced unchanged, multiplied by the derivative of its exponent. The exponent itself never changes.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">A fraction does not automatically mean the quotient rule</p>
+<p>The quotient rule applies to <span class="arithmatex">\(\tfrac{u}{v}\)</span> where <strong>both</strong> parts are functions of <span class="arithmatex">\(x\)</span>. Here <span class="arithmatex">\(2\sigma^2\)</span> contains no <span class="arithmatex">\(x\)</span> at all, so <span class="arithmatex">\(-\tfrac{1}{2\sigma^2}(x-\mu)^2\)</span> is simply <em>(constant) <span class="arithmatex">\(\times\)</span> (function)</em>: differentiate the function and carry the constant along. Likewise, when multiplying a fraction by a term, only the numerator is affected:</p>
+<div class="arithmatex">\[-\frac{1}{2\sigma^2}\times 2(x-\mu) = \frac{-2(x-\mu)}{2\sigma^2},\]</div>
+<p>the denominator is untouched, because the second factor has denominator <span class="arithmatex">\(1\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, differentiate the exponent</p>
+<p>Let <span class="arithmatex">\(g(x) = -\dfrac{1}{2\sigma^2}(x-\mu)^2\)</span>. The constant <span class="arithmatex">\(-\tfrac{1}{2\sigma^2}\)</span> comes along for the ride; apply the power rule to <span class="arithmatex">\((x-\mu)^2\)</span>:</p>
+<div class="arithmatex">\[\frac{d}{dx}(x-\mu)^2 = 2(x-\mu)\cdot\frac{d}{dx}(x-\mu) = 2(x-\mu)\cdot 1 = 2(x-\mu).\]</div>
+<p>The innermost chain-rule factor is <span class="arithmatex">\(1\)</span> (since <span class="arithmatex">\(\mu\)</span> is constant), so it is invisible here, but it is still a chain-rule step, and it is <span class="arithmatex">\(1\)</span>, not <span class="arithmatex">\(0\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, combine the constant</p>
+<div class="arithmatex">\[g'(x) = -\frac{1}{2\sigma^2}\times 2(x-\mu) = \frac{-2(x-\mu)}{2\sigma^2} = -\frac{x-\mu}{\sigma^2}.\]</div>
+<p>Only the <span class="arithmatex">\(2\)</span>s cancel; the <span class="arithmatex">\(\sigma^2\)</span> stays in the denominator and the minus sign survives.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, apply the outer chain rule</p>
+<div class="arithmatex">\[f'(x) = g'(x)\,\exp(g(x)),\]</div>
+<p>substituting <span class="arithmatex">\(g'(x)\)</span> from Step 2 and leaving the exponent unchanged.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[f'(x) = -\frac{x-\mu}{\sigma^2}\exp\!\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right).\]</div>
+<p><strong>Sanity check on the shape.</strong> The derivative is zero exactly when <span class="arithmatex">\(x = \mu\)</span>, the peak of the bell curve where the slope is flat. For <span class="arithmatex">\(x &gt; \mu\)</span> the factor <span class="arithmatex">\(-(x-\mu)\)</span> is negative, so the curve is descending; for <span class="arithmatex">\(x &lt; \mu\)</span> it is positive, so the curve is ascending. This matches the familiar Gaussian shape.</p>
+<p><img alt="Gaussian bell curve and its derivative, crossing zero at the peak" src="../../figures/fig-5-3-gaussian.png" /></p>
+</div>
+<hr />
+<h2 id="54-taylor-polynomials-of-sinx-cosx">5.4 · Taylor polynomials of <span class="arithmatex">\(\sin(x) + \cos(x)\)</span><a class="headerlink" href="#54-taylor-polynomials-of-sinx-cosx" title="Permanent link">&para;</a></h2>
+<p><em>Calculus II · Taylor series</em></p>
+<p>Compute the Taylor polynomials <span class="arithmatex">\(T_n\)</span> for <span class="arithmatex">\(n = 0, \dots, 5\)</span> of</p>
+<div class="arithmatex">\[f(x) = \sin(x) + \cos(x)\]</div>
+<p>at <span class="arithmatex">\(x_0 = 0\)</span>.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>The Taylor polynomial</strong> — of degree <span class="arithmatex">\(n\)</span> about <span class="arithmatex">\(x_0\)</span> is <span class="arithmatex">\(T_n(x) = \sum_{k=0}^{n} \dfrac{f^{(k)}(x_0)}{k!}\,(x-x_0)^k\)</span>. At <span class="arithmatex">\(x_0 = 0\)</span> (a Maclaurin polynomial) this simplifies to <span class="arithmatex">\(\sum \tfrac{f^{(k)}(0)}{k!}x^k\)</span>, since <span class="arithmatex">\((x-0)^k = x^k\)</span>.</li>
+<li><strong>Sine and cosine derivatives cycle with period four</strong> — <span class="arithmatex">\(\sin \to \cos \to -\sin \to -\cos \to \sin \to \dots\)</span>. Once you have four derivatives, the pattern repeats, which makes this much shorter than it looks.</li>
+<li><strong>Lower-order polynomials are truncations</strong> — <span class="arithmatex">\(T_3\)</span> is just <span class="arithmatex">\(T_5\)</span> with the last two terms removed, so computing <span class="arithmatex">\(T_5\)</span> gives you all of them at once.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Read <span class="arithmatex">\(f^{(k)}(x_0)\)</span> carefully</p>
+<p><span class="arithmatex">\(f^{(k)}(x_0)\)</span> means "the <span class="arithmatex">\(k\)</span>-th derivative, <strong>evaluated at</strong> <span class="arithmatex">\(x_0\)</span>", not the derivative multiplied by <span class="arithmatex">\(x_0\)</span>. Even when <span class="arithmatex">\(x_0 = 0\)</span> these values are generally nonzero: here <span class="arithmatex">\(f(0) = \sin 0 + \cos 0 = 1\)</span>. Order of operations matters: differentiate first, substitute afterwards.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, the derivatives and their values at <span class="arithmatex">\(0\)</span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="arithmatex">\(k\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(f^{(k)}(x)\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(f^{(k)}(0)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="arithmatex">\(\sin x + \cos x\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="arithmatex">\(\cos x - \sin x\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="arithmatex">\(-\sin x - \cos x\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="arithmatex">\(-\cos x + \sin x\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><span class="arithmatex">\(\sin x + \cos x\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"><span class="arithmatex">\(\cos x - \sin x\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>At <span class="arithmatex">\(k = 4\)</span> the function returns to itself, confirming the period-four cycle. The values at <span class="arithmatex">\(0\)</span> follow the repeating pattern <span class="arithmatex">\(1, 1, -1, -1, 1, 1, \dots\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, assemble the coefficients</p>
+<p>Divide each value by <span class="arithmatex">\(k!\)</span>:</p>
+<div class="arithmatex">\[\frac{1}{0!} = 1,\quad \frac{1}{1!} = 1,\quad \frac{-1}{2!} = -\frac12,\quad \frac{-1}{3!} = -\frac16,\quad \frac{1}{4!} = \frac{1}{24},\quad \frac{1}{5!} = \frac{1}{120}.\]</div>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[\begin{aligned}
+T_0(x) &amp;= 1\\
+T_1(x) &amp;= 1 + x\\
+T_2(x) &amp;= 1 + x - \tfrac{1}{2}x^2\\
+T_3(x) &amp;= 1 + x - \tfrac{1}{2}x^2 - \tfrac{1}{6}x^3\\
+T_4(x) &amp;= 1 + x - \tfrac{1}{2}x^2 - \tfrac{1}{6}x^3 + \tfrac{1}{24}x^4\\
+T_5(x) &amp;= 1 + x - \tfrac{1}{2}x^2 - \tfrac{1}{6}x^3 + \tfrac{1}{24}x^4 + \tfrac{1}{120}x^5
+\end{aligned}\]</div>
+<p>The sign pattern <span class="arithmatex">\(+\,+\,-\,-\,+\,+\)</span> mirrors the four-step derivative cycle and is a useful check that the derivatives were tracked correctly.</p>
+</div>
+<hr />
+<h2 id="55-jacobian-dimensions">5.5 · Jacobian dimensions<a class="headerlink" href="#55-jacobian-dimensions" title="Permanent link">&para;</a></h2>
+<p><em>Calculus III · multivariable derivatives</em></p>
+<p>Consider the functions</p>
+<div class="arithmatex">\[\begin{aligned}
+f_1(\boldsymbol{x}) &amp;= \sin(x_1)\cos(x_2), &amp;&amp; \boldsymbol{x} \in \mathbb{R}^2\\
+f_2(\boldsymbol{x}, \boldsymbol{y}) &amp;= \boldsymbol{x}^\top \boldsymbol{y}, &amp;&amp; \boldsymbol{x}, \boldsymbol{y} \in \mathbb{R}^n\\
+f_3(x) &amp;= x x^\top, &amp;&amp; x \in \mathbb{R}
+\end{aligned}\]</div>
+<p><strong>Part a</strong></p>
+<p>What are the dimensions of <span class="arithmatex">\(\partial f_i / \partial \boldsymbol{x}\)</span>?</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>The dimension rule</strong> — for <span class="arithmatex">\(f : \mathbb{R}^n \to \mathbb{R}^m\)</span>, the Jacobian <span class="arithmatex">\(\partial f/\partial \boldsymbol{x}\)</span> has dimension <span class="arithmatex">\(m \times n\)</span>, that is (output dimension) <span class="arithmatex">\(\times\)</span> (input dimension). Each <strong>row</strong> is one output component, each <strong>column</strong> one input variable. This part can be answered purely by reading the domain and codomain, no differentiation required.</li>
+<li><strong>Scalar-valued means a row</strong> — a scalar-valued function (<span class="arithmatex">\(m = 1\)</span>) always has a Jacobian that is a single <strong>row</strong> vector, with one entry per input variable. All three functions here are scalar-valued, so all three Jacobians are rows.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Read the space each variable lives in</p>
+<p>In <span class="arithmatex">\(f_3\)</span>, <span class="arithmatex">\(x \in \mathbb{R}\)</span> is a <strong>scalar</strong>, not a vector, so <span class="arithmatex">\(xx^\top\)</span> is simply <span class="arithmatex">\(x^2\)</span> (a scalar) and the Jacobian is <span class="arithmatex">\(1\times1\)</span>. If <span class="arithmatex">\(x\)</span> were a column vector in <span class="arithmatex">\(\mathbb{R}^n\)</span>, then <span class="arithmatex">\(xx^\top\)</span> would be an <span class="arithmatex">\(n\times n\)</span> matrix and the derivative a very different object. The dimension annotation is doing real work here.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Reading off each function</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Function</th>
+<th style="text-align: center;">Input space</th>
+<th style="text-align: center;">Output space</th>
+<th style="text-align: center;">Jacobian dimension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="arithmatex">\(f_1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\mathbb{R}^2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\mathbb{R}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1 \times 2\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="arithmatex">\(f_2\)</span> (w.r.t. <span class="arithmatex">\(\boldsymbol{x}\)</span>)</td>
+<td style="text-align: center;"><span class="arithmatex">\(\mathbb{R}^n\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\mathbb{R}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1 \times n\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="arithmatex">\(f_3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\mathbb{R}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\mathbb{R}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1 \times 1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[\frac{\partial f_1}{\partial \boldsymbol{x}} \in \mathbb{R}^{1\times 2}, \qquad \frac{\partial f_2}{\partial \boldsymbol{x}} \in \mathbb{R}^{1\times n}, \qquad \frac{\partial f_3}{\partial x} \in \mathbb{R}^{1\times 1}.\]</div>
+<p>All three are row vectors, since every function here maps into <span class="arithmatex">\(\mathbb{R}\)</span>, a useful structural check before computing anything.</p>
+</div>
+<p><strong>Part b</strong></p>
+<p>Compute the Jacobians.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>What a Jacobian is</strong> — all the partial derivatives of a function collected into a matrix, <span class="arithmatex">\(\left(\tfrac{\partial f}{\partial \boldsymbol{x}}\right)_{ij} = \tfrac{\partial f_i}{\partial x_j}\)</span>. Rows are output components, columns are input variables, so entry <span class="arithmatex">\((i,j)\)</span> answers "how does output <span class="arithmatex">\(i\)</span> respond to input <span class="arithmatex">\(j\)</span>?".</li>
+<li><strong>Why it exists</strong> — for a single-variable function the derivative is one number (the slope); for several variables you need the rate of change in <em>every</em> input direction, and the Jacobian packages them all into one object so it acts as "the derivative" of a vector-valued function.</li>
+<li><strong>Scalar-valued collapses to a row</strong> — all three functions here are scalar-valued, so each Jacobian is <span class="arithmatex">\(\tfrac{\partial f}{\partial \boldsymbol{x}} = \begin{pmatrix}\tfrac{\partial f}{\partial x_1} &amp; \cdots &amp; \tfrac{\partial f}{\partial x_n}\end{pmatrix}\)</span>. Once the partials are computed, arranging them in a row <em>is</em> the Jacobian.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Dot products expand nicely</p>
+<p>Writing <span class="arithmatex">\(\boldsymbol{x}^\top\boldsymbol{y} = x_1y_1 + x_2y_2 + \dots + x_ny_n\)</span> makes the differentiation transparent: differentiating with respect to <span class="arithmatex">\(x_i\)</span>, every term without <span class="arithmatex">\(x_i\)</span> is constant and vanishes, leaving <span class="arithmatex">\(y_i\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Jacobian of <span class="arithmatex">\(f_1\)</span></p>
+<p>Two partial derivatives, one per input variable, each holding the other constant:</p>
+<div class="arithmatex">\[\frac{\partial f_1}{\partial x_1} = \cos(x_1)\cos(x_2), \qquad \frac{\partial f_1}{\partial x_2} = -\sin(x_1)\sin(x_2).\]</div>
+<p>Arranged as a row:</p>
+<div class="arithmatex">\[\frac{\partial f_1}{\partial \boldsymbol{x}} = \begin{pmatrix}\cos(x_1)\cos(x_2) &amp; -\sin(x_1)\sin(x_2)\end{pmatrix}.\]</div>
+<p>This is <span class="arithmatex">\(1\times2\)</span>, matching part a.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Jacobian of <span class="arithmatex">\(f_2\)</span></p>
+<p>Expand the dot product:</p>
+<div class="arithmatex">\[\boldsymbol{x}^\top\boldsymbol{y} = x_1y_1 + x_2y_2 + \dots + x_ny_n.\]</div>
+<p>Differentiating with respect to <span class="arithmatex">\(x_1\)</span>, the terms <span class="arithmatex">\(x_2y_2, \dots, x_ny_n\)</span> contain no <span class="arithmatex">\(x_1\)</span> and vanish; the surviving <span class="arithmatex">\(x_1y_1\)</span> has <span class="arithmatex">\(y_1\)</span> as a constant multiplier, giving <span class="arithmatex">\(y_1\)</span>. The same for each <span class="arithmatex">\(x_i\)</span> gives <span class="arithmatex">\(y_i\)</span>. Collecting all <span class="arithmatex">\(n\)</span> partials:</p>
+<div class="arithmatex">\[\frac{\partial f_2}{\partial \boldsymbol{x}} = \begin{pmatrix}y_1 &amp; y_2 &amp; \cdots &amp; y_n\end{pmatrix} = \boldsymbol{y}^\top.\]</div>
+<p>This is <span class="arithmatex">\(1\times n\)</span>, matching part a.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Jacobian of <span class="arithmatex">\(f_3\)</span></p>
+<p>Since <span class="arithmatex">\(x \in \mathbb{R}\)</span> is a scalar, <span class="arithmatex">\(xx^\top = x^2\)</span>, so by the power rule</p>
+<div class="arithmatex">\[\frac{\partial f_3}{\partial x} = 2x.\]</div>
+<p>This is <span class="arithmatex">\(1\times1\)</span>, matching part a.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[\frac{\partial f_1}{\partial \boldsymbol{x}} = \begin{pmatrix}\cos(x_1)\cos(x_2) &amp; -\sin(x_1)\sin(x_2)\end{pmatrix},\]</div>
+<div class="arithmatex">\[\frac{\partial f_2}{\partial \boldsymbol{x}} = \boldsymbol{y}^\top, \qquad \frac{\partial f_3}{\partial x} = 2x.\]</div>
+<p>Each result has the dimension predicted in part a, a useful structural check. All three are row vectors because all three functions map into <span class="arithmatex">\(\mathbb{R}\)</span>.</p>
+</div>
+<hr />
+<h2 id="56-chain-rule-with-nested-functions-and-a-gradient-with-respect-to-a-matrix">5.6 · Chain rule with nested functions, and a gradient with respect to a matrix<a class="headerlink" href="#56-chain-rule-with-nested-functions-and-a-gradient-with-respect-to-a-matrix" title="Permanent link">&para;</a></h2>
+<p><em>Calculus III · multivariable derivatives</em></p>
+<p>Differentiate <span class="arithmatex">\(f\)</span> with respect to <span class="arithmatex">\(t\)</span> and <span class="arithmatex">\(g\)</span> with respect to <span class="arithmatex">\(X\)</span>, where</p>
+<div class="arithmatex">\[f(t) = \sin\!\big(\log(t^\top t)\big), \qquad t \in \mathbb{R}^D,\]</div>
+<div class="arithmatex">\[g(X) = \operatorname{tr}(AXB), \qquad A \in \mathbb{R}^{D\times E},\ X \in \mathbb{R}^{E\times F},\ B \in \mathbb{R}^{F\times D}.\]</div>
+<p><strong>Part a</strong></p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>The chain rule</strong> — for nested functions, <span class="arithmatex">\(\tfrac{d}{dx}g\big(h(x)\big) = g'\big(h(x)\big)\cdot h'(x)\)</span>: differentiate the outer function, leave its inside unchanged, then multiply by the derivative of the inside.</li>
+<li><strong>Why three times here</strong> — <span class="arithmatex">\(f(t) = \sin(\log(t^\top t))\)</span> nests three functions, so the chain rule applies three times. The most common slip is letting a lower layer's derivative creep into a higher layer's brackets: the inside of a function never changes when you differentiate it, only new factors appear on the outside.</li>
+<li><strong>Differentiating <span class="arithmatex">\(t^\top t\)</span></strong> — write it in components, <span class="arithmatex">\(t^\top t = t_1^2 + \dots + t_D^2\)</span>. Each partial is a power rule, <span class="arithmatex">\(\tfrac{\partial}{\partial t_i}(t_1^2 + \dots + t_D^2) = 2t_i\)</span>, so collecting all <span class="arithmatex">\(D\)</span> as a row gives <span class="arithmatex">\(\tfrac{\partial}{\partial t}(t^\top t) = \begin{pmatrix}2t_1 &amp; \cdots &amp; 2t_D\end{pmatrix} = 2t^\top\)</span>.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Think of it as peeling layers</p>
+<p>Picture the expression as an onion with three layers:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Layer</th>
+<th style="text-align: left;">What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Outer</td>
+<td style="text-align: left;"><span class="arithmatex">\(\sin(\,\cdot\,)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">Middle</td>
+<td style="text-align: left;"><span class="arithmatex">\(\log(\,\cdot\,)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">Inner</td>
+<td style="text-align: left;"><span class="arithmatex">\(t^\top t\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Peel from the outside in: at each layer, differentiate only that layer and leave everything inside it untouched, producing one factor per layer. Then multiply the factors together, and that multiplication <em>is</em> the chain rule at work.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Layer 1, peel the sine</p>
+<p>Differentiate <span class="arithmatex">\(\sin(\,\cdot\,)\)</span> into <span class="arithmatex">\(\cos(\,\cdot\,)\)</span>, keeping the inside exactly as it was:</p>
+<div class="arithmatex">\[\cos\!\big(\log(t^\top t)\big).\]</div>
+<p>The <span class="arithmatex">\(\log(t^\top t)\)</span> is carried across untouched; nothing from the inner layers has appeared yet.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Layer 2, peel the logarithm</p>
+<p>The derivative of <span class="arithmatex">\(\log(u)\)</span> is <span class="arithmatex">\(\tfrac{1}{u}\)</span>, so this layer contributes</p>
+<div class="arithmatex">\[\frac{1}{t^\top t}.\]</div>
+<p>Again the inside <span class="arithmatex">\(t^\top t\)</span> stays as it is.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Layer 3, peel the dot product</p>
+<p>From the working above, the innermost layer contributes</p>
+<div class="arithmatex">\[2t^\top.\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Multiply the layers together</p>
+<p>The chain rule joins the three factors by multiplication:</p>
+<div class="arithmatex">\[f'(t) = \underbrace{\cos\!\big(\log(t^\top t)\big)}_{\text{layer 1}} \cdot \underbrace{\frac{1}{t^\top t}}_{\text{layer 2}} \cdot \underbrace{2t^\top}_{\text{layer 3}}.\]</div>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Part a answer</p>
+<div class="arithmatex">\[\frac{df}{dt} = \frac{2t^\top \cos\!\big(\log(t^\top t)\big)}{t^\top t} \;\in\; \mathbb{R}^{1\times D}.\]</div>
+<p>Three nested functions, three chain-rule factors, all multiplied. The result is a row vector because <span class="arithmatex">\(f\)</span> is scalar-valued and <span class="arithmatex">\(t\)</span> is a vector.</p>
+</div>
+<p><strong>Part b</strong></p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>The trace</strong> — <span class="arithmatex">\(\operatorname{tr}(M) = M_{11} + M_{22} + \dots + M_{nn}\)</span>, the sum of the diagonal entries. To differentiate <span class="arithmatex">\(\operatorname{tr}(AXB)\)</span> we need its diagonal entries in terms of the entries of <span class="arithmatex">\(X\)</span>.</li>
+<li><strong>Dimensions force a square product</strong> — the trace needs a square matrix, and <span class="arithmatex">\((D\times E)(E\times F)(F\times D) = D\times D\)</span> <span class="arithmatex">\(\checkmark\)</span>: inner dimensions cancel and both outer ones are <span class="arithmatex">\(D\)</span>. The annotations are what make the trace well defined.</li>
+<li><strong>Concrete small matrices</strong> — with general <span class="arithmatex">\(D,E,F\)</span> the expansion is a triple sum; setting <span class="arithmatex">\(D=E=F=2\)</span> makes everything <span class="arithmatex">\(2\times2\)</span> and the trace expands into just eight visible terms, with the same structure as the general case.</li>
+<li><strong>Shape of the gradient</strong> — differentiating a <em>scalar</em> with respect to a <em>matrix</em> gives a gradient in the same shape as <span class="arithmatex">\(X\)</span> (not a Jacobian row): each partial sits in the position of the entry it came from.</li>
+</ul>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, set up <span class="arithmatex">\(2\times2\)</span> matrices</p>
+<p>Take <span class="arithmatex">\(D=E=F=2\)</span>:</p>
+<div class="arithmatex">\[A = \begin{pmatrix}a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}\end{pmatrix}, \quad X = \begin{pmatrix}x_{11}&amp;x_{12}\\x_{21}&amp;x_{22}\end{pmatrix}, \quad B = \begin{pmatrix}b_{11}&amp;b_{12}\\b_{21}&amp;b_{22}\end{pmatrix}.\]</div>
+<p>The product <span class="arithmatex">\(AXB\)</span> is <span class="arithmatex">\(2\times2\)</span>, so its trace is <span class="arithmatex">\((AXB)_{11} + (AXB)_{22}\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, expand the trace</p>
+<p>Multiplying out and summing the two diagonal entries gives eight terms:</p>
+<div class="arithmatex">\[\begin{aligned}
+\operatorname{tr}(AXB) =\ &amp; b_{11}a_{11}x_{11} + b_{11}a_{12}x_{21} + b_{12}a_{21}x_{11} + b_{12}a_{22}x_{21}\\
++\ &amp; b_{21}a_{11}x_{12} + b_{21}a_{12}x_{22} + b_{22}a_{21}x_{12} + b_{22}a_{22}x_{22}.
+\end{aligned}\]</div>
+<p>Every term is linear in exactly one entry of <span class="arithmatex">\(X\)</span>, with a coefficient built from one <span class="arithmatex">\(a\)</span> and one <span class="arithmatex">\(b\)</span>. That linearity is what makes the differentiation straightforward.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, take the partial derivatives</p>
+<p>For each entry of <span class="arithmatex">\(X\)</span>, keep only the terms containing it; the rest are constant and vanish, leaving the coefficient beside it:</p>
+<div class="arithmatex">\[\frac{\partial g}{\partial x_{11}} = b_{11}a_{11} + b_{12}a_{21}, \qquad \frac{\partial g}{\partial x_{12}} = b_{21}a_{11} + b_{22}a_{21},\]</div>
+<div class="arithmatex">\[\frac{\partial g}{\partial x_{21}} = b_{11}a_{12} + b_{12}a_{22}, \qquad \frac{\partial g}{\partial x_{22}} = b_{21}a_{12} + b_{22}a_{22}.\]</div>
+<p>Across all four partials, each of the eight terms is picked up exactly once.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 4, arrange in the shape of <span class="arithmatex">\(X\)</span></p>
+<div class="arithmatex">\[\frac{\partial g}{\partial X} = \begin{pmatrix}
+b_{11}a_{11} + b_{12}a_{21} &amp; b_{21}a_{11} + b_{22}a_{21}\\
+b_{11}a_{12} + b_{12}a_{22} &amp; b_{21}a_{12} + b_{22}a_{22}
+\end{pmatrix}.\]</div>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Part b answer</p>
+<p>The four partials arranged in the shape of <span class="arithmatex">\(X\)</span> are a complete and correct answer. Written compactly,</p>
+<div class="arithmatex">\[\frac{\partial g}{\partial X} = (BA)^\top \;\in\; \mathbb{R}^{E\times F}.\]</div>
+<p>Each entry is a row of <span class="arithmatex">\(B\)</span> dotted with a column of <span class="arithmatex">\(A\)</span>, exactly an entry of <span class="arithmatex">\(BA\)</span>, with the index positions coming out transposed. Recognising this compact form is a convenience rather than a requirement: the expanded four-entry matrix is the same object.</p>
+</div>
+<hr />
+<h2 id="57-chain-rule-with-dimensions">5.7 · Chain rule with dimensions<a class="headerlink" href="#57-chain-rule-with-dimensions" title="Permanent link">&para;</a></h2>
+<p><em>Calculus III · multivariable derivatives</em></p>
+<p>Compute <span class="arithmatex">\(df/dx\)</span> for the following functions using the chain rule, giving the dimensions of every partial derivative.</p>
+<p><strong>(a)</strong> <span class="arithmatex">\(f(z) = \log(1+z)\)</span>, where <span class="arithmatex">\(z = x^\top x\)</span> and <span class="arithmatex">\(x \in \mathbb{R}^D\)</span>.</p>
+<p><strong>(b)</strong> <span class="arithmatex">\(f(z) = \sin(z)\)</span>, where <span class="arithmatex">\(z = Ax + b\)</span>, with <span class="arithmatex">\(A \in \mathbb{R}^{E \times D}\)</span>, <span class="arithmatex">\(x \in \mathbb{R}^D\)</span>, <span class="arithmatex">\(b \in \mathbb{R}^E\)</span>.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>The chain rule in this form</strong> — when <span class="arithmatex">\(f\)</span> depends on <span class="arithmatex">\(x\)</span> through an intermediate <span class="arithmatex">\(z\)</span>, <span class="arithmatex">\(\dfrac{df}{dx} = \dfrac{df}{dz}\cdot\dfrac{dz}{dx}\)</span>. Compute each factor separately, then multiply. The factors are matrices in general, so the order matters.</li>
+<li><strong>Dimensions of a matrix product</strong> — the inner dimensions must match and cancel, the outer ones survive: <span class="arithmatex">\((m\times k)(k\times n) = m\times n\)</span>. Inner must match because multiplication dots a row against a column (same length required); outer survive because there is one entry per (row, column) pair.</li>
+<li><strong>Overall dimension check</strong> — for <span class="arithmatex">\(f\)</span> with output in <span class="arithmatex">\(\mathbb{R}^m\)</span> and input <span class="arithmatex">\(x \in \mathbb{R}^n\)</span>, the final <span class="arithmatex">\(df/dx\)</span> must be <span class="arithmatex">\(m\times n\)</span>. Verifying this confirms the chain was assembled in the right order.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">What transforms, and what carries over</p>
+<p>The layer being differentiated <strong>transforms into its derivative</strong>; whatever sits <strong>inside</strong> it <strong>carries over unchanged</strong>. So differentiating <span class="arithmatex">\(\log(u)\)</span> turns the log into <span class="arithmatex">\(1/u\)</span> (it does not survive, being the layer differentiated), while <span class="arithmatex">\(u\)</span> is untouched. In Exercise 5.6 the log <em>did</em> survive inside <span class="arithmatex">\(\cos(\log(t^\top t))\)</span>, but only because it was nested one level below the sine being differentiated: same rule, different position in the stack. Quick check: <span class="arithmatex">\(\tfrac{d}{dx}\log(x^2) = \tfrac{1}{x^2}\cdot 2x = \tfrac{2}{x}\)</span>, agreeing with <span class="arithmatex">\(\log(x^2) = 2\log x\)</span>.</p>
+</div>
+<p><strong>Part a</strong></p>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, outer layer <span class="arithmatex">\(df/dz\)</span></p>
+<p>With <span class="arithmatex">\(f(z) = \log(1+z)\)</span> and inside <span class="arithmatex">\(u = 1+z\)</span>,</p>
+<div class="arithmatex">\[\frac{df}{dz} = \frac{1}{1+z} = \frac{1}{1+x^\top x}.\]</div>
+<p>Both <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(z\)</span> are scalars, so this partial is <span class="arithmatex">\(1\times1\)</span>. No logarithm appears: it was the layer being differentiated, so it became a reciprocal.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, inner layer <span class="arithmatex">\(dz/dx\)</span></p>
+<p>Write the dot product in components, <span class="arithmatex">\(z = x^\top x = x_1^2 + \dots + x_D^2\)</span>. Differentiating with respect to <span class="arithmatex">\(x_i\)</span> leaves <span class="arithmatex">\(2x_i\)</span>, so</p>
+<div class="arithmatex">\[\frac{dz}{dx} = \begin{pmatrix}2x_1 &amp; 2x_2 &amp; \cdots &amp; 2x_D\end{pmatrix} = 2x^\top.\]</div>
+<p>A scalar output with <span class="arithmatex">\(D\)</span> inputs gives dimension <span class="arithmatex">\(1\times D\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, multiply</p>
+<div class="arithmatex">\[\frac{df}{dx} = \frac{df}{dz}\cdot\frac{dz}{dx} = \frac{1}{1+x^\top x}\cdot 2x^\top.\]</div>
+<p>Dimensions: <span class="arithmatex">\((1\times1)(1\times D) = 1\times D\)</span>.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Part a answer</p>
+<div class="arithmatex">\[\frac{df}{dx} = \frac{2x^\top}{1+x^\top x} \;\in\; \mathbb{R}^{1\times D}.\]</div>
+<p>Dimensions of each partial:</p>
+<div class="arithmatex">\[\frac{df}{dz} \in \mathbb{R}^{1\times1}, \qquad \frac{dz}{dx} \in \mathbb{R}^{1\times D}, \qquad \frac{df}{dx} \in \mathbb{R}^{1\times D}.\]</div>
+<p>The final shape is <span class="arithmatex">\(1\times D\)</span> because <span class="arithmatex">\(f\)</span> is scalar-valued and <span class="arithmatex">\(x\)</span> has <span class="arithmatex">\(D\)</span> components.</p>
+</div>
+<p><strong>Part b</strong></p>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, outer layer <span class="arithmatex">\(df/dz\)</span></p>
+<p>Here <span class="arithmatex">\(z = Ax+b \in \mathbb{R}^E\)</span>, so <span class="arithmatex">\(f = \sin(z) \in \mathbb{R}^E\)</span> with the sine applied elementwise, and the Jacobian is <span class="arithmatex">\(E\times E\)</span> with entry <span class="arithmatex">\((i,j) = \partial f_i/\partial z_j\)</span>. Since <span class="arithmatex">\(f_i = \sin(z_i)\)</span> depends on <span class="arithmatex">\(z_i\)</span> <strong>only</strong>, every off-diagonal entry is zero and the matrix is diagonal:</p>
+<div class="arithmatex">\[\frac{df}{dz} = \begin{pmatrix}\cos(z_1) &amp; 0 &amp; \cdots &amp; 0\\ 0 &amp; \cos(z_2) &amp; \cdots &amp; 0\\ \vdots &amp; &amp; \ddots &amp; \vdots\\ 0 &amp; 0 &amp; \cdots &amp; \cos(z_E)\end{pmatrix} = \operatorname{diag}\big(\cos(Ax+b)\big).\]</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Why diag(...) and not just cos(Ax+b)</p>
+<p><span class="arithmatex">\(\cos(Ax+b)\)</span> is a <strong>vector</strong> of <span class="arithmatex">\(E\)</span> entries, and a vector cannot be multiplied by the <span class="arithmatex">\(E\times D\)</span> matrix that follows. The genuine derivative is the <span class="arithmatex">\(E\times E\)</span> diagonal matrix above; <span class="arithmatex">\(\operatorname{diag}(\cdot)\)</span> is shorthand for placing those values on the diagonal with zeros elsewhere, which is what makes the next matrix product valid.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, inner layer <span class="arithmatex">\(dz/dx\)</span></p>
+<p>With <span class="arithmatex">\(z = Ax+b\)</span>, the term <span class="arithmatex">\(b\)</span> is constant and <span class="arithmatex">\(Ax\)</span> is linear in <span class="arithmatex">\(x\)</span>, so</p>
+<div class="arithmatex">\[\frac{dz}{dx} = A \;\in\; \mathbb{R}^{E\times D}.\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, multiply</p>
+<div class="arithmatex">\[\frac{df}{dx} = \frac{df}{dz}\cdot\frac{dz}{dx} = \operatorname{diag}\big(\cos(Ax+b)\big)\,A.\]</div>
+<p>Dimensions: <span class="arithmatex">\((E\times E)(E\times D) = E\times D\)</span>. The inner <span class="arithmatex">\(E\)</span>s match and cancel; the outer <span class="arithmatex">\(E\)</span> and <span class="arithmatex">\(D\)</span> survive.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Keep the factors separate</p>
+<p>The <span class="arithmatex">\(A\)</span> from the inner layer multiplies from <strong>outside</strong>; it does not move into the argument of the cosine, which stays exactly <span class="arithmatex">\(Ax+b\)</span>. Writing something like <span class="arithmatex">\(\cos(A^2x+b)\)</span> merges two separate chain-rule factors into one and is wrong, in the same way that <span class="arithmatex">\(\tfrac{d}{dx}\sin(x^3) = 3x^2\cos(x^3)\)</span> keeps <span class="arithmatex">\(x^3\)</span> inside and puts <span class="arithmatex">\(3x^2\)</span> outside.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Part b answer</p>
+<div class="arithmatex">\[\frac{df}{dx} = \operatorname{diag}\big(\cos(Ax+b)\big)\,A \;\in\; \mathbb{R}^{E\times D}.\]</div>
+<p>Dimensions of each partial:</p>
+<div class="arithmatex">\[\frac{df}{dz} \in \mathbb{R}^{E\times E}, \qquad \frac{dz}{dx} \in \mathbb{R}^{E\times D}, \qquad \frac{df}{dx} \in \mathbb{R}^{E\times D}.\]</div>
+<p>The final shape <span class="arithmatex">\(E\times D\)</span> matches (output dimension) by (input dimension), since <span class="arithmatex">\(f \in \mathbb{R}^E\)</span> and <span class="arithmatex">\(x \in \mathbb{R}^D\)</span>.</p>
+</div>
+<hr />
+<h2 id="58-chain-rule-traces-and-elementwise-functions">5.8 · Chain rule, traces, and elementwise functions<a class="headerlink" href="#58-chain-rule-traces-and-elementwise-functions" title="Permanent link">&para;</a></h2>
+<p><em>Calculus III · multivariable derivatives</em></p>
+<p>Compute <span class="arithmatex">\(df/dx\)</span> for the following functions, describing each step in detail.</p>
+<p><strong>Part a</strong></p>
+<p>Use the chain rule and provide the dimensions of every partial derivative:</p>
+<div class="arithmatex">\[f(z) = \exp\!\left(-\tfrac{1}{2}z\right), \qquad z = g(y) = y^\top S^{-1} y, \qquad y = h(x) = x - \mu,\]</div>
+<p>where <span class="arithmatex">\(x, \mu \in \mathbb{R}^D\)</span> and <span class="arithmatex">\(S \in \mathbb{R}^{D\times D}\)</span>.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Three nested layers</strong> — the chain rule applies twice: <span class="arithmatex">\(\dfrac{df}{dx} = \dfrac{df}{dz}\cdot\dfrac{dz}{dy}\cdot\dfrac{dy}{dx}\)</span>.</li>
+<li><strong>A multiplied constant survives; only an added one vanishes</strong> — <span class="arithmatex">\(S^{-1}\)</span> has no <span class="arithmatex">\(x\)</span> or <span class="arithmatex">\(y\)</span>, so it is constant, but it is <em>multiplied</em> in, so it appears in the answer. Compare <span class="arithmatex">\(\tfrac{d}{dx}(x+7) = 1\)</span> (added, <span class="arithmatex">\(7\)</span> vanishes) with <span class="arithmatex">\(\tfrac{d}{dx}(7x) = 7\)</span> (multiplied, <span class="arithmatex">\(7\)</span> survives).</li>
+<li><strong>Differentiating a quadratic form</strong> — expanding <span class="arithmatex">\(y^\top S^{-1} y\)</span> and collecting the partials gives <span class="arithmatex">\(y^\top(S^{-1} + S^{-\top})\)</span>, which simplifies to <span class="arithmatex">\(2y^\top S^{-1}\)</span> when <span class="arithmatex">\(S\)</span> is symmetric (as covariance matrices always are).</li>
+<li><strong>Check the shapes</strong> — <span class="arithmatex">\(y^\top S^{-1} y\)</span> chains as <span class="arithmatex">\((1\times D)(D\times D)(D\times 1) = 1\times1\)</span>, a scalar. If your expansion produces a matrix, the order has slipped, likely computing <span class="arithmatex">\(yy^\top\)</span> (<span class="arithmatex">\(D\times D\)</span>) instead of <span class="arithmatex">\(y^\top y\)</span>.</li>
+</ul>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, outer layer <span class="arithmatex">\(df/dz\)</span></p>
+<p>With <span class="arithmatex">\(u = -\tfrac12 z\)</span>, the derivative of <span class="arithmatex">\(\exp(u)\)</span> is <span class="arithmatex">\(\exp(u)\cdot u'\)</span>, and <span class="arithmatex">\(u' = -\tfrac12\)</span>:</p>
+<div class="arithmatex">\[\frac{df}{dz} = -\tfrac{1}{2}\exp\!\left(-\tfrac{1}{2}z\right) \;\in\; \mathbb{R}^{1\times1}.\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, middle layer <span class="arithmatex">\(dz/dy\)</span></p>
+<p>From the expansion above, with <span class="arithmatex">\(S\)</span> symmetric:</p>
+<div class="arithmatex">\[\frac{dz}{dy} = 2y^\top S^{-1} \;\in\; \mathbb{R}^{1\times D}.\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, inner layer <span class="arithmatex">\(dy/dx\)</span></p>
+<p>With <span class="arithmatex">\(y = x - \mu\)</span>, each <span class="arithmatex">\(y_i = x_i - \mu_i\)</span>, so <span class="arithmatex">\(\partial y_i/\partial x_i = 1\)</span> and <span class="arithmatex">\(\partial y_i/\partial x_j = 0\)</span> for <span class="arithmatex">\(i \neq j\)</span>: ones on the diagonal, zeros elsewhere:</p>
+<div class="arithmatex">\[\frac{dy}{dx} = I \;\in\; \mathbb{R}^{D\times D}.\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 4, chain and substitute back</p>
+<div class="arithmatex">\[\frac{df}{dx} = \left(-\tfrac12\exp\!\left(-\tfrac12 z\right)\right)\cdot 2y^\top S^{-1}\cdot I.\]</div>
+<p>Dimensions: <span class="arithmatex">\((1\times1)(1\times D)(D\times D) = 1\times D\)</span>. Multiplying by <span class="arithmatex">\(I\)</span> changes nothing, so it drops. Finally substitute <span class="arithmatex">\(y = x-\mu\)</span> and <span class="arithmatex">\(z = (x-\mu)^\top S^{-1}(x-\mu)\)</span>, since the answer must be in <span class="arithmatex">\(x\)</span> alone.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Part a answer</p>
+<div class="arithmatex">\[\frac{df}{dx} = -(x-\mu)^\top S^{-1}\exp\!\left(-\tfrac{1}{2}(x-\mu)^\top S^{-1}(x-\mu)\right) \;\in\; \mathbb{R}^{1\times D}.\]</div>
+<p>The factors of <span class="arithmatex">\(-\tfrac12\)</span> and <span class="arithmatex">\(2\)</span> cancel, leaving a single minus sign. Dimensions: <span class="arithmatex">\(\tfrac{df}{dz}\in\mathbb{R}^{1\times1}\)</span>, <span class="arithmatex">\(\tfrac{dz}{dy}\in\mathbb{R}^{1\times D}\)</span>, <span class="arithmatex">\(\tfrac{dy}{dx}\in\mathbb{R}^{D\times D}\)</span>, <span class="arithmatex">\(\tfrac{df}{dx}\in\mathbb{R}^{1\times D}\)</span>.</p>
+</div>
+<p><strong>Part b</strong></p>
+<div class="arithmatex">\[f(x) = \operatorname{tr}\!\left(xx^\top + \sigma^2 I\right), \qquad x \in \mathbb{R}^D.\]</div>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Read the space carefully</strong> — <span class="arithmatex">\(x \in \mathbb{R}^D\)</span> is a vector, so <span class="arithmatex">\(xx^\top\)</span> is an <em>outer</em> product, <span class="arithmatex">\((D\times1)(1\times D) = D\times D\)</span>, the reverse of the inner product <span class="arithmatex">\(x^\top x\)</span> (a scalar). Getting these two the wrong way round changes the problem entirely.</li>
+<li><strong>The trace of an outer product</strong> — for <span class="arithmatex">\(D=2\)</span>, <span class="arithmatex">\(xx^\top = \begin{pmatrix}x_1^2 &amp; x_1x_2\\ x_1x_2 &amp; x_2^2\end{pmatrix}\)</span>, whose diagonal sums to <span class="arithmatex">\(x_1^2 + x_2^2 = x^\top x\)</span>.</li>
+<li><strong>The identity term</strong> — <span class="arithmatex">\(\sigma^2 I\)</span> contributes <span class="arithmatex">\(\sigma^2\)</span> in each of the <span class="arithmatex">\(D\)</span> diagonal positions, so <span class="arithmatex">\(D\sigma^2\)</span> to the trace. That is an <em>added</em> constant, so it vanishes on differentiation.</li>
+</ul>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, write the function out</p>
+<div class="arithmatex">\[f(x) = x_1^2 + x_2^2 + \dots + x_D^2 + D\sigma^2 = x^\top x + D\sigma^2.\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, differentiate componentwise</p>
+<p>Differentiating with respect to <span class="arithmatex">\(x_i\)</span>, only the <span class="arithmatex">\(x_i^2\)</span> term survives, giving <span class="arithmatex">\(2x_i\)</span>; the <span class="arithmatex">\(D\sigma^2\)</span> term is an added constant and vanishes. These <span class="arithmatex">\(D\)</span> partials are <em>separate entries</em> (not summed), arranged in the Jacobian layout, one column per input variable.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Part b answer</p>
+<div class="arithmatex">\[\frac{df}{dx} = \begin{pmatrix}2x_1 &amp; 2x_2 &amp; \cdots &amp; 2x_D\end{pmatrix} = 2x^\top \;\in\; \mathbb{R}^{1\times D}.\]</div>
+</div>
+<p><strong>Part c</strong></p>
+<p>Use the chain rule and provide the dimensions of every partial derivative (the product need not be computed explicitly):</p>
+<div class="arithmatex">\[f = \tanh(z) \in \mathbb{R}^M, \qquad z = Ax + b,\]</div>
+<p>with <span class="arithmatex">\(x \in \mathbb{R}^N\)</span>, <span class="arithmatex">\(A \in \mathbb{R}^{M\times N}\)</span>, <span class="arithmatex">\(b \in \mathbb{R}^M\)</span>, and <span class="arithmatex">\(\tanh\)</span> applied componentwise.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>Elementwise functions give diagonal Jacobians</strong> — since <span class="arithmatex">\(f_i = \tanh(z_i)\)</span> depends on <span class="arithmatex">\(z_i\)</span> only, every off-diagonal entry of <span class="arithmatex">\(\partial f/\partial z\)</span> is zero, so <span class="arithmatex">\(\dfrac{df}{dz} = \operatorname{diag}\!\big(\operatorname{sech}^2(Ax+b)\big)\)</span> (using <span class="arithmatex">\(\tanh' = \operatorname{sech}^2\)</span>).</li>
+<li><strong>Why <span class="arithmatex">\(\operatorname{diag}(\cdot)\)</span>, not a vector or a sum</strong> — <span class="arithmatex">\(\operatorname{sech}^2(Ax+b)\)</span> alone is a <em>vector</em> of <span class="arithmatex">\(M\)</span> entries and cannot multiply the <span class="arithmatex">\(M\times N\)</span> matrix that follows; nor should the entries be added (they are distinct matrix entries). And it is not <span class="arithmatex">\(c\cdot I\)</span> either, since the diagonal entries differ, so no scalar factors out.</li>
+<li><strong>Dimensions of a matrix product</strong> — inner dimensions match and cancel, outer survive: <span class="arithmatex">\((m\times k)(k\times n) = m\times n\)</span>.</li>
+</ul>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, outer layer <span class="arithmatex">\(df/dz\)</span></p>
+<div class="arithmatex">\[\frac{df}{dz} = \operatorname{diag}\!\big(\operatorname{sech}^2(Ax+b)\big) \;\in\; \mathbb{R}^{M\times M}.\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, inner layer <span class="arithmatex">\(dz/dx\)</span></p>
+<p>With <span class="arithmatex">\(z = Ax+b\)</span>, the term <span class="arithmatex">\(b\)</span> is constant and <span class="arithmatex">\(Ax\)</span> is linear in <span class="arithmatex">\(x\)</span>:</p>
+<div class="arithmatex">\[\frac{dz}{dx} = A \;\in\; \mathbb{R}^{M\times N}.\]</div>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Part c answer</p>
+<div class="arithmatex">\[\frac{df}{dx} = \operatorname{diag}\!\big(\operatorname{sech}^2(Ax+b)\big)\,A.\]</div>
+<p>Dimensions: <span class="arithmatex">\((M\times M)(M\times N) = M\times N\)</span>, the inner <span class="arithmatex">\(M\)</span>s cancel and the outer <span class="arithmatex">\(M\)</span> and <span class="arithmatex">\(N\)</span> survive, matching <span class="arithmatex">\(f \in \mathbb{R}^M\)</span> and <span class="arithmatex">\(x \in \mathbb{R}^N\)</span>. Note <span class="arithmatex">\(A\)</span> multiplies from <em>outside</em>; the argument of <span class="arithmatex">\(\operatorname{sech}^2\)</span> stays exactly <span class="arithmatex">\(Ax+b\)</span>. Merging into something like <span class="arithmatex">\(\operatorname{sech}^2(A^2x+b)\)</span> is wrong, for the same reason <span class="arithmatex">\(\tfrac{d}{dx}\sin(x^3) = 3x^2\cos(x^3)\)</span> keeps <span class="arithmatex">\(x^3\)</span> inside and puts <span class="arithmatex">\(3x^2\)</span> outside.</p>
+</div>
+<hr />
+<h2 id="59-gradient-with-multiple-dependency-paths">5.9 · Gradient with multiple dependency paths<a class="headerlink" href="#59-gradient-with-multiple-dependency-paths" title="Permanent link">&para;</a></h2>
+<p><em>Calculus III · multivariable derivatives</em></p>
+<p>Define</p>
+<div class="arithmatex">\[g(x, z, \nu) := \log p(x,z) - \log q(z,\nu), \qquad z := t(\epsilon,\nu)\]</div>
+<p>for differentiable functions <span class="arithmatex">\(p, q, t\)</span>, with <span class="arithmatex">\(x \in \mathbb{R}^D\)</span>, <span class="arithmatex">\(z \in \mathbb{R}^E\)</span>, <span class="arithmatex">\(\nu \in \mathbb{R}^F\)</span>, <span class="arithmatex">\(\epsilon \in \mathbb{R}^G\)</span>. Using the chain rule, compute <span class="arithmatex">\(\dfrac{d}{d\nu}g(x,z,\nu)\)</span>.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<p>Before differentiating anything, trace how <span class="arithmatex">\(\nu\)</span> reaches <span class="arithmatex">\(g\)</span>. It travels by <strong>three</strong> separate routes:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Path</th>
+<th style="text-align: left;">Route</th>
+<th style="text-align: left;">Term it affects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><span class="arithmatex">\(\nu \to z \to \log p\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\log p(x,z)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;"><span class="arithmatex">\(\nu \to z \to \log q\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\log q(z,\nu)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;"><span class="arithmatex">\(\nu \to \log q\)</span> directly</td>
+<td style="text-align: left;"><span class="arithmatex">\(\log q(z,\nu)\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>The chain rule sums over all paths</strong> — paths 1 and 2 exist because <span class="arithmatex">\(z = t(\epsilon,\nu)\)</span> depends on <span class="arithmatex">\(\nu\)</span>; path 3 because <span class="arithmatex">\(\nu\)</span> is a direct argument of <span class="arithmatex">\(q\)</span>. The multivariable chain rule adds one contribution per path (the same principle as 5.8, where an input reached the output through both <span class="arithmatex">\(x_1\)</span> and <span class="arithmatex">\(x_2\)</span>).</li>
+<li><strong>Differentiate unspecified functions symbolically</strong> — <span class="arithmatex">\(p, q, t\)</span> are only stated to be differentiable, with no formula, so write <span class="arithmatex">\(\partial t/\partial\nu\)</span> rather than evaluating. Leaving a symbol undifferentiated is a common slip; the <span class="arithmatex">\(\partial\)</span> notation records that the differentiation happened.</li>
+<li><strong>Log of a function</strong> — <span class="arithmatex">\(\tfrac{\partial}{\partial z}\log p(x,z) = \tfrac{1}{p(x,z)}\tfrac{\partial p}{\partial z}\)</span>: the log becomes the reciprocal of its argument (the <em>inside</em>, not the log itself) times the derivative of that argument.</li>
+</ul>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, the inner derivative <span class="arithmatex">\(dz/d\nu\)</span></p>
+<p>From <span class="arithmatex">\(z = t(\epsilon,\nu)\)</span>,</p>
+<div class="arithmatex">\[\frac{\partial z}{\partial\nu} = \frac{\partial t}{\partial\nu} \;\in\; \mathbb{R}^{E\times F}.\]</div>
+<p>This factor appears in both paths that travel through <span class="arithmatex">\(z\)</span> (paths 1 and 2).</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, path 1 through <span class="arithmatex">\(\log p\)</span></p>
+<p><span class="arithmatex">\(\nu\)</span> does not appear in <span class="arithmatex">\(\log p(x,z)\)</span> directly, only via <span class="arithmatex">\(z\)</span>. Chaining the two factors:</p>
+<div class="arithmatex">\[\frac{\partial}{\partial\nu}\log p(x,z) = \underbrace{\frac{1}{p(x,z)}\frac{\partial p}{\partial z}}_{1\times E}\;\underbrace{\frac{\partial t}{\partial\nu}}_{E\times F}.\]</div>
+<p>Dimensions: <span class="arithmatex">\((1\times E)(E\times F) = 1\times F\)</span>.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, paths 2 and 3 through <span class="arithmatex">\(\log q\)</span></p>
+<p><span class="arithmatex">\(\log q(z,\nu)\)</span> depends on <span class="arithmatex">\(\nu\)</span> twice over: through its first argument <span class="arithmatex">\(z\)</span>, and through its second argument directly. Both contributions add:</p>
+<div class="arithmatex">\[\frac{\partial}{\partial\nu}\log q(z,\nu) = \frac{1}{q(z,\nu)}\left[\underbrace{\frac{\partial q}{\partial z}\frac{\partial t}{\partial\nu}}_{\text{path 2}} + \underbrace{\frac{\partial q}{\partial\nu}}_{\text{path 3}}\right].\]</div>
+<p>Inside the bracket both terms are <span class="arithmatex">\(1\times F\)</span> (<span class="arithmatex">\((1\times E)(E\times F)\)</span> for path 2, <span class="arithmatex">\(1\times F\)</span> for path 3), so they can be added.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 4, combine, respecting the minus sign</p>
+<p>The definition of <span class="arithmatex">\(g\)</span> subtracts the second term, so the entire <span class="arithmatex">\(\log q\)</span> contribution enters negatively.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[\frac{d g}{d\nu} = \frac{1}{p(x,z)}\frac{\partial p}{\partial z}\frac{\partial t}{\partial\nu} \;-\; \frac{1}{q(z,\nu)}\left[\frac{\partial q}{\partial z}\frac{\partial t}{\partial\nu} + \frac{\partial q}{\partial\nu}\right].\]</div>
+<p>Dimensions of each partial:</p>
+<div class="arithmatex">\[\frac{\partial t}{\partial\nu} \in \mathbb{R}^{E\times F}, \qquad \frac{\partial p}{\partial z},\;\frac{\partial q}{\partial z} \in \mathbb{R}^{1\times E}, \qquad \frac{\partial q}{\partial\nu} \in \mathbb{R}^{1\times F},\]</div>
+<div class="arithmatex">\[\frac{d g}{d\nu} \in \mathbb{R}^{1\times F}.\]</div>
+<p>The final shape is <span class="arithmatex">\(1\times F\)</span> because <span class="arithmatex">\(g\)</span> is scalar-valued and <span class="arithmatex">\(\nu\)</span> has <span class="arithmatex">\(F\)</span> components. Every path contributes a <span class="arithmatex">\(1\times F\)</span> term, which is why they can be summed. The structural lesson: count how many routes the variable takes to reach the function, each route contributes one product of partial derivatives, and the results are added, a variable appearing both inside <span class="arithmatex">\(z\)</span> and as a direct argument of <span class="arithmatex">\(q\)</span> produces two separate terms from one symbol.</p>
+</div>
+<hr />
+<h2 id="510-bonus-multivariate-taylor-series">5.10 (bonus) · Multivariate Taylor series<a class="headerlink" href="#510-bonus-multivariate-taylor-series" title="Permanent link">&para;</a></h2>
+<p><em>Calculus III · Taylor series</em> &nbsp;·&nbsp; <strong>Bonus:</strong> not from the textbook, a self-set practice problem following the method of Example 5.15.</p>
+<p>Compute the Taylor series expansion of</p>
+<div class="arithmatex">\[f(x,y) = x^3 + xy^2 - 2y\]</div>
+<p>at the point <span class="arithmatex">\((x_0, y_0) = (2, 1)\)</span>.</p>
+<div class="admonition theory">
+<p class="admonition-title">Topics &amp; Definitions</p>
+<ul>
+<li><strong>The multivariate expansion</strong> — about <span class="arithmatex">\((x_0,y_0)\)</span>, writing <span class="arithmatex">\(\delta = \begin{pmatrix}x-x_0\\ y-y_0\end{pmatrix}\)</span>,</li>
+</ul>
+<div class="arithmatex">\[f = f(x_0,y_0) + \frac{D^1 f}{1!}\delta + \frac{D^2 f}{2!}\delta^2 + \frac{D^3 f}{3!}\delta^3 + \dots\]</div>
+<p>where <span class="arithmatex">\(D^1 f\)</span> is the gradient, <span class="arithmatex">\(D^2 f\)</span> the Hessian, and <span class="arithmatex">\(D^k f\)</span> the <span class="arithmatex">\(k\)</span>-th order derivative tensor, each evaluated at the expansion point.
+- <strong>Predicting where it terminates</strong> — <span class="arithmatex">\(f\)</span> is a polynomial of degree <span class="arithmatex">\(3\)</span>, and every fourth derivative of a cubic is zero, so the expansion stops exactly at the third-order term and reproduces <span class="arithmatex">\(f\)</span> <strong>exactly</strong>. A Taylor series only becomes an infinite approximation when the function is not a polynomial.
+- <strong>Divide by <span class="arithmatex">\(k!\)</span>, not by <span class="arithmatex">\(k\)</span></strong> — the denominators are factorials, so the third-order term is divided by <span class="arithmatex">\(3! = 6\)</span>, not <span class="arithmatex">\(3\)</span>. Since <span class="arithmatex">\(1! = 1\)</span> and <span class="arithmatex">\(2! = 2\)</span> coincide with their arguments, the distinction only bites from the cubic term onwards, which is exactly where it is easiest to miss.
+- <strong>Where the <span class="arithmatex">\(\tfrac12\)</span> goes in the quadratic term</strong> — expanding <span class="arithmatex">\(\tfrac12\delta^\top H\delta\)</span> gives <span class="arithmatex">\(\tfrac12 f_{xx}(x-x_0)^2 + \tfrac12 f_{yy}(y-y_0)^2 + f_{xy}(x-x_0)(y-y_0)\)</span>. The diagonal entries are halved, but the mixed term appears <strong>twice</strong> in the matrix product (once from each off-diagonal position), so its two halves combine and the <span class="arithmatex">\(\tfrac12\)</span> cancels.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Structural checks</p>
+<p>The Hessian must be <strong>symmetric</strong>: if <span class="arithmatex">\(\partial^2 f/\partial x\partial y \neq \partial^2 f/\partial y\partial x\)</span>, there is a slip. Some partials here still contain variables, so evaluating at the expansion point genuinely matters, while others are already constant. And the final expansion, once expanded and simplified, must reproduce the original polynomial exactly, a complete correctness check available for free.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 1, constant term</p>
+<div class="arithmatex">\[f(2,1) = 2^3 + 2(1)^2 - 2(1) = 8 + 2 - 2 = 8.\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 2, first-order derivatives</p>
+<div class="arithmatex">\[\frac{\partial f}{\partial x} = 3x^2 + y^2 \implies \frac{\partial f}{\partial x}(2,1) = 12 + 1 = 13,\]</div>
+<div class="arithmatex">\[\frac{\partial f}{\partial y} = 2xy - 2 \implies \frac{\partial f}{\partial y}(2,1) = 4 - 2 = 2.\]</div>
+<p>The <span class="arithmatex">\(y^2\)</span> survives in <span class="arithmatex">\(\partial f/\partial x\)</span> because it multiplies <span class="arithmatex">\(x\)</span> in the term <span class="arithmatex">\(xy^2\)</span>; the <span class="arithmatex">\(-2y\)</span> term vanishes as it contains no <span class="arithmatex">\(x\)</span>. So <span class="arithmatex">\(D^1 f(2,1) = \begin{pmatrix}13 &amp; 2\end{pmatrix} \in \mathbb{R}^{1\times2}\)</span>, giving the linear term</p>
+<div class="arithmatex">\[13(x-2) + 2(y-1).\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3, the Hessian and its layout</p>
+<p>The Hessian collects the second derivatives in a fixed grid: row <span class="arithmatex">\(i\)</span>, column <span class="arithmatex">\(j\)</span> holds "differentiate by variable <span class="arithmatex">\(i\)</span>, then variable <span class="arithmatex">\(j\)</span>".</p>
+<div class="arithmatex">\[H = \begin{pmatrix}
+\dfrac{\partial^2 f}{\partial x^2} &amp; \dfrac{\partial^2 f}{\partial x\,\partial y}\\[10pt]
+\dfrac{\partial^2 f}{\partial y\,\partial x} &amp; \dfrac{\partial^2 f}{\partial y^2}
+\end{pmatrix}\]</div>
+<p>The diagonal holds the pure second derivatives; the off-diagonal holds the mixed ones, and those two entries are always equal for a well-behaved <span class="arithmatex">\(f\)</span>, which is why the Hessian is symmetric. Computing each entry:</p>
+<div class="arithmatex">\[\frac{\partial^2 f}{\partial x^2} = 6x, \qquad \frac{\partial^2 f}{\partial y^2} = 2x, \qquad \frac{\partial^2 f}{\partial x\,\partial y} = \frac{\partial^2 f}{\partial y\,\partial x} = 2y.\]</div>
+<p>Unlike Example 5.15, all three still contain variables, so evaluation at <span class="arithmatex">\((2,1)\)</span> matters throughout:</p>
+<div class="arithmatex">\[H(2,1) = \begin{pmatrix}6(2) &amp; 2(1)\\ 2(1) &amp; 2(2)\end{pmatrix} = \begin{pmatrix}12 &amp; 2\\ 2 &amp; 4\end{pmatrix} \in \mathbb{R}^{2\times2},\]</div>
+<p>symmetric as required.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 3b, multiplying out <span class="arithmatex">\(\tfrac12\,\delta^\top H\,\delta\)</span></p>
+<p>With <span class="arithmatex">\(\delta = \begin{pmatrix}x-2\\ y-1\end{pmatrix}\)</span>, the quadratic term is a row times a matrix times a column, which chains as <span class="arithmatex">\((1\times2)(2\times2)(2\times1) = 1\times1\)</span>, a single number as expected.</p>
+<p><strong>First multiply <span class="arithmatex">\(\delta^\top H\)</span></strong> (row times matrix, giving a row):</p>
+<div class="arithmatex">\[\begin{pmatrix}x-2 &amp; y-1\end{pmatrix}\begin{pmatrix}12 &amp; 2\\ 2 &amp; 4\end{pmatrix} = \begin{pmatrix}12(x-2) + 2(y-1) &amp; \;\; 2(x-2) + 4(y-1)\end{pmatrix}.\]</div>
+<p><strong>Then multiply by <span class="arithmatex">\(\delta\)</span></strong> (row times column, giving a scalar):</p>
+<div class="arithmatex">\[\big[12(x-2) + 2(y-1)\big](x-2) \;+\; \big[2(x-2) + 4(y-1)\big](y-1),\]</div>
+<div class="arithmatex">\[= 12(x-2)^2 + \underbrace{2(x-2)(y-1) + 2(x-2)(y-1)}_{\text{the mixed term, twice}} + 4(y-1)^2.\]</div>
+<p>The mixed term appears <strong>twice</strong>, once from each off-diagonal entry of <span class="arithmatex">\(H\)</span>, so the two copies combine into <span class="arithmatex">\(4(x-2)(y-1)\)</span>.</p>
+<p><strong>Finally halve everything:</strong></p>
+<div class="arithmatex">\[\tfrac12\Big[12(x-2)^2 + 4(x-2)(y-1) + 4(y-1)^2\Big] = 6(x-2)^2 + 2(x-2)(y-1) + 2(y-1)^2.\]</div>
+<p>This is why the diagonal terms end up halved (<span class="arithmatex">\(12 \to 6\)</span>, <span class="arithmatex">\(4 \to 2\)</span>) while the mixed term keeps the full off-diagonal value (<span class="arithmatex">\(2 \to 2\)</span>): it was counted twice before the halving.</p>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 4, third-order derivatives</p>
+<p>Differentiating the Hessian entries once more, two third derivatives are nonzero:</p>
+<div class="arithmatex">\[\frac{\partial^3 f}{\partial x^3} = 6, \qquad \frac{\partial^3 f}{\partial x\partial y^2} = 2,\]</div>
+<p>and all others vanish. (Example 5.15 had only one nonzero third derivative; here the <span class="arithmatex">\(xy^2\)</span> term produces a second.) Dividing by <span class="arithmatex">\(3! = 6\)</span>, the cubic term is</p>
+<div class="arithmatex">\[(x-2)^3 + (x-2)(y-1)^2.\]</div>
+</div>
+<div class="admonition steps">
+<p class="admonition-title">Step 5, fourth order and above</p>
+<p>Every fourth-order partial derivative of a cubic polynomial is zero, so the expansion terminates here and the result is exact rather than an approximation.</p>
+</div>
+<div class="admonition answer">
+<p class="admonition-title">Answer</p>
+<div class="arithmatex">\[\begin{aligned}
+f(x,y) =\ &amp; 8 + 13(x-2) + 2(y-1)\\
+&amp;+ 6(x-2)^2 + 2(x-2)(y-1) + 2(y-1)^2\\
+&amp;+ (x-2)^3 + (x-2)(y-1)^2
+\end{aligned}\]</div>
+<p>Expanding and simplifying recovers <span class="arithmatex">\(x^3 + xy^2 - 2y\)</span> exactly, confirming the expansion is correct and complete.</p>
+<p><strong>Stretch question.</strong> If <span class="arithmatex">\(f(x,y) = e^x + xy\)</span> instead, would the series terminate? No: <span class="arithmatex">\(e^x\)</span> is its own derivative, so derivatives of every order remain nonzero and the series is genuinely infinite. Any truncation is then an approximation whose accuracy depends on how close <span class="arithmatex">\((x,y)\)</span> is to the expansion point, rather than an exact rewriting.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/anp-exe" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "navigation.sections", "toc.integrate", "content.code.copy", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

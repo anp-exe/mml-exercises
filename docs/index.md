@@ -9,7 +9,7 @@ Worked solutions to the **end-of-chapter exercises** in *Mathematics for Machine
 Each question is laid out the same way: a **Topics & Definitions** box, a plain-English explanation, the **worked steps** (with real matrices), then the **answer**. New to the notation? See the [list of symbols](#list-of-symbols) at the bottom of this page.
 
 !!! steps "Finding this useful?"
-    I add a new exercise most days. [Star the repo on GitHub](https://github.com/anp-exe/mml-exercises) to follow along, and if you spot a mistake, [open an issue](https://github.com/anp-exe/mml-exercises/issues/new?template=mistake.md) so I can fix it.
+    [Star the repo on GitHub](https://github.com/anp-exe/mml-exercises) to follow along, and if you spot a mistake, [open an issue](https://github.com/anp-exe/mml-exercises/issues/new?template=mistake.md) so I can fix it.
 
 ---
 

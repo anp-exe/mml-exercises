@@ -6,7 +6,6 @@ Worked solutions to the end-of-chapter exercises in *Mathematics for Machine Lea
 [![Live site](https://img.shields.io/website?url=https%3A%2F%2Fanp-exe.github.io%2Fmml-exercises%2F&label=live%20site&up_message=online&logo=github)](https://anp-exe.github.io/mml-exercises/)
 [![Deploy](https://github.com/anp-exe/mml-exercises/actions/workflows/deploy.yml/badge.svg)](https://github.com/anp-exe/mml-exercises/actions/workflows/deploy.yml)
 [![Stars](https://img.shields.io/github/stars/anp-exe/mml-exercises?style=flat&logo=github)](https://github.com/anp-exe/mml-exercises/stargazers)
-[![Clones](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fanp-exe%2Fmml-exercises%2Fbadges%2Fclones.json&label=clones&logo=github)](https://github.com/anp-exe/mml-exercises)
 [![Last commit](https://img.shields.io/github/last-commit/anp-exe/mml-exercises?logo=github)](https://github.com/anp-exe/mml-exercises/commits/main)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 

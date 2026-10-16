@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Read the solutions
+    url: https://anp-exe.github.io/mml-exercises/
+    about: The full worked solutions site

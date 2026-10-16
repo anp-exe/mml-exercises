@@ -3,11 +3,12 @@
 
 Worked solutions to the end-of-chapter exercises in *Mathematics for Machine Learning* (Deisenroth, Faisal & Ong), published as a static site built with MkDocs and Material.
 
-[![Read the solutions](https://img.shields.io/badge/read_the_solutions-anp--exe.github.io%2Fmml--exercises-8a7fb0?style=for-the-badge)](https://anp-exe.github.io/mml-exercises/)
-
-[![Stars](https://img.shields.io/github/stars/anp-exe/mml-exercises?style=flat&color=d98aa8)](https://github.com/anp-exe/mml-exercises/stargazers)
-[![Last commit](https://img.shields.io/github/last-commit/anp-exe/mml-exercises?color=7fa88c)](https://github.com/anp-exe/mml-exercises/commits/main)
-[![License: MIT](https://img.shields.io/badge/license-MIT-8a7fb0)](LICENSE)
+[![Live site](https://img.shields.io/website?url=https%3A%2F%2Fanp-exe.github.io%2Fmml-exercises%2F&label=live%20site&up_message=online&logo=githubpages)](https://anp-exe.github.io/mml-exercises/)
+[![Deploy](https://github.com/anp-exe/mml-exercises/actions/workflows/deploy.yml/badge.svg)](https://github.com/anp-exe/mml-exercises/actions/workflows/deploy.yml)
+[![Stars](https://img.shields.io/github/stars/anp-exe/mml-exercises?logo=github)](https://github.com/anp-exe/mml-exercises/stargazers)
+[![Clones](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fanp-exe%2Fmml-exercises%2Fbadges%2Fclones.json&logo=github)](https://github.com/anp-exe/mml-exercises)
+[![Last commit](https://img.shields.io/github/last-commit/anp-exe/mml-exercises?logo=github)](https://github.com/anp-exe/mml-exercises/commits/main)
+[![License](https://img.shields.io/github/license/anp-exe/mml-exercises)](LICENSE)
 
 The book is great, but it doesn't come with solutions, so I made them while working through the book!
 
@@ -22,7 +23,18 @@ Each exercise follows the same four part layout, so you can jump straight to the
 3. **Worked steps**: the full working with real matrices, nothing skipped
 4. **Answer**: boxed, so you can check yours fast
 
-[![Exercise 2.6 worked solution](docs/assets/example-2-6.png)](https://anp-exe.github.io/mml-exercises/chapters/ch2/#26-solving-amathbfx-mathbfb-with-gaussian-elimination)
+<table>
+<tr>
+<td width="50%" align="center"><a href="https://anp-exe.github.io/mml-exercises/chapters/ch3/#33-distance-between-two-vectors"><img src="docs/assets/readme/1-definitions.png" alt="1. Topics &amp; Definitions"></a><br><sub>1. Topics &amp; Definitions</sub></td>
+<td width="50%" align="center"><a href="https://anp-exe.github.io/mml-exercises/chapters/ch3/#33-distance-between-two-vectors"><img src="docs/assets/readme/2-explanation.png" alt="2. Explanation"></a><br><sub>2. Explanation</sub></td>
+</tr>
+<tr>
+<td width="50%" align="center"><a href="https://anp-exe.github.io/mml-exercises/chapters/ch3/#33-distance-between-two-vectors"><img src="docs/assets/readme/3-steps.png" alt="3. Worked steps"></a><br><sub>3. Worked steps</sub></td>
+<td width="50%" align="center"><a href="https://anp-exe.github.io/mml-exercises/chapters/ch3/#33-distance-between-two-vectors"><img src="docs/assets/readme/4-answer.png" alt="4. Answer"></a><br><sub>4. Answer</sub></td>
+</tr>
+</table>
+
+<sub>Example: exercise 3.3, distance between two vectors. Click any part to see it on the site.</sub>
 
 Proofs live on their own [proofs page](https://anp-exe.github.io/mml-exercises/proofs/), and there's a [list of symbols](https://anp-exe.github.io/mml-exercises/#list-of-symbols) for when the notation gets dense.
 

@@ -1,3 +1,7 @@
+---
+description: 'Worked solutions to MML Chapter 6 (Probability and Distributions) exercises: marginals, conditionals and Gaussian mixtures.'
+---
+
 # Chapter 6 · Probability & Distributions
 
 End-of-chapter exercises. Each has a definitions box, explanation, worked steps, and the answer.

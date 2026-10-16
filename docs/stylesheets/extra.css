@@ -87,3 +87,17 @@
   opacity: .78;
   margin-top: .35em;
 }
+
+/* ---- star / report a mistake box under each page ---- */
+.md-typeset .page-cta {
+  margin-top: 3rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--pastel-lilac-edge);
+  border-radius: 0.4rem;
+  background: var(--pastel-lilac-bg);
+  font-size: 0.75rem;
+}
+.md-typeset .page-cta p { margin: 0.3rem 0; }
+[data-md-color-scheme="slate"] .md-typeset .page-cta {
+  background: transparent;
+}

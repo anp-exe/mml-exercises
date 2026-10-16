@@ -1,3 +1,7 @@
+---
+description: 'Worked solutions to MML Chapter 3 (Analytic Geometry) exercises 3.1 to 3.10: inner products, distances, angles, orthogonal projections, Gram-Schmidt, Cauchy-Schwarz and rotations.'
+---
+
 # Chapter 3 · Analytic Geometry
 
 End-of-chapter exercises. Each has a definitions box, explanation, worked steps, and the answer.

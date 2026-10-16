@@ -1,3 +1,7 @@
+---
+description: 'Worked solutions to MML Chapter 2 (Linear Algebra) exercises 2.1 to 2.20: groups, Gaussian elimination, inverses, subspaces, linear independence, kernels, images and basis changes.'
+---
+
 # Chapter 2 · Linear Algebra
 
 End-of-chapter exercises. Each has a definitions box, explanation, worked steps, and the answer.

@@ -1,10 +1,16 @@
 site_name: MML Exercise Answers
-site_description: Worked end-of-chapter exercise solutions for Mathematics for Machine Learning
+site_description: Step by step worked solutions to the exercises in Mathematics for Machine Learning (Deisenroth, Faisal & Ong), with definitions, plain English explanations and full working.
 site_author: Anna
-site_url: https://anp-exe.github.io/mml-excerises/
+site_url: https://anp-exe.github.io/mml-exercises/
+repo_url: https://github.com/anp-exe/mml-exercises
+repo_name: anp-exe/mml-exercises
+edit_uri: edit/main/docs/
 
 theme:
   name: material
+  custom_dir: overrides
+  icon:
+    repo: fontawesome/brands/github
   palette:
     - scheme: default
       primary: deep purple
@@ -26,6 +32,7 @@ theme:
     - toc.integrate
     - content.code.copy
     - search.highlight
+    - content.action.edit
   font:
     text: Nunito
     code: JetBrains Mono

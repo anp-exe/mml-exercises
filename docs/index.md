@@ -1,8 +1,15 @@
+---
+description: 'Free step by step solutions to the end of chapter exercises in Mathematics for Machine Learning (Deisenroth, Faisal & Ong), with definitions, plain English explanations and full working.'
+---
+
 # MML Exercise Answers
 
 Worked solutions to the **end-of-chapter exercises** in *Mathematics for Machine Learning* (Deisenroth, Faisal & Ong). The full book is freely available [here](https://mml-book.github.io/book/mml-book.pdf).
 
 Each question is laid out the same way: a **Topics & Definitions** box, a plain-English explanation, the **worked steps** (with real matrices), then the **answer**. New to the notation? See the [list of symbols](#list-of-symbols) at the bottom of this page.
+
+!!! steps "Finding this useful?"
+    I add a new exercise most days. [Star the repo on GitHub](https://github.com/anp-exe/mml-exercises) to follow along, and if you spot a mistake, [open an issue](https://github.com/anp-exe/mml-exercises/issues/new?template=mistake.md) so I can fix it.
 
 ---
 

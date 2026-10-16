@@ -1,3 +1,7 @@
+---
+description: 'Worked solutions to MML Chapter 4 (Matrix Decompositions) exercises 4.1 to 4.12: determinants, eigenspaces, diagonalisation, SVD and rank 1 approximation.'
+---
+
 # Chapter 4 · Matrix Decompositions
 
 End-of-chapter exercises. Each has a definitions box, explanation, worked steps, and the answer.

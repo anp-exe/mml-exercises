@@ -1,3 +1,7 @@
+---
+description: 'Full proofs for the Mathematics for Machine Learning exercises that ask you to show or prove a result.'
+---
+
 # Proofs
 
 A consolidated collection of the proof-based exercises, gathered here for quick revision. Each of these also lives in its own chapter; this page just puts them side by side so you can review the arguments in one place.

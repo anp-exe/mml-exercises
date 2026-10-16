@@ -1,62 +1,95 @@
 # MML Exercise Answers
 ![img_1.png](img_1.png)
 
+Worked solutions to the end-of-chapter exercises in *Mathematics for Machine Learning* (Deisenroth, Faisal & Ong), published as a static site built with MkDocs and Material.
 
-Worked solutions to the end-of-chapter exercises in *Mathematics for Machine Learning* (Deisenroth, Faisal & Ong), published as a static site built with MkDocs and Material. My goal is to do enough reading everyday to complete one exercise, and along the way create something that is useful to other learners.
+[![Read the solutions](https://img.shields.io/badge/read_the_solutions-anp--exe.github.io%2Fmml--exercises-8a7fb0?style=for-the-badge)](https://anp-exe.github.io/mml-exercises/)
 
-**Live site:** [https://anp-exe.github.io/mml-excerises/](https://anp-exe.github.io/mml-exercises/)
+[![Stars](https://img.shields.io/github/stars/anp-exe/mml-exercises?style=flat&color=d98aa8)](https://github.com/anp-exe/mml-exercises/stargazers)
+[![Last commit](https://img.shields.io/github/last-commit/anp-exe/mml-exercises?color=7fa88c)](https://github.com/anp-exe/mml-exercises/commits/main)
+[![License: MIT](https://img.shields.io/badge/license-MIT-8a7fb0)](LICENSE)
 
-Every question follows the same layout: a Topics & Definitions box, a plain-English explanation, the worked steps with real matrices, then the boxed answer. Math is written in LaTeX and rendered with KaTeX.
+The book is great, but it doesn't come with solutions, so I made them while working through the book!
+
+My goal is to do enough reading every day to complete one exercise, and along the way create something that is useful to other learners.
+
+## What every solution looks like
+
+Each exercise follows the same four part layout, so you can jump straight to the bit you're stuck on:
+
+1. **Topics & Definitions**: the ideas the question is testing, in one place
+2. **Explanation**: the approach in plain English before any maths
+3. **Worked steps**: the full working with real matrices, nothing skipped
+4. **Answer**: boxed, so you can check yours fast
+
+[![Exercise 2.6 worked solution](docs/assets/example-2-6.png)](https://anp-exe.github.io/mml-exercises/chapters/ch2/#26-solving-amathbfx-mathbfb-with-gaussian-elimination)
+
+Proofs live on their own [proofs page](https://anp-exe.github.io/mml-exercises/proofs/), and there's a [list of symbols](https://anp-exe.github.io/mml-exercises/#list-of-symbols) for when the notation gets dense.
 
 ## Progress
 
 | Chapter | Exercises answered |
-|:------:|:------------------:|
-| 2 · Linear Algebra | 2.1 to 2.20 complete |
-| 3 · Analytic Geometry | 3.1 to 3.10 complete |
-| 4 · Matrix Decompositions | 4.1 to 4.12 complete |
-| 5 · Vector Calculus | 5.1 to 5.9 complete |
-| 6 · Probability and Distributions | 6.1, 6.2a |
-| 7 · Continuous Optimization | placeholder |
-| 8 · When Models Meet Data | placeholder |
-| 9 · Linear Regression | placeholder |
-| 10 · Dimensionality Reduction (PCA) | placeholder |
-| 11 · Density Estimation (GMM) | placeholder |
-| 12 · Classification (SVM) | placeholder |
+|:--|:--|
+| [2 · Linear Algebra](https://anp-exe.github.io/mml-exercises/chapters/ch2/) | 2.1 to 2.20 complete |
+| [3 · Analytic Geometry](https://anp-exe.github.io/mml-exercises/chapters/ch3/) | 3.1 to 3.10 complete |
+| [4 · Matrix Decompositions](https://anp-exe.github.io/mml-exercises/chapters/ch4/) | 4.1 to 4.12 complete |
+| [5 · Vector Calculus](https://anp-exe.github.io/mml-exercises/chapters/ch5/) | 5.1 to 5.9 complete, plus a bonus on multivariate Taylor series |
+| [6 · Probability and Distributions](https://anp-exe.github.io/mml-exercises/chapters/ch6/) | 6.1, 6.2a (in progress) |
+| 7 · Continuous Optimization | coming soon |
+| 8 · When Models Meet Data | coming soon |
+| 9 · Linear Regression | coming soon |
+| 10 · Dimensionality Reduction (PCA) | coming soon |
+| 11 · Density Estimation (GMM) | coming soon |
+| 12 · Classification (SVM) | coming soon |
 
-## Run it locally
+**Star the repo** to follow along as new exercises go up.
 
-You need Python 3.9 or newer.
+## Found a mistake?
+
+I'm learning this as I go, so errors happen. If an answer looks wrong or a step doesn't make sense, please [open an issue](https://github.com/anp-exe/mml-exercises/issues/new?template=mistake.md). Every chapter page also has a link at the bottom that does this for you.
+
+## Helpful resources
+
+Stuck reducing a matrix to RREF? The [emathhelp RREF calculator](https://www.emathhelp.net/calculators/linear-algebra/reduced-row-echelon-form-rref-calculator/) shows every elimination step, which is handy for checking your work. For visual intuition on vectors, transformations, and matrices, 3Blue1Brown's [Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab) series is excellent. For the calculus chapters, [Paul's Online Math Notes](https://tutorial.math.lamar.edu/) are a solid reference.
+
+## Run it yourself
+
+The site is built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/) and the maths is rendered with KaTeX. You need Python 3.9 or newer.
 
 ```bash
 pip install -r requirements.txt
 mkdocs serve
 ```
 
-Then open http://127.0.0.1:8000. Edits to any `.md` file reload automatically. To build the static site into a `site/` folder without serving, run `mkdocs build`.
+Then open http://127.0.0.1:8000. Edits to any `.md` file reload automatically. Run `mkdocs build` to build the static site into `site/` without serving.
 
-## Deploy
+Every push to `main` triggers `.github/workflows/deploy.yml`, which builds the site and publishes it to the `gh-pages` branch for GitHub Pages.
 
-The repo includes a GitHub Actions workflow at `.github/workflows/deploy.yml`. On every push to `main` it builds the site and publishes it to the `gh-pages` branch. Pages then serves from that branch at the live URL above.
-
-## Project structure
+<details>
+<summary>Project structure</summary>
 
 ```
-mml-excerises/
+mml-exercises/
 ├── mkdocs.yml                 site config, nav, theme, extensions
 ├── requirements.txt           python dependencies
-├── .github/workflows/
-│   └── deploy.yml             auto-deploy to GitHub Pages on push
+├── overrides/main.html        social preview tags and the footer on each page
+├── .github/
+│   ├── workflows/deploy.yml   auto-deploy to GitHub Pages on push
+│   └── ISSUE_TEMPLATE/        "mistake in a solution" form
 └── docs/
-    ├── index.md               home page, progress table, resources
+    ├── index.md               home page, progress table, resources, symbols
+    ├── proofs.md              the exercises that ask for a proof
+    ├── assets/                social preview image and README screenshot
+    ├── figures/               diagrams used in the solutions
     ├── stylesheets/extra.css  pastel theme and admonition colours
     ├── javascripts/katex.js   KaTeX auto-render hook
-    └── chapters/
-        ├── ch2.md             filled in
-        └── ch3.md … ch12.md   placeholders
+    └── chapters/ch2.md … ch12.md
 ```
 
-## Adding a chapter's answers
+</details>
+
+<details>
+<summary>Adding answers</summary>
 
 Open the relevant `docs/chapters/chN.md` and use the three custom boxes styled in the CSS:
 
@@ -71,12 +104,10 @@ Open the relevant `docs/chapters/chN.md` and use the three custom boxes styled i
     $$\mathbf{x} = (\tfrac38, \tfrac38, \tfrac14)$$
 ```
 
-Write math in LaTeX between `$ … $` (inline) or `$$ … $$` (display), then update the progress table in `docs/index.md`.
+Write maths in LaTeX between `$ … $` (inline) or `$$ … $$` (display), then update the progress tables in `docs/index.md` and this README.
 
-## Helpful resources
+</details>
 
-Stuck reducing a matrix to RREF? The [emathhelp RREF calculator](https://www.emathhelp.net/calculators/linear-algebra/reduced-row-echelon-form-rref-calculator/) shows every elimination step, which is handy for checking your work. For visual intuition on vectors, transformations, and matrices, 3Blue1Brown's [Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab) series is excellent.
+## License
 
-## Conventions
-
-Pastel aesthetic (lilac, sage, pink). Each question runs definitions to explanation to worked steps to boxed answer. Math in LaTeX rendered by KaTeX.
+Solutions and site code are [MIT licensed](LICENSE). *Mathematics for Machine Learning* is © Deisenroth, Faisal & Ong, published by Cambridge University Press; the authors make it [freely available online](https://mml-book.github.io/).

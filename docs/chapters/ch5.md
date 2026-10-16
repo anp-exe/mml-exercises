@@ -1,3 +1,7 @@
+---
+description: 'Worked solutions to MML Chapter 5 (Vector Calculus) exercises 5.1 to 5.9: sigmoid and Gaussian derivatives, Taylor polynomials, Jacobians, the chain rule and gradients with respect to matrices.'
+---
+
 # Chapter 5 · Vector Calculus
 
 End-of-chapter exercises. Each has a definitions box, explanation, worked steps, and the answer.

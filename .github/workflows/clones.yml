@@ -26,7 +26,7 @@ jobs:
 
       - name: Add up clones
         env:
-          TOKEN: ${{ secrets.TRAFFIC_TOKEN }}
+          TOKEN: ${{ secrets.TRAFFIC_TOKEN || github.token }}
           REPO: ${{ github.repository }}
         run: |
           python3 - <<'PY'
